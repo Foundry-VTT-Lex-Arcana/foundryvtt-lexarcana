@@ -14,7 +14,7 @@ LexArcana.ActorType =
         custos: "custos",
         friendly: "friendly",
         antagonist: "antagonist",
-        fantasicalCreature: "fantasicalCreature"
+        fantasticalCreature: "fantasticalCreature"
     };
 
 LexArcana.ItemType =

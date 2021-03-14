@@ -101,7 +101,7 @@ Hooks.once("init", function ()
     Actors.registerSheet(System.Code,
         LexArcanaFantasticalCreatureActorSheet,
         {
-            types: [LexArcana.ActorType.fantasicalCreature],
+            types: [LexArcana.ActorType.fantasticalCreature],
             makeDefault: true,
             label: "LexArcana.SheetClassFantasticalCreature"
         });

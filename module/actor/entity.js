@@ -18,8 +18,8 @@ export default class LexArcanaActor extends Actor
                 return this._prepareFriendlyTypeData(this.data);
             case LexArcana.ActorType.antagonist:
                 return this._prepareAntagonistTypeData(this.data);
-            case LexArcana.ActorType.fantasicalCreature:
-                return this._prepareFantasicalCreatureTypeData(this.data);
+            case LexArcana.ActorType.fantasticalCreature:
+                return this._preparefantasticalCreatureTypeData(this.data);
         }
     }
 
@@ -61,11 +61,11 @@ export default class LexArcanaActor extends Actor
     /* -------------------------------------------- */
 
     /**
-     * Prepare FantasicalCreature type-specific data
+     * Prepare fantasticalCreature type-specific data
      * @param actorData
      * @private
      */
-    _prepareFantasicalCreatureTypeData(actorData)
+    _preparefantasticalCreatureTypeData(actorData)
     {
 
     }

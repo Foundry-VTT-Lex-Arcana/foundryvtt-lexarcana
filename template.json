@@ -4,7 +4,7 @@
             "custos",
             "friendly",
             "antagonist",
-            "fantasicalCreature"
+            "fantasticalCreature"
         ],
         "templates": {
             "background": {
@@ -41,7 +41,7 @@
                 "resources"
             ]
         },
-        "fantasicalCreature": {
+        "fantasticalCreature": {
             "templates": [
                 "background",
                 "resources"
