@@ -24,14 +24,13 @@
     {{!-- Antagonist Sheet Body --}}
     <section class="sheet-body">
         {{!-- Attributes Tab --}}
-        <div>
+        <div class="tab attributes flexcol" data-group="primary" data-tab="attributes">
             TODO Attributes tab
         </div>
 
         {{!-- Biography Tab --}}
         <div class="tab biography flexcol" data-group="primary" data-tab="biography">
-            <p>Biography</p>
-            {{editor content=data.details.biography.value target="data.details.biography.value" button=true owner=owner editable=editable}}
+            {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}
         </div>
     </section>
 </form>
