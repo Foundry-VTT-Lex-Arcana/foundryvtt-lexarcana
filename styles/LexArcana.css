@@ -63,6 +63,7 @@
 
 .system-LexArcana .form-header
 , .system-LexArcana p
+, .system-LexArcana #module-management .package-list .package-title
 {
     color: #ffffff;
 }
