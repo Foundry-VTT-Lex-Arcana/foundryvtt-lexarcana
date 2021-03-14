@@ -1,0 +1,1 @@
+This project is not official and hence is supported neither by Foundry VTT &trade; nor by Lex Arcana &trade;.

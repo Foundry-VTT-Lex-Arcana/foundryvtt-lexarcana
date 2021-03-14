@@ -1,0 +1,66 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+
+    {{!-- Sheet Header --}}
+    <header class="sheet-header flexrow">
+        <img class="profile" src="{{actor.img}}" title="{{actor.name}}" data-edit="img"/>
+
+        <section class="header-details flexrow">
+            <h1 class="charname">
+                <input name="name" type="text" value="{{actor.name}}" placeholder="{{ localize 'LexArcana.Name' }}"/>
+            </h1>
+
+            {{!-- Custos Summary --}}
+
+            {{!-- Header Attributes --}}
+            <ul class="attributes flexrow">
+                <li class="attribute health">
+                    <h4 class="attribute-name box-title">{{ localize "LexArcana.HitPoints" }}</h4>
+                    <div class="attribute-value multiple">
+                        <input name="data.resources.hitPoints.value" type="text" value="{{data.resources.hitPoints.value}}" placeholder="10" data-dtype="Number"/>
+                        <span class="sep"> / </span>
+                        <input name="data.resources.hitPoints.max" type="text" value="{{data.resources.hitPoints.max}}" placeholder="10" data-dtype="Number"/>
+                    </div>
+                </li>
+
+                <li class="attribute flexrow">
+                    <h4 class="attribute-name box-title">{{ localize "LexArcana.Pietas" }}</h4>
+                    <div class="attribute-value multiple">
+                        <input name="data.resources.pietas.value" type="text" value="{{data.resources.pietas.value}}" placeholder="10" data-dtype="Number"/>
+                        <span class="sep"> / </span>
+                        <input name="data.resources.pietas.max" type="text" value="{{data.resources.pietas.max}}" placeholder="10" data-dtype="Number"/>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </header>
+
+    {{!-- Custos Sheet Navigation --}}
+    <nav class="sheet-navigation tabs" data-group="primary">
+        <a class="item active" data-tab="attributes">{{ localize "LexArcana.Attributes" }}</a>
+        <a class="item" data-tab="inventory">{{ localize "LexArcana.Inventory" }}</a>
+        <a class="item" data-tab="rituals">{{ localize "LexArcana.Rituals" }}</a>
+        <a class="item" data-tab="biography">{{ localize "LexArcana.Biography" }}</a>
+    </nav>
+
+    {{!-- Custos Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Inventory Tab --}}
+        <div class="tab inventory flexcol" data-group="primary" data-tab="inventory">
+            {{> "systems/LexArcana/templates/actors/parts/actor-inventory.html"}}
+        </div>
+
+        {{!-- Rituals Tab --}}
+        <div class="tab rituals flexcol" data-group="primary" data-tab="rituals">
+            {{> "systems/LexArcana/templates/actors/parts/actor-rituals.html"}}
+        </div>
+
+        {{!-- Biography Tab --}}
+        <div class="tab flexrow" data-group="primary" data-tab="biography">
+            <div class="biography">
+                <p>Biography</p>
+                {{editor content=data.details.biography.value target="data.details.biography.value" button=true owner=owner editable=editable}}
+            </div>
+        </div>
+    </section>
+</form>

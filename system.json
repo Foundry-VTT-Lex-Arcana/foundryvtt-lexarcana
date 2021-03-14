@@ -1,0 +1,31 @@
+{
+  "name": "LexArcana",
+  "title": "Lex Arcana",
+  "description": "A game system by players of Lex Arcana - An Empire Without End RPG",
+  "version": "0.0.0",
+  "templateVersion": 2,
+  "author": "Draedrus, Lysoun, Milo115b",
+  "scripts": [],
+  "esmodules": ["LexArcana.js"],
+  "styles": [],
+  "packs": [],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "socket": false,
+  "initiative": "1d20",
+  "gridDistance": 10,
+  "gridUnits": "m",
+  "primaryTokenAttribute": "resources.hitPoints",
+  "secondaryTokenAttribute": "resources.pietas",
+  "minimumCoreVersion": "0.7.9",
+  "compatibleCoreVersion": "0.7.9",
+  "url": "https://github.com/pplans/foundryvtt-lexarcana",
+  "manifest": "",
+  "download": "",
+  "license": "LICENSE.txt"
+}

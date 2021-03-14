@@ -1,0 +1,68 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+
+    {{!-- Item Sheet Header --}}
+    <header class="sheet-header flexrow">
+        <img class="profile" src="{{item.img}}" title="{{item.name}}" data-edit="img"/>
+
+        <div class="header-details flexrow">
+            <h1 class="charname">
+                <input name="name" type="text" value="{{item.name}}" placeholder="{{ localize 'LexArcana.ItemName' }}"/>
+            </h1>
+
+            <div class="item-subtitle">
+                <h4 class="item-type">{{itemType}}</h4>
+                <span class="item-status">{{itemStatus}}</span>
+            </div>
+        </div>
+    </header>
+
+    {{!-- Item Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Description --}}
+        <div class="tab flexrow active" data-group="primary" data-tab="description">
+            <p>Description</p>
+            {{editor content=data.description.value target="data.description.value" button=true owner=owner editable=editable}}
+        </div>
+
+        {{!-- Encumbrance --}}
+        <div class="form-group">
+            <label>{{ localize "LexArcana.Encumbrance" }}</label>
+            <div class="form-fields">
+                <input type="text" name="data.rangedWeapon.encumbrance" value="{{data.rangedWeapon.encumbrance}}" data-dtype="Number"/>
+            </div>
+        </div>
+        
+        {{!-- Damage --}}
+        <div class="form-group">
+            <label>{{ localize "LexArcana.Damage" }}</label>
+            <div class="form-fields">
+                <input type="text" name="data.rangedWeapon.damage" value="{{data.rangedWeapon.damage}}" data-dtype="Number"/>
+            </div>
+        </div>
+        
+        {{!-- Range --}}
+        <div class="form-group">
+            <label>{{ localize "LexArcana.Range" }}</label>
+            <div class="form-fields">
+                <input type="text" name="data.rangedWeapon.range" value="{{data.rangedWeapon.range}}"/>
+            </div>
+        </div>
+
+        {{!-- Difficulty --}}
+        <div class="form-group">
+            <label>{{ localize "LexArcana.Difficulty" }}</label>
+            <div class="form-fields">
+                <input type="text" name="data.rangedWeapon.difficulty" value="{{data.rangedWeapon.difficulty}}" data-dtype="Number"/>
+            </div>
+        </div>
+        
+        {{!-- Feat --}}
+        <div class="form-group">
+            <label>{{ localize "LexArcana.Feat" }}</label>
+            <div class="form-fields">
+                <input type="text" name="data.rangedWeapon.feat" value="{{data.rangedWeapon.feat}}"/>
+            </div>
+        </div>
+    </section>
+</form>
