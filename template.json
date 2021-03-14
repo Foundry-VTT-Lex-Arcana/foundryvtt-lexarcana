@@ -10,41 +10,44 @@
             "background": {
                 "biography": ""
             },
-            "resources": {
-                "hitPoints": {
-                    "min": 0,
-                    "value": 10,
-                    "max": 40
-                },
-                "pietas": {
-                    "min": 0,
-                    "value": 10,
-                    "max": 50
+            "common": {
+                "attributes":
+                {
+                    "hitPoints": {
+                        "min": 0,
+                        "value": 10,
+                        "max": 40
+                    },
+                    "pietas": {
+                        "min": 0,
+                        "value": 10,
+                        "max": 50
+                    }
                 }
             }
         },
         "custos": {
             "templates": [
                 "background",
-                "resources"
+                "common"
             ],
             "FateDice": true
         },
         "friendly": {
             "templates": [
-                "resources"
+                "background",
+                "common"
             ]
         },
         "antagonist": {
             "templates": [
                 "background",
-                "resources"
+                "common"
             ]
         },
         "fantasticalCreature": {
             "templates": [
-                "background",
-                "resources"
+                "common"
             ],
             "degreeOfDanger": 1,
             "size": 1,
