@@ -5,7 +5,7 @@
  * TODO: This should probably be replaced with a formal Token class extension
  */
 const _TokenGetBarAttribute = Token.prototype.getBarAttribute;
-export const getBarAttribute = function(...args)
+export const getBarAttribute = function (...args)
 {
-  return _TokenGetBarAttribute.bind(this)(...args);
+    return _TokenGetBarAttribute.bind(this)(...args);
 };

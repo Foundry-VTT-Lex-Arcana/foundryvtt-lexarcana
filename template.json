@@ -1,78 +1,114 @@
 {
-"Actor": {
-  "types": ["custos", "friendly", "antagonist", "fantasicalCreature"],
-  "templates": {
-    "background": {
-      "biography": ""
+    "Actor": {
+        "types": [
+            "custos",
+            "friendly",
+            "antagonist",
+            "fantasicalCreature"
+        ],
+        "templates": {
+            "background": {
+                "biography": ""
+            },
+            "resources": {
+                "hitPoints": {
+                    "min": 0,
+                    "value": 10,
+                    "max": 40
+                },
+                "pietas": {
+                    "min": 0,
+                    "value": 10,
+                    "max": 50
+                }
+            }
+        },
+        "custos": {
+            "templates": [
+                "background",
+                "resources"
+            ],
+            "FateDice": true
+        },
+        "friendly": {
+            "templates": [
+                "resources"
+            ]
+        },
+        "antagonist": {
+            "templates": [
+                "background",
+                "resources"
+            ]
+        },
+        "fantasicalCreature": {
+            "templates": [
+                "background",
+                "resources"
+            ],
+            "degreeOfDanger": 1,
+            "size": 1,
+            "averageValue": 6,
+            "oneDie": [
+                "damage"
+            ],
+            "twoDice": [
+                "deBello",
+                "sensibilitas"
+            ],
+            "threeDice": [
+                "deCorpore",
+                "hitPoints"
+            ],
+            "defaultHitPoints": 18,
+            "specialAbilities": [],
+            "magicPowers": [],
+            "fateDice": false
+        }
     },
-    "resources": {
-      "hitPoints": {
-        "min": 0,
-        "value": 10,
-        "max": 40
-      },
-      "pietas": {
-        "min": 0,
-        "value": 10,
-        "max": 50
-      }
+    "Item": {
+        "types": [
+            "meleeWeapon",
+            "rangedWeapon",
+            "armor",
+            "shield"
+        ],
+        "templates": {
+            "common": {
+                "description": "",
+                "encumbrance": 0,
+                "actionType": null
+            },
+            "weapon": {
+                "damage": 3,
+                "difficulty": 3,
+                "feat": ""
+            }
+        },
+        "meleeWeapon": {
+            "templates": [
+                "common",
+                "weapon"
+            ]
+        },
+        "rangedWeapon": {
+            "templates": [
+                "common",
+                "weapon"
+            ],
+            "range": "short"
+        },
+        "armor": {
+            "templates": [
+                "common"
+            ],
+            "protection": 3
+        },
+        "shield": {
+            "templates": [
+                "common"
+            ],
+            "parry": 3
+        }
     }
-  },
-  "custos": {
-    "templates": ["background", "resources"],
-	"FateDice": true
-  },
-  "friendly": {
-    "templates": ["resources"]
-  },
-  "antagonist": {
-    "templates": ["background", "resources"]
-  },
-  "fantasicalCreature": {
-    "templates": ["background", "resources"],
-    "degreeOfDanger": 1,
-    "size": 1,
-    "averageValue": 6,
-    "oneDie": ["damage"],
-    "twoDice": ["deBello", "sensibilitas"],
-    "threeDice": ["deCorpore", "hitPoints"],
-    "defaultHitPoints": 18,
-    "specialAbilities": [],
-    "magicPowers": [],
-    "fateDice": false
-  }
-},
-"Item":
-  {
-    "types": ["meleeWeapon", "rangedWeapon", "armor", "shield"],
-    "templates":
-    {
-      "common": {
-        "description": "",
-        "encumbrance": 0,
-        "actionType": null
-      },
-      "weapon":
-      {
-          "damage": 3,
-          "difficulty": 3,
-          "feat": ""
-      }
-    },
-    "meleeWeapon": {
-      "templates": ["common", "weapon"]
-    },
-    "rangedWeapon": {
-      "templates": ["common", "weapon"],
-      "range": "short"
-    },
-    "armor": {
-      "templates": ["common"],
-      "protection": 3
-    },
-    "shield": {
-      "templates": ["common"],
-      "parry": 3
-    }
-}
 }

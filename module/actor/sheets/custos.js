@@ -9,16 +9,17 @@ import {LexArcana} from '../../config.js';
  */
 export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 {
-	/**
-	 * Define default rendering options for the NPC sheet
-	 * @return {Object}
-	 */
-	static get defaultOptions()
-	{
-		return mergeObject(super.defaultOptions, {
-			classes: ["LexArcana", "sheet", "actor", LexArcana.ActorType.custos],
-			width: 720,
-			height: 680
-		});
-	}
+    /**
+     * Define default rendering options for the NPC sheet
+     * @return {Object}
+     */
+    static get defaultOptions()
+    {
+        return mergeObject(super.defaultOptions,
+            {
+                classes: ["LexArcana", "sheet", "actor", LexArcana.ActorType.custos],
+                width: 720,
+                height: 680
+            });
+    }
 }

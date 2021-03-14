@@ -8,13 +8,14 @@ import {LexArcana} from '../../config.js';
  */
 export default class LexArcanaAntagonistActorSheet extends LexArcanaActorSheet
 {
-	/** @override */
-	static get defaultOptions()
-	{
-		return mergeObject(super.defaultOptions, {
-			classes: ["LexArcana", "sheet", "actor", LexArcana.ActorType.antagonist],
-			width: 600,
-			height: 680
-		});
-	}
+    /** @override */
+    static get defaultOptions()
+    {
+        return mergeObject(super.defaultOptions,
+            {
+                classes: ["LexArcana", "sheet", "actor", LexArcana.ActorType.antagonist],
+                width: 600,
+                height: 680
+            });
+    }
 }

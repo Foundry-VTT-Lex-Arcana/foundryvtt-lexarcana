@@ -5,25 +5,25 @@ export const LexArcana = {};
 /* -------------------------------------------- */
 System.Code = "LexArcana";
 System.Name = "Lex Arcana";
-System.Path = "systems/"+System.Code;
+System.Path = "systems/" + System.Code;
 
 /* -------------------------------------------- */
 
 LexArcana.ActorType =
-{
-  custos: "custos",
-  friendly: "friendly",
-  antagonist: "antagonist",
-  fantasicalCreature: "fantasicalCreature"
-};
+    {
+        custos: "custos",
+        friendly: "friendly",
+        antagonist: "antagonist",
+        fantasicalCreature: "fantasicalCreature"
+    };
 
 LexArcana.ItemType =
-{
-  meleeWeapon: "meleeWeapon",
-  rangedWeapon: "rangedWeapon",
-  armor: "armor",
-  shield: "shield"
-};
+    {
+        meleeWeapon: "meleeWeapon",
+        rangedWeapon: "rangedWeapon",
+        armor: "armor",
+        shield: "shield"
+    };
 
 LexArcana.Name = "LexArcana.Name";
 LexArcana.Attributes = "LexArcana.Attributes";
