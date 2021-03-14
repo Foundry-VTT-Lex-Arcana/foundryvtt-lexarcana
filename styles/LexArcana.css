@@ -1,32 +1,42 @@
-.LexArcana *
+*
 {
     margin: 0;
     padding: 0;
+}
+
+.system-LexArcana input
+, .system-LexArcana button
+, .system-LexArcana .window-content
+, .system-LexArcana a
+, .system-LexArcana .encounters
+, .system-LexArcana .directory-list .folder
+, .system-LexArcana .chat-message
+{
     font-family: Herculanum;
-    font-size: 20px;
+    font-size: 14px;
     font-weight: 700;
     text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
 }
 
-.LexArcana .window-content
+.system-LexArcana .window-content
 {
     background-image:url("../styles/images/marble-black.png");
     background-repeat: repeat;
-    background-size: 256px 256px;
+    background-size: 512px 512px;
     color: #ffffff;
 }
 
-.LexArcana .window-content .sheet-header
+.system-LexArcana .window-content .sheet-header
 {
     max-height: 64px;
 }
 
-.LexArcana .window-content .sheet-header ul
+.system-LexArcana .window-content .sheet-header ul
 {
     list-style: none;
 }
 
-.LexArcana .sheet-navigation
+.system-LexArcana .sheet-navigation
 {
     color: #ffffffaa;
     background-color: #ffffff55;
@@ -35,36 +45,61 @@
     max-height: 32px;
 }
 
-.LexArcana .sheet-header input , .LexArcana .sheet-body
+.system-LexArcana button
+, .system-LexArcana .dialog-buttons button.default
+, .system-LexArcana .form-group button
+, .system-LexArcana select
+, .system-LexArcana textarea
+, .system-LexArcana form input[type="text"]
+, .system-LexArcana form input[type="number"]
+, .system-LexArcana .directory-footer
+, .system-LexArcana .sheet-body
+, .system-LexArcana .window-content .sheet-header .profile
 {
     color: #000000;
     background-color: #ffffff88;
     text-align: center;
 }
 
-.LexArcana .window-content .sheet-header .attribute-value input
+.system-LexArcana .form-header
+, .system-LexArcana p
+{
+    color: #ffffff;
+}
+
+.system-LexArcana .form-group .units
+{
+    color: #ffd700;
+}
+
+.system-LexArcana .window-content .sheet-header .profile
+{
+    border-radius: 1em;
+}
+
+.system-LexArcana .window-content .sheet-header .attribute-value input
 {
     width: 40px;
 }
 
-.LexArcana .tabs
+.system-LexArcana .tabs
 {
     margin-top: 5px;
     border-top-left-radius: 1em;
     border-top-right-radius: 1em;
 }
 
-.LexArcana .tabs .item
+.system-LexArcana .tabs .item
 {
     text-shadow: 0px 0px 4px #00000088;
 }
 
-.LexArcana .tabs .active
+.system-LexArcana .tabs .active
 {
     text-shadow: 0px 0px 4px #ffd700ff;
 }
 
-.LexArcana .biography, .LexArcana .editor, .LexArcana .editor-content, .LexArcana .tox-edit-area
+.system-LexArcana .biography, .system-LexArcana .editor, .system-LexArcana .editor-content, .system-LexArcana .tox-edit-area
 {
     height: 100%;
 }
