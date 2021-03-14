@@ -21,18 +21,30 @@
                     "value": 10,
                     "max": 50
                 }
+            },
+            "attributes": {
+                "virtutes": {
+                    "coordinatio": 2,
+                    "auctoritas": 2,
+                    "ratio": 2,
+                    "vigor": 2,
+                    "ingenium": 2,
+                    "sensibilitas": 2
+                }
             }
         },
         "custos": {
             "templates": [
                 "background",
-                "resources"
+                "resources",
+                "attributes"
             ],
             "FateDice": true
         },
         "friendly": {
             "templates": [
-                "resources"
+                "resources",
+                "attributes"
             ]
         },
         "antagonist": {

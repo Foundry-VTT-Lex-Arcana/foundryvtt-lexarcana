@@ -3,7 +3,17 @@
   "ATTRIBUTE.HitPoints": "Hit Points",
   "ITEM.TypeMeleeWeapon": "Melee Weapon",
   "LexArcana.Name": "Name",
+  
   "LexArcana.Attributes": "Attributes",
+
+  "LexArcana.Attributes.virtutes": "Virtutes",
+  "LexArcana.Attributes.coordinatio": "Coordinatio",
+  "LexArcana.Attributes.auctoritas": "Auctoritas",
+  "LexArcana.Attributes.ratio": "Ratio",
+  "LexArcana.Attributes.vigor": "Vigor",
+  "LexArcana.Attributes.ingenium": "Ingenium",
+  "LexArcana.Attributes.sensibilitas": "Sensibilitas",
+
   "LexArcana.Biography": "Biography",
   "LexArcana.HitPoints": "Biography",
   "LexArcana.Pietas": "Pietas",
