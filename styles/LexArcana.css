@@ -45,6 +45,22 @@
     max-height: 32px;
 }
 
+.system-LexArcana .chat-message .message-header
+{
+    color: #d70000;
+}
+
+.system-LexArcana .chat-message.whisper
+{
+    background-color: #00000088;
+}
+
+.system-LexArcana .chat-message.whisper .message-header
+{
+    background-color: #00000088;
+    color: #ffd700;
+}
+
 .system-LexArcana button
 , .system-LexArcana .dialog-buttons button.default
 , .system-LexArcana .form-group button
@@ -63,7 +79,6 @@
 
 .system-LexArcana .form-header
 , .system-LexArcana p
-, .system-LexArcana #module-management .package-list .package-title
 {
     color: #ffffff;
 }
