@@ -63,6 +63,8 @@
 
 .system-LexArcana button
 , .system-LexArcana .dialog-buttons button.default
+, .system-LexArcana .dialog-buttons button.yes
+, .system-LexArcana .dialog-buttons button.no
 , .system-LexArcana .form-group button
 , .system-LexArcana select
 , .system-LexArcana textarea
