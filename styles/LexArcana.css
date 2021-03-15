@@ -72,6 +72,7 @@
 , .system-LexArcana form input[type="number"]
 , .system-LexArcana .directory-footer
 , .system-LexArcana .sheet-body
+, .system-LexArcana .avatar
 , .system-LexArcana .window-content .sheet-header .profile
 {
     color: #000000;
@@ -80,6 +81,7 @@
 }
 
 .system-LexArcana .form-header
+, .system-LexArcana #player-config .window-content form .form-group label
 , .system-LexArcana p
 {
     color: #ffffff;
@@ -91,6 +93,8 @@
 }
 
 .system-LexArcana .window-content .sheet-header .profile
+, .system-LexArcana .avatar
+, .system-LexArcana #player-config .window-content form .form-group
 {
     border-radius: 1em;
 }
