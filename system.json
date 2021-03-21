@@ -27,7 +27,7 @@
     "minimumCoreVersion": "0.7.9",
     "compatibleCoreVersion": "0.7.9",
     "url": "https://github.com/pplans/foundryvtt-lexarcana",
-    "manifest": "https://github.com/pplans/foundryvtt-lexarcana/releases/download/0.0.1/system.json",
-    "download": "https://github.com/pplans/foundryvtt-lexarcana/archive/0.0.1.zip",
+    "manifest": "https://github.com/Foundry-VTT-Lex-Arcana/foundryvtt-lexarcana/releases/download/0.0.1/system.json",
+    "download": "https://github.com/Foundry-VTT-Lex-Arcana/foundryvtt-lexarcana/archive/refs/tags/0.0.1.zip",
     "license": "LICENSE.txt"
 }

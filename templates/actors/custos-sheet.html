@@ -36,7 +36,7 @@
 
     {{!-- Custos Sheet Navigation --}}
     <nav class="sheet-navigation tabs" data-group="primary">
-        <a class="item active" data-tab="attributes">{{ localize "LexArcana.Attributes" }}</a>
+        <a class="item active" data-tab="abilities">{{ localize "LexArcana.Abilities" }}</a>
         <a class="item" data-tab="inventory">{{ localize "LexArcana.Inventory" }}</a>
         <a class="item" data-tab="rituals">{{ localize "LexArcana.Rituals" }}</a>
         <a class="item" data-tab="biography">{{ localize "LexArcana.Biography" }}</a>
@@ -45,9 +45,18 @@
     {{!-- Custos Sheet Body --}}
     <section class="sheet-body">
 
-        {{!-- Inventory Tab --}}
-        <div class="tab attributes flexcol" data-group="primary" data-tab="attributes">
-            TODO Peritia, Virtutes etc.
+        {{!-- Attributes Tab --}}
+        <div class="tab abilities flexcol" data-group="primary" data-tab="abilities">
+            {{!-- Peritiae Attributes --}}
+            <ul class="peritiae flexrow">
+                {{#each data.peritiae as |peritiaValue peritiaKey|}}
+                    <li class="peritia">
+                        <h4 for="data.peritiae.{{peritiaKey}}.defaultValue" class="peritia-name rollable">{{peritiaValue.label}}</h4>
+                        <input name="data.peritiae.{{peritiaKey}}.value" value="{{peritiaValue.value}}" data-dtype="number"/>
+                        Default Roll: <input name="data.peritiae.{{peritiaKey}}.defaultRoll" value="{{peritiaValue.defaultRoll}}" data-dtype="number"/>
+                    </li>
+                {{/each}}
+            </ul>
         </div>
 
         {{!-- Inventory Tab --}}

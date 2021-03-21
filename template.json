@@ -31,6 +31,39 @@
                 "background",
                 "common"
             ],
+            "peritiae":
+            {
+                "deBello":
+                {
+                    "value": 14,
+                    "defaultRoll": "d10+d4"
+                },
+                "deNatura":
+                {
+                    "value": 17,
+                    "defaultRoll": "d12+d5"
+                },
+                "deSocietate":
+                {
+                    "value": 6,
+                    "defaultRoll": "d6"
+                },
+                "deMagia":
+                {
+                    "value": 8,
+                    "defaultRoll": "d8"
+                },
+                "deScientia":
+                {
+                    "value": 6,
+                    "defaultRoll": "d6"
+                },
+                "deCorpore":
+                {
+                    "value": 14,
+                    "defaultRoll": "d10+d4"
+                }
+            },
             "FateDice": true
         },
         "friendly": {

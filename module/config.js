@@ -25,6 +25,19 @@ LexArcana.ItemType =
         shield: "shield"
     };
 
+/**
+ * The set of Peritiae Scores used within the system
+ * @type {Object}
+ */
+ LexArcana.Peritiae = {
+    "deBello": "LexArcana.PeritiaDeBello",
+    "deNatura": "LexArcana.PeritiaDeNatura",
+    "deSocietate": "LexArcana.PeritiaDeSocietate",
+    "deMagia": "LexArcana.PeritiaDeMagia",
+    "deScientia": "LexArcana.PeritiaDeScientia",
+    "deCorpore": "LexArcana.PeritiaDeCorpore",
+};
+
 LexArcana.Name = "LexArcana.Name";
 LexArcana.Attributes = "LexArcana.Attributes";
 LexArcana.Biography = "LexArcana.Biography";

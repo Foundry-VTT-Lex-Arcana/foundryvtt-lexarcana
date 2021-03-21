@@ -122,6 +122,24 @@ Hooks.once("init", function ()
 /*  Foundry VTT Setup                           */
 /* -------------------------------------------- */
 
+/**
+ * This function runs after game data has been requested and loaded from the servers, so entities exist
+ */
+ Hooks.once("setup", function() {
+
+    // Localize CONFIG objects once up-front
+    const toLocalize = ["Peritiae"];
+  
+    // Localize and sort CONFIG objects
+    for ( let o of toLocalize )
+    {
+      CONFIG.LexArcana[o] = Object.entries(CONFIG.LexArcana[o]).reduce((obj, e) => {
+        obj[e[0]] = game.i18n.localize(e[1]);
+        return obj;
+      }, {});
+    }
+  });
+
 /* -------------------------------------------- */
 
 /**

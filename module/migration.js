@@ -153,8 +153,8 @@ export const migrateActorData = function (actor)
     const updateData = {};
 
     // Actor Data Updates
-    _migrateActorMovement(actor, updateData);
-    _migrateActorSenses(actor, updateData);
+    updateData = actor.data;
+    updateData.peritiae = duplicate(game.Actor.custos.peritiae);
 
     // Migrate Owned Items
     if (!actor.items) return updateData;
@@ -164,18 +164,6 @@ export const migrateActorData = function (actor)
 
         // Migrate the Owned Item
         let itemUpdate = migrateItemData(i);
-
-        // Prepared, Equipped, and Proficient for NPC actors
-        if (actor.type === "npc")
-        {
-            if (getProperty(i.data, "preparation.prepared") === false)
-                itemUpdate["data.preparation.prepared"] = true;
-            if (getProperty(i.data, "equipped") === false)
-                itemUpdate["data.equipped"] = true;
-            if (getProperty(i.data, "proficient") === false)
-                itemUpdate["data.proficient"] = true;
-        }
-
         // Update the Owned Item
         if (!isObjectEmpty(itemUpdate))
         {
@@ -227,7 +215,6 @@ function cleanActorData(actorData)
 export const migrateItemData = function (item)
 {
     const updateData = {};
-    _migrateItemAttunement(item, updateData);
     return updateData;
 };
 
