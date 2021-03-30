@@ -30,15 +30,16 @@ LexArcana.ItemType =
  * @type {Object}
  */
  LexArcana.Peritiae = {
-    "deBello": "LexArcana.PeritiaDeBello",
-    "deNatura": "LexArcana.PeritiaDeNatura",
-    "deSocietate": "LexArcana.PeritiaDeSocietate",
-    "deMagia": "LexArcana.PeritiaDeMagia",
-    "deScientia": "LexArcana.PeritiaDeScientia",
-    "deCorpore": "LexArcana.PeritiaDeCorpore",
+    "deBello": "LexArcana.Peritia.DeBello",
+    "deNatura": "LexArcana.Peritia.DeNatura",
+    "deSocietate": "LexArcana.Peritia.DeSocietate",
+    "deMagia": "LexArcana.Peritia.DeMagia",
+    "deScientia": "LexArcana.Peritia.DeScientia",
+    "deCorpore": "LexArcana.Peritia.DeCorpore",
 };
 
 LexArcana.Name = "LexArcana.Name";
+LexArcana.NPC = "LexArcana.NPC";
 LexArcana.Attributes = "LexArcana.Attributes";
 LexArcana.Biography = "LexArcana.Biography";
 LexArcana.HitPoints = "LexArcana.HitPoints";

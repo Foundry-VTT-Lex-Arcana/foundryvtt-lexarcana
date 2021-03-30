@@ -1,0 +1,10 @@
+{{!-- Peritiae Abilities --}}
+<ul class="peritiae flexrow">
+        {{#each data.peritiae as |peritiaValue peritiaKey|}}
+        <li class="peritia">
+                <h4 for="data.peritiae.{{peritiaKey}}.defaultValue" class="peritia-name rollable">{{peritiaValue.label}}</h4>
+                <input name="data.peritiae.{{peritiaKey}}.value" value="{{peritiaValue.value}}" data-dtype="number"/>
+                Default Roll: <input name="data.peritiae.{{peritiaKey}}.defaultRoll" value="{{peritiaValue.defaultRoll}}" data-dtype="number"/>
+        </li>
+        {{/each}}
+</ul>

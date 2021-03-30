@@ -30,6 +30,15 @@
                         <input name="data.attributes.pietas.max" type="text" value="{{data.attributes.pietas.max}}" placeholder="10" data-dtype="Number"/>
                     </div>
                 </li>
+
+                {{#if isGM}}
+                <li class="attribute">
+                    <h4 class="attribute-name box-title">{{ localize "LexArcana.NPC" }}</h4>
+                    <div class="attribute-value multiple">
+                        <input name="data.attributes.npc" type="checkbox" {{checked data.attributes.npc}} />
+                    </div>
+                </li>
+                {{/if}}
             </ul>
         </section>
     </header>
@@ -45,18 +54,9 @@
     {{!-- Custos Sheet Body --}}
     <section class="sheet-body">
 
-        {{!-- Attributes Tab --}}
+        {{!-- Abilities Tab --}}
         <div class="tab abilities flexcol" data-group="primary" data-tab="abilities">
-            {{!-- Peritiae Attributes --}}
-            <ul class="peritiae flexrow">
-                {{#each data.peritiae as |peritiaValue peritiaKey|}}
-                    <li class="peritia">
-                        <h4 for="data.peritiae.{{peritiaKey}}.defaultValue" class="peritia-name rollable">{{peritiaValue.label}}</h4>
-                        <input name="data.peritiae.{{peritiaKey}}.value" value="{{peritiaValue.value}}" data-dtype="number"/>
-                        Default Roll: <input name="data.peritiae.{{peritiaKey}}.defaultRoll" value="{{peritiaValue.defaultRoll}}" data-dtype="number"/>
-                    </li>
-                {{/each}}
-            </ul>
+            {{> "systems/LexArcana/templates/actors/parts/actor-abilities.html"}}
         </div>
 
         {{!-- Inventory Tab --}}

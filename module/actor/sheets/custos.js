@@ -25,35 +25,6 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 
   /* -------------------------------------------- */
 
-  /** @override */
-  getData()
-  {
-    
-    // Basic data
-    let isOwner = this.entity.owner;
-    const data = {
-      owner: isOwner,
-      limited: this.entity.limited,
-      options: this.options,
-      editable: this.isEditable,
-      cssClass: isOwner ? "editable" : "locked",
-      isCharacter: this.entity.data.type === "custos",
-      isNPC: this.entity.data.type !== "custos",
-      config: CONFIG.LexArcana
-    };
-    // The Actor and its Items
-    data.actor = duplicate(this.actor.data);
-    data.data = data.actor.data;
-
-    // Ability Scores
-    for ( let [k, v] of Object.entries(data.actor.data.peritiae))
-    {
-      v.label = CONFIG.LexArcana.Peritiae[k];
-    }
-    // Return data to the sheet
-    return data;
-  }
-
   /* -------------------------------------------- */
   /*  Event Listeners and Handlers
   /* -------------------------------------------- */

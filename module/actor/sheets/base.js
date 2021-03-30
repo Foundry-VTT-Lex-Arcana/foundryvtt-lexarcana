@@ -35,6 +35,35 @@ export default class LexArcanaActorSheet extends ActorSheet
         });
     }
 
+    /** @override */
+    getData()
+    {
+      // Basic data
+      let isOwner = this.entity.owner;
+      const data = {
+        owner: isOwner,
+        limited: this.entity.limited,
+        options: this.options,
+        editable: this.isEditable,
+        cssClass: isOwner ? "editable" : "locked",
+        isCharacter: !this.entity.data.data.attributes.npc,
+        isNPC: this.entity.data.data.attributes.npc,
+        isGM: game.user.isGM,
+        config: CONFIG.LexArcana
+      };
+      // The Actor and its Items
+      data.actor = duplicate(this.actor.data);
+      data.data = data.actor.data;
+  
+      // Ability Scores
+      for ( let [k, v] of Object.entries(data.actor.data.peritiae))
+      {
+        v.label = CONFIG.LexArcana.Peritiae[k];
+      }
+      // Return data to the sheet
+      return data;
+    }
+
     /* -------------------------------------------- */
 
     /** @override */
