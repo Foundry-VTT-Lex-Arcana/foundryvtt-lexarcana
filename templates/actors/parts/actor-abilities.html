@@ -1,0 +1,14 @@
+<div class="flexrow">
+    <h4>{{ localize "LexArcana.VirtutesName }}</h4>
+    <div>
+        <ul>
+            {{#each data.virtutes as |virtuteValue virtuteKey|}}
+            <li class="peritia">
+                    <h4 for="data.peritiae.{{virtuteKey}}.defaultValue" class="peritia-name rollable">{{virtuteValue.label}}</h4>
+                    <input name="data.peritiae.{{virtuteKey}}.value" value="{{virtuteValue.value}}" data-dtype="number"/>
+                    Default Roll: <input name="data.peritiae.{{virtuteKey}}.defaultRoll" value="{{virtuteValue.defaultRoll}}" data-dtype="number"/>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+</div>

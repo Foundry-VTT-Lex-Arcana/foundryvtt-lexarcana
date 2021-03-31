@@ -23,7 +23,20 @@ LexArcana.ItemType =
         rangedWeapon: "rangedWeapon",
         armor: "armor",
         shield: "shield"
-    };
+    }; 
+/**
+ * The set of Virtutes Scores used within the system
+ * @type {Object}
+ */
+LexArcana.Virtutes =
+{
+    "coordinatio": "LexArcana.Virtutes.Coordinatio",
+    "auctoritas": "LexArcana.Virtutes.Auctoritas",
+    "ratio": "LexArcana.Virtutes.Ratio",
+    "vigor": "LexArcana.Virtutes.Vigor",
+    "ingenium": "LexArcana.Virtutes.Ingenium",
+    "sensibilitas": "LexArcana.Virtutes.Sensibilitas"
+};
 
 LexArcana.Name = "LexArcana.Name";
 LexArcana.Attributes = "LexArcana.Attributes";

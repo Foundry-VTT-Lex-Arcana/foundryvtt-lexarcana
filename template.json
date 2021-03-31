@@ -10,72 +10,85 @@
             "background": {
                 "biography": ""
             },
-            "resources": {
-                "hitPoints": {
-                    "min": 0,
-                    "value": 10,
-                    "max": 40
+            "common": { 
+                "attributes":
+                {
+                    "hitPoints":
+                    {
+                        "min": 0,
+                        "value": 10,
+                        "max": 40
+                    },
+                    "pietas":
+                    {
+                        "min": 0,
+                        "value": 10,
+                        "max": 50
+                    },
+                    "npc": true
                 },
-                "pietas": {
-                    "min": 0,
-                    "value": 10,
-                    "max": 50
-                }
-            },
-            "attributes": {
-                "virtutes": {
-                    "coordinatio": 2,
-                    "auctoritas": 2,
-                    "ratio": 2,
-                    "vigor": 2,
-                    "ingenium": 2,
-                    "sensibilitas": 2
+                "virtutes":
+                {
+                    "coordinatio": 
+                    {
+                        "value": 2,
+                        "defaultRoll": "d2"
+                    },
+                    "auctoritas": 
+                    {
+                        "value": 2,
+                        "defaultRoll": "d2"
+                    },
+                    "ratio": 
+                    {
+                        "value": 2,
+                        "defaultRoll": "d2"
+                    },
+                    "vigor": 
+                    {
+                        "value": 2,
+                        "defaultRoll": "d2"
+                    },
+                    "ingenium":
+                    {
+                        "value": 2,
+                        "defaultRoll": "d2"
+                    },
+                    "sensibilitas": 
+                    {
+                        "value": 2,
+                        "defaultRoll": "d2"
+                    }
                 }
             }
         },
         "custos": {
             "templates": [
                 "background",
-                "resources",
+                "common",
                 "attributes"
             ],
             "FateDice": true
         },
         "friendly": {
             "templates": [
-                "resources",
+                "common",
                 "attributes"
             ]
         },
         "antagonist": {
             "templates": [
                 "background",
-                "resources"
+                "common"
             ]
         },
         "fantasticalCreature": {
             "templates": [
                 "background",
-                "resources"
+                "common"
             ],
             "degreeOfDanger": 1,
-            "size": 1,
-            "averageValue": 6,
-            "oneDie": [
-                "damage"
-            ],
-            "twoDice": [
-                "deBello",
-                "sensibilitas"
-            ],
-            "threeDice": [
-                "deCorpore",
-                "hitPoints"
-            ],
-            "defaultHitPoints": 18,
-            "specialAbilities": [],
-            "magicPowers": [],
-            "fateDice": false
+            "magicPowers": []
         }
     },
     "Item": {

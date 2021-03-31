@@ -36,7 +36,7 @@
 
     {{!-- Custos Sheet Navigation --}}
     <nav class="sheet-navigation tabs" data-group="primary">
-        <a class="item active" data-tab="attributes">{{ localize "LexArcana.Attributes" }}</a>
+        <a class="item active" data-tab="abilities">{{ localize "LexArcana.Abilities" }}</a>
         <a class="item" data-tab="inventory">{{ localize "LexArcana.Inventory" }}</a>
         <a class="item" data-tab="rituals">{{ localize "LexArcana.Rituals" }}</a>
         <a class="item" data-tab="biography">{{ localize "LexArcana.Biography" }}</a>
@@ -44,9 +44,9 @@
 
     {{!-- Custos Sheet Body --}}
     <section class="sheet-body">
-        {{!-- Attributes Tab --}}
-        <div class="tab inventory flexcol" data-group="primary" data-tab="attributes">
-            {{> "systems/LexArcana/templates/actors/parts/actor-attributes.html"}}
+        {{!-- Abilities Tab --}}
+        <div class="tab inventory flexcol" data-group="primary" data-tab="abilities">
+            {{> "systems/LexArcana/templates/actors/parts/actor-abilities.html"}}
         </div>
 
         {{!-- Inventory Tab --}}

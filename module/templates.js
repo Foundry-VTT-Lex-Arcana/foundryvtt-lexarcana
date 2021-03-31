@@ -12,7 +12,7 @@ export const preloadHandlebarsTemplates = async function ()
         // Shared Partials
 
         // Actor Sheet Partials
-        System.Path + "/templates/actors/parts/actor-attributes",
+        System.Path + "/templates/actors/parts/actor-abilities.html",
         System.Path + "/templates/actors/parts/actor-inventory.html",
         System.Path + "/templates/actors/parts/actor-rituals.html"
 
