@@ -121,9 +121,17 @@ table td
 , .system-LexArcana .rollable-3d
 {
     display: block;
-    width: 32px;
+    width: 100%;
     height: 32px;
     background-size: 32px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.system-LexArcana .rollable-1d
+, .system-LexArcana .rollable-2d
+, .system-LexArcana .rollable-3d
+{
+    margin-bottom: auto;
 }
 
 .system-LexArcana .default-roll-input-toggle { background-image: url("../styles/images/dices_ico_def.webp"); }
@@ -143,7 +151,7 @@ table td
 
 .system-LexArcana .abilities .default-roll
 {
-    display: none;
+    visibility: hidden;
 }
 
 .system-LexArcana button

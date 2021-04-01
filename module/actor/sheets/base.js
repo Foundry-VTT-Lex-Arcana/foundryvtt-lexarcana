@@ -144,7 +144,7 @@ export default class LexArcanaActorSheet extends ActorSheet
     {
         event.preventDefault();
         let showHide = event.currentTarget.nextElementSibling;
-        showHide.style.display = showHide.style.display === 'block'?'none':'block';
+        showHide.style.visibility = showHide.style.visibility !== 'visible'?'visible':'hidden';
         return;
     }
 }
