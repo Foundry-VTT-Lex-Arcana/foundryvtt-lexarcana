@@ -128,7 +128,7 @@ Hooks.once("init", function ()
  Hooks.once("setup", function() {
 
     // Localize CONFIG objects once up-front
-    const toLocalize = ["Peritiae"];
+    const toLocalize = ["Peritia"];
   
     // Localize and sort CONFIG objects
     for ( let o of toLocalize )

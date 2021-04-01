@@ -29,7 +29,8 @@ LexArcana.ItemType =
  * The set of Peritiae Scores used within the system
  * @type {Object}
  */
- LexArcana.Peritiae = {
+LexArcana.PeritiaeName
+LexArcana.Peritia = {
     "deBello": "LexArcana.Peritia.DeBello",
     "deNatura": "LexArcana.Peritia.DeNatura",
     "deSocietate": "LexArcana.Peritia.DeSocietate",
@@ -40,7 +41,8 @@ LexArcana.ItemType =
 
 LexArcana.Name = "LexArcana.Name";
 LexArcana.NPC = "LexArcana.NPC";
-LexArcana.Attributes = "LexArcana.Attributes";
+LexArcana.DefaultRoll = "LexArcana.DefaultRoll";
+LexArcana.Abilities = "LexArcana.Abilities";
 LexArcana.Biography = "LexArcana.Biography";
 LexArcana.HitPoints = "LexArcana.HitPoints";
 LexArcana.Pietas = "LexArcana.Pietas";

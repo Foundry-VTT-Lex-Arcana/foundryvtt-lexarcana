@@ -1,4 +1,5 @@
 import {LexArcana} from '../config.js';
+import {LexArcanaDice} from '../dice.js';
 
 /**
  * Extend the base Actor class to implement additional system-specific logic.
@@ -68,5 +69,33 @@ export default class LexArcanaActor extends Actor
     _preparefantasticalCreatureTypeData(actorData)
     {
 
+    }
+
+    /* -------------------------------------------- */
+    /*	Roll Dices
+     */
+
+    /* -------------------------------------------- */
+
+    roll(expression)
+    {
+        let rollInstance = new Roll(expression);
+        let rollMode = game.settings.get('core', 'rollMode');
+        let blind = rollMode === 'blindroll';
+        return ChatMessage.create({
+          speaker: {
+            actor: this.id,
+          },
+          content: "We rolled",
+          roll: rollInstance.evaluate(),
+          type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+          sound: CONFIG.sounds.dice,
+          blind,
+        });
+    }
+
+    rollND(dataset, numDice)
+    {
+        return this.roll(LexArcanaDice.ComputeExpression(numDice, parseInt(dataset.roll)));
     }
 }
