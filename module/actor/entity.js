@@ -1,5 +1,6 @@
 import {LexArcana} from '../config.js';
 import {LexArcanaDice} from '../dice.js';
+import {LexArcanaUtils} from '../utils.js';
 
 /**
  * Extend the base Actor class to implement additional system-specific logic.
@@ -72,6 +73,16 @@ export default class LexArcanaActor extends Actor
     }
 
     /* -------------------------------------------- */
+    /*                  Accessors                   */
+    /* -------------------------------------------- */
+    getSpecialty(peritiaId, speName)
+    {
+        const peritia = this.data.data.peritiae[peritiaId];
+        let idx = LexArcanaUtils.ObjectToArray(peritia.specialties).findIndex(item => item.name===speName);
+        return peritia.specialties[idx];
+    }
+
+    /* -------------------------------------------- */
     /*              	Manipulators                */
     /* -------------------------------------------- */
     async addPeritiaSpecialty(peritiaId, name, modifier)
@@ -82,7 +93,7 @@ export default class LexArcanaActor extends Actor
     async removePeritiaSpecialty(peritiaId, key)
     {
         let currentSpecialties = duplicate(this.data.data.peritiae?.[peritiaId]?.specialties ?? []);
-        currentSpecialties = currentSpecialties.filter(item => item.name!==key);
+        currentSpecialties = LexArcanaUtils.ObjectToArray(currentSpecialties).filter(item => item.name!==key);
         await super.update({[`data.peritiae.${peritiaId}.specialties`]: [...currentSpecialties] });
     }
     async changePeritiaDefaultRoll(peritiaId, newExpression)
@@ -92,10 +103,10 @@ export default class LexArcanaActor extends Actor
     async changePeritiaSpecialtyDefaultRoll(peritiaId, key, newExpression)
     {
         let currentSpecialties = duplicate(this.data.data.peritiae?.[peritiaId]?.specialties ?? []);
+        currentSpecialties = LexArcanaUtils.ObjectToArray(currentSpecialties);
         const idx = currentSpecialties.findIndex(item => item.name===key);
         if(currentSpecialties[idx]!==undefined)
         {
-            const idx = currentSpecialties.findIndex(item => item.name===key);
             currentSpecialties[idx].defaultRoll = newExpression;
             await super.update({[`data.peritiae.${peritiaId}.specialties`]: [...currentSpecialties] });
         }
@@ -107,7 +118,7 @@ export default class LexArcanaActor extends Actor
 
     /* -------------------------------------------- */
 
-    roll(expression)
+    roll(expression, info="")
     {
         let rollMode = game.settings.get('core', 'rollMode');
         let message = {speaker: {actor: this.id }, content: expression, blind: rollMode === 'blindroll' };
@@ -116,25 +127,24 @@ export default class LexArcanaActor extends Actor
             message.roll = (new Roll(expression)).evaluate();
             message.type = CONST.CHAT_MESSAGE_TYPES.ROLL;
             message.sound = CONFIG.sounds.dice;
+            message.content = info;
         }
         else
         {
-            message.content = expression+" "+game.i18n.localize("LexArcana.InvalidRoll");
+            message.content = info+" "+expression+" "+game.i18n.localize("LexArcana.InvalidRoll");
         }
         return ChatMessage.create(message);
     }
 
-    rollPeritiaSpecialty(peritiaid, key, numDice)
+    rollPeritiaSpecialty(peritiaid, key, numDice, info="")
     {
-        const peritia = this.data.data.peritiae[peritiaid];
-        let idx = peritia.specialties.findIndex(item => item.name===key);
-        const specialty = peritia.specialties[idx];
-        const totalFaces = peritia.value+parseInt(specialty.modifier);
-        return this.roll(LexArcanaDice.ComputeExpression(numDice, totalFaces));
+        const specialty = this.getSpecialty(peritiaid, key);
+        const totalFaces = this.data.data.peritiae[peritiaid].value+parseInt(specialty.modifier);
+        return this.roll(LexArcanaDice.ComputeExpression(numDice, totalFaces), info);
     }
 
-    rollND(numFaces, numDice)
+    rollND(numFaces, numDice, info="")
     {
-        return this.roll(LexArcanaDice.ComputeExpression(numDice, numFaces));
+        return this.roll(LexArcanaDice.ComputeExpression(numDice, numFaces), info);
     }
 }
