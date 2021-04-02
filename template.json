@@ -37,31 +37,37 @@
                     "deBello":
                     {
                         "value": 14,
+                        "specialties": {},
                         "defaultRoll": "d10+d4"
                     },
                     "deNatura":
                     {
                         "value": 17,
+                        "specialties": {},
                         "defaultRoll": "d12+d5"
                     },
                     "deSocietate":
                     {
                         "value": 6,
+                        "specialties": {},
                         "defaultRoll": "d6"
                     },
                     "deMagia":
                     {
                         "value": 8,
+                        "specialties": {},
                         "defaultRoll": "d8"
                     },
                     "deScientia":
                     {
                         "value": 6,
+                        "specialties": {},
                         "defaultRoll": "d6"
                     },
                     "deCorpore":
                     {
                         "value": 14,
+                        "specialties": {},
                         "defaultRoll": "d10+d4"
                     }
                 },

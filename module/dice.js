@@ -8,9 +8,7 @@ export const LexArcanaDice = {};
 
 LexArcanaDice.ComputeExpression = function(numDice, maxFaces)
 {
-	const validDices = [20, 12, 10, 8, 6, 5, 4, 3, 2];
-	let dices = [];
-	let current = 0;
+	const validDices = [20, 12, 10, 8, 6, 5, 4, 3];
 	let currentMaxFaces = maxFaces;
 	let expression = "";
 	for(let current = 0;current<numDice;++current)

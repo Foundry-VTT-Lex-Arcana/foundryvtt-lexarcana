@@ -166,6 +166,8 @@ table td
 , .system-LexArcana .sheet-body
 , .system-LexArcana .avatar
 , .system-LexArcana .window-content .sheet-header .profile
+, .dialog .dialog-buttons button
+, input[type='text']
 {
     color: #000000;
     background-color: #ffffff88;
