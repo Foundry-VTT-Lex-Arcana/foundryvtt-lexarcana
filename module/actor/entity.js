@@ -74,22 +74,22 @@ export default class LexArcanaActor extends Actor
     /* -------------------------------------------- */
     /*              	Manipulators                */
     /* -------------------------------------------- */
-    async AddPeritiaSpecialty(peritiaId, name, modifier)
+    async addPeritiaSpecialty(peritiaId, name, modifier)
     {
         const currentSpecialties = duplicate(this.data.data.peritiae?.[peritiaId]?.specialties ?? []);
         await super.update({[`data.peritiae.${peritiaId}.specialties`]: [...currentSpecialties, { "name":name, "defaultRoll": "", "modifier": modifier }] });
     }
-    async RemovePeritiaSpecialty(peritiaId, key)
+    async removePeritiaSpecialty(peritiaId, key)
     {
         let currentSpecialties = duplicate(this.data.data.peritiae?.[peritiaId]?.specialties ?? []);
         currentSpecialties = currentSpecialties.filter(item => item.name!==key);
         await super.update({[`data.peritiae.${peritiaId}.specialties`]: [...currentSpecialties] });
     }
-    async ChangePeritiaDefaultRoll(peritiaId, newExpression)
+    async changePeritiaDefaultRoll(peritiaId, newExpression)
     {
         await super.update({[`data.peritiae.${peritiaId}.defaultRoll`]: newExpression });
     }
-    async ChangePeritiaSpecialtyDefaultRoll(peritiaId, key, newExpression)
+    async changePeritiaSpecialtyDefaultRoll(peritiaId, key, newExpression)
     {
         let currentSpecialties = duplicate(this.data.data.peritiae?.[peritiaId]?.specialties ?? []);
         const idx = currentSpecialties.findIndex(item => item.name===key);
@@ -109,22 +109,22 @@ export default class LexArcanaActor extends Actor
 
     roll(expression)
     {
-        let rollInstance = new Roll(expression);
         let rollMode = game.settings.get('core', 'rollMode');
-        let blind = rollMode === 'blindroll';
-        return ChatMessage.create({
-          speaker: {
-            actor: this.id,
-          },
-          content: "We rolled",
-          roll: rollInstance.evaluate(),
-          type: CONST.CHAT_MESSAGE_TYPES.ROLL,
-          sound: CONFIG.sounds.dice,
-          blind,
-        });
+        let message = {speaker: {actor: this.id }, content: expression, blind: rollMode === 'blindroll' };
+        if(expression.match("^(([1-9][0-9]*)?d([34568]|(?:10)|(?:12)|(?:20)))(\\+(([1-9][0-9]*)?d([34568]|(?:10)|(?:12)|(?:20))))*"))
+        {
+            message.roll = (new Roll(expression)).evaluate();
+            message.type = CONST.CHAT_MESSAGE_TYPES.ROLL;
+            message.sound = CONFIG.sounds.dice;
+        }
+        else
+        {
+            message.content = expression+" "+game.i18n.localize("LexArcana.InvalidRoll");
+        }
+        return ChatMessage.create(message);
     }
 
-    RollPeritiaSpecialty(peritiaid, key, numDice)
+    rollPeritiaSpecialty(peritiaid, key, numDice)
     {
         const peritia = this.data.data.peritiae[peritiaid];
         let idx = peritia.specialties.findIndex(item => item.name===key);

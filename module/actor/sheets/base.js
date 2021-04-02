@@ -99,7 +99,7 @@ export default class LexArcanaActorSheet extends ActorSheet
             {
                 let name = html.find('input[name="specialty-label"]')[0].value;
                 let modifier = html.find('input[name="specialty-modifier"]')[0].value;
-                this.actor.AddPeritiaSpecialty(peritiaeId, name, modifier);
+                this.actor.addPeritiaSpecialty(peritiaeId, name, modifier);
             }
           }
         }
@@ -128,7 +128,7 @@ export default class LexArcanaActorSheet extends ActorSheet
         html.find('.rollable-3d').click(this._onRoll3D.bind(this));
 
         html.find('.add-peritiae-specialty').click(this._onAddSpecialty.bind(this));
-        html.find('.dialog-specialty').contextmenu(this._onDialogSpecialty.bind(this));
+        html.find('.dialog-specialty').click(this._onDialogSpecialty.bind(this));
         html.find('.dialog-peritia').click(this._onDialogPeritia.bind(this));
     }
 
@@ -225,25 +225,25 @@ export default class LexArcanaActorSheet extends ActorSheet
                 callback: html =>
                 {
                     const expression = html.find('input[name="specialty-default-roll"]')[0].value;
-                    this.actor.ChangePeritiaSpecialtyDefaultRoll(dataSet.peritiaid, dataSet.specialtyid, expression);
+                    this.actor.changePeritiaSpecialtyDefaultRoll(dataSet.peritiaid, dataSet.specialtyid, expression);
                     this.actor.roll(expression);
                 }
             },
             roll1d: {
                 icon: `<span class="rollable-1d"></span>`,
-                callback: () => { this.actor.rollND(event.currentTarget.dataset, 1); }
+                callback: () => { this.actor.rollPeritiaSpecialty(dataSet.peritiaid, dataSet.specialtyid, 1); }
             },
             roll2d: {
                 icon: `<span class="rollable-2d"></span>`,
-                callback: () => { this.actor.RollPeritiaSpecialty(dataSet.peritiaid, dataSet.specialtyid, 2); }
+                callback: () => { this.actor.rollPeritiaSpecialty(dataSet.peritiaid, dataSet.specialtyid, 2); }
             },
             roll3d: {
                 icon: `<span class="rollable-3d"></span>`,
-                callback: () => { this.actor.RollPeritiaSpecialty(dataSet.peritiaid, dataSet.specialtyid, 3); }
+                callback: () => { this.actor.rollPeritiaSpecialty(dataSet.peritiaid, dataSet.specialtyid, 3); }
             },
             delete: {
                 label: "X",
-                callback: () => { this.actor.RemovePeritiaSpecialty(dataSet.peritiaid, dataSet.specialtyid); }
+                callback: () => { this.actor.removePeritiaSpecialty(dataSet.peritiaid, dataSet.specialtyid); }
             }
           }
         })).render(true);
@@ -272,7 +272,7 @@ export default class LexArcanaActorSheet extends ActorSheet
                 callback: html =>
                 {
                     const expression = html.find('input[name="peritia-default-roll"]')[0].value;
-                    this.actor.ChangePeritiaDefaultRoll(dataSet.peritiaid, expression);
+                    this.actor.changePeritiaDefaultRoll(dataSet.peritiaid, expression);
                     this.actor.roll(expression);
                 }
             },

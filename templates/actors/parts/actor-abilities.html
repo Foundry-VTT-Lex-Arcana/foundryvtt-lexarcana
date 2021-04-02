@@ -5,24 +5,14 @@
                 {{#each data.peritiae as |peritiaValue peritiaKey|}}
                 <li class="peritia">
                         <div class="grid-layout2">
-                                <span for="data.peritiae.{{peritiaKey}}.value" class="peritia-name grid-layout2-area1 rollable dialog-peritia" data-peritiaid="{{peritiaKey}}">{{peritiaValue.label}}</span>
+                                <a for="data.peritiae.{{peritiaKey}}.value" class="peritia-name grid-layout2-area1 rollable dialog-peritia" data-peritiaid="{{peritiaKey}}">{{peritiaValue.label}}</a>
                                 <input class="peritia-value grid-layout2-area2" name="data.peritiae.{{peritiaKey}}.value" value="{{peritiaValue.value}}" data-dtype="number" type="number"/>
                         </div>
-                        <!--div class="grid-layout4">
-                                <div class="grid-layout4-area1">
-                                        <a class="default-roll-input-toggle"></a>
-                                        <div class="default-roll">
-                                                <input class="default-roll-expression" name="data.peritiae.{{peritiaKey}}.defaultRoll" value="{{peritiaValue.defaultRoll}}" data-dtype="text" type="text"/>
-                                        </div>
-                                </div>
-                                <a class="grid-layout4-area2 rollable-1d" data-roll="{{peritiaValue.value}}">&nbsp;</a>
-                                <a class="grid-layout4-area3 rollable-2d" data-roll="{{peritiaValue.value}}">&nbsp;</a>
-                                <a class="grid-layout4-area4 rollable-3d" data-roll="{{peritiaValue.value}}">&nbsp;</a>
-                        </div-->
                         {{#each peritiaValue.specialties as |specialtyValue specialtyKey|}}
-                        <div class="dialog-specialty grid-layout2" data-peritiaid="{{peritiaKey}}" data-specialtyid="{{specialtyValue.name}}">
-                                <input class="peritia-name grid-layout2-area1" name="data.peritiae.{{peritiaKey}}.specialties.{{specialtyKey}}.name" value="{{specialtyValue.name}}" data-dtype="text" type="text"/>
-                                <input class="peritia-value grid-layout2-area2" name="data.peritiae.{{peritiaKey}}.specialties.{{specialtyKey}}.modifier" value="{{specialtyValue.modifier}}" data-dtype="text" type="text"/>
+                        <div class="grid-layout3">
+                                <input class="peritia-name grid-layout3-area1" name="data.peritiae.{{peritiaKey}}.specialties.{{specialtyKey}}.name" value="{{specialtyValue.name}}" data-dtype="text" type="text"/>
+                                <input class="peritia-value grid-layout3-area2" name="data.peritiae.{{peritiaKey}}.specialties.{{specialtyKey}}.modifier" value="{{specialtyValue.modifier}}" data-dtype="text" type="text"/>
+                                <i class="dialog-specialty rollable-1d grid-layout3-area3" data-peritiaid="{{peritiaKey}}" data-specialtyid="{{specialtyValue.name}}"></i>
                         </div>
                         {{/each}}
                         <a class="add-peritiae-specialty" data-peritiaid="{{peritiaKey}}">{{ localize "LexArcana.AddPeritiaeSpecialty" }}</a>
