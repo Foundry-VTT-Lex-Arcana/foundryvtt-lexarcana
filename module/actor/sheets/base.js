@@ -198,7 +198,7 @@ export default class LexArcanaActorSheet extends ActorSheet
                 callback: html =>
                 {
                     const expression = html.find('input[name="specialty-default-roll"]')[0].value;
-                    this.actor.changePeritiaSpecialtyDefaultRoll(dataSet.peritiaid, dataSet.specialtyid, expression);
+                    this.actor.setPeritiaSpecialtyDefaultRoll(dataSet.peritiaid, dataSet.specialtyid, expression);
                     this.actor.roll(expression, localizePeritiaSpeName);
                 }
             },
@@ -246,7 +246,7 @@ export default class LexArcanaActorSheet extends ActorSheet
                 callback: html =>
                 {
                     const expression = html.find('input[name="peritia-default-roll"]')[0].value;
-                    this.actor.changePeritiaDefaultRoll(dataSet.peritiaid, expression);
+                    this.actor.setPeritiaDefaultRoll(dataSet.peritiaid, expression);
                     this.actor.roll(expression, localizedPeritiaName);
                 }
             },

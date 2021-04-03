@@ -10,6 +10,7 @@
                         </div>
                         {{#each peritiaValue.specialties as |specialtyValue specialtyKey|}}
                         <div class="grid-layout3">
+                                <input style="display:none;" name="data.peritiae.{{peritiaKey}}.specialties.{{specialtyKey}}.defaultRoll" value="{{specialtyValue.defaultRoll}}" data-dtype="text" type="text"/>
                                 <input class="peritia-name grid-layout3-area1" name="data.peritiae.{{peritiaKey}}.specialties.{{specialtyKey}}.name" value="{{specialtyValue.name}}" data-dtype="text" type="text"/>
                                 <input class="peritia-value grid-layout3-area2" name="data.peritiae.{{peritiaKey}}.specialties.{{specialtyKey}}.modifier" value="{{specialtyValue.modifier}}" data-dtype="text" type="text"/>
                                 <i class="dialog-specialty rollable-1d grid-layout3-area3" data-peritiaid="{{peritiaKey}}" data-specialtyid="{{specialtyValue.name}}"></i>

@@ -96,11 +96,11 @@ export default class LexArcanaActor extends Actor
         currentSpecialties = LexArcanaUtils.ObjectToArray(currentSpecialties).filter(item => item.name!==key);
         await super.update({[`data.peritiae.${peritiaId}.specialties`]: [...currentSpecialties] });
     }
-    async changePeritiaDefaultRoll(peritiaId, newExpression)
+    async setPeritiaDefaultRoll(peritiaId, newExpression)
     {
         await super.update({[`data.peritiae.${peritiaId}.defaultRoll`]: newExpression });
     }
-    async changePeritiaSpecialtyDefaultRoll(peritiaId, key, newExpression)
+    async setPeritiaSpecialtyDefaultRoll(peritiaId, key, newExpression)
     {
         let currentSpecialties = duplicate(this.data.data.peritiae?.[peritiaId]?.specialties ?? []);
         currentSpecialties = LexArcanaUtils.ObjectToArray(currentSpecialties);
