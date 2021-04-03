@@ -47,6 +47,7 @@ LexArcana.AddPeritiaeSpecialty              = "LexArcana.AddPeritiaeSpecialty";
 LexArcana.AddPeritiaeSpecialtyPromptTitle   = "LexArcana.AddPeritiaeSpecialtyPromptTitle";
 LexArcana.InputLabelName                    = "LexArcana.InputLabelName";
 LexArcana.InputLabelModifier                = "LexArcana.InputLabelModifier";
+LexArcana.DiceExpressionBalancedPrompt      = "LexArcana.DiceExpressionBalancedPrompt";
 LexArcana.InvalidRoll                       = "LexArcana.InvalidRoll";
 LexArcana.ActionAdd                         = "LexArcana.ActionAdd";
 LexArcana.ActionCancel                      = "LexArcana.ActionCancel";

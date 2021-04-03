@@ -20,6 +20,7 @@
   "LexArcana.AddPeritiaeSpecialtyPromptTitle": "Add specialty to Peritia {peritiaName}",
   "LexArcana.InputLabelName":     "Name",
   "LexArcana.InputLabelModifier": "Modifier",
+  "LexArcana.DiceExpressionBalancedPrompt": "Use balanced roll?",
   "LexArcana.InvalidRoll":        "invalid roll",
   "LexArcana.ActionAdd":          "Add",
   "LexArcana.ActionCancel":       "Cancel",

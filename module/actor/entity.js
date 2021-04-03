@@ -121,30 +121,29 @@ export default class LexArcanaActor extends Actor
     roll(expression, info="")
     {
         let rollMode = game.settings.get('core', 'rollMode');
-        let message = {speaker: {actor: this.id }, content: expression, blind: rollMode === 'blindroll' };
+        let message = {speaker: {actor: this.id }, content: info+" "+expression, blind: rollMode === 'blindroll' };
         if(expression.match("^(([1-9][0-9]*)?d([34568]|(?:10)|(?:12)|(?:20)))(\\+(([1-9][0-9]*)?d([34568]|(?:10)|(?:12)|(?:20))))*"))
         {
             message.roll = (new Roll(expression)).evaluate();
             message.type = CONST.CHAT_MESSAGE_TYPES.ROLL;
             message.sound = CONFIG.sounds.dice;
-            message.content = info;
         }
         else
         {
-            message.content = info+" "+expression+" "+game.i18n.localize("LexArcana.InvalidRoll");
+            message.content += game.i18n.localize("LexArcana.InvalidRoll");
         }
         return ChatMessage.create(message);
     }
 
-    rollPeritiaSpecialty(peritiaid, key, numDice, info="")
+    rollPeritiaSpecialty(peritiaid, key, numDice, expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED, info="")
     {
         const specialty = this.getSpecialty(peritiaid, key);
         const totalFaces = this.data.data.peritiae[peritiaid].value+parseInt(specialty.modifier);
-        return this.roll(LexArcanaDice.ComputeExpression(numDice, totalFaces), info);
+        return this.roll(LexArcanaDice.ComputeExpression(numDice, totalFaces, expressionType), info);
     }
 
-    rollND(numFaces, numDice, info="")
+    rollND(numFaces, numDice, expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED, info="")
     {
-        return this.roll(LexArcanaDice.ComputeExpression(numDice, numFaces), info);
+        return this.roll(LexArcanaDice.ComputeExpression(numDice, numFaces, expressionType), info);
     }
 }
