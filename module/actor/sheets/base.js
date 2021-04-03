@@ -188,13 +188,20 @@ export default class LexArcanaActorSheet extends ActorSheet
         const defaultRoll = specialty.defaultRoll===undefined?"1d3+1d4":specialty.defaultRoll;
         const htmlContent = `<input type="text" name="specialty-default-roll" value="${defaultRoll}"/>`;
         const localizePeritiaSpeName = game.i18n.format(game.i18n.localize(label))+" :: "+specialty.name;
-        (new Dialog({
+        function buildRollAutoButton(caller, numDice)
+        {
+            return {
+                icon: `<span class="roll${numDice}d-icon"></span>`,
+                callback: () => { caller.actor.rollPeritiaSpecialty(dataSet.peritiaid, dataSet.specialtyid, numDice, localizePeritiaSpeName); }
+            };
+        }
+        let mainDialog = new Dialog({
           title: localizePeritiaSpeName,
           content: htmlContent,
           buttons:
           {
-            custom: {
-                icon: `<i class="default-roll-input-toggle"></i>`,
+            customroll: {
+                icon: `<i class="rollcustom-icon"></i>`,
                 callback: html =>
                 {
                     const expression = html.find('input[name="specialty-default-roll"]')[0].value;
@@ -202,24 +209,23 @@ export default class LexArcanaActorSheet extends ActorSheet
                     this.actor.roll(expression, localizePeritiaSpeName);
                 }
             },
-            roll1d: {
-                icon: `<span class="rollable-1d"></span>`,
-                callback: () => { this.actor.rollPeritiaSpecialty(dataSet.peritiaid, dataSet.specialtyid, 1, localizePeritiaSpeName); }
-            },
-            roll2d: {
-                icon: `<span class="rollable-2d"></span>`,
-                callback: () => { this.actor.rollPeritiaSpecialty(dataSet.peritiaid, dataSet.specialtyid, 2, localizePeritiaSpeName); }
-            },
-            roll3d: {
-                icon: `<span class="rollable-3d"></span>`,
-                callback: () => { this.actor.rollPeritiaSpecialty(dataSet.peritiaid, dataSet.specialtyid, 3, localizePeritiaSpeName); }
-            },
+            roll1d: buildRollAutoButton(this, 1),
+            roll2d: buildRollAutoButton(this, 2),
+            roll3d: buildRollAutoButton(this, 3),
             delete: {
-                icon: `<span class="delete"></span>`,
-                callback: () => { this.actor.removePeritiaSpecialty(dataSet.peritiaid, dataSet.specialtyid); }
+                icon: `<span class="delete-icon"></span>`,
+                callback: () => {
+                    Dialog.confirm({
+                        title: game.i18n.localize("LexArcana.ConfirmPromptTitle"),
+                        yes: () => this.actor.removePeritiaSpecialty(dataSet.peritiaid, dataSet.specialtyid),
+                        no: () => { mainDialog.render(true); },
+                        defaultYes: false
+                       });
+                }
             }
           }
-        })).render(true);
+        });
+        mainDialog.render(true);
     }
 
     /* -------------------------------------------- */
@@ -237,12 +243,19 @@ export default class LexArcanaActorSheet extends ActorSheet
         const peritia = this.actor.data.data.peritiae[dataSet.peritiaid];
         const htmlContent = `<input type="text" name="peritia-default-roll" value="${peritia.defaultRoll}"/>`;
         const localizedPeritiaName = game.i18n.format(game.i18n.localize(label));
+        function buildRollAutoButton(caller, numDice)
+        {
+            return {
+                icon: `<span class="roll${numDice}d-icon"></span>`,
+                callback: () => { caller.actor.rollND(peritia.value, numDice, localizedPeritiaName); }
+            };
+        }
         (new Dialog({
           title: localizedPeritiaName,
           content: htmlContent,
           buttons: {
             custom: {
-                icon: `<i class="default-roll-input-toggle"></i>`,
+                icon: `<i class="rollcustom-icon"></i>`,
                 callback: html =>
                 {
                     const expression = html.find('input[name="peritia-default-roll"]')[0].value;
@@ -250,18 +263,9 @@ export default class LexArcanaActorSheet extends ActorSheet
                     this.actor.roll(expression, localizedPeritiaName);
                 }
             },
-            roll1d: {
-                icon: `<i class="rollable-1d"></i>`,
-                callback: () => { this.actor.rollND(peritia.value, 1, localizedPeritiaName); }
-            },
-            roll2d: {
-                icon: `<i class="rollable-2d"></i>`,
-                callback: () => { this.actor.rollND(peritia.value, 2, localizedPeritiaName); }
-            },
-            roll3d: {
-                icon: `<i class="rollable-3d"></i>`,
-                callback: () => { this.actor.rollND(peritia.value, 3, localizedPeritiaName); }
-            }
+            roll1d: buildRollAutoButton(this, 1),
+            roll2d: buildRollAutoButton(this, 2),
+            roll3d: buildRollAutoButton(this, 3)
           }
         })).render(true);
     }
