@@ -1,72 +1,121 @@
 {
-    "Actor": {
-        "types": [
+    "Actor":
+    {
+        "types":
+        [
             "custos",
             "friendly",
             "antagonist",
             "fantasticalCreature"
         ],
-        "templates": {
-            "background": {
+        "templates":
+        {
+            "background":
+            {
                 "biography": ""
             },
-            "common": {
+            "common":
+            {
                 "attributes":
                 {
-                    "hitPoints": {
+                    "hitPoints":
+                    {
                         "min": 0,
                         "value": 10,
                         "max": 40
                     },
-                    "pietas": {
+                    "pietas":
+                    {
                         "min": 0,
                         "value": 10,
                         "max": 50
+                    },
+                    "npc": true
+                },
+                "peritiae":
+                {
+                    "deBello":
+                    {
+                        "value": 14,
+                        "specialties": {},
+                        "defaultRoll": "d10+d4"
+                    },
+                    "deNatura":
+                    {
+                        "value": 17,
+                        "specialties": {},
+                        "defaultRoll": "d12+d5"
+                    },
+                    "deSocietate":
+                    {
+                        "value": 6,
+                        "specialties": {},
+                        "defaultRoll": "d6"
+                    },
+                    "deMagia":
+                    {
+                        "value": 8,
+                        "specialties": {},
+                        "defaultRoll": "d8"
+                    },
+                    "deScientia":
+                    {
+                        "value": 6,
+                        "specialties": {},
+                        "defaultRoll": "d6"
+                    },
+                    "deCorpore":
+                    {
+                        "value": 14,
+                        "specialties": {},
+                        "defaultRoll": "d10+d4"
                     }
-                }
+                },
+                "FateDice": true
+            },
+            "NPC":
+            {
+                "size": 1,
+                "averageValue": 6,
+                "defaultHitPoints": 18,
+                "specialAbilities": []
             }
         },
         "custos": {
-            "templates": [
-                "background",
-                "common"
-            ],
-            "FateDice": true
-        },
-        "friendly": {
-            "templates": [
+            "templates":
+            [
                 "background",
                 "common"
             ]
         },
-        "antagonist": {
-            "templates": [
+        "friendly":
+        {
+            "templates":
+            [
                 "background",
-                "common"
+                "common",
+                "NPC"
             ]
         },
-        "fantasticalCreature": {
-            "templates": [
-                "common"
+        "antagonist":
+        {
+            "templates":
+            [
+                "background",
+                "common",
+                "NPC"
+            ]
+        },
+        "fantasticalCreature":
+        {
+            "templates":
+            [
+                "background",
+                "common",
+                "NPC"
             ],
             "degreeOfDanger": 1,
-            "size": 1,
-            "averageValue": 6,
-            "oneDie": [
-                "damage"
-            ],
-            "twoDice": [
-                "deBello",
-                "sensibilitas"
-            ],
-            "threeDice": [
-                "deCorpore",
-                "hitPoints"
-            ],
-            "defaultHitPoints": 18,
-            "specialAbilities": [],
-            "magicPowers": [],
-            "fateDice": false
+            "magicPowers": []
         }
     },
     "Item": {

@@ -17,15 +17,15 @@
 
     {{!-- Antagonist Sheet Navigation --}}
     <nav class="sheet-navigation tabs" data-group="primary">
-        <a class="item active" data-tab="attributes">{{ localize "LexArcana.Attributes" }}</a>
+        <a class="item active" data-tab="abilities">{{ localize "LexArcana.Abilities" }}</a>
         <a class="item" data-tab="biography">{{ localize "LexArcana.Biography" }}</a>
     </nav>
 
     {{!-- Antagonist Sheet Body --}}
     <section class="sheet-body">
-        {{!-- Attributes Tab --}}
-        <div class="tab attributes flexcol" data-group="primary" data-tab="attributes">
-            TODO Attributes tab
+        {{!-- Abilities Tab --}}
+        <div class="tab abilities flexcol" data-group="primary" data-tab="abilities">
+            {{> "systems/LexArcana/templates/actors/parts/actor-abilities.html"}}
         </div>
 
         {{!-- Biography Tab --}}
