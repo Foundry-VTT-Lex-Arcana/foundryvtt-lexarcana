@@ -129,8 +129,7 @@ export default class LexArcanaActorSheet extends ActorSheet
         html.find('.default-roll-input-toggle').contextmenu(this._onToggleDefaultRoll.bind(this));
 
         html.find('.add-peritiae-specialty').click(this._onAddSpecialty.bind(this));
-        html.find('.dialog-specialty').click(this._onRollDialog.bind(this));
-        html.find('.dialog-peritia').click(this._onRollDialog.bind(this));
+        html.find('.dialog-roll').click(this._onRollDialog.bind(this));
     }
 
     /* -------------------------------------------- */
@@ -188,10 +187,33 @@ export default class LexArcanaActorSheet extends ActorSheet
     {
         event.preventDefault();
         const dataSet = event.currentTarget.dataset;
-        const peritiaNameLoc = game.i18n.format(game.i18n.localize(CONFIG.LexArcana.Peritia[dataSet.peritiaid]));
         let config = {};
-        if(dataSet.specialtyid!==undefined)
+        if(dataSet.virtuteid!==undefined)
         {
+            const virtute = this.actor.data.data.virtutes[dataSet.virtuteid];
+            config.title = game.i18n.format(game.i18n.localize(CONFIG.LexArcana.Virtutes[dataSet.virtuteid]));
+            config.defaultRoll = virtute.defaultRoll===undefined?'1d3+1d4':virtute.defaultRoll;
+            config.defaultRollInputName = 'virtute-default-roll';
+            config.buttonBuilder = function(caller, numDice)
+            {
+                return {
+                    icon: `<span class="roll${numDice}d-icon"></span>`,
+                    callback: html => {
+                        const expressionType = html.find('input[name="expression-type"]')[0].checked?LexArcanaDice.EXPRESSIONTYPE.BALANCED:LexArcanaDice.EXPRESSIONTYPE.UNBALANCED;
+                        caller.actor.rollND(virtute.value, numDice, expressionType, config.title);
+                    }
+                };
+            };
+            config.customRoll = function(caller, html)
+            {
+                const expression = html.find('input[name="'+config.defaultRollInputName+'"]')[0].value;
+                caller.actor.setVirtuteDefaultRoll(dataSet.virtuteid, expression);
+                caller.actor.roll(expression, config.title);
+            };
+        }
+        else if(dataSet.specialtyid!==undefined)
+        {
+            const peritiaNameLoc = game.i18n.format(game.i18n.localize(CONFIG.LexArcana.Peritia[dataSet.peritiaid]));
             const specialty = this.actor.getSpecialty(dataSet.peritiaid, dataSet.specialtyid);
             config.defaultRoll = specialty.defaultRoll===undefined?"1d3+1d4":specialty.defaultRoll;
             config.defaultRollInputName = 'specialty-default-roll';
@@ -215,6 +237,7 @@ export default class LexArcanaActorSheet extends ActorSheet
         }
         else
         {
+            const peritiaNameLoc = game.i18n.format(game.i18n.localize(CONFIG.LexArcana.Peritia[dataSet.peritiaid]));
             const peritia = this.actor.data.data.peritiae[dataSet.peritiaid];
             config.defaultRoll = peritia.defaultRoll;
             config.defaultRollInputName = 'peritia-default-roll';
@@ -225,14 +248,14 @@ export default class LexArcanaActorSheet extends ActorSheet
                     icon: `<span class="roll${numDice}d-icon"></span>`,
                     callback: html => {
                         const expressionType = html.find('input[name="expression-type"]')[0].checked?LexArcanaDice.EXPRESSIONTYPE.BALANCED:LexArcanaDice.EXPRESSIONTYPE.UNBALANCED;
-                        caller.actor.rollND(peritia.value, numDice, expressionType, peritia.name);
+                        caller.actor.rollND(peritia.value, numDice, expressionType, config.title);
                     }
                 };
             };
             config.customRoll = function(caller, html)
             {
                 const expression = html.find('input[name="'+config.defaultRollInputName+'"]')[0].value;
-                caller.actor.setPeritiaSpecialtyDefaultRoll(dataSet.peritiaid, dataSet.specialtyid, expression);
+                caller.actor.setPeritiaDefaultRoll(dataSet.peritiaid, expression);
                 caller.actor.roll(expression, config.title);
             };
         }

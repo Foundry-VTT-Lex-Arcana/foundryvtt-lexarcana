@@ -83,6 +83,26 @@ table td
     grid-template-columns: repeat(3, 1fr);
 }
 
+.system-LexArcana .grid-layout2
+{
+    display: grid;
+    margin: 0;
+    padding: 0;
+    padding-left: 5px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    grid-template-areas: "Area1 Area2";
+}
+
+.system-LexArcana .grid-layout2-virtute
+{
+    grid-template-columns: auto 32px;
+}
+
+.system-LexArcana .grid-layout2-area1 { grid-area: Area1; }
+.system-LexArcana .grid-layout2-area2 { grid-area: Area2; }
+
 .system-LexArcana .grid-layout3
 {
     display: grid;

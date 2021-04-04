@@ -89,6 +89,10 @@ export default class LexArcanaActor extends Actor
     /* -------------------------------------------- */
     /*              	Manipulators                */
     /* -------------------------------------------- */
+    async setVirtuteDefaultRoll(virtuteId, newExpression)
+    {
+        await super.update({[`data.virtutes.${virtuteId}.defaultRoll`]: newExpression });
+    }
     async addPeritiaSpecialty(peritiaId, name, modifier)
     {
         const currentSpecialties = duplicate(this.getSpecialties(peritiaId));
