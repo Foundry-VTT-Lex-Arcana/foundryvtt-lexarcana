@@ -35,6 +35,7 @@ export default class LexArcanaProvinceSheet extends LexArcanaItemSheet
 		let isOwner = this.entity.owner;
 		const data = super.getData();
 		data.owner = isOwner;
+		data.isGM = game.user.isGM;
 		data.limited = this.entity.limited;
 		data.options = this.options;
 		data.editable = this.isEditable;
