@@ -23,7 +23,7 @@ export default class LexArcanaItemSheet extends ItemSheet
             classes: ['LexArcana', 'sheet', 'item'],
             resizable: true,
             scrollY: ['.tab.details'],
-            tabs: [{navSelector: '.tabs', contentSelector: '.sheet-body', initial: 'description'}]
+            tabs: [{navSelector: '.tabs', contentSelector: '.sheet-body', initial: 'information'}]
         });
     }
 

@@ -13,6 +13,21 @@ export default class LexArcanaProvinceSheet extends LexArcanaItemSheet
 		super(...args);
 	}
 
+	/* -------------------------------------------- */
+    
+	/** @override */
+	static get defaultOptions()
+	{
+	    return mergeObject(super.defaultOptions, {
+		width: 560,
+		height: 400,
+		classes: ['LexArcana', 'sheet', 'item'],
+		resizable: true,
+		scrollY: ['.tab.details'],
+		tabs: [{navSelector: '.tabs', contentSelector: '.sheet-body', initial: 'information'}]
+	    });
+	}
+
 	/** @override */
 	getData()
 	{

@@ -29,6 +29,8 @@
   "LexArcana.Pietas":             "Pietas",
   "LexArcana.Inventory":          "Inventory",
   "LexArcana.Rituals":            "Rituals",
+  "LexArcana.Description":        "Description",
+  "LexArcana.Information":        "Information",
   "LexArcana.Features":           "Features",
   "LexArcana.ItemName":           "ItemName",
   "LexArcana.Encumbrance":        "Encumbrance",
