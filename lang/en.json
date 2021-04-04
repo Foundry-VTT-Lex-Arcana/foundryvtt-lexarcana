@@ -37,6 +37,8 @@
   "LexArcana.Range":              "Range",
   "LexArcana.Difficulty":         "Difficulty",
   "LexArcana.Feat":               "Feat",
-  "LexArcana.Parry":              "Parry"
+  "LexArcana.Parry":              "Parry",
+  "LexArcana.LanguagesSpokenLabel": "Languages spoken",
+  "LexArcana.ProvincePeritiaeModifiersLabel": "Peritiae bonuses"
 }
     

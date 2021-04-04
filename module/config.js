@@ -19,6 +19,7 @@ LexArcana.ActorType =
 
 LexArcana.ItemType =
     {
+        province: 'province',
         meleeWeapon: 'meleeWeapon',
         rangedWeapon: 'rangedWeapon',
         armor: 'armor',
@@ -65,3 +66,9 @@ LexArcana.Range                             = 'LexArcana.Range';
 LexArcana.Difficulty                        = 'LexArcana.Difficulty';
 LexArcana.Feat                              = 'LexArcana.Feat';
 LexArcana.Parry                             = 'LexArcana.Parry';
+
+/**
+ * Provinces
+ */
+LexArcana.LanguagesSpokenLabel              = 'LexArcana.LanguagesSpokenLabel';
+LexArcana.ProvincePeritiaeModifiersLabel    = 'LexArcana.ProvincePeritiaeModifiersLabel';

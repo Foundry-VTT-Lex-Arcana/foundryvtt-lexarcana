@@ -1,5 +1,5 @@
-import {LexArcana} from '../config.js';
-import {System} from '../config.js';
+import {LexArcana} from '../../config.js';
+import {System} from '../../config.js';
 
 /**
  * Override and extend the core ItemSheet implementation to handle specific item types

@@ -2,7 +2,7 @@
  * The Lex Arcana game system for Foundry Virtual Tabletop
  * A system for playing the fifth edition of the worlds most popular roleplaying game.
  * Author: pierre.plans@gmail.com, Lysoun, Milo115b
- * Software License: BEER-WARE LICENCE
+ * Software License: MIT LICENSE
  * Repository:
  * Issue Tracker:
  */
@@ -16,15 +16,16 @@ import {_getInitiativeFormula} from './module/combat.js';
 import {getBarAttribute} from './module/canvas.js';
 
 // Import Entities
-import LexArcanaActor from './module/actor/entity.js';
-import LexArcanaItem from './module/item/entity.js';
+import LexArcanaActor from './module/actor/actor.js';
+import LexArcanaItem from './module/item/item.js';
 
 // Import Applications
 import LexArcanaCustosActorSheet from './module/actor/sheets/custos.js';
 import LexArcanaFriendlyActorSheet from './module/actor/sheets/friendly.js';
 import LexArcanaAntagonistActorSheet from './module/actor/sheets/antagonist.js';
 import LexArcanaFantasticalCreatureActorSheet from './module/actor/sheets/fantasticalCreature.js';
-import LexArcanaItemSheet from './module/item/sheet.js';
+import LexArcanaItemSheet from './module/item/sheets/base.js';
+import LexArcanaProvinceSheet from './module/item/sheets/provinceSheet.js';
 
 // Import Helpers
 import * as chat from './module/chat.js';
@@ -48,7 +49,8 @@ Hooks.once('init', function ()
                 LexArcanaFriendlyActorSheet,
                 LexArcanaAntagonistActorSheet,
                 LexArcanaFantasticalCreatureActorSheet,
-                LexArcanaItemSheet
+                LexArcanaItemSheet,
+                LexArcanaProvinceSheet
             },
         canvas: {},
         config: LexArcana,
@@ -109,8 +111,16 @@ Hooks.once('init', function ()
     Items.registerSheet(System.Code,
         LexArcanaItemSheet,
         {
+            types: [LexArcana.ItemType.meleeWeapon, LexArcana.ItemType.rangedWeapon, LexArcana.ItemType.armor, LexArcana.ItemType.shield],
             makeDefault: true,
             label: 'LexArcana.SheetClassItem'
+        });
+    Items.registerSheet(System.Code,
+        LexArcanaProvinceSheet,
+        {
+            types: [LexArcana.ItemType.province],
+            makeDefault: true,
+            label: 'LexArcana.SheetClassProvince'
         });
 
     // Preload Handlebars Templates
