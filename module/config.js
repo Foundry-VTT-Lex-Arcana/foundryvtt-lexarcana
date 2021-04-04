@@ -19,15 +19,16 @@ LexArcana.ActorType =
 
 LexArcana.ItemType =
     {
-        meleeWeapon: "meleeWeapon",
-        rangedWeapon: "rangedWeapon",
-        armor: "armor",
-        shield: "shield"
+        meleeWeapon: 'meleeWeapon',
+        rangedWeapon: 'rangedWeapon',
+        armor: 'armor',
+        shield: 'shield'
     }; 
 /**
  * The set of Virtutes Scores used within the system
  * @type {Object}
  */
+LexArcana.VirtutesName = 'LexArcana.VirtutesName';
 LexArcana.Virtutes =
 {
     'coordinatio':  'LexArcana.Virtutes.Coordinatio',
@@ -42,7 +43,7 @@ LexArcana.Virtutes =
  * The set of Peritiae Scores used within the system
  * @type {Object}
  */
-LexArcana.PeritiaeName
+LexArcana.PeritiaeName = 'LexArcana.PeritiaeName';
 LexArcana.Peritia = {
     'deBello':      'LexArcana.Peritia.DeBello',
     'deNatura':     'LexArcana.Peritia.DeNatura',

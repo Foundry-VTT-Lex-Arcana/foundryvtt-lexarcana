@@ -39,6 +39,7 @@ table td
 }
 
 .system-LexArcana .window-content .sheet-header ul
+, .system-LexArcana .window-content .sheet-body ul
 {
     list-style: none;
 }
@@ -66,7 +67,6 @@ table td
 
 .system-LexArcana .abilities li
 {
-    list-style: none;
     margin-top: 15px;
     margin-bottom: auto;
 }

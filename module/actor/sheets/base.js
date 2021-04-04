@@ -57,6 +57,10 @@ export default class LexArcanaActorSheet extends ActorSheet
         data.data = data.actor.data;
 
         // Ability Scores
+        for ( let [k, v] of Object.entries(data.actor.data.virtutes))
+        {
+            v.label = CONFIG.LexArcana.Virtutes[k];
+        }
         for ( let [k, v] of Object.entries(data.actor.data.peritiae))
         {
             v.label = CONFIG.LexArcana.Peritia[k];
