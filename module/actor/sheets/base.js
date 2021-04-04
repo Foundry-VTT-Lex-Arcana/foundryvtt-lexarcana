@@ -1,4 +1,4 @@
-import LexArcanaItem from "../../item/entity.js";
+import LexArcanaItem from "../../item/item.js";
 import {LexArcana} from '../../config.js';
 import {System} from '../../config.js';
 import { LexArcanaDice } from "../../dice.js";
@@ -30,9 +30,9 @@ export default class LexArcanaActorSheet extends ActorSheet
     {
         return mergeObject(super.defaultOptions, {
             scrollY: [
-                ".inventory .inventory-list"
+                '.inventory .inventory-list'
             ],
-            tabs: [{navSelector: ".tabs", contentSelector: ".sheet-body", initial: "description"}]
+            tabs: [{navSelector: '.tabs', contentSelector: '.sheet-body', initial: 'description'}]
         });
     }
 
@@ -46,7 +46,7 @@ export default class LexArcanaActorSheet extends ActorSheet
             limited: this.entity.limited,
             options: this.options,
             editable: this.isEditable,
-            cssClass: isOwner ? "editable" : "locked",
+            cssClass: isOwner ? 'editable' : 'locked',
             isCharacter: !this.entity.data.data.attributes.npc,
             isNPC: this.entity.data.data.attributes.npc,
             isGM: game.user.isGM,
@@ -80,22 +80,22 @@ export default class LexArcanaActorSheet extends ActorSheet
   
     /**
      * Prompt for adding a specialty
-     * @param {String}peritiaeId     The peritiae id (e.g. "deBello")
+     * @param {String}peritiaeId     The peritiae id (e.g. 'deBello')
      */
     addPeritiaeSpecialty(peritiaeId)
     {
       const label = CONFIG.LexArcana.Peritia[peritiaeId];
       const htmlContent = `
-        <div class="form grid-layout2">
-            <div class="grid-layout2-area1">${game.i18n.format("LexArcana.InputLabelName")}:&nbsp;<input type="text" name="specialty-label"/></div>
-            <div class="grid-layout2-area2">${game.i18n.format("LexArcana.InputLabelModifier")}:&nbsp;<input type="text" name="specialty-modifier"/></div>
+        <div class='form grid-layout2'>
+            <div class='grid-layout2-area1'>${game.i18n.format('LexArcana.InputLabelName')}:&nbsp;<input type='text' name='specialty-label'/></div>
+            <div class='grid-layout2-area2'>${game.i18n.format('LexArcana.InputLabelModifier')}:&nbsp;<input type='text' name='specialty-modifier'/></div>
         </div>`;
       (new Dialog({
-        title: game.i18n.format("LexArcana.AddPeritiaeSpecialtyPromptTitle", {peritiaName: game.i18n.format(game.i18n.localize(label))}),
+        title: game.i18n.format('LexArcana.AddPeritiaeSpecialtyPromptTitle', {peritiaName: game.i18n.format(game.i18n.localize(label))}),
         content: htmlContent,
         buttons: {
           add: {
-            label: game.i18n.localize("LexArcana.ActionAdd"),
+            label: game.i18n.localize('LexArcana.ActionAdd'),
             callback: html =>
             {
                 let name = html.find('input[name="specialty-label"]')[0].value;
@@ -140,7 +140,7 @@ export default class LexArcanaActorSheet extends ActorSheet
     {
         event.preventDefault();
         let defaultRollElement = event.currentTarget.nextElementSibling;
-        let defaultRollExpression = defaultRollElement.querySelector(".default-roll-expression").value;
+        let defaultRollExpression = defaultRollElement.querySelector('.default-roll-expression').value;
         return this.actor.roll(defaultRollExpression);
     }
 
@@ -190,7 +190,7 @@ export default class LexArcanaActorSheet extends ActorSheet
         {
             const specialty = this.actor.getSpecialty(dataSet.peritiaid, dataSet.specialtyid);
             config.defaultRoll = specialty.defaultRoll===undefined?"1d3+1d4":specialty.defaultRoll;
-            config.defaultRollInputName = "specialty-default-roll";
+            config.defaultRollInputName = 'specialty-default-roll';
             config.title = peritiaNameLoc+" :: "+specialty.name;
             config.buttonBuilder = function(caller, numDice)
             {
@@ -213,7 +213,7 @@ export default class LexArcanaActorSheet extends ActorSheet
         {
             const peritia = this.actor.data.data.peritiae[dataSet.peritiaid];
             config.defaultRoll = peritia.defaultRoll;
-            config.defaultRollInputName = "peritia-default-roll";
+            config.defaultRollInputName = 'peritia-default-roll';
             config.title = peritiaNameLoc;
             config.buttonBuilder = function(caller, numDice)
             {
@@ -232,16 +232,16 @@ export default class LexArcanaActorSheet extends ActorSheet
                 caller.actor.roll(expression, config.title);
             };
         }
-        const expressionTypePrompt = game.i18n.localize("LexArcana.DiceExpressionBalancedPrompt");
+        const expressionTypePrompt = game.i18n.localize('LexArcana.DiceExpressionBalancedPrompt');
         const htmlContent = `<div>
-                                ${expressionTypePrompt}: <input type="checkbox" name="expression-type"/>
+                                ${expressionTypePrompt}: <input type='checkbox' name='expression-type'/>
                             </div>
                             <div>
-                                <input type="text" name="${config.defaultRollInputName}" value="${config.defaultRoll}"/>
+                                <input type='text' name="${config.defaultRollInputName}" value="${config.defaultRoll}"/>
                             </div>`;
         let buttonSet = {
             customroll: {
-                icon: `<i class="rollcustom-icon"></i>`,
+                icon: `<i class='rollcustom-icon'></i>`,
                 callback: html => { config.customRoll(this, html); }
             },
             roll1d: config.buttonBuilder(this, 1),
@@ -250,11 +250,11 @@ export default class LexArcanaActorSheet extends ActorSheet
         };
         if(dataSet.specialtyid!==undefined)
         {
-            buttonSet["delete"] = {
-                icon: `<span class="delete-icon"></span>`,
+            buttonSet['delete'] = {
+                icon: `<span class='delete-icon'></span>`,
                 callback: () => {
                     Dialog.confirm({
-                        title: game.i18n.localize("LexArcana.ConfirmPromptTitle"),
+                        title: game.i18n.localize('LexArcana.ConfirmPromptTitle'),
                         yes: () => this.actor.removePeritiaSpecialty(dataSet.peritiaid, dataSet.specialtyid),
                         no: () => { mainDialog.render(true); },
                         defaultYes: false

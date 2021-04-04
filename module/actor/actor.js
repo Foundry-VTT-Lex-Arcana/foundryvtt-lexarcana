@@ -78,8 +78,12 @@ export default class LexArcanaActor extends Actor
     getSpecialty(peritiaId, speName)
     {
         const peritia = this.data.data.peritiae[peritiaId];
-        let idx = LexArcanaUtils.ObjectToArray(peritia.specialties).findIndex(item => item.name===speName);
-        return peritia.specialties[idx];
+        return LexArcanaUtils.ObjectToArray(peritia.specialties).find(item => item.name===speName);
+    }
+    getSpecialties(peritiaId)
+    {
+        let specialties = this.data.data.peritiae?.[peritiaId]?.specialties ?? [];
+        return LexArcanaUtils.ObjectToArray(specialties);
     }
 
     /* -------------------------------------------- */
@@ -87,13 +91,12 @@ export default class LexArcanaActor extends Actor
     /* -------------------------------------------- */
     async addPeritiaSpecialty(peritiaId, name, modifier)
     {
-        const currentSpecialties = LexArcanaUtils.ObjectToArray(duplicate(this.data.data.peritiae?.[peritiaId]?.specialties ?? []));
-        await super.update({[`data.peritiae.${peritiaId}.specialties`]: [...currentSpecialties, { "name":name, "defaultRoll": "", "modifier": modifier }] });
+        const currentSpecialties = duplicate(this.getSpecialties(peritiaId));
+        await super.update({[`data.peritiae.${peritiaId}.specialties`]: [...currentSpecialties, { 'name':name, 'defaultRoll': '', 'modifier': modifier }] });
     }
     async removePeritiaSpecialty(peritiaId, key)
     {
-        let currentSpecialties = duplicate(this.data.data.peritiae?.[peritiaId]?.specialties ?? []);
-        currentSpecialties = LexArcanaUtils.ObjectToArray(currentSpecialties).filter(item => item.name!==key);
+        const currentSpecialties = duplicate(this.getSpecialties(peritiaId)).filter(item => item.name!==key);
         await super.update({[`data.peritiae.${peritiaId}.specialties`]: [...currentSpecialties] });
     }
     async setPeritiaDefaultRoll(peritiaId, newExpression)
@@ -102,8 +105,7 @@ export default class LexArcanaActor extends Actor
     }
     async setPeritiaSpecialtyDefaultRoll(peritiaId, key, newExpression)
     {
-        let currentSpecialties = duplicate(this.data.data.peritiae?.[peritiaId]?.specialties ?? []);
-        currentSpecialties = LexArcanaUtils.ObjectToArray(currentSpecialties);
+        const currentSpecialties = duplicate(this.getSpecialties(peritiaId));
         const idx = currentSpecialties.findIndex(item => item.name===key);
         if(currentSpecialties[idx]!==undefined)
         {
@@ -118,11 +120,11 @@ export default class LexArcanaActor extends Actor
 
     /* -------------------------------------------- */
 
-    roll(expression, info="")
+    roll(expression, info='')
     {
         let rollMode = game.settings.get('core', 'rollMode');
         let message = {speaker: {actor: this.id }, content: info+" "+expression, blind: rollMode === 'blindroll' };
-        if(expression.match("^(([1-9][0-9]*)?d([34568]|(?:10)|(?:12)|(?:20)))(\\+(([1-9][0-9]*)?d([34568]|(?:10)|(?:12)|(?:20))))*"))
+        if(expression.match('^(([1-9][0-9]*)?d([34568]|(?:10)|(?:12)|(?:20)))(\\+(([1-9][0-9]*)?d([34568]|(?:10)|(?:12)|(?:20))))*'))
         {
             message.roll = (new Roll(expression)).evaluate();
             message.type = CONST.CHAT_MESSAGE_TYPES.ROLL;
@@ -130,19 +132,19 @@ export default class LexArcanaActor extends Actor
         }
         else
         {
-            message.content += game.i18n.localize("LexArcana.InvalidRoll");
+            message.content += game.i18n.localize('LexArcana.InvalidRoll');
         }
         return ChatMessage.create(message);
     }
 
-    rollPeritiaSpecialty(peritiaid, key, numDice, expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED, info="")
+    rollPeritiaSpecialty(peritiaid, key, numDice, expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED, info='')
     {
         const specialty = this.getSpecialty(peritiaid, key);
         const totalFaces = this.data.data.peritiae[peritiaid].value+parseInt(specialty.modifier);
         return this.roll(LexArcanaDice.ComputeExpression(numDice, totalFaces, expressionType), info);
     }
 
-    rollND(numFaces, numDice, expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED, info="")
+    rollND(numFaces, numDice, expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED, info='')
     {
         return this.roll(LexArcanaDice.ComputeExpression(numDice, numFaces, expressionType), info);
     }

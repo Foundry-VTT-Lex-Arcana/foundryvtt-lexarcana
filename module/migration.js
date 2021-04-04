@@ -65,15 +65,15 @@ export const migrateWorld = async function ()
     // Migrate World Compendium Packs
     for (let p of game.packs)
     {
-        if (p.metadata.package !== "world")
+        if (p.metadata.package !== 'world')
             continue;
-        if (!["Actor", "Item", "Scene"].includes(p.metadata.entity))
+        if (!['Actor', 'Item', 'Scene'].includes(p.metadata.entity))
             continue;
         await migrateCompendium(p);
     }
 
     // Set the migration as complete
-    game.settings.set("${System.Code}", "systemMigrationVersion", game.system.data.version);
+    game.settings.set("${System.Code}", 'systemMigrationVersion', game.system.data.version);
     ui.notifications.info(`${System.Code} System Migration to version ${game.system.data.version} completed!`, {permanent: true});
 };
 
@@ -87,7 +87,7 @@ export const migrateWorld = async function ()
 export const migrateCompendium = async function (pack)
 {
     const entity = pack.metadata.entity;
-    if (!["Actor", "Item", "Scene"].includes(entity))
+    if (!['Actor', 'Item', 'Scene'].includes(entity))
         return;
 
     // Unlock the pack for editing
@@ -106,13 +106,13 @@ export const migrateCompendium = async function (pack)
         {
             switch (entity)
             {
-                case "Actor":
+                case 'Actor':
                     updateData = migrateActorData(ent.data);
                     break;
-                case "Item":
+                case 'Item':
                     updateData = migrateItemData(ent.data);
                     break;
-                case "Scene":
+                case 'Scene':
                     updateData = migrateSceneData(ent.data);
                     break;
             }
@@ -120,7 +120,7 @@ export const migrateCompendium = async function (pack)
                 continue;
 
             // Save the entry, if data was changed
-            updateData["_id"] = ent._id;
+            updateData['_id'] = ent._id;
             await pack.updateEntity(updateData);
             console.log(`Migrated ${entity} entity ${ent.name} in Compendium ${pack.collection}`);
         }
@@ -266,7 +266,7 @@ export function removeDeprecatedObjects(data)
 {
     for (let [k, v] of Object.entries(data))
     {
-        if (getType(v) === "Object")
+        if (getType(v) === 'Object')
         {
             if (v._deprecated === true)
             {

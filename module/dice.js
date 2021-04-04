@@ -22,7 +22,7 @@ LexArcanaDice.ComputeExpressionBalanced = function(numDice, maxFaces)
 		if(nextFace<(currentMaxFaces+1))
 		{
 		currentMaxFaces -= nextFace;
-		expression += (expression!==""?"+":"")+"1d"+nextFace;
+		expression += (expression!==''?'+':'')+'1d'+nextFace;
 		}
 	}
 	return expression;
@@ -33,7 +33,7 @@ LexArcanaDice.ComputeExpressionUnbalanced = function(numDice, maxFaces)
 	const validDices = [20, 12, 10, 8, 6, 5, 4, 3];
 	let diceFaces = [];
 	let sumDiceFaces = 0;
-	let expression = "";
+	let expression = '';
 	if(maxFaces<3*numDice)
 	{
 		--numDice;
@@ -47,7 +47,7 @@ LexArcanaDice.ComputeExpressionUnbalanced = function(numDice, maxFaces)
 	let nMaxIterations = 12;
 	while(sumDiceFaces<maxFaces && nMaxIterations-->0)
 	{
-		let filterFaces = (maxFaces-sumDiceFaces)+diceFaces[i];
+		const filterFaces = (maxFaces-sumDiceFaces)+diceFaces[i];
 		sumDiceFaces -= diceFaces[i];
 		diceFaces[i] = validDices.find(value => value<=filterFaces);
 		sumDiceFaces += diceFaces[i];
@@ -55,7 +55,7 @@ LexArcanaDice.ComputeExpressionUnbalanced = function(numDice, maxFaces)
 	}
 	for(i = 0;i<numDice;++i)
 	{
-		expression += (expression!==""?"+":"")+"1d"+diceFaces[i];
+		expression += (expression!==''?'+':'')+'1d'+diceFaces[i];
 	}
 	return expression;
 }

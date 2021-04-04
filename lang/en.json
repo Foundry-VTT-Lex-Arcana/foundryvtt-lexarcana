@@ -2,8 +2,8 @@
   "ACTOR.TypeCustos":             "Custos",
   "ATTRIBUTE.HitPoints":          "Hit Points",
   "ITEM.TypeMeleeWeapon":         "Melee Weapon",
-  "LexArcana.PeritiaeName" :      "Peritiae",
-  "LexArcana.Peritia" :
+  "LexArcana.PeritiaeName":       "Peritiae",
+  "LexArcana.Peritia":
   {
       "DeBello":                  "De Bello",
       "DeNatura":                 "De Natura",

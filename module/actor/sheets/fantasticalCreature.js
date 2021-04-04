@@ -13,7 +13,7 @@ export default class LexArcanaFantasticalCreatureActorSheet extends LexArcanaAct
     {
         return mergeObject(super.defaultOptions,
             {
-                classes: ["LexArcana", "sheet", "actor", LexArcana.ActorType.fantasticalCreature],
+                classes: ['LexArcana', 'sheet', 'actor', LexArcana.ActorType.fantasticalCreature],
                 width: 600,
                 height: 680
             });

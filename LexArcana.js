@@ -8,35 +8,35 @@
  */
 
 // Import Modules
-import {System} from "./module/config.js";
-import {LexArcana} from "./module/config.js";
-import {registerSystemSettings} from "./module/settings.js";
-import {preloadHandlebarsTemplates} from "./module/templates.js";
-import {_getInitiativeFormula} from "./module/combat.js";
-import {getBarAttribute} from "./module/canvas.js";
+import {System} from './module/config.js';
+import {LexArcana} from './module/config.js';
+import {registerSystemSettings} from './module/settings.js';
+import {preloadHandlebarsTemplates} from './module/templates.js';
+import {_getInitiativeFormula} from './module/combat.js';
+import {getBarAttribute} from './module/canvas.js';
 
 // Import Entities
-import LexArcanaActor from "./module/actor/entity.js";
-import LexArcanaItem from "./module/item/entity.js";
+import LexArcanaActor from './module/actor/entity.js';
+import LexArcanaItem from './module/item/entity.js';
 
 // Import Applications
-import LexArcanaCustosActorSheet from "./module/actor/sheets/custos.js";
-import LexArcanaFriendlyActorSheet from "./module/actor/sheets/friendly.js";
-import LexArcanaAntagonistActorSheet from "./module/actor/sheets/antagonist.js";
-import LexArcanaFantasticalCreatureActorSheet from "./module/actor/sheets/fantasticalCreature.js";
-import LexArcanaItemSheet from "./module/item/sheet.js";
+import LexArcanaCustosActorSheet from './module/actor/sheets/custos.js';
+import LexArcanaFriendlyActorSheet from './module/actor/sheets/friendly.js';
+import LexArcanaAntagonistActorSheet from './module/actor/sheets/antagonist.js';
+import LexArcanaFantasticalCreatureActorSheet from './module/actor/sheets/fantasticalCreature.js';
+import LexArcanaItemSheet from './module/item/sheet.js';
 
 // Import Helpers
-import * as chat from "./module/chat.js";
-import * as dice from "./module/dice.js";
-import * as macros from "./module/macros.js";
-import * as migrations from "./module/migration.js";
+import * as chat from './module/chat.js';
+import * as dice from './module/dice.js';
+import * as macros from './module/macros.js';
+import * as migrations from './module/migration.js';
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
 /* -------------------------------------------- */
 
-Hooks.once("init", function ()
+Hooks.once('init', function ()
 {
     console.log(`${System.Code} | Initializing the ${System.Name} Game System\n`);
 
@@ -76,41 +76,41 @@ Hooks.once("init", function ()
     Combat.prototype._getInitiativeFormula = _getInitiativeFormula;
 
     // Register sheet application classes
-    Actors.unregisterSheet("core", ActorSheet);
+    Actors.unregisterSheet('core', ActorSheet);
     Actors.registerSheet(System.Code,
         LexArcanaCustosActorSheet,
         {
             types: [LexArcana.ActorType.custos],
             makeDefault: true,
-            label: "LexArcana.SheetClassCustos"
+            label: 'LexArcana.SheetClassCustos'
         });
     Actors.registerSheet(System.Code,
         LexArcanaFriendlyActorSheet,
         {
             types: [LexArcana.ActorType.friendly],
             makeDefault: true,
-            label: "LexArcana.SheetClassFriendly"
+            label: 'LexArcana.SheetClassFriendly'
         });
     Actors.registerSheet(System.Code,
         LexArcanaAntagonistActorSheet,
         {
             types: [LexArcana.ActorType.antagonist],
             makeDefault: true,
-            label: "LexArcana.SheetClassAntagonist"
+            label: 'LexArcana.SheetClassAntagonist'
         });
     Actors.registerSheet(System.Code,
         LexArcanaFantasticalCreatureActorSheet,
         {
             types: [LexArcana.ActorType.fantasticalCreature],
             makeDefault: true,
-            label: "LexArcana.SheetClassFantasticalCreature"
+            label: 'LexArcana.SheetClassFantasticalCreature'
         });
-    Items.unregisterSheet("core", ItemSheet);
+    Items.unregisterSheet('core', ItemSheet);
     Items.registerSheet(System.Code,
         LexArcanaItemSheet,
         {
             makeDefault: true,
-            label: "LexArcana.SheetClassItem"
+            label: 'LexArcana.SheetClassItem'
         });
 
     // Preload Handlebars Templates
@@ -125,10 +125,10 @@ Hooks.once("init", function ()
 /**
  * This function runs after game data has been requested and loaded from the servers, so entities exist
  */
- Hooks.once("setup", function() {
+ Hooks.once('setup', function() {
 
     // Localize CONFIG objects once up-front
-    const toLocalize = ["Peritia"];
+    const toLocalize = ['Peritia'];
   
     // Localize and sort CONFIG objects
     for ( let o of toLocalize )
@@ -145,11 +145,11 @@ Hooks.once("init", function ()
 /**
  * Once the entire VTT framework is initialized, check to see if we should perform a data migration
  */
-Hooks.once("ready", function ()
+Hooks.once('ready', function ()
 {
     // Determine whether a system migration is required and feasible
     if (!game.user.isGM) return;
-    const currentVersion = game.settings.get(System.Code, "systemMigrationVersion");
+    const currentVersion = game.settings.get(System.Code, 'systemMigrationVersion');
     const NEEDS_MIGRATION_VERSION = "0.0.0";
     const COMPATIBLE_MIGRATION_VERSION = 0.80;
     const needsMigration = currentVersion && isNewerVersion(NEEDS_MIGRATION_VERSION, currentVersion);
@@ -168,7 +168,7 @@ Hooks.once("ready", function ()
 /*  Canvas Initialization                       */
 /* -------------------------------------------- */
 
-Hooks.on("canvasInit", function ()
+Hooks.on('canvasInit', function ()
 {
     // Extend Token Resource Bars
     Token.prototype.getBarAttribute = getBarAttribute;

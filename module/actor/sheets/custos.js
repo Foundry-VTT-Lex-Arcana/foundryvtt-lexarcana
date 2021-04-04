@@ -17,7 +17,7 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
   {
     return mergeObject(super.defaultOptions,
     {
-      classes: ["LexArcana", "sheet", "actor", LexArcana.ActorType.custos],
+      classes: ['LexArcana', 'sheet', 'actor', LexArcana.ActorType.custos],
       width: 720,
       height: 680
     });
@@ -38,7 +38,7 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
     super.activateListeners(html);
     if ( !this.options.editable ) return;
     // Rollable sheet actions
-    html.find(".rollable").click(this._onSheetAction.bind(this));
+    html.find('.rollable').click(this._onSheetAction.bind(this));
   }
 
   /**
