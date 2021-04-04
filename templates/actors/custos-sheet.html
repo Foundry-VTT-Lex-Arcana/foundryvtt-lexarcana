@@ -16,20 +16,29 @@
                 <li class="attribute health">
                     <h4 class="attribute-name box-title">{{ localize "LexArcana.HitPoints" }}</h4>
                     <div class="attribute-value multiple">
-                        <input name="data.resources.hitPoints.value" type="text" value="{{data.resources.hitPoints.value}}" placeholder="10" data-dtype="Number"/>
+                        <input name="data.attributes.hitPoints.value" type="text" value="{{data.attributes.hitPoints.value}}" placeholder="10" data-dtype="Number"/>
                         <span class="sep"> / </span>
-                        <input name="data.resources.hitPoints.max" type="text" value="{{data.resources.hitPoints.max}}" placeholder="10" data-dtype="Number"/>
+                        <input name="data.attributes.hitPoints.max" type="text" value="{{data.attributes.hitPoints.max}}" placeholder="10" data-dtype="Number"/>
                     </div>
                 </li>
 
-                <li class="attribute flexrow">
+                <li class="attribute pietas">
                     <h4 class="attribute-name box-title">{{ localize "LexArcana.Pietas" }}</h4>
                     <div class="attribute-value multiple">
-                        <input name="data.resources.pietas.value" type="text" value="{{data.resources.pietas.value}}" placeholder="10" data-dtype="Number"/>
+                        <input name="data.attributes.pietas.value" type="text" value="{{data.attributes.pietas.value}}" placeholder="10" data-dtype="Number"/>
                         <span class="sep"> / </span>
-                        <input name="data.resources.pietas.max" type="text" value="{{data.resources.pietas.max}}" placeholder="10" data-dtype="Number"/>
+                        <input name="data.attributes.pietas.max" type="text" value="{{data.attributes.pietas.max}}" placeholder="10" data-dtype="Number"/>
                     </div>
                 </li>
+
+                {{#if isGM}}
+                <li class="attribute">
+                    <h4 class="attribute-name box-title">{{ localize "LexArcana.NPC" }}</h4>
+                    <div class="attribute-value multiple">
+                        <input name="data.attributes.npc" type="checkbox" {{checked data.attributes.npc}} />
+                    </div>
+                </li>
+                {{/if}}
             </ul>
         </section>
     </header>
@@ -49,6 +58,16 @@
             {{> "systems/LexArcana/templates/actors/parts/actor-abilities.html"}}
         </div>
 
+        {{!-- Abilities Tab --}}
+        <div class="tab abilities flexcol" data-group="primary" data-tab="abilities">
+            {{> "systems/LexArcana/templates/actors/parts/actor-abilities.html"}}
+        </div>
+
+        {{!-- Inventory Tab --}}
+        <div class="tab attributes flexcol" data-group="primary" data-tab="attributes">
+            TODO Peritia, Virtutes etc.
+        </div>
+
         {{!-- Inventory Tab --}}
         <div class="tab inventory flexcol" data-group="primary" data-tab="inventory">
             {{> "systems/LexArcana/templates/actors/parts/actor-inventory.html"}}
@@ -60,10 +79,9 @@
         </div>
 
         {{!-- Biography Tab --}}
-        <div class="tab flexrow" data-group="primary" data-tab="biography">
+        <div class="tab biography flexrow" data-group="primary" data-tab="biography">
             <div class="biography">
-                <p>Biography</p>
-                {{editor content=data.details.biography.value target="data.details.biography.value" button=true owner=owner editable=editable}}
+                {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}
             </div>
         </div>
     </section>

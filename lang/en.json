@@ -1,8 +1,7 @@
 {
-  "ACTOR.TypeCustos": "Custos",
-  "ATTRIBUTE.HitPoints": "Hit Points",
-  "ITEM.TypeMeleeWeapon": "Melee Weapon",
-  "LexArcana.Name": "Name",
+  "ACTOR.TypeCustos":             "Custos",
+  "ATTRIBUTE.HitPoints":          "Hit Points",
+  "ITEM.TypeMeleeWeapon":         "Melee Weapon",
   "LexArcana.VirtutesName": "Virtutes",
   "LexArcana.Virtutes":
   {
@@ -13,19 +12,41 @@
     "Ingenium": "Ingenium",
     "Sensibilitas": "Sensibilitas"
   },
-  "LexArcana.Biography": "Biography",
-  "LexArcana.HitPoints": "Biography",
-  "LexArcana.Pietas": "Pietas",
-  "LexArcana.Inventory": "Inventory",
-  "LexArcana.Rituals": "Rituals",
-  "LexArcana.Features": "Features",
-  "LexArcana.ItemName": "ItemName",
-  "LexArcana.Encumbrance": "Encumbrance",
-  "LexArcana.Protection": "Protection",
-  "LexArcana.Damage": "Damage",
-  "LexArcana.Range": "Range",
-  "LexArcana.Difficulty": "Difficulty",
-  "LexArcana.Feat": "Feat",
-  "LexArcana.Parry": "Parry"
+  "LexArcana.PeritiaeName":       "Peritiae",
+  "LexArcana.Peritia":
+  {
+      "DeBello":                  "De Bello",
+      "DeNatura":                 "De Natura",
+      "DeSocietate":              "De Societate",
+      "DeMagia":                  "De Magia",
+      "DeScientia":               "De Scientia",
+      "DeCorpore":                "De Corpore"
+  },
+  "LexArcana.Name":               "Name",
+  "LexArcana.NPC":                "NPC",
+  "LexArcana.DefaultRoll":        "Default Roll",
+  "LexArcana.Abilities":          "Abilities",
+  "LexArcana.AddPeritiaeSpecialty": "Add specialty",
+  "LexArcana.AddPeritiaeSpecialtyPromptTitle": "Add specialty to Peritia {peritiaName}",
+  "LexArcana.InputLabelName":     "Name",
+  "LexArcana.InputLabelModifier": "Modifier",
+  "LexArcana.DiceExpressionBalancedPrompt": "Use balanced roll?",
+  "LexArcana.InvalidRoll":        "invalid roll",
+  "LexArcana.ActionAdd":          "Add",
+  "LexArcana.ActionCancel":       "Cancel",
+  "LexArcana.Biography":          "Biography",
+  "LexArcana.HitPoints":          "Hit Points",
+  "LexArcana.Pietas":             "Pietas",
+  "LexArcana.Inventory":          "Inventory",
+  "LexArcana.Rituals":            "Rituals",
+  "LexArcana.Features":           "Features",
+  "LexArcana.ItemName":           "ItemName",
+  "LexArcana.Encumbrance":        "Encumbrance",
+  "LexArcana.Protection":         "Protection",
+  "LexArcana.Damage":             "Damage",
+  "LexArcana.Range":              "Range",
+  "LexArcana.Difficulty":         "Difficulty",
+  "LexArcana.Feat":               "Feat",
+  "LexArcana.Parry":              "Parry"
 }
     

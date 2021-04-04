@@ -1,0 +1,236 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+table td
+, .mce-content-body td
+{
+    margin: 5px;
+    padding: 5px;
+}
+
+.system-LexArcana input
+, .system-LexArcana .sidebar-tab button
+, .system-LexArcana .sidebar-tab .window-content
+, .system-LexArcana .sidebar-tab a
+, .system-LexArcana .sidebar-tab .encounters
+, .system-LexArcana .sidebar-tab .directory-list .folder
+, .system-LexArcana .sidebar-tab .chat-message
+{
+    font-family: Herculanum;
+    font-size: 14px;
+    font-weight: 700px;
+    text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
+}
+
+.system-LexArcana .window-content
+{
+    background-image:url("../styles/images/marble-black.png");
+    background-repeat: repeat;
+    background-size: 512px 512px;
+    color: #ffffff;
+}
+
+.system-LexArcana .window-content .sheet-header
+{
+    max-height: 64px;
+}
+
+.system-LexArcana .window-content .sheet-header ul
+{
+    list-style: none;
+}
+
+.system-LexArcana .window-app h3
+, .system-LexArcana .window-app h4
+{
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid #d7000055;
+}
+
+/**********************************************************
+ * Character sheets
+ **********************************************************/
+
+.system-LexArcana .sheet-navigation
+{
+    color: #ffffffaa;
+    background-color: #ffffff55;
+    text-align: center;
+    line-height: 32px;
+    max-height: 32px;
+}
+
+.system-LexArcana .abilities li
+{
+    list-style: none;
+    margin-top: 15px;
+    margin-bottom: auto;
+}
+
+.system-LexArcana .grid-layout-3c
+{
+    display: grid;
+    margin: 0;
+    padding: 0;
+    padding-left: 5px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.system-LexArcana .grid-layout3
+{
+    display: grid;
+    margin: 0;
+    padding: 0;
+    padding-left: 5px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    grid-template-areas: "Area1 Area2 Area3";
+}
+
+.system-LexArcana .grid-layout3-peritia
+{
+    grid-template-columns: 32px auto 32px;
+}
+
+.system-LexArcana .grid-layout3-specialty
+{
+    grid-template-columns: auto 32px 32px;
+}
+
+.system-LexArcana .grid-layout3-area1 { grid-area: Area1; }
+.system-LexArcana .grid-layout3-area2 { grid-area: Area2; }
+.system-LexArcana .grid-layout3-area3 { grid-area: Area3; }
+
+.system-LexArcana .rollcustom-icon
+, .system-LexArcana .roll1d-icon
+, .system-LexArcana .roll2d-icon
+, .system-LexArcana .roll3d-icon
+, .system-LexArcana .delete-icon
+, .system-LexArcana .add-icon
+{
+    display: block;
+    width: 100%;
+    height: 32px;
+    background-size: 32px;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: auto;
+}
+
+.system-LexArcana .rollcustom-icon { background-image: url("../styles/images/dices_ico_def.webp"); }
+.system-LexArcana .roll1d-icon { background-image: url("../styles/images/dices_ico_1d.webp"); }
+.system-LexArcana .roll2d-icon { background-image: url("../styles/images/dices_ico_2d.webp"); }
+.system-LexArcana .roll3d-icon { background-image: url("../styles/images/dices_ico_3d.webp"); }
+.system-LexArcana .delete-icon { background-image: url("../styles/images/trash_ico.webp"); }
+.system-LexArcana .add-icon { background-image: url("../styles/images/plus_ico.webp"); }
+
+.system-LexArcana input.peritia-value
+{
+    width: 32px;
+}
+
+.system-LexArcana button
+, .system-LexArcana .dialog-buttons button.default
+, .system-LexArcana .dialog-buttons button.yes
+, .system-LexArcana .dialog-buttons button.no
+, .system-LexArcana .form-group button
+, .system-LexArcana select
+, .system-LexArcana textarea
+, .system-LexArcana form input
+, .system-LexArcana .directory-footer
+, .system-LexArcana .sheet-body
+, .system-LexArcana .avatar
+, .system-LexArcana .window-content .sheet-header .profile
+, .dialog .dialog-buttons button
+, input[type='text']
+{
+    color: #000000;
+    background-color: #ffffff88;
+    text-align: center;
+}
+
+.system-LexArcana .peritia-name { font-weight: bold; }
+
+/**********************************************************
+ * End of Character sheets
+ **********************************************************/
+
+.system-LexArcana .chat-message .message-header
+{
+    color: #d70000;
+}
+
+.system-LexArcana .chat-message.whisper
+{
+    background-color: #00000088;
+}
+
+.system-LexArcana .chat-message.whisper .message-header
+{
+    background-color: #00000088;
+    color: #ffd700;
+}
+
+.system-LexArcana .form-header
+, .system-LexArcana #player-config .window-content form .form-group label
+, .system-LexArcana .sidebar-tab p
+, #module-management .package-list .package-title
+, #module-management .notes
+{
+    color: #ffffff;
+}
+
+.system-LexArcana .form-group .units
+{
+    color: #ffd700;
+}
+
+.system-LexArcana .window-content .sheet-header .profile
+, .system-LexArcana .avatar
+, .system-LexArcana #player-config .window-content form .form-group
+{
+    border-radius: 1em;
+}
+
+.system-LexArcana .window-content .sheet-header .attribute-value input
+{
+    width: 40px;
+}
+
+.system-LexArcana .tabs
+{
+    margin-top: 5px;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+}
+
+.system-LexArcana .tabs .item
+{
+    text-shadow: 0px 0px 4px #00000088;
+}
+
+.system-LexArcana .tabs .active
+{
+    text-shadow: 0px 0px 4px #ffd700ff;
+}
+
+.system-LexArcana .biography, .system-LexArcana .editor, .system-LexArcana .editor-content, .system-LexArcana .tox-edit-area
+{
+    height: 100%;
+}
+
+.editor-content
+, .tox
+{
+    padding: 5px;
+	background-color: #e0cfaa;
+    color: #000000;
+}

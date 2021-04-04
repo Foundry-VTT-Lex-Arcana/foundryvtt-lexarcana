@@ -1,4 +1,4 @@
-import {System} from "./config.js";
+import {System} from './config.js';
 
 /**
  * Define a set of template paths to pre-load
@@ -12,9 +12,15 @@ export const preloadHandlebarsTemplates = async function ()
         // Shared Partials
 
         // Actor Sheet Partials
+<<<<<<< HEAD
         System.Path + "/templates/actors/parts/actor-abilities.html",
         System.Path + "/templates/actors/parts/actor-inventory.html",
         System.Path + "/templates/actors/parts/actor-rituals.html"
+=======
+        System.Path + '/templates/actors/parts/actor-abilities.html',
+        System.Path + '/templates/actors/parts/actor-inventory.html',
+        System.Path + '/templates/actors/parts/actor-rituals.html'
+>>>>>>> dev
 
         // Item Sheet Partials
     ]);
