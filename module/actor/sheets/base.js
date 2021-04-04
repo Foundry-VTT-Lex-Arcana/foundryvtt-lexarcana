@@ -112,7 +112,7 @@ export default class LexArcanaActorSheet extends ActorSheet
     }
 
     /* -------------------------------------------- */
-    /*  Event Listeners and Handlers
+    /*  Event Listeners and Handlers                */
     /* -------------------------------------------- */
   
     /**

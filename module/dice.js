@@ -17,12 +17,12 @@ LexArcanaDice.ComputeExpressionBalanced = function(numDice, maxFaces)
 	let expression = "";
 	for(let current = 0;current<numDice;++current)
 	{
-		let filterFaces = currentMaxFaces/(numDice-current);
-		let nextFace = validDices.find(value => value<=filterFaces);
+		const filterFaces = currentMaxFaces/(numDice-current);
+		const nextFace = validDices.find(value => value<=filterFaces);
 		if(nextFace<(currentMaxFaces+1))
 		{
-		currentMaxFaces -= nextFace;
-		expression += (expression!==''?'+':'')+'1d'+nextFace;
+			currentMaxFaces -= nextFace;
+			expression += (expression!==''?'+':'')+'1d'+nextFace;
 		}
 	}
 	return expression;
@@ -45,7 +45,7 @@ LexArcanaDice.ComputeExpressionUnbalanced = function(numDice, maxFaces)
 	}
 	let i = 0;
 	let nMaxIterations = 12;
-	while(sumDiceFaces<maxFaces && nMaxIterations-->0)
+	while(sumDiceFaces<maxFaces && --nMaxIterations>0)
 	{
 		const filterFaces = (maxFaces-sumDiceFaces)+diceFaces[i];
 		sumDiceFaces -= diceFaces[i];

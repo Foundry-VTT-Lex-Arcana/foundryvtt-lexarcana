@@ -27,7 +27,6 @@ export default class LexArcanaActor extends Actor
 
     /* -------------------------------------------- */
     /*  Data Preparation Helpers                    */
-
     /* -------------------------------------------- */
 
     /**
@@ -87,11 +86,15 @@ export default class LexArcanaActor extends Actor
     }
 
     /* -------------------------------------------- */
-    /*              	Manipulators                */
+    /*                  Manipulators                */
     /* -------------------------------------------- */
     async setVirtuteDefaultRoll(virtuteId, newExpression)
     {
         await super.update({[`data.virtutes.${virtuteId}.defaultRoll`]: newExpression });
+    }
+    async setPeritiaDefaultRoll(peritiaId, newExpression)
+    {
+        await super.update({[`data.peritiae.${peritiaId}.defaultRoll`]: newExpression });
     }
     async addPeritiaSpecialty(peritiaId, name, modifier)
     {
@@ -102,10 +105,6 @@ export default class LexArcanaActor extends Actor
     {
         const currentSpecialties = duplicate(this.getSpecialties(peritiaId)).filter(item => item.name!==key);
         await super.update({[`data.peritiae.${peritiaId}.specialties`]: [...currentSpecialties] });
-    }
-    async setPeritiaDefaultRoll(peritiaId, newExpression)
-    {
-        await super.update({[`data.peritiae.${peritiaId}.defaultRoll`]: newExpression });
     }
     async setPeritiaSpecialtyDefaultRoll(peritiaId, key, newExpression)
     {
@@ -119,16 +118,21 @@ export default class LexArcanaActor extends Actor
     }
 
     /* -------------------------------------------- */
-    /*	Roll Dices
-     */
-
+    /*                  Roll Dices                  */
     /* -------------------------------------------- */
 
     roll(expression, info='')
     {
-        let rollMode = game.settings.get('core', 'rollMode');
-        let message = {speaker: {actor: this.id }, content: info+" "+expression, blind: rollMode === 'blindroll' };
-        if(expression.match('^(([1-9][0-9]*)?d([34568]|(?:10)|(?:12)|(?:20)))(\\+(([1-9][0-9]*)?d([34568]|(?:10)|(?:12)|(?:20))))*'))
+        const rollMode = game.settings.get('core', 'rollMode');
+        const message =
+        {
+            speaker: {actor: this.id },
+            content: info+" "+expression,
+            blind: rollMode === 'blindroll'
+        };
+        // accept expressions as 1d8, 2d4+1d12, 1d5, 1d6, 1d10, 1d20 etc.
+        const diceFormulaRegExp = '^(([1-9][0-9]*)?d([34568]|(?:10)|(?:12)|(?:20)))(\\+(([1-9][0-9]*)?d([34568]|(?:10)|(?:12)|(?:20))))*';
+        if(expression.match(diceFormulaRegExp))
         {
             message.roll = (new Roll(expression)).evaluate();
             message.type = CONST.CHAT_MESSAGE_TYPES.ROLL;
