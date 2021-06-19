@@ -55,6 +55,7 @@ LexArcana.Peritia = {
 
 LexArcana.Name                              = 'LexArcana.Name';
 LexArcana.NPC                               = 'LexArcana.NPC';
+LexArcana.FateRoll                          = 'LexArcana.FateRoll';
 LexArcana.DefaultRoll                       = 'LexArcana.DefaultRoll';
 LexArcana.Abilities                         = 'LexArcana.Abilities';
 LexArcana.AddPeritiaeSpecialty              = 'LexArcana.AddPeritiaeSpecialty';

@@ -24,6 +24,7 @@
   },
   "LexArcana.Name":               "Name",
   "LexArcana.NPC":                "NPC",
+  "LexArcana.FateRoll":           "Fate Roll",
   "LexArcana.DefaultRoll":        "Default Roll",
   "LexArcana.Abilities":          "Abilities",
   "LexArcana.AddPeritiaeSpecialty": "Add specialty",

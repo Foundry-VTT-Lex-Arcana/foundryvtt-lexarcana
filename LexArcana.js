@@ -64,8 +64,8 @@ Hooks.once('init', function ()
 
     // Record Configuration Values
     CONFIG.LexArcana = LexArcana;
-    CONFIG.Actor.entityClass = LexArcanaActor;
-    CONFIG.Item.entityClass = LexArcanaItem;
+    CONFIG.Actor.documentClass = LexArcanaActor;
+    CONFIG.Item.documentClass = LexArcanaItem;
     CONFIG.time.roundTime = 6;
 
     // Register System Settings

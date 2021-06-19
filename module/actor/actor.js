@@ -121,39 +121,15 @@ export default class LexArcanaActor extends Actor
     /*                  Roll Dices                  */
     /* -------------------------------------------- */
 
-    roll(expression, info='')
+    rollPeritiaSpecialty(_peritiaid, _key, _numDice, _expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED, _info='')
     {
-        const rollMode = game.settings.get('core', 'rollMode');
-        const message =
-        {
-            speaker: {actor: this.id },
-            content: info+" "+expression,
-            blind: rollMode === 'blindroll'
-        };
-        // accept expressions as 1d8, 2d4+1d12, 1d5, 1d6, 1d10, 1d20 etc.
-        const diceFormulaRegExp = '^(([1-9][0-9]*)?d([34568]|(?:10)|(?:12)|(?:20)))(\\+(([1-9][0-9]*)?d([34568]|(?:10)|(?:12)|(?:20))))*';
-        if(expression.match(diceFormulaRegExp))
-        {
-            message.roll = (new Roll(expression)).evaluate();
-            message.type = CONST.CHAT_MESSAGE_TYPES.ROLL;
-            message.sound = CONFIG.sounds.dice;
-        }
-        else
-        {
-            message.content += game.i18n.localize('LexArcana.InvalidRoll');
-        }
-        return ChatMessage.create(message);
+        const specialty = this.getSpecialty(_peritiaid, _key);
+        const totalFaces = this.data.data.peritiae[_peritiaid].value+parseInt(specialty.modifier);
+        LexArcanaDice.Roll(_numDice, totalFaces, _expressionType, true, _info);
     }
 
-    rollPeritiaSpecialty(peritiaid, key, numDice, expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED, info='')
+    rollND(_numFaces, _numDice, _expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED, _info='')
     {
-        const specialty = this.getSpecialty(peritiaid, key);
-        const totalFaces = this.data.data.peritiae[peritiaid].value+parseInt(specialty.modifier);
-        return this.roll(LexArcanaDice.ComputeExpression(numDice, totalFaces, expressionType), info);
-    }
-
-    rollND(numFaces, numDice, expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED, info='')
-    {
-        return this.roll(LexArcanaDice.ComputeExpression(numDice, numFaces, expressionType), info);
+        LexArcanaDice.Roll(_numDice, _numFaces, _expressionType, true, _info);
     }
 }

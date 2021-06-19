@@ -40,15 +40,14 @@ export default class LexArcanaActorSheet extends ActorSheet
     getData()
     {
         // Basic data
-        let isOwner = this.entity.owner;
         const data = {
-            owner: isOwner,
-            limited: this.entity.limited,
+            owner: this.document.isOwner,
+            limited: this.document.limited,
             options: this.options,
             editable: this.isEditable,
-            cssClass: isOwner ? 'editable' : 'locked',
-            isCharacter: !this.entity.data.data.attributes.npc,
-            isNPC: this.entity.data.data.attributes.npc,
+            cssClass: this.document.isOwner ? 'editable' : 'locked',
+            isCharacter: !this.document.data.data.attributes.npc,
+            isNPC: this.document.data.data.attributes.npc,
             isGM: game.user.isGM,
             config: CONFIG.LexArcana
         };

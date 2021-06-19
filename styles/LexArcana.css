@@ -247,6 +247,17 @@ table td
     height: 100%;
 }
 
+.system-LexArcana .LexArcanaRoll p
+{
+    color: #000000;
+}
+
+.system-LexArcana .LexArcanaRoll .fateroll
+{
+    color: #ff0000;
+    font-weight: bold;
+}
+
 .editor-content
 , .tox
 {
