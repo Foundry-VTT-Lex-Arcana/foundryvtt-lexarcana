@@ -32,6 +32,39 @@
                     },
                     "npc": true
                 },
+                "virtutes":
+                {
+                    "coordinatio": 
+                    {
+                        "value": 2,
+                        "defaultRoll": "d2"
+                    },
+                    "auctoritas": 
+                    {
+                        "value": 2,
+                        "defaultRoll": "d2"
+                    },
+                    "ratio": 
+                    {
+                        "value": 2,
+                        "defaultRoll": "d2"
+                    },
+                    "vigor": 
+                    {
+                        "value": 2,
+                        "defaultRoll": "d2"
+                    },
+                    "ingenium":
+                    {
+                        "value": 2,
+                        "defaultRoll": "d2"
+                    },
+                    "sensibilitas": 
+                    {
+                        "value": 2,
+                        "defaultRoll": "d2"
+                    }
+                },
                 "peritiae":
                 {
                     "deBello":

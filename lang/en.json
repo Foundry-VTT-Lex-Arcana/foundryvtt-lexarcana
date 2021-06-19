@@ -2,6 +2,16 @@
   "ACTOR.TypeCustos":             "Custos",
   "ATTRIBUTE.HitPoints":          "Hit Points",
   "ITEM.TypeMeleeWeapon":         "Melee Weapon",
+  "LexArcana.VirtutesName":       "Virtutes",
+  "LexArcana.Virtutes":
+  {
+    "Coordinatio":                "Coordinatio",
+    "Auctoritas":                 "Auctoritas",
+    "Ratio":                      "Ratio",
+    "Vigor":                      "Vigor",
+    "Ingenium":                   "Ingenium",
+    "Sensibilitas":               "Sensibilitas"
+  },
   "LexArcana.PeritiaeName":       "Peritiae",
   "LexArcana.Peritia":
   {
@@ -14,6 +24,7 @@
   },
   "LexArcana.Name":               "Name",
   "LexArcana.NPC":                "NPC",
+  "LexArcana.FateRoll":           "Fate Roll",
   "LexArcana.DefaultRoll":        "Default Roll",
   "LexArcana.Abilities":          "Abilities",
   "LexArcana.AddPeritiaeSpecialty": "Add specialty",
