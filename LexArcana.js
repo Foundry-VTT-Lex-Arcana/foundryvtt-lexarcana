@@ -66,15 +66,15 @@ Hooks.once('init', function ()
 
     // Record Configuration Values
     CONFIG.LexArcana = LexArcana;
-    CONFIG.Actor.entityClass = LexArcanaActor;
-    CONFIG.Item.entityClass = LexArcanaItem;
+    CONFIG.Actor.documentClass = LexArcanaActor;
+    CONFIG.Item.documentClass = LexArcanaItem;
     CONFIG.time.roundTime = 6;
 
     // Register System Settings
     registerSystemSettings();
 
     // Patch Core Functions
-    CONFIG.Combat.initiative.formula = "1d20";
+    CONFIG.Combat.initiative.formula = '1d20';
     Combat.prototype._getInitiativeFormula = _getInitiativeFormula;
 
     // Register sheet application classes
@@ -138,7 +138,7 @@ Hooks.once('init', function ()
  Hooks.once('setup', function() {
 
     // Localize CONFIG objects once up-front
-    const toLocalize = ['Peritia'];
+    const toLocalize = ['Virtutes', 'Peritia'];
   
     // Localize and sort CONFIG objects
     for ( let o of toLocalize )

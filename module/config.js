@@ -24,24 +24,39 @@ LexArcana.ItemType =
         rangedWeapon: 'rangedWeapon',
         armor: 'armor',
         shield: 'shield'
-    };
+    }; 
+/**
+ * The set of Virtutes Scores used within the system
+ * @type {Object}
+ */
+LexArcana.VirtutesName = 'LexArcana.VirtutesName';
+LexArcana.Virtutes =
+{
+    'coordinatio':  'LexArcana.Virtutes.Coordinatio',
+    'auctoritas':   'LexArcana.Virtutes.Auctoritas',
+    'ratio':        'LexArcana.Virtutes.Ratio',
+    'vigor':        'LexArcana.Virtutes.Vigor',
+    'ingenium':     'LexArcana.Virtutes.Ingenium',
+    'sensibilitas': 'LexArcana.Virtutes.Sensibilitas'
+};
 
 /**
  * The set of Peritiae Scores used within the system
  * @type {Object}
  */
-LexArcana.PeritiaeName
+LexArcana.PeritiaeName = 'LexArcana.PeritiaeName';
 LexArcana.Peritia = {
-    'deBello': 'LexArcana.Peritia.DeBello',
-    'deNatura': 'LexArcana.Peritia.DeNatura',
-    'deSocietate': 'LexArcana.Peritia.DeSocietate',
-    'deMagia': 'LexArcana.Peritia.DeMagia',
-    'deScientia': 'LexArcana.Peritia.DeScientia',
-    'deCorpore': 'LexArcana.Peritia.DeCorpore',
+    'deBello':      'LexArcana.Peritia.DeBello',
+    'deNatura':     'LexArcana.Peritia.DeNatura',
+    'deSocietate':  'LexArcana.Peritia.DeSocietate',
+    'deMagia':      'LexArcana.Peritia.DeMagia',
+    'deScientia':   'LexArcana.Peritia.DeScientia',
+    'deCorpore':    'LexArcana.Peritia.DeCorpore',
 };
 
 LexArcana.Name                              = 'LexArcana.Name';
 LexArcana.NPC                               = 'LexArcana.NPC';
+LexArcana.FateRoll                          = 'LexArcana.FateRoll';
 LexArcana.DefaultRoll                       = 'LexArcana.DefaultRoll';
 LexArcana.Abilities                         = 'LexArcana.Abilities';
 LexArcana.AddPeritiaeSpecialty              = 'LexArcana.AddPeritiaeSpecialty';
