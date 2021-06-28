@@ -1,5 +1,5 @@
-import {LexArcana} from '../config.js';
-import {System} from '../config.js';
+import {LexArcana} from '../../config.js';
+import {System} from '../../config.js';
 
 /**
  * Override and extend the core ItemSheet implementation to handle specific item types
@@ -23,7 +23,7 @@ export default class LexArcanaItemSheet extends ItemSheet
             classes: ['LexArcana', 'sheet', 'item'],
             resizable: true,
             scrollY: ['.tab.details'],
-            tabs: [{navSelector: '.tabs', contentSelector: '.sheet-body', initial: 'description'}]
+            tabs: [{navSelector: '.tabs', contentSelector: '.sheet-body', initial: 'information'}]
         });
     }
 

@@ -71,6 +71,20 @@ table td
     margin-bottom: auto;
 }
 
+.system-LexArcana .grid-layout-2c
+{
+    display: grid;
+    margin: 0;
+    padding: 0;
+    padding-left: 5px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.system-LexArcana .grid-layout2c-left-text-right-number
+{
+    grid-template-columns: auto 32px;
+}
+
 .system-LexArcana .grid-layout-3c
 {
     display: grid;
@@ -242,7 +256,11 @@ table td
     text-shadow: 0px 0px 4px #ffd700ff;
 }
 
-.system-LexArcana .biography, .system-LexArcana .editor, .system-LexArcana .editor-content, .system-LexArcana .tox-edit-area
+.system-LexArcana .biography
+, .system-LexArcana .description
+, .system-LexArcana .editor
+, .system-LexArcana .editor-content
+, .system-LexArcana .tox-edit-area
 {
     height: 100%;
 }

@@ -119,7 +119,8 @@
             [
                 "background",
                 "common"
-            ]
+            ],
+            "provinceId": 0
         },
         "friendly":
         {
@@ -153,6 +154,7 @@
     },
     "Item": {
         "types": [
+            "province",
             "meleeWeapon",
             "rangedWeapon",
             "armor",
@@ -160,7 +162,10 @@
         ],
         "templates": {
             "common": {
-                "description": "",
+                "description": ""
+            },
+            "physical":
+            {
                 "encumbrance": 0,
                 "actionType": null
             },
@@ -170,28 +175,48 @@
                 "feat": ""
             }
         },
+        "province":
+        {
+            "templates": [
+                "common"
+            ],
+            "languages": "",
+            "peritiaeModifiers":
+            {
+                "deBello": { "value": 0 },
+                "deNatura": { "value": 0 },
+                "deSocietate": { "value": 0 },
+                "deMagia": { "value": 0 },
+                "deScientia": { "value": 0 },
+                "deCorpore": { "value": 0 }
+            }
+        },
         "meleeWeapon": {
             "templates": [
                 "common",
+                "physical",
                 "weapon"
             ]
         },
         "rangedWeapon": {
             "templates": [
                 "common",
+                "physical",
                 "weapon"
             ],
             "range": "short"
         },
         "armor": {
             "templates": [
-                "common"
+                "common",
+                "physical"
             ],
             "protection": 3
         },
         "shield": {
             "templates": [
-                "common"
+                "common",
+                "physical"
             ],
             "parry": 3
         }
