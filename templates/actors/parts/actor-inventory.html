@@ -1,59 +1,29 @@
-<div class="inventory-filters flexrow">
+<div class="inventory-filters">
 
 	<div>
-		<h2>Melee Weapons</h2>
+		<h2>Equiped</h2>
 		<ul>
-			{{#each meleeWeapons as |item key|}}
-			<li>
-				<div class="item-image" ><img src="{{item.img}}" data-item="{{item.data.header.active}}" title="{{item.name}}" width="24" height="24" /></div>
-				{{item.name}}&nbsp;{{key}}
-			</li>
-			{{/each}}
+		{{#each items as |item key|}}
+			{{#ife item.data.active true}}
+				<li>
+					<div class="item-image" ><img src="{{item.img}}" data-item="{{item.data.active}}" title="{{item.name}}" width="24" height="24" /></div>
+					{{item.name}}&nbsp;{{key}}
+				</li>
+			{{/ife}}
+		{{/each}}
 		</ul>
 	</div>
-	<div>
-		<h2>Ranged Weapons</h2>
-		<ul>
-			{{#each rangedWeapons as |item key|}}
-			<li>
-				<div class="item-image" ><img src="{{item.img}}" data-item="{{item.data.header.active}}" title="{{item.name}}" width="24" height="24" /></div>
-				{{item.name}}&nbsp;{{key}}
-			</li>
-			{{/each}}
-		</ul>
-	</div>
-	<div>
-		<h2>Armors</h2>
-		<ul>
-			{{#each armors as |item key|}}
-			<li>
-				<div class="item-image" ><img src="{{item.img}}" data-item="{{item.data.header.active}}" title="{{item.name}}" width="24" height="24" /></div>
-				{{item.name}}&nbsp;{{key}}
-			</li>
-			{{/each}}
-		</ul>
-	</div>
-	<div>
-		<h2>Shields</h2>
-		<ul>
-			{{#each shields as |item key|}}
-			<li>
-				<div class="item-image" ><img src="{{item.img}}" data-item="{{item.data.header.active}}" title="{{item.name}}" width="24" height="24" /></div>
-				{{item.name}}&nbsp;{{key}}
-			</li>
-			{{/each}}
-		</ul>
-	</div>
-	<hr/>
 	<div>
 		<h2>Bag</h2>
 		<ul>
-			{{#each bag as |item key|}}
-			<li >
-				<div class="item-image" ><img src="{{item.img}}" data-item="{{item.data.header.active}}" title="{{item.name}}" width="24" height="24" /></div>
-				{{item.name}}&nbsp;{{key}}
-			</li>
-			{{/each}}
+		{{#each items as |item key|}}
+			{{#ifne item.data.active true}}
+				<li>
+					<div class="item-image" ><img src="{{item.img}}" data-item="{{item.data.active}}" title="{{item.name}}" width="24" height="24" /></div>
+					{{item.name}}&nbsp;{{key}}
+				</li>
+			{{/ifne}}
+		{{/each}}
 		</ul>
 	</div>
 </div>

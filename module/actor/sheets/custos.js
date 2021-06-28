@@ -29,14 +29,9 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		// Basic data
 		const data = super.getData();
 		// Iterate through items, allocating to containers
-		data.meleeWeapons = [];
-		data.rangedWeapons = [];
-		data.armors = [];
-		data.shields = [];
-		data.bag = [];
+		data.items = [];
 		for (let i of data.actor.items)
 		{
-			let item = i.data;
 			switch (i.type)
 			{
 				case 'province':
@@ -45,28 +40,15 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 					break;
 				}
 				case 'meleeWeapon':
-				{
-					data.meleeWeapons.push(i);
-					break;
-				}
 				case 'rangedWeapon':
-				{
-					data.rangedWeapons.push(i);
-					break;
-				}
 				case 'armor':
-				{
-					data.armors.push(i);
-					break;
-				}
 				case 'shield':
 				{
-					data.shields.push(i);
+					data.items.push(i);
 					break;
 				}
 				default:
 				{
-					data.bag.push(i);
 					break;
 				}
 			}

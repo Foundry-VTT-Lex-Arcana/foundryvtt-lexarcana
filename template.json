@@ -167,6 +167,7 @@
             "physical":
             {
                 "encumbrance": 0,
+				"active": false,
                 "actionType": null
             },
             "weapon": {
