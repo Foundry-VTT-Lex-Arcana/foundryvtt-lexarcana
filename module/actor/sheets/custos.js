@@ -29,15 +29,46 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		// Basic data
 		const data = super.getData();
 		// Iterate through items, allocating to containers
+		data.meleeWeapons = [];
+		data.rangedWeapons = [];
+		data.armors = [];
+		data.shields = [];
+		data.bag = [];
 		for (let i of data.actor.items)
 		{
 			let item = i.data;
 			switch (i.type)
 			{
 				case 'province':
+				{
 					data.province = i;
 					break;
-				default: break;
+				}
+				case 'meleeWeapon':
+				{
+					data.meleeWeapons.push(i);
+					break;
+				}
+				case 'rangedWeapon':
+				{
+					data.rangedWeapons.push(i);
+					break;
+				}
+				case 'armor':
+				{
+					data.armors.push(i);
+					break;
+				}
+				case 'shield':
+				{
+					data.shields.push(i);
+					break;
+				}
+				default:
+				{
+					data.bag.push(i);
+					break;
+				}
 			}
 		}
 		return data;
@@ -81,19 +112,23 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 	/* -------------------------------------------- */
 	async _onDropItem(event, data)
 	{
-		// Iterate through items, allocating to containers
-		let itemIds = [];
-		for (let i of this.actor.items)
+		const item = await Item.implementation.fromDropData(data);
+		if(item.type==='province')
 		{
-			switch (i.type)
+			// Iterate through items, allocating to containers
+			let itemIds = [];
+			for (let i of this.actor.items)
 			{
-				case 'province':
-					itemIds.push(i.id);
-					break;
-				default: break;
+				switch (i.type)
+				{
+					case 'province':
+						itemIds.push(i.id);
+						break;
+					default: break;
+				}
 			}
+			await this.actor.deleteEmbeddedDocuments('Item', itemIds);
 		}
-		await this.actor.deleteEmbeddedDocuments('Item', itemIds);
 		return super._onDropItem(event, data);
 	}
 }
