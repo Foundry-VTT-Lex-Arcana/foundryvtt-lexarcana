@@ -71,6 +71,9 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		super.activateListeners(html);
 		if (!this.options.editable) return;
 
+		html.find('a.item-image').click(this._onImageClick.bind(this));
+		html.find('a.item-name').click(this._onNameClick.bind(this));
+
 		// Drag events for macros.
 		if (this.actor.isOwner)
 		{
@@ -85,6 +88,29 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 				li.addEventListener('dragstart', handler, false);
 			});
 		}
+	}
+
+	/* -------------------------------------------- */
+	
+	/* -------------------------------------------- */
+	/*  Events
+	/* -------------------------------------------- */
+	async _onImageClick(event, data)
+	{
+		event.preventDefault();
+		const dataset = event.currentTarget.dataset;
+		const item = this.actor.items.get(dataset.id);
+		item.update({ 'data.active': !item.data.data.active });
+		return;
+	}
+
+	async _onNameClick(event, data)
+	{
+		event.preventDefault();
+		const dataset = event.currentTarget.dataset;
+		const item = this.actor.items.get(dataset.id);
+		item.sheet.render(true);
+		return;
 	}
 
 	/* -------------------------------------------- */
