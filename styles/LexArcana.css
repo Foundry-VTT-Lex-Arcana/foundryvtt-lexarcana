@@ -33,10 +33,10 @@ table td
     color: #ffffff;
 }
 
-.system-LexArcana .window-content .sheet-header
+/*.system-LexArcana .window-content .sheet-header
 {
     max-height: 64px;
-}
+}*/
 
 .system-LexArcana .window-content .sheet-header ul
 , .system-LexArcana .window-content .sheet-body ul
@@ -245,6 +245,11 @@ table td
 .system-LexArcana .window-content .sheet-header .attribute-value input
 {
     width: 40px;
+}
+
+.system-LexArcana .window-content .sheet-header .attribute-wide-value input
+{
+    width: 120px;
 }
 
 .system-LexArcana .tabs
