@@ -106,6 +106,12 @@
                 },
                 "FateDice": true
             },
+			"human":
+			{
+				"age": 19,
+				"gender": "n/a",
+				"languages": ""
+			},
             "NPC":
             {
                 "size": 1,
@@ -118,9 +124,12 @@
             "templates":
             [
                 "background",
-                "common"
+                "common",
+				"human"
             ],
-            "provinceId": 0
+            "provinceId": 0,
+			"office": "explorer",
+			"rank": "gregarius"
         },
         "friendly":
         {
