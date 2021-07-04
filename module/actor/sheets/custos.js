@@ -1,6 +1,7 @@
 import LexArcanaActorSheet from "./base.js";
 import LexArcanaActor from "../entity.js";
 import { LexArcana } from '../../config.js';
+import {LexArcanaDice} from '../../dice.js';
 
 /**
  * An Actor sheet for player character type actors.
@@ -73,6 +74,8 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 
 		html.find('a.item-image').click(this._onImageClick.bind(this));
 		html.find('a.item-name').click(this._onNameClick.bind(this));
+		html.find('a.item-roll').click(this._onRollClick.bind(this));
+		html.find('a.item-delete').click(this._onDeleteClick.bind(this));
 
 		// Drag events for macros.
 		if (this.actor.isOwner)
@@ -110,6 +113,29 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		const dataset = event.currentTarget.dataset;
 		const item = this.actor.items.get(dataset.id);
 		item.sheet.render(true);
+		return;
+	}
+
+	async _onRollClick(event, data)
+	{
+		event.preventDefault();
+		const dataset = event.currentTarget.dataset;
+		const item = this.actor.items.get(dataset.id);
+		LexArcanaDice.Roll(1, item.data.data.damage, LexArcanaDice.EXPRESSIONTYPE.BALANCED, true, item.name);
+		return;
+	}
+
+	async _onDeleteClick(event, data)
+	{
+		event.preventDefault();
+		const dataset = event.currentTarget.dataset;
+		Dialog.confirm({
+			title: game.i18n.localize("LexArcana.Confirm"),
+			content: game.i18n.localize("LexArcana.ConfirmItemDeletion"),
+			yes: () => this.actor.deleteEmbeddedDocuments("Item", [dataset.id]),
+			no: () => {},
+			defaultYes: false
+		   });
 		return;
 	}
 

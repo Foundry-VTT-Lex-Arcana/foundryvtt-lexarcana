@@ -51,5 +51,10 @@
 	"LexArcana.Feat": "Feat",
 	"LexArcana.Parry": "Parry",
 	"LexArcana.LanguagesSpokenLabel": "Languages spoken",
-	"LexArcana.ProvincePeritiaeModifiersLabel": "Peritiae bonuses"
+	"LexArcana.ProvincePeritiaeModifiersLabel": "Peritiae bonuses",
+	"LexArcana.InventoryEquipedSectionTitle": "Equiped",
+	"LexArcana.InventoryBagSectionTitle": "Bag",
+	"LexArcana.Attributes": "Attributes",
+	"LexArcana.Confirm": "Are you sure ?",
+	"LexArcana.ConfirmItemDeletion": "You are about to remove an item from your inventory, it will be lost"
 }

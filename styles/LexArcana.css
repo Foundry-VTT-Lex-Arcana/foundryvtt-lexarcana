@@ -165,7 +165,8 @@ table td
 .system-LexArcana .roll3d-icon { background-image: url("../styles/images/dices_ico_3d.webp"); }
 .system-LexArcana .delete-icon { background-image: url("../styles/images/trash_ico.webp"); }
 .system-LexArcana .add-icon { background-image: url("../styles/images/plus_ico.webp"); }
-.system-LexArcana .rollItem-icon { background-image: url("../styles/images/dices_ico_1d.webp"); background-size: 32px; }
+.system-LexArcana .item-roll { background-image: url("../styles/images/dices_ico_1d.webp"); background-size: 32px; }
+.system-LexArcana .item-delete { background-image: url("../styles/images/trash_ico.webp"); }
 
 .system-LexArcana input.peritia-value
 {
@@ -282,6 +283,24 @@ table td
     color: #ff0000;
     font-weight: bold;
 }
+
+.system-LexArcana .inventory .item
+{
+    display: grid;
+    margin: 0;
+	margin-top: 5px;
+    padding: 0;
+    padding-left: 5px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    grid-template-areas: "Area1 Area2 Area3 Area4";
+}
+
+.system-LexArcana .inventory .item-image { grid-area: Area1; width: 32px; }
+.system-LexArcana .inventory .item-name { grid-area: Area2; }
+.system-LexArcana .inventory .item-roll { grid-area: Area3; width: 32px; background-size: 32px; }
+.system-LexArcana .inventory .item-delete { grid-area: Area4; width: 32px; background-size: 32px; }
 
 .editor-content
 , .tox
