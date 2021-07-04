@@ -1,6 +1,7 @@
 import LexArcanaActorSheet from "./base.js";
 import LexArcanaActor from "../entity.js";
 import { LexArcana } from '../../config.js';
+import {LexArcanaDice} from '../../dice.js';
 
 /**
  * An Actor sheet for player character type actors.
@@ -29,15 +30,28 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		// Basic data
 		const data = super.getData();
 		// Iterate through items, allocating to containers
+		data.items = [];
 		for (let i of data.actor.items)
 		{
-			let item = i.data;
 			switch (i.type)
 			{
 				case 'province':
+				{
 					data.province = i;
 					break;
-				default: break;
+				}
+				case 'meleeWeapon':
+				case 'rangedWeapon':
+				case 'armor':
+				case 'shield':
+				{
+					data.items.push(i);
+					break;
+				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return data;
@@ -58,6 +72,11 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		super.activateListeners(html);
 		if (!this.options.editable) return;
 
+		html.find('a.item-image').click(this._onImageClick.bind(this));
+		html.find('a.item-name').click(this._onNameClick.bind(this));
+		html.find('a.item-roll').click(this._onRollClick.bind(this));
+		html.find('a.item-delete').click(this._onDeleteClick.bind(this));
+
 		// Drag events for macros.
 		if (this.actor.isOwner)
 		{
@@ -77,23 +96,73 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 	/* -------------------------------------------- */
 	
 	/* -------------------------------------------- */
+	/*  Events
+	/* -------------------------------------------- */
+	async _onImageClick(event, data)
+	{
+		event.preventDefault();
+		const dataset = event.currentTarget.dataset;
+		const item = this.actor.items.get(dataset.id);
+		item.update({ 'data.active': !item.data.data.active });
+		return;
+	}
+
+	async _onNameClick(event, data)
+	{
+		event.preventDefault();
+		const dataset = event.currentTarget.dataset;
+		const item = this.actor.items.get(dataset.id);
+		item.sheet.render(true);
+		return;
+	}
+
+	async _onRollClick(event, data)
+	{
+		event.preventDefault();
+		const dataset = event.currentTarget.dataset;
+		const item = this.actor.items.get(dataset.id);
+		LexArcanaDice.Roll(1, item.data.data.damage, LexArcanaDice.EXPRESSIONTYPE.BALANCED, true, item.name);
+		return;
+	}
+
+	async _onDeleteClick(event, data)
+	{
+		event.preventDefault();
+		const dataset = event.currentTarget.dataset;
+		Dialog.confirm({
+			title: game.i18n.localize("LexArcana.Confirm"),
+			content: game.i18n.localize("LexArcana.ConfirmItemDeletion"),
+			yes: () => this.actor.deleteEmbeddedDocuments("Item", [dataset.id]),
+			no: () => {},
+			defaultYes: false
+		   });
+		return;
+	}
+
+	/* -------------------------------------------- */
+	
+	/* -------------------------------------------- */
 	/*  Overrides
 	/* -------------------------------------------- */
 	async _onDropItem(event, data)
 	{
-		// Iterate through items, allocating to containers
-		let itemIds = [];
-		for (let i of this.actor.items)
+		const item = await Item.implementation.fromDropData(data);
+		if(item.type==='province')
 		{
-			switch (i.type)
+			// Iterate through items, allocating to containers
+			let itemIds = [];
+			for (let i of this.actor.items)
 			{
-				case 'province':
-					itemIds.push(i.id);
-					break;
-				default: break;
+				switch (i.type)
+				{
+					case 'province':
+						itemIds.push(i.id);
+						break;
+					default: break;
+				}
 			}
+			await this.actor.deleteEmbeddedDocuments('Item', itemIds);
 		}
-		await this.actor.deleteEmbeddedDocuments('Item', itemIds);
 		return super._onDropItem(event, data);
 	}
 }

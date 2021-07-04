@@ -16,29 +16,36 @@
         </div>
     </header>
 
+    {{!-- Custos Sheet Navigation --}}
+    <nav class="sheet-navigation tabs" data-group="primary">
+        <a class="item active" data-tab="stats">{{ localize "LexArcana.Attributes" }}</a>
+        <a class="item" data-tab="description">{{ localize "LexArcana.Description" }}</a>
+    </nav>
+
     {{!-- Item Sheet Body --}}
     <section class="sheet-body">
 
+		<div class="tab stats flexcol" data-group="primary" data-tab="stats">
+			{{!-- Encumbrance --}}
+			<div class="form-group">
+				<label>{{ localize "LexArcana.Encumbrance" }}</label>
+				<div class="form-fields">
+					<input type="text" name="data.shield.encumbrance" value="{{data.data.shield.encumbrance}}" data-dtype="Number"/>
+				</div>
+			</div>
+
+			{{!-- Parry --}}
+			<div class="form-group">
+				<label>{{ localize "LexArcana.Parry" }}</label>
+				<div class="form-fields">
+					<input type="text" name="data.shield.parry" value="{{data.data.shield.parry}}" data-dtype="Number"/>
+				</div>
+			</div>
+		</div>
+
         {{!-- Description --}}
-        <div class="tab flexrow active" data-group="primary" data-tab="description">
-            <p>Description</p>
-            {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
-        </div>
-
-        {{!-- Encumbrance --}}
-        <div class="form-group">
-            <label>{{ localize "LexArcana.Encumbrance" }}</label>
-            <div class="form-fields">
-                <input type="text" name="data.shield.encumbrance" value="{{data.shield.encumbrance}}" data-dtype="Number"/>
-            </div>
-        </div>
-
-        {{!-- Parry --}}
-        <div class="form-group">
-            <label>{{ localize "LexArcana.Parry" }}</label>
-            <div class="form-fields">
-                <input type="text" name="data.shield.parry" value="{{data.shield.parry}}" data-dtype="Number"/>
-            </div>
+        <div class="description tab flexrow" data-group="primary" data-tab="description">
+            {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable}}
         </div>
     </section>
 </form>
