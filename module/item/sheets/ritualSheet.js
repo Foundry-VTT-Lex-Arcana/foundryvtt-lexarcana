@@ -6,7 +6,7 @@ import LexArcanaItemSheet from '../sheet.js';
  * Override and extend the core LexArcanaItemSheet implementation to handle specific item types
  * @extends {LexArcanaItemSheet}
  */
-export default class LexArcanaProvinceSheet extends LexArcanaItemSheet
+export default class LexArcanaRitualSheet extends LexArcanaItemSheet
 {
 	constructor(...args)
 	{
@@ -36,7 +36,7 @@ export default class LexArcanaProvinceSheet extends LexArcanaItemSheet
 		const data = super.getData();
 		data.owner = isOwner;
 		data.isGM = game.user.isGM;
-		data.limited = this.entity.limited;
+		data.limited = this.document.limited;
 		data.options = this.options;
 		data.editable = this.isEditable;
 		data.cssClass = isOwner ? 'editable' : 'locked';
@@ -45,12 +45,29 @@ export default class LexArcanaProvinceSheet extends LexArcanaItemSheet
 		data.object = duplicate(this.object.data);
 		data.data = data.object.data;
 
-		// Ability Scores
-		for ( let [k, v] of Object.entries(data.object.data.peritiaeModifiers))
-		{
-			v.label = CONFIG.LexArcana.Peritia[k];
-		}
 		// Return data to the sheet
 		return data;
+	}
+
+	/** @override */
+	activateListeners(html)
+	{
+		super.activateListeners(html);
+		html.find('a.discipline-add').click(function()
+		{
+			const id = this.dataset.itemId;
+			let item = game.items.get(id);
+			let disciplines = item.data.data.disciplines===undefined?[]:item.data.data.disciplines;
+			disciplines.push({});
+			item.update({ 'data.disciplines': disciplines });
+		});
+		html.find('a.discipline-delete').click(function()
+		{
+			const id = this.dataset.itemId;
+			let item = game.items.get(id);
+			let disciplines = item.data.data.disciplines===undefined?[]:item.data.data.disciplines;
+			disciplines.splice(this.dataset.disciplineId, 1);
+			item.update({ 'data.disciplines': disciplines });
+		});
 	}
 }
