@@ -31,6 +31,8 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		const data = super.getData();
 		// Iterate through items, allocating to containers
 		data.items = [];
+		data.indigamenta = [];
+		data.rituals = [];
 		for (let i of data.actor.items)
 		{
 			switch (i.type)
@@ -46,6 +48,16 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 				case 'shield':
 				{
 					data.items.push(i);
+					break;
+				}
+				case 'indigamentum':
+				{
+					data.indigamenta.push(i);
+					break;
+				}
+				case 'ritual':
+				{
+					data.rituals.push(i);
 					break;
 				}
 				default:

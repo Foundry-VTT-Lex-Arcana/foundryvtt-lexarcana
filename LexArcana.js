@@ -26,6 +26,7 @@ import LexArcanaAntagonistActorSheet from './module/actor/sheets/antagonist.js';
 import LexArcanaFantasticalCreatureActorSheet from './module/actor/sheets/fantasticalCreature.js';
 import LexArcanaItemSheet from './module/item/sheets/base.js';
 import LexArcanaProvinceSheet from './module/item/sheets/provinceSheet.js';
+import LexArcanaRitualSheet from './module/item/sheets/ritualSheet.js';
 
 // Import Helpers
 import * as chat from './module/chat.js';
@@ -111,7 +112,12 @@ Hooks.once('init', function ()
     Items.registerSheet(System.Code,
         LexArcanaItemSheet,
         {
-            types: [LexArcana.ItemType.meleeWeapon, LexArcana.ItemType.rangedWeapon, LexArcana.ItemType.armor, LexArcana.ItemType.shield],
+            types: [
+				LexArcana.ItemType.meleeWeapon
+				, LexArcana.ItemType.rangedWeapon
+				, LexArcana.ItemType.armor
+				, LexArcana.ItemType.shield
+			],
             makeDefault: true,
             label: 'LexArcana.SheetClassItem'
         });
@@ -122,6 +128,13 @@ Hooks.once('init', function ()
             makeDefault: true,
             label: 'LexArcana.SheetClassProvince'
         });
+	Items.registerSheet(System.Code,
+		LexArcanaRitualSheet,
+		{
+			types: [LexArcana.ItemType.indigamentum, LexArcana.ItemType.ritual],
+			makeDefault: true,
+			label: 'LexArcana.SheetClassRitual'
+		});
 
 	// handle bars helpers
 	// if equal

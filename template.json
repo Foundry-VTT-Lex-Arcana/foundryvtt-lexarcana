@@ -167,7 +167,9 @@
             "meleeWeapon",
             "rangedWeapon",
             "armor",
-            "shield"
+            "shield",
+			"indigamentum",
+			"ritual"
         ],
         "templates": {
             "common": {
@@ -229,6 +231,23 @@
                 "physical"
             ],
             "parry": 3
+        },
+        "indigamentum": {
+            "templates": [
+                "common"
+            ],
+            "cost": 6,
+			"peritia": "deMagia",
+			"virtute": "none"
+        },
+        "ritual": {
+            "templates": [
+                "common"
+            ],
+            "cost": 6,
+			"disciplines": [],
+			"DT": 6,
+			"Duration": "Short"
         }
     }
 }

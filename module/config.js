@@ -7,6 +7,9 @@ System.Code = 'LexArcana';
 System.Name = 'Lex Arcana';
 System.Path = 'systems/' + System.Code;
 
+LexArcana.SheetClassProvince = 'LexArcana.SheetClassProvince';
+LexArcana.SheetClassRitual = 'LexArcana.SheetClassRitual';
+
 /* -------------------------------------------- */
 
 LexArcana.ActorType =
@@ -23,7 +26,9 @@ LexArcana.ItemType =
         meleeWeapon: 'meleeWeapon',
         rangedWeapon: 'rangedWeapon',
         armor: 'armor',
-        shield: 'shield'
+        shield: 'shield',
+        indigamentum: 'indigamentum',
+        ritual: 'ritual'
     }; 
 /**
  * The set of Virtutes Scores used within the system
@@ -71,7 +76,6 @@ LexArcana.Biography                         = 'LexArcana.Biography';
 LexArcana.HitPoints                         = 'LexArcana.HitPoints';
 LexArcana.Pietas                            = 'LexArcana.Pietas';
 LexArcana.Inventory                         = 'LexArcana.Inventory';
-LexArcana.Rituals                           = 'LexArcana.Rituals';
 LexArcana.Description                       = 'LexArcana.Description';
 LexArcana.Information                       = 'LexArcana.Information';
 LexArcana.Features                          = 'LexArcana.Features';
@@ -89,3 +93,10 @@ LexArcana.Parry                             = 'LexArcana.Parry';
  */
 LexArcana.LanguagesSpokenLabel              = 'LexArcana.LanguagesSpokenLabel';
 LexArcana.ProvincePeritiaeModifiersLabel    = 'LexArcana.ProvincePeritiaeModifiersLabel';
+
+/**
+ * Rituals
+ **/
+LexArcana.Rituals                           = 'LexArcana.Rituals';
+LexArcana.IndigamentaSectionTitle			= 'LexArcana.IndigamentaSectionTitle';
+LexArcana.RitualsSectionTitle				= 'LexArcana.RitualsSectionTitle';

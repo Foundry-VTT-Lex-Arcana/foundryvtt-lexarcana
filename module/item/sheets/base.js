@@ -26,18 +26,6 @@ export default class LexArcanaItemSheet extends ItemSheet
             tabs: [{navSelector: '.tabs', contentSelector: '.sheet-body', initial: 'information'}]
         });
     }
-	/** @override */
-	getData()
-	{
-	  const data = super.getData();
-	  return data;
-	}
-
-	/** @override */
-	activateListeners(html)
-	{
-		super.activateListeners(html);
-	}
 
     /* -------------------------------------------- */
 
