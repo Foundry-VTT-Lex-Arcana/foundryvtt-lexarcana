@@ -59,6 +59,20 @@ LexArcana.Peritia = {
     'deCorpore':    'LexArcana.Peritia.DeCorpore',
 };
 
+/**
+ * The set of Disciplines Scores used within the system
+ * @type {Object}
+ */
+LexArcana.DisciplinesName = 'LexArcana.DisciplinesName';
+LexArcana.Disciplines = {
+    'precognition':      		'LexArcana.Disciplines.Precognition',
+    'clairvoyance':     		'LexArcana.Disciplines.Clairvoyance',
+    'retrocognition':  			'LexArcana.Disciplines.Retrocognition',
+	'interpretationOfOmens':	'LexArcana.Disciplines.InterpretationOfOmens',
+    'interpretationOfDreams':   'LexArcana.Disciplines.InterpretationOfDreams',
+    'favorOfTheGods':    		'LexArcana.Disciplines.FavorOfTheGods',
+};
+
 LexArcana.Name                              = 'LexArcana.Name';
 LexArcana.NPC                               = 'LexArcana.NPC';
 LexArcana.FateRoll                          = 'LexArcana.FateRoll';
@@ -100,3 +114,8 @@ LexArcana.ProvincePeritiaeModifiersLabel    = 'LexArcana.ProvincePeritiaeModifie
 LexArcana.Rituals                           = 'LexArcana.Rituals';
 LexArcana.IndigamentaSectionTitle			= 'LexArcana.IndigamentaSectionTitle';
 LexArcana.RitualsSectionTitle				= 'LexArcana.RitualsSectionTitle';
+LexArcana.DifficultyThreshold				= 'LexArcana.DifficultyThreshold';
+LexArcana.Duration							= 'LexArcana.Duration';
+LexArcana.Short								= 'LexArcana.Short';
+LexArcana.Average							= 'LexArcana.Average';
+LexArcana.Long								= 'LexArcana.Long';

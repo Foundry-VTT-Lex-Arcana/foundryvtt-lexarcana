@@ -16,6 +16,11 @@
             "lang": "en",
             "name": "English",
             "path": "lang/en.json"
+        },
+        {
+            "lang": "es",
+            "name": "Spanish",
+            "path": "lang/es.json"
         }
     ],
     "socket": false,
@@ -24,8 +29,8 @@
     "gridUnits": "m",
     "primaryTokenAttribute": "attributes.hitPoints",
     "secondaryTokenAttribute": "attributes.pietas",
-    "minimumCoreVersion": "0.7.9",
-    "compatibleCoreVersion": "0.7.9",
+    "minimumCoreVersion": "9",
+    "compatibleCoreVersion": "9",
     "url": "https://github.com/Foundry-VTT-Lex-Arcana/foundryvtt-lexarcana",
     "manifest": "https://github.com/Foundry-VTT-Lex-Arcana/foundryvtt-lexarcana/blob/master/system.json",
     "download": "https://github.com/Foundry-VTT-Lex-Arcana/foundryvtt-lexarcana/archive/refs/heads/master.zip",

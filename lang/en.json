@@ -6,6 +6,7 @@
 	"LexArcana.SheetClassRitual": "Sheet Class Ritual",
 	"LexArcana.VirtutesName": "Virtutes",
 	"LexArcana.Virtutes": {
+		"None": "None",
 		"Coordinatio": "Coordinatio",
 		"Auctoritas": "Auctoritas",
 		"Ratio": "Ratio",
@@ -22,6 +23,16 @@
 		"DeMagia": "De Magia",
 		"DeScientia": "De Scientia",
 		"DeCorpore": "De Corpore"
+	},
+	"LexArcana.DisciplineName": "Discipline",
+	"LexArcana.DisciplinesName": "Disciplines",
+	"LexArcana.Disciplines": {
+		"Precognition": "Precognition",
+		"Clairvoyance": "Clairvoyance",
+		"Retrocognition": "Retrocognition",
+		"InterpretationOfOmens": "Interpretation of omens",
+		"InterpretationOfDreams": "Interpretation of dreams",
+		"FavorOfTheGods": "Favor of the Gods"
 	},
 	"LexArcana.Name": "Name",
 	"LexArcana.NPC": "NPC",
@@ -52,6 +63,7 @@
 	"LexArcana.Description": "Description",
 	"LexArcana.Information": "Information",
 	"LexArcana.Features": "Features",
+	"LexArcana.Cost": "Cost",
 	"LexArcana.ItemName": "ItemName",
 	"LexArcana.Encumbrance": "Encumbrance",
 	"LexArcana.Protection": "Protection",
@@ -66,5 +78,10 @@
 	"LexArcana.InventoryBagSectionTitle": "Bag",
 	"LexArcana.Attributes": "Attributes",
 	"LexArcana.Confirm": "Are you sure ?",
-	"LexArcana.ConfirmItemDeletion": "You are about to remove an item from your inventory, it will be lost"
+	"LexArcana.ConfirmItemDeletion": "You are about to remove an item from your inventory, it will be lost",
+	"LexArcana.DifficultyThreshold": "Difficulty Threshold",
+	"LexArcana.Duration": "Duration",
+	"LexArcana.Short": "Short",
+	"LexArcana.Average": "Average",
+	"LexArcana.Long": "Long"
 }

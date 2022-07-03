@@ -44,9 +44,24 @@ export default class LexArcanaRitualSheet extends LexArcanaItemSheet
 		// The Actor and its Items
 		data.object = duplicate(this.object.data);
 		data.data = data.object.data;
-
 		// Return data to the sheet
 		return data;
+	}
+
+	static toArray(data)
+	{
+		// force values to be arrays
+		// https://github.com/trioderegion/nova/blob/319d39b274d25b35af49896ea83a4115cda35cf6/module/documents/actor.mjs#L127
+		/*const forceArray = (path) => {
+			const value = data[path];
+			if (!!value && typeof value == 'string') {
+				data[path] = [value];
+			}
+		}*/
+		return Object.entries(data)
+		.map((value, index) => {
+		   return value.pop()                    
+		});
 	}
 
 	/** @override */
@@ -57,17 +72,20 @@ export default class LexArcanaRitualSheet extends LexArcanaItemSheet
 		{
 			const id = this.dataset.itemId;
 			let item = game.items.get(id);
-			let disciplines = item.data.data.disciplines===undefined?[]:item.data.data.disciplines;
-			disciplines.push({});
-			item.update({ 'data.disciplines': disciplines });
+			let disciplines = item.data.data.disciplines ?? new Array();
+			disciplines.push({name:'precognition', difficultyThreshold: 6});
+			item.update({ 'data.disciplines': LexArcanaRitualSheet.toArray(disciplines) });
 		});
 		html.find('a.discipline-delete').click(function()
 		{
 			const id = this.dataset.itemId;
 			let item = game.items.get(id);
-			let disciplines = item.data.data.disciplines===undefined?[]:item.data.data.disciplines;
-			disciplines.splice(this.dataset.disciplineId, 1);
-			item.update({ 'data.disciplines': disciplines });
+			if(item.data.data.disciplines===undefined)
+				return;
+			
+			item.data.data.disciplines = LexArcanaRitualSheet.toArray(item.data.data.disciplines);
+			/*delete */item.data.data.disciplines.splice(this.dataset.disciplineId, 1);
+			item.update({ 'data.disciplines': item.data.data.disciplines });
 		});
 	}
 }

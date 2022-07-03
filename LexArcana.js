@@ -59,7 +59,7 @@ Hooks.once('init', function ()
         entities:
             {
                 LexArcanaActor,
-                LexArcanaItem,
+                LexArcanaItem
             },
         macros: macros,
         migrations: migrations

@@ -246,8 +246,7 @@
             ],
             "cost": 6,
 			"disciplines": [],
-			"DT": 6,
-			"Duration": "Short"
+			"duration": "Short"
         }
     }
 }

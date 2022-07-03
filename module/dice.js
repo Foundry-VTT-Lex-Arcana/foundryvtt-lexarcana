@@ -50,6 +50,7 @@ export class LexArcanaDice {
 		}
 		return {expression: computedExpression, totalFaces: (maxFaces-(maxFaces-sumDiceFaces))};
 	}
+
 	static Compute(numDice, maxFaces, expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED)
 	{
 		switch(expressionType)
@@ -58,6 +59,68 @@ export class LexArcanaDice {
 			case LexArcanaDice.EXPRESSIONTYPE.BALANCED:
 			default: return LexArcanaDice.#ComputeBalanced(numDice, maxFaces); break;
 		}
+	}
+
+	static CreateChatMessage(_expression, _info = '')
+	{
+		const rollMode = game.settings.get('core', 'rollMode');
+		const message =
+		{
+			speaker: {actor: this.id },
+			content: '<div class="LexArcanaRoll"><p>'+_info+' '+_expression+'</p>',
+			blind: rollMode === 'blindroll'
+		};
+		// accept expressions as 1d8, 2d4+1d12, 1d5, 1d6, 1d10, 1d20 etc.
+		const diceFormulaRegExp = '^(([1-9][0-9]*)?d([34568]|(?:10)|(?:12)|(?:20)))(\\+(([1-9][0-9]*)?d([34568]|(?:10)|(?:12)|(?:20))))*';
+		let diceHasFated = false;
+		let computedTotal = 0;
+		if(_expression.match(diceFormulaRegExp))
+		{
+			let previousTotal = 0;
+			let previousHasFated = false;
+			let totalFaces = 0;
+			let max = 2;
+			do
+			{
+				let roll = new Roll(_expression);
+				message.roll = roll.evaluate({async: false});
+				if(message.roll.dice.length>0)
+				{
+					if(totalFaces===0)
+						message.roll.dice.forEach((die) => totalFaces+=die.faces);
+					diceHasFated = message.roll.total===totalFaces;
+					computedTotal = message.roll.total;
+					if(previousHasFated)
+					{
+						computedTotal += previousTotal;
+						if(diceHasFated)
+						{
+							message.content+='<p class="fateroll">'+game.i18n.localize(CONFIG.LexArcana.FateRoll)+'</p>';
+						}
+						message.content+='<p class="fateroll">'+computedTotal+' ('+previousTotal+'+'+message.roll.total+')</p>';
+					}
+					else if(diceHasFated)
+					{
+						message.content+='<p class="fateroll">'+game.i18n.localize(CONFIG.LexArcana.FateRoll)+'</p>';
+						message.content+='<p class="fateroll">'+message.roll.total+'</p>';
+						previousHasFated = true;
+					}
+					else
+					{
+						message.content+='<p>'+message.roll.total+'</p>';
+					}
+					previousTotal = message.roll.total + previousTotal;
+					message.type = CONST.CHAT_MESSAGE_TYPES.ROLL;
+					message.sound = CONFIG.sounds.dice;
+				}
+			}while(diceHasFated);
+		}
+		else
+		{
+		message.content += '<p class="error">'+game.i18n.localize('LexArcana.InvalidRoll')+'</p>';
+		}
+		message.content += '</div>';
+		return message;
 	}
 
 	static SingleRoll(_numDice, _maxFaces, _expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED, _previousResult=null, _info='')

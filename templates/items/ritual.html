@@ -36,20 +36,29 @@
 			
 			{{!-- Discipline --}}
 			<div class="form-group">
-				<label>{{ localize "LexArcana.Discipline" }}</label>
+				<label>{{ localize "LexArcana.DisciplinesName" }}</label>
 				{{#each data.disciplines as |discipline key|}}
-				<div>
+				<div class="form-separator">
 					<div class="form-fields">
-						<select name="data.disciplines.{{key}}">
-							{{#select discipline}}
-							<option value="precognition">{{ localize "LexArcana.Discipline.Precognition"}}</option>
-							<option value="clairvoyance">{{ localize "LexArcana.Discipline.Clairvoyance"}}</option>
-							<option value="retrocognition">{{ localize "LexArcana.Discipline.Retrocognition"}}</option>
-							<option value="interpretationOfOmens">{{ localize "LexArcana.Discipline.InterpretationOfOmens"}}</option>
-							<option value="interpretationOfDreams">{{ localize "LexArcana.Discipline.InterpretationOfDreams"}}</option>
-							<option value="favorOfTheGods">{{ localize "LexArcana.Discipline.FavorOfTheGods"}}</option>
-							{{/select}}
-						</select>
+						<div class="form-group">
+							<label>{{ localize "LexArcana.DisciplineName" }}</label>
+							<select name="data.disciplines.{{key}}.name">
+								{{#select discipline.name}}
+								<option value="precognition">{{ localize "LexArcana.Disciplines.Precognition"}}</option>
+								<option value="clairvoyance">{{ localize "LexArcana.Disciplines.Clairvoyance"}}</option>
+								<option value="retrocognition">{{ localize "LexArcana.Disciplines.Retrocognition"}}</option>
+								<option value="interpretationOfOmens">{{ localize "LexArcana.Disciplines.InterpretationOfOmens"}}</option>
+								<option value="interpretationOfDreams">{{ localize "LexArcana.Disciplines.InterpretationOfDreams"}}</option>
+								<option value="favorOfTheGods">{{ localize "LexArcana.Disciplines.FavorOfTheGods"}}</option>
+								{{/select}}
+							</select>
+						</div>
+						<div class="form-group">
+							<label>{{ localize "LexArcana.DifficultyThreshold" }}</label>
+							<div class="form-fields">
+								<input type="text" name="data.disciplines.{{key}}.difficultyThreshold" value="{{discipline.difficultyThreshold}}" data-dtype="Number"/>
+							</div>
+						</div>
 					</div>
 					<div class="form-fields">
 						<a class="discipline-delete icon" data-item-id="{{../item.id}}" data-discipline-id="{{key}}">&nbsp;</a>
@@ -57,14 +66,6 @@
 				</div>
 				{{/each}}
 				<a class="discipline-add icon" data-item-id="{{item.id}}">&nbsp;</a>
-			</div>
-
-			{{!-- DT --}}
-			<div class="form-group">
-				<label>{{ localize "LexArcana.DT" }}</label>
-				<div class="form-fields">
-					<input type="text" name="data.DT" value="{{data.DT}}" data-dtype="Number"/>
-				</div>
 			</div>
 			
 			{{!-- Duration --}}

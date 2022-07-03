@@ -2,6 +2,7 @@
 {
     margin: 0;
     padding: 0;
+    font-family: none;
 }
 
 table td
@@ -11,18 +12,32 @@ table td
     padding: 5px;
 }
 
-.system-LexArcana input
+.system-LexArcana i.fas
+{
+	color: gold;
+}
+
+body.system-LexArcana
+, .system-LexArcana input
 , .system-LexArcana .sidebar-tab button
 , .system-LexArcana .sidebar-tab .window-content
 , .system-LexArcana .sidebar-tab a
 , .system-LexArcana .sidebar-tab .encounters
 , .system-LexArcana .sidebar-tab .directory-list .folder
 , .system-LexArcana .sidebar-tab .chat-message
+, .system-LexArcana .sidebar-tab .message
 {
     font-family: Herculanum;
     font-size: 14px;
-    font-weight: 700px;
+    font-weight: bold;
     text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
+	background: none;
+	background-color: #00000055;
+}
+
+.system-LexArcana .window-title
+{
+	color: #ffffff;
 }
 
 .system-LexArcana .window-content
@@ -31,6 +46,17 @@ table td
     background-repeat: repeat;
     background-size: 512px 512px;
     color: #ffffff;
+}
+
+.system-LexArcana .message p
+{
+	color: #ffffff;
+}
+
+.system-LexArcana .sidebar-tab .message p.error
+{
+	color: #ff0000;
+	font-weight: bold;
 }
 
 /*.system-LexArcana .window-content .sheet-header
@@ -170,6 +196,12 @@ table td
 .system-LexArcana .discipline-add { background-image: url("../styles/images/plus_ico.webp"); background-size: 32px; }
 .system-LexArcana .discipline-delete { background-image: url("../styles/images/trash_ico.webp"); background-size: 32px; }
 
+.system-LexArcana .window-content form .form-group .form-separator
+{
+	border: 1px solid #000000;
+	padding: 5px;
+}
+
 .system-LexArcana input.peritia-value
 {
     width: 32px;
@@ -214,20 +246,16 @@ table td
     color: #d70000;
 }
 
-.system-LexArcana .chat-message.whisper
-{
-    background-color: #00000088;
-}
-
 .system-LexArcana .chat-message.whisper .message-header
 {
-    background-color: #00000088;
+    background-color: #6b6b6b88;
     color: #ffd700;
 }
 
 .system-LexArcana .form-header
 , .system-LexArcana #player-config .window-content form .form-group label
 , .system-LexArcana .sidebar-tab p
+, .system-LexArcana .sidebar-tab .message p
 , #module-management .package-list .package-title
 , #module-management .notes
 {
@@ -280,11 +308,6 @@ table td
 , .system-LexArcana .tox-edit-area
 {
     height: 100%;
-}
-
-.system-LexArcana .LexArcanaRoll p
-{
-    color: #000000;
 }
 
 .system-LexArcana .LexArcanaRoll .fateroll
