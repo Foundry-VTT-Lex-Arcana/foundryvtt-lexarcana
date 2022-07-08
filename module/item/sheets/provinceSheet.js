@@ -1,6 +1,6 @@
 import {LexArcana} from '../../config.js';
 import {System} from '../../config.js';
-import LexArcanaItemSheet from '../sheet.js';
+import LexArcanaItemSheet from '../item.js';
 
 /**
  * Override and extend the core LexArcanaItemSheet implementation to handle specific item types
@@ -14,7 +14,7 @@ export default class LexArcanaProvinceSheet extends LexArcanaItemSheet
 	}
 
 	/* -------------------------------------------- */
-    
+
 	/** @override */
 	static get defaultOptions()
 	{

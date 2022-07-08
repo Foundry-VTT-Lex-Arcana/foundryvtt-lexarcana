@@ -1,5 +1,5 @@
 import LexArcanaActorSheet from "./base.js";
-import LexArcanaActor from "../entity.js";
+import LexArcanaActor from "../actor.js";
 import { LexArcana } from '../../config.js';
 import {LexArcanaDice} from '../../dice.js';
 
@@ -106,7 +106,7 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 	}
 
 	/* -------------------------------------------- */
-	
+
 	/* -------------------------------------------- */
 	/*  Events
 	/* -------------------------------------------- */
@@ -152,7 +152,7 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 	}
 
 	/* -------------------------------------------- */
-	
+
 	/* -------------------------------------------- */
 	/*  Overrides
 	/* -------------------------------------------- */
