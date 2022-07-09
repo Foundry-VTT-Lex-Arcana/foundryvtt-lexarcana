@@ -6,32 +6,39 @@
         <section class="header-details">
             {{!-- Custos Summary --}}
 			<ul class="flexrow">
-				<li><img class="profile" src="{{actor.img}}" title="{{actor.name}}" data-edit="img"/></li>
+				<li><div class="portrait">
+                    <img class="laurel" src="./systems/LexArcana/styles/images/laurel1.webp"/>
+                    <img class="profile" src="{{actor.img}}" title="{{actor.name}}" data-edit="img"/>
+                    <img class="laurel" src="./systems/LexArcana/styles/images/laurel2.webp"/>
+                </div></li>
 				<li>
 					<h1 class="charname">
 						<input name="name" type="text" value="{{actor.name}}" placeholder="{{ localize 'LexArcana.Name' }}"/>
 					</h1>
-				</li>
+                    <ul class="flexrow">
                 {{#if isGM}}
-                <li class="attribute">
+                <li>
                     <h4 class="attribute-name box-title">{{ localize "LexArcana.NPC" }}</h4>
                     <div class="attribute-value multiple">
                         <input name="data.attributes.npc" type="checkbox" {{checked data.attributes.npc}} />
                     </div>
                 </li>
                 {{/if}}
-                <li class="attribute age">
+                <li>
                     <h4 class="attribute-name box-title">{{ localize "LexArcana.Age" }}</h4>
                     <div class="attribute-value">
                         <input name="data.age" type="text" value="{{data.age}}" placeholder="19" data-dtype="Number"/>
                     </div>
                 </li>
-                <li class="attribute gender">
+                <li>
                     <h4 class="attribute-name box-title">{{ localize "LexArcana.Gender" }}</h4>
                     <div class="attribute-value">
                         <input name="data.gender" type="text" value="{{data.gender}}" placeholder="N/A" data-dtype="String"/>
                     </div>
                 </li>
+                </ul>
+				</li>
+                
 			</ul>
             {{!-- Header sub Attributes --}}
             <ul class="attributes flexrow">
@@ -63,6 +70,8 @@
                         <input name="data.attributes.hitPoints.value" type="text" value="{{data.attributes.hitPoints.value}}" placeholder="10" data-dtype="Number"/>
                         <span class="sep"> / </span>
                         <input name="data.attributes.hitPoints.max" type="text" value="{{data.attributes.hitPoints.max}}" placeholder="10" data-dtype="Number"/>
+                        <span class="sep">  |  </span>
+                        <input name="data.encumbrance" type="text" value="{{data.encumbrance}}" placeholder="0" data-dtype="Number"/>
                     </div>
                 </li>
 
