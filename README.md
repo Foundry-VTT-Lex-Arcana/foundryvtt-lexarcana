@@ -1,6 +1,6 @@
 This project is not official and hence is supported neither by Foundry VTT &trade; nor by Lex Arcana &trade;.
 
-# Rols
+# Rolls
 Due to the nature of Lex Arcana rolls, in order to avoid decision time for players we cut the rolls in five distinct possibilities
 ## The custom roll
 You get to decide the composition of your roll for this ability
@@ -24,3 +24,5 @@ Unbalanced mode with 3 dices: 1d12+1d3+1d3
 
 ## Prior 0.0.1
 Alpha version, Custos character sheet base, items base and rituals/indigamenta not working
+
+# Credits
