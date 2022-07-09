@@ -34,50 +34,50 @@
                 },
                 "virtutes":
                 {
-                    "coordinatio": 
+                    "coordinatio":
                     {
-                        "value": 2,
-                        "defaultRoll": "d2"
+                        "value": 3,
+                        "defaultRoll": "d3"
                     },
-                    "auctoritas": 
+                    "auctoritas":
                     {
-                        "value": 2,
-                        "defaultRoll": "d2"
+                        "value": 3,
+                        "defaultRoll": "d3"
                     },
-                    "ratio": 
+                    "ratio":
                     {
-                        "value": 2,
-                        "defaultRoll": "d2"
+                        "value": 3,
+                        "defaultRoll": "d3"
                     },
-                    "vigor": 
+                    "vigor":
                     {
-                        "value": 2,
-                        "defaultRoll": "d2"
+                        "value": 3,
+                        "defaultRoll": "d3"
                     },
                     "ingenium":
                     {
-                        "value": 2,
-                        "defaultRoll": "d2"
+                        "value": 3,
+                        "defaultRoll": "d3"
                     },
-                    "sensibilitas": 
+                    "sensibilitas":
                     {
-                        "value": 2,
-                        "defaultRoll": "d2"
+                        "value": 3,
+                        "defaultRoll": "d3"
                     }
                 },
                 "peritiae":
                 {
                     "deBello":
                     {
-                        "value": 14,
+                        "value": 6,
                         "specialties": {},
-                        "defaultRoll": "d10+d4"
+                        "defaultRoll": "d6"
                     },
                     "deNatura":
                     {
-                        "value": 17,
+                        "value": 6,
                         "specialties": {},
-                        "defaultRoll": "d12+d5"
+                        "defaultRoll": "d6"
                     },
                     "deSocietate":
                     {
@@ -87,9 +87,9 @@
                     },
                     "deMagia":
                     {
-                        "value": 8,
+                        "value": 6,
                         "specialties": {},
-                        "defaultRoll": "d8"
+                        "defaultRoll": "d6"
                     },
                     "deScientia":
                     {
@@ -99,9 +99,9 @@
                     },
                     "deCorpore":
                     {
-                        "value": 14,
+                        "value": 6,
                         "specialties": {},
-                        "defaultRoll": "d10+d4"
+                        "defaultRoll": "d6"
                     }
                 },
                 "FateDice": true

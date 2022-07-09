@@ -1,6 +1,6 @@
 import {LexArcana} from '../../config.js';
 import {System} from '../../config.js';
-import LexArcanaItemSheet from '../sheet.js';
+import LexArcanaItemSheet from '../item.js';
 
 /**
  * Override and extend the core LexArcanaItemSheet implementation to handle specific item types
@@ -14,7 +14,7 @@ export default class LexArcanaRitualSheet extends LexArcanaItemSheet
 	}
 
 	/* -------------------------------------------- */
-    
+
 	/** @override */
 	static get defaultOptions()
 	{
@@ -60,7 +60,7 @@ export default class LexArcanaRitualSheet extends LexArcanaItemSheet
 		}*/
 		return Object.entries(data)
 		.map((value, index) => {
-		   return value.pop()                    
+		   return value.pop()
 		});
 	}
 
@@ -82,7 +82,7 @@ export default class LexArcanaRitualSheet extends LexArcanaItemSheet
 			let item = game.items.get(id);
 			if(item.data.data.disciplines===undefined)
 				return;
-			
+
 			item.data.data.disciplines = LexArcanaRitualSheet.toArray(item.data.data.disciplines);
 			/*delete */item.data.data.disciplines.splice(this.dataset.disciplineId, 1);
 			item.update({ 'data.disciplines': item.data.data.disciplines });
