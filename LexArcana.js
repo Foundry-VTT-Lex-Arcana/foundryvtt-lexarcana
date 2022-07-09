@@ -2,41 +2,43 @@
  * The Lex Arcana game system for Foundry Virtual Tabletop
  * A system for playing the fifth edition of the worlds most popular roleplaying game.
  * Author: pierre.plans@gmail.com, Lysoun, Milo115b
- * Software License: BEER-WARE LICENCE
+ * Software License: MIT LICENSE
  * Repository:
  * Issue Tracker:
  */
 
 // Import Modules
-import {System} from "./module/config.js";
-import {LexArcana} from "./module/config.js";
-import {registerSystemSettings} from "./module/settings.js";
-import {preloadHandlebarsTemplates} from "./module/templates.js";
-import {_getInitiativeFormula} from "./module/combat.js";
-import {getBarAttribute} from "./module/canvas.js";
+import {System} from './module/config.js';
+import {LexArcana} from './module/config.js';
+import {registerSystemSettings} from './module/settings.js';
+import {preloadHandlebarsTemplates} from './module/templates.js';
+import {_getInitiativeFormula} from './module/combat.js';
+import {getBarAttribute} from './module/canvas.js';
 
 // Import Entities
-import LexArcanaActor from "./module/actor/entity.js";
-import LexArcanaItem from "./module/item/entity.js";
+import LexArcanaActor from './module/actor/actor.js';
+import LexArcanaItem from './module/item/item.js';
 
 // Import Applications
-import LexArcanaCustosActorSheet from "./module/actor/sheets/custos.js";
-import LexArcanaFriendlyActorSheet from "./module/actor/sheets/friendly.js";
-import LexArcanaAntagonistActorSheet from "./module/actor/sheets/antagonist.js";
-import LexArcanaFantasticalCreatureActorSheet from "./module/actor/sheets/fantasticalCreature.js";
-import LexArcanaItemSheet from "./module/item/sheet.js";
+import LexArcanaCustosActorSheet from './module/actor/sheets/custos.js';
+import LexArcanaFriendlyActorSheet from './module/actor/sheets/friendly.js';
+import LexArcanaAntagonistActorSheet from './module/actor/sheets/antagonist.js';
+import LexArcanaFantasticalCreatureActorSheet from './module/actor/sheets/fantasticalCreature.js';
+import LexArcanaItemSheet from './module/item/sheets/base.js';
+import LexArcanaProvinceSheet from './module/item/sheets/provinceSheet.js';
+import LexArcanaRitualSheet from './module/item/sheets/ritualSheet.js';
 
 // Import Helpers
-import * as chat from "./module/chat.js";
-import * as dice from "./module/dice.js";
-import * as macros from "./module/macros.js";
-import * as migrations from "./module/migration.js";
+import * as chat from './module/chat.js';
+import * as dice from './module/dice.js';
+import * as macros from './module/macros.js';
+import * as migrations from './module/migration.js';
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
 /* -------------------------------------------- */
 
-Hooks.once("init", function ()
+Hooks.once('init', function ()
 {
     console.log(`${System.Code} | Initializing the ${System.Name} Game System\n`);
 
@@ -48,7 +50,8 @@ Hooks.once("init", function ()
                 LexArcanaFriendlyActorSheet,
                 LexArcanaAntagonistActorSheet,
                 LexArcanaFantasticalCreatureActorSheet,
-                LexArcanaItemSheet
+                LexArcanaItemSheet,
+                LexArcanaProvinceSheet
             },
         canvas: {},
         config: LexArcana,
@@ -56,7 +59,7 @@ Hooks.once("init", function ()
         entities:
             {
                 LexArcanaActor,
-                LexArcanaItem,
+                LexArcanaItem
             },
         macros: macros,
         migrations: migrations
@@ -64,54 +67,86 @@ Hooks.once("init", function ()
 
     // Record Configuration Values
     CONFIG.LexArcana = LexArcana;
-    CONFIG.Actor.entityClass = LexArcanaActor;
-    CONFIG.Item.entityClass = LexArcanaItem;
+    CONFIG.Actor.documentClass = LexArcanaActor;
+    CONFIG.Item.documentClass = LexArcanaItem;
     CONFIG.time.roundTime = 6;
 
     // Register System Settings
     registerSystemSettings();
 
     // Patch Core Functions
-    CONFIG.Combat.initiative.formula = "1d20";
+    CONFIG.Combat.initiative.formula = '1d20';
     Combat.prototype._getInitiativeFormula = _getInitiativeFormula;
 
     // Register sheet application classes
-    Actors.unregisterSheet("core", ActorSheet);
+    Actors.unregisterSheet('core', ActorSheet);
     Actors.registerSheet(System.Code,
         LexArcanaCustosActorSheet,
         {
             types: [LexArcana.ActorType.custos],
             makeDefault: true,
-            label: "LexArcana.SheetClassCustos"
+            label: 'LexArcana.SheetClassCustos'
         });
     Actors.registerSheet(System.Code,
         LexArcanaFriendlyActorSheet,
         {
             types: [LexArcana.ActorType.friendly],
             makeDefault: true,
-            label: "LexArcana.SheetClassFriendly"
+            label: 'LexArcana.SheetClassFriendly'
         });
     Actors.registerSheet(System.Code,
         LexArcanaAntagonistActorSheet,
         {
             types: [LexArcana.ActorType.antagonist],
             makeDefault: true,
-            label: "LexArcana.SheetClassAntagonist"
+            label: 'LexArcana.SheetClassAntagonist'
         });
     Actors.registerSheet(System.Code,
         LexArcanaFantasticalCreatureActorSheet,
         {
             types: [LexArcana.ActorType.fantasticalCreature],
             makeDefault: true,
-            label: "LexArcana.SheetClassFantasticalCreature"
+            label: 'LexArcana.SheetClassFantasticalCreature'
         });
-    Items.unregisterSheet("core", ItemSheet);
+    Items.unregisterSheet('core', ItemSheet);
     Items.registerSheet(System.Code,
         LexArcanaItemSheet,
         {
+            types: [
+				LexArcana.ItemType.meleeWeapon
+				, LexArcana.ItemType.rangedWeapon
+				, LexArcana.ItemType.armor
+				, LexArcana.ItemType.shield
+			],
             makeDefault: true,
-            label: "LexArcana.SheetClassItem"
+            label: 'LexArcana.SheetClassItem'
         });
+    Items.registerSheet(System.Code,
+        LexArcanaProvinceSheet,
+        {
+            types: [LexArcana.ItemType.province],
+            makeDefault: true,
+            label: 'LexArcana.SheetClassProvince'
+        });
+	Items.registerSheet(System.Code,
+		LexArcanaRitualSheet,
+		{
+			types: [LexArcana.ItemType.indigamentum, LexArcana.ItemType.ritual],
+			makeDefault: true,
+			label: 'LexArcana.SheetClassRitual'
+		});
+
+	// handle bars helpers
+	// if equal
+	Handlebars.registerHelper('ife', function (v1, v2, options) {
+		if (v1 === v2) return options.fn(this);
+		else return options.inverse(this);
+	});
+	// if not equal
+	Handlebars.registerHelper('ifne', function (v1, v2, options) {
+		if (v1 !== v2) return options.fn(this);
+		else return options.inverse(this);
+	});
 
     // Preload Handlebars Templates
     preloadHandlebarsTemplates();
@@ -122,16 +157,34 @@ Hooks.once("init", function ()
 /*  Foundry VTT Setup                           */
 /* -------------------------------------------- */
 
+/**
+ * This function runs after game data has been requested and loaded from the servers, so entities exist
+ */
+ Hooks.once('setup', function() {
+
+    // Localize CONFIG objects once up-front
+    const toLocalize = ['Virtutes', 'Peritia'];
+  
+    // Localize and sort CONFIG objects
+    for ( let o of toLocalize )
+    {
+      CONFIG.LexArcana[o] = Object.entries(CONFIG.LexArcana[o]).reduce((obj, e) => {
+        obj[e[0]] = game.i18n.localize(e[1]);
+        return obj;
+      }, {});
+    }
+  });
+
 /* -------------------------------------------- */
 
 /**
  * Once the entire VTT framework is initialized, check to see if we should perform a data migration
  */
-Hooks.once("ready", function ()
+Hooks.once('ready', function ()
 {
     // Determine whether a system migration is required and feasible
     if (!game.user.isGM) return;
-    const currentVersion = game.settings.get(System.Code, "systemMigrationVersion");
+    const currentVersion = game.settings.get(System.Code, 'systemMigrationVersion');
     const NEEDS_MIGRATION_VERSION = "0.0.0";
     const COMPATIBLE_MIGRATION_VERSION = 0.80;
     const needsMigration = currentVersion && isNewerVersion(NEEDS_MIGRATION_VERSION, currentVersion);
@@ -150,7 +203,7 @@ Hooks.once("ready", function ()
 /*  Canvas Initialization                       */
 /* -------------------------------------------- */
 
-Hooks.on("canvasInit", function ()
+Hooks.on('canvasInit', function ()
 {
     // Extend Token Resource Bars
     Token.prototype.getBarAttribute = getBarAttribute;

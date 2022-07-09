@@ -1,0 +1,65 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+
+    {{!-- Item Sheet Header --}}
+    <header class="sheet-header flexrow">
+        <img class="profile" src="{{object.img}}" title="{{object.name}}" data-edit="img"/>
+
+        <div class="header-details flexrow">
+            <h1>
+                <input name="name" type="text" value="{{object.name}}" placeholder="{{ localize 'LexArcana.ItemName' }}"/>
+            </h1>
+
+            <div class="item-subtitle">
+                <h4 class="item-type">{{object.type}}</h4>
+                <span class="item-status">{{itemStatus}}</span>
+            </div>
+        </div>
+    </header>
+
+    {{!-- Custos Sheet Navigation --}}
+    <nav class="sheet-navigation tabs" data-group="primary">
+        <a class="item active" data-tab="information">{{ localize "LexArcana.Information" }}</a>
+        <a class="item" data-tab="description">{{ localize "LexArcana.Description" }}</a>
+    </nav>
+
+    {{!-- Item Sheet Body --}}
+    <section class="sheet-body">
+        {{!-- Information Tab --}}
+        <div class="tab information flexrow" data-group="primary" data-tab="information">
+            {{!-- Languages spoken --}}
+            <div>
+                <h3>{{ localize "LexArcana.LanguagesSpokenLabel" }}</h3>
+                <div class="grid-layout-2c">
+                    <input style="width: 100%" type="text" name="data.languages" value="{{data.languages}}" data-dtype="Text"/>
+                </div>
+            </div>
+
+            {{!-- Province Peritiae Bonuses --}}
+            <div>
+                <h3>{{ localize "LexArcana.ProvincePeritiaeModifiersLabel" }}</h3>
+                <div>
+                    <ul class="grid-layout-2c grid-layout2c-left-text-right-number">
+                        <li>{{data.peritiaeModifiers.deBello.label}}</li>
+                        <li><input type="text" name="data.peritiaeModifiers.deBello.value" value="{{data.peritiaeModifiers.deBello.value}}" data-dtype="Number"/></li>
+                        <li>{{data.peritiaeModifiers.deNatura.label}}</li>
+                        <li><input type="text" name="data.peritiaeModifiers.deNatura.value" value="{{data.peritiaeModifiers.deNatura.value}}" data-dtype="Number"/></li>
+                        <li>{{data.peritiaeModifiers.deSocietate.label}}</li>
+                        <li><input type="text" name="data.peritiaeModifiers.deSocietate.value" value="{{data.peritiaeModifiers.deSocietate.value}}" data-dtype="Number"/></li>
+                        <li>{{data.peritiaeModifiers.deMagia.label}}</li>
+                        <li><input type="text" name="data.peritiaeModifiers.deMagia.value" value="{{data.peritiaeModifiers.deMagia.value}}" data-dtype="Number"/></li>
+                        <li>{{data.peritiaeModifiers.deScientia.label}}</li>
+                        <li><input type="text" name="data.peritiaeModifiers.deScientia.value" value="{{data.peritiaeModifiers.deScientia.value}}" data-dtype="Number"/></li>
+                        <li>{{data.peritiaeModifiers.deCorpore.label}}</li>
+                        <li><input type="text" name="data.peritiaeModifiers.deCorpore.value" value="{{data.peritiaeModifiers.deCorpore.value}}" data-dtype="Number"/></li>
+                    </ul>
+                    
+                </div>
+            </div>
+        </div>
+
+        {{!-- Description Tab --}}
+        <div class="tab flexrow description" data-group="primary" data-tab="description">
+            {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+        </div>
+    </section>
+</form>

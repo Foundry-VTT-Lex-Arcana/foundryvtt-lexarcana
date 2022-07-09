@@ -1,2 +1,4 @@
-.vscode
+.vs
 .idea
+
+/.vscode/settings.json

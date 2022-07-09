@@ -2,32 +2,37 @@
     "name": "LexArcana",
     "title": "Lex Arcana",
     "description": "A game system by players of Lex Arcana - An Empire Without End RPG",
-    "version": "0.0.0",
+    "version": "0.0.2",
     "templateVersion": 2,
-    "author": "Draedrus, Lysoun, Milo115b",
+    "author": "Draedrus, Lysoun, Milo115b, ForjaSalvaje, ParvusDomus",
     "scripts": [],
     "esmodules": [
         "LexArcana.js"
     ],
-    "styles": [],
+    "styles": ["styles/LexArcana.css"],
     "packs": [],
     "languages": [
         {
             "lang": "en",
             "name": "English",
             "path": "lang/en.json"
+        },
+        {
+            "lang": "es",
+            "name": "Spanish",
+            "path": "lang/es.json"
         }
     ],
     "socket": false,
     "initiative": "1d20",
     "gridDistance": 10,
     "gridUnits": "m",
-    "primaryTokenAttribute": "resources.hitPoints",
-    "secondaryTokenAttribute": "resources.pietas",
-    "minimumCoreVersion": "0.7.9",
-    "compatibleCoreVersion": "0.7.9",
-    "url": "https://github.com/pplans/foundryvtt-lexarcana",
-    "manifest": "https://github.com/pplans/foundryvtt-lexarcana/releases/download/0.0.0/system.json",
-    "download": "https://github.com/pplans/foundryvtt-lexarcana/archive/0.0.0.zip",
+    "primaryTokenAttribute": "attributes.hitPoints",
+    "secondaryTokenAttribute": "attributes.pietas",
+    "minimumCoreVersion": "9",
+    "compatibleCoreVersion": "9",
+    "url": "https://github.com/Foundry-VTT-Lex-Arcana/foundryvtt-lexarcana",
+    "manifest": "https://github.com/Foundry-VTT-Lex-Arcana/foundryvtt-lexarcana/blob/master/system.json",
+    "download": "https://github.com/Foundry-VTT-Lex-Arcana/foundryvtt-lexarcana/archive/refs/heads/master.zip",
     "license": "LICENSE.txt"
 }

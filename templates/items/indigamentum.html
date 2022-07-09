@@ -1,0 +1,78 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+
+    {{!-- Item Sheet Header --}}
+    <header class="sheet-header flexrow">
+        <img class="profile" src="{{item.img}}" title="{{item.name}}" data-edit="img"/>
+
+        <div class="header-details flexrow">
+            <h1 class="charname">
+                <input name="name" type="text" value="{{item.name}}" placeholder="{{ localize 'LexArcana.ItemName' }}"/>
+            </h1>
+
+            <div class="item-subtitle">
+                <h4 class="item-type">{{itemType}}</h4>
+                <span class="item-status">{{itemStatus}}</span>
+            </div>
+        </div>
+    </header>
+
+    {{!-- Custos Sheet Navigation --}}
+    <nav class="sheet-navigation tabs" data-group="primary">
+        <a class="item active" data-tab="stats">{{ localize "LexArcana.Attributes" }}</a>
+        <a class="item" data-tab="description">{{ localize "LexArcana.Description" }}</a>
+    </nav>
+
+    {{!-- Item Sheet Body --}}
+    <section class="sheet-body">
+
+		<div class="tab stats flexcol" data-group="primary" data-tab="stats">
+			{{!-- Cost --}}
+			<div class="form-group">
+				<label>{{ localize "LexArcana.Cost" }}</label>
+				<div class="form-fields">
+					<input type="text" name="data.cost" value="{{data.data.cost}}" data-dtype="Number"/>
+				</div>
+			</div>
+			
+			{{!-- Peritia --}}
+			<div class="form-group">
+				<label>{{ localize "LexArcana.PeritiaName" }}</label>
+				<div class="form-fields">
+					<select name="data.peritia" data-dtype="{{data.data.peritia}}">
+						{{#select data.data.peritia}}
+						<option value="deBello">{{ localize "LexArcana.Peritia.DeBello"}}</option>
+						<option value="deNatura">{{ localize "LexArcana.Peritia.DeNatura"}}</option>
+						<option value="deSocietate">{{ localize "LexArcana.Peritia.DeSocietate"}}</option>
+						<option value="deMagia">{{ localize "LexArcana.Peritia.DeMagia"}}</option>
+						<option value="deScientia">{{ localize "LexArcana.Peritia.DeScientia"}}</option>
+						<option value="deCorpore">{{ localize "LexArcana.Peritia.DeCorpore"}}</option>
+						{{/select}}
+					</select>
+				</div>
+			</div>
+			
+			{{!-- Virtute --}}
+			<div class="form-group">
+				<label>{{ localize "LexArcana.VirtutesName" }}</label>
+				<div class="form-fields">
+					<select name="data.virtute" data-dtype="{{data.data.virtute}}">
+						{{#select data.data.virtute}}
+						<option value="none">{{ localize "LexArcana.Virtutes.None"}}</option>
+						<option value="coordinatio">{{ localize "LexArcana.Virtutes.Coordinatio"}}</option>
+						<option value="auctoritas">{{ localize "LexArcana.Virtutes.Auctoritas"}}</option>
+						<option value="ratio">{{ localize "LexArcana.Virtutes.Ratio"}}</option>
+						<option value="vigor">{{ localize "LexArcana.Virtutes.Vigor"}}</option>
+						<option value="ingenium">{{ localize "LexArcana.Virtutes.Ingenium"}}</option>
+						<option value="sensibilitas">{{ localize "LexArcana.Virtutes.Sensibilitas"}}</option>
+						{{/select}}
+					</select>
+				</div>
+			</div>
+		</div>
+
+        {{!-- Description --}}
+        <div class="description tab flexrow" data-group="primary" data-tab="description">
+            {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable}}
+        </div>
+    </section>
+</form>

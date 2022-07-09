@@ -65,15 +65,15 @@ export const migrateWorld = async function ()
     // Migrate World Compendium Packs
     for (let p of game.packs)
     {
-        if (p.metadata.package !== "world")
+        if (p.metadata.package !== 'world')
             continue;
-        if (!["Actor", "Item", "Scene"].includes(p.metadata.entity))
+        if (!['Actor', 'Item', 'Scene'].includes(p.metadata.entity))
             continue;
         await migrateCompendium(p);
     }
 
     // Set the migration as complete
-    game.settings.set("${System.Code}", "systemMigrationVersion", game.system.data.version);
+    game.settings.set("${System.Code}", 'systemMigrationVersion', game.system.data.version);
     ui.notifications.info(`${System.Code} System Migration to version ${game.system.data.version} completed!`, {permanent: true});
 };
 
@@ -87,7 +87,7 @@ export const migrateWorld = async function ()
 export const migrateCompendium = async function (pack)
 {
     const entity = pack.metadata.entity;
-    if (!["Actor", "Item", "Scene"].includes(entity))
+    if (!['Actor', 'Item', 'Scene'].includes(entity))
         return;
 
     // Unlock the pack for editing
@@ -106,13 +106,13 @@ export const migrateCompendium = async function (pack)
         {
             switch (entity)
             {
-                case "Actor":
+                case 'Actor':
                     updateData = migrateActorData(ent.data);
                     break;
-                case "Item":
+                case 'Item':
                     updateData = migrateItemData(ent.data);
                     break;
-                case "Scene":
+                case 'Scene':
                     updateData = migrateSceneData(ent.data);
                     break;
             }
@@ -120,7 +120,7 @@ export const migrateCompendium = async function (pack)
                 continue;
 
             // Save the entry, if data was changed
-            updateData["_id"] = ent._id;
+            updateData['_id'] = ent._id;
             await pack.updateEntity(updateData);
             console.log(`Migrated ${entity} entity ${ent.name} in Compendium ${pack.collection}`);
         }
@@ -153,8 +153,8 @@ export const migrateActorData = function (actor)
     const updateData = {};
 
     // Actor Data Updates
-    _migrateActorMovement(actor, updateData);
-    _migrateActorSenses(actor, updateData);
+    updateData = actor.data;
+    updateData.peritiae = duplicate(game.Actor.custos.peritiae);
 
     // Migrate Owned Items
     if (!actor.items) return updateData;
@@ -164,18 +164,6 @@ export const migrateActorData = function (actor)
 
         // Migrate the Owned Item
         let itemUpdate = migrateItemData(i);
-
-        // Prepared, Equipped, and Proficient for NPC actors
-        if (actor.type === "npc")
-        {
-            if (getProperty(i.data, "preparation.prepared") === false)
-                itemUpdate["data.preparation.prepared"] = true;
-            if (getProperty(i.data, "equipped") === false)
-                itemUpdate["data.equipped"] = true;
-            if (getProperty(i.data, "proficient") === false)
-                itemUpdate["data.proficient"] = true;
-        }
-
         // Update the Owned Item
         if (!isObjectEmpty(itemUpdate))
         {
@@ -227,7 +215,6 @@ function cleanActorData(actorData)
 export const migrateItemData = function (item)
 {
     const updateData = {};
-    _migrateItemAttunement(item, updateData);
     return updateData;
 };
 
@@ -279,7 +266,7 @@ export function removeDeprecatedObjects(data)
 {
     for (let [k, v] of Object.entries(data))
     {
-        if (getType(v) === "Object")
+        if (getType(v) === 'Object')
         {
             if (v._deprecated === true)
             {

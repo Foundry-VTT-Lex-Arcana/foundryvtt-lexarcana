@@ -17,21 +17,20 @@
 
     {{!-- NPC Sheet Navigation --}}
     <nav class="sheet-navigation tabs" data-group="primary">
-        <a class="item active" data-tab="attributes">{{ localize "LexArcana.Attributes" }}</a>
+        <a class="item active" data-tab="abilities">{{ localize "LexArcana.Abilities" }}</a>
         <a class="item" data-tab="biography">{{ localize "LexArcana.Biography" }}</a>
     </nav>
 
     {{!-- NPC Sheet Body --}}
     <section class="sheet-body">
-        {{!-- Attributes Tab --}}
-        <div>
-            TODO Attributes tab
+        {{!-- Abilities Tab --}}
+        <div class="tab abilities flexcol" data-group="primary" data-tab="abilities">
+            {{> "systems/LexArcana/templates/actors/parts/actor-abilities.html"}}
         </div>
 
         {{!-- Biography Tab --}}
         <div class="tab biography flexcol" data-group="primary" data-tab="biography">
-            <p>Biography</p>
-            {{editor content=data.details.biography.value target="data.details.biography.value" button=true owner=owner editable=editable}}
+            {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}
         </div>
     </section>
 </form>

@@ -1,3 +1,38 @@
-<div class="inventory-filters flexrow">
-TODO inventory sheet
+<div class="inventory-filters inventory">
+	<div>
+		<h2>{{ localize "LexArcana.InventoryEquipedSectionTitle" }}</h2>
+		<ul>
+		{{#each items as |item key|}}
+			{{#ife item.data.active true}}
+				<li class="item">
+					<a class="item-image" data-id="{{item._id}}"><img src="{{item.img}}" title="{{item.name}}" width="32" height="32" /></a>
+					<a class="item-name" title="{{item.name}}" data-id="{{item._id}}">{{item.name}}</a>
+                    {{#ife item.type 'meleeWeapon'}}
+					<a class="item-roll icon" data-id="{{item._id}}">&nbsp;</a>
+					{{/ife}}
+                    {{#ife item.type 'rangedWeapon'}}
+					<a class="item-roll icon" data-id="{{item._id}}">&nbsp;</a>
+					{{/ife}}
+					<a class="item-delete icon" data-id="{{item._id}}">&nbsp;</a>
+				</li>
+			{{/ife}}
+		{{/each}}
+		</ul>
+	</div>
+	<div>
+		<h2>{{ localize "LexArcana.InventoryBagSectionTitle" }}</h2>
+		<ul>
+		{{#each items as |item key|}}
+			{{#ifne item.data.active true}}
+			<li class="item">
+				<a class="item-image" data-id="{{item._id}}"><img src="{{item.img}}" title="{{item.name}}" width="32" height="32" /></a>
+				<a class="item-name" title="{{item.name}}" data-id="{{item._id}}">{{item.name}}</a>
+				{{#ife item.type 'meleeWeapon'}}
+				<a class="rollItem-icon icon" data-id="{{item._id}}">&nbsp;</a>
+				{{/ife}}
+			</li>
+			{{/ifne}}
+		{{/each}}
+		</ul>
+	</div>
 </div>
