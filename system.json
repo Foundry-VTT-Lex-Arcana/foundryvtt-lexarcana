@@ -32,7 +32,7 @@
     "minimumCoreVersion": "9",
     "compatibleCoreVersion": "9",
     "url": "https://github.com/Foundry-VTT-Lex-Arcana/foundryvtt-lexarcana",
-    "manifest": "https://github.com/Foundry-VTT-Lex-Arcana/foundryvtt-lexarcana/blob/master/system.json",
+    "manifest": "https://raw.githubusercontent.com/Foundry-VTT-Lex-Arcana/foundryvtt-lexarcana/master/system.json",
     "download": "https://github.com/Foundry-VTT-Lex-Arcana/foundryvtt-lexarcana/archive/refs/heads/master.zip",
     "license": "LICENSE.txt"
 }
