@@ -16,29 +16,28 @@
 						<input name="name" type="text" value="{{actor.name}}" placeholder="{{ localize 'LexArcana.Name' }}"/>
 					</h1>
                     <ul class="flexrow">
-                {{#if isGM}}
-                <li>
-                    <h4 class="attribute-name box-title">{{ localize "LexArcana.NPC" }}</h4>
-                    <div class="attribute-value multiple">
-                        <input name="data.attributes.npc" type="checkbox" {{checked data.attributes.npc}} />
-                    </div>
-                </li>
-                {{/if}}
-                <li>
-                    <h4 class="attribute-name box-title">{{ localize "LexArcana.Age" }}</h4>
-                    <div class="attribute-value">
-                        <input name="data.age" type="text" value="{{data.age}}" placeholder="19" data-dtype="Number"/>
-                    </div>
-                </li>
-                <li>
-                    <h4 class="attribute-name box-title">{{ localize "LexArcana.Gender" }}</h4>
-                    <div class="attribute-value">
-                        <input name="data.gender" type="text" value="{{data.gender}}" placeholder="N/A" data-dtype="String"/>
-                    </div>
-                </li>
-                </ul>
-				</li>
-                
+                        {{#if isGM}}
+                        <li>
+                            <h4 class="attribute-name box-title">{{ localize "LexArcana.NPC" }}</h4>
+                            <div class="attribute-value multiple">
+                                <input name="data.attributes.npc" type="checkbox" {{checked data.attributes.npc}} />
+                            </div>
+                        </li>
+                        {{/if}}
+                         <li>
+                             <h4 class="attribute-name box-title">{{ localize "LexArcana.Age" }}</h4>
+                             <div class="attribute-value">
+                                <input name="data.age" type="text" value="{{data.age}}" placeholder="19" data-dtype="Number"/>
+                             </div>
+                        </li>
+                        <li>
+                            <h4 class="attribute-name box-title">{{ localize "LexArcana.Gender" }}</h4>
+                            <div class="attribute-value">
+                                <input name="data.gender" type="text" value="{{data.gender}}" placeholder="N/A" data-dtype="String"/>
+                            </div>
+                        </li>
+                    </ul>
+				</li>                
 			</ul>
             {{!-- Header sub Attributes --}}
             <ul class="attributes flexrow">
@@ -65,7 +64,7 @@
             {{!-- Header Attributes --}}
             <ul class="attributes flexrow">
                 <li class="attribute health">
-                    <h4 class="attribute-name box-title">{{ localize "LexArcana.HitPoints" }}</h4>
+                    <h4 class="attribute-name box-title">{{ localize "LexArcana.HitPoints" }} | {{ localize "LexArcana.Encumbrance" }}</h4>
                     <div class="attribute-value multiple">
                         <input name="data.attributes.hitPoints.value" type="text" value="{{data.attributes.hitPoints.value}}" placeholder="10" data-dtype="Number"/>
                         <span class="sep"> / </span>
