@@ -73,13 +73,7 @@
                         "specialties": {},
                         "defaultRoll": "d6"
                     },
-                    "deNatura":
-                    {
-                        "value": 6,
-                        "specialties": {},
-                        "defaultRoll": "d6"
-                    },
-                    "deSocietate":
+                    "deCorpore":
                     {
                         "value": 6,
                         "specialties": {},
@@ -91,18 +85,25 @@
                         "specialties": {},
                         "defaultRoll": "d6"
                     },
+                    "deNatura":
+                    {
+                        "value": 6,
+                        "specialties": {},
+                        "defaultRoll": "d6"
+                    },
                     "deScientia":
                     {
                         "value": 6,
                         "specialties": {},
                         "defaultRoll": "d6"
                     },
-                    "deCorpore":
+                    "deSocietate":
                     {
                         "value": 6,
                         "specialties": {},
                         "defaultRoll": "d6"
                     }
+                    
                 },
                 "FateDice": true
             },
@@ -110,7 +111,8 @@
 			{
 				"age": 19,
 				"gender": "n/a",
-				"languages": ""
+				"languages": "",
+                "encumbrance": 0
 			},
             "NPC":
             {

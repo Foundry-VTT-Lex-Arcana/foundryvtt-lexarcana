@@ -14,7 +14,7 @@ table td
 
 .system-LexArcana i.fas
 {
-	color: gold;
+	color: #930101;
 }
 
 body.system-LexArcana
@@ -31,8 +31,11 @@ body.system-LexArcana
     font-size: 14px;
     font-weight: bold;
     text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
-	background: none;
-	background-color: #00000055;
+}
+
+.window-app .window-content {
+    background-color: white;
+    background: url("../styles/images/soft_stone.webp") repeat;
 }
 
 .system-LexArcana .window-title
@@ -42,15 +45,15 @@ body.system-LexArcana
 
 .system-LexArcana .window-content
 {
-    background-image:url("../styles/images/marble-black.png");
+    background-image:url("../styles/images/soft_stone.webp");
     background-repeat: repeat;
     background-size: 512px 512px;
-    color: #ffffff;
+    color: #000000;
 }
 
 .system-LexArcana .message p
 {
-	color: #ffffff;
+	color: #fdfdfd;
 }
 
 .system-LexArcana .sidebar-tab .message p.error
@@ -75,16 +78,22 @@ body.system-LexArcana
 {
     font-size: 18px;
     font-weight: bold;
-    border-bottom: 1px solid #d7000055;
+    border-bottom: 2px solid #930101;
 }
 
 /**********************************************************
  * Character sheets
  **********************************************************/
 
+.sheet header.sheet-header img {
+    flex: 0 0 64px;
+    height: 128px;
+    margin-right: 6px;
+}
+
 .system-LexArcana .sheet-navigation
 {
-    color: #ffffffaa;
+    color: #000000aa;
     background-color: #ffffff55;
     text-align: center;
     line-height: 32px;
@@ -157,7 +166,7 @@ body.system-LexArcana
 
 .system-LexArcana .grid-layout3-peritia
 {
-    grid-template-columns: 32px auto 32px;
+    grid-template-columns: auto 32px  32px;
 }
 
 .system-LexArcana .grid-layout3-specialty
@@ -235,6 +244,16 @@ body.system-LexArcana
     text-align: center;
 }
 
+.portrait
+{
+    text-align: center;
+}
+
+.laurel
+{
+    border: none;
+}
+
 .system-LexArcana .peritia-name { font-weight: bold; }
 
 /**********************************************************
@@ -243,13 +262,13 @@ body.system-LexArcana
 
 .system-LexArcana .chat-message .message-header
 {
-    color: #d70000;
+    color: #930101;
 }
 
 .system-LexArcana .chat-message.whisper .message-header
 {
     background-color: #6b6b6b88;
-    color: #ffd700;
+    color: #930101;
 }
 
 .system-LexArcana .form-header
@@ -259,7 +278,7 @@ body.system-LexArcana
 , #module-management .package-list .package-title
 , #module-management .notes
 {
-    color: #ffffff;
+    color: #000000;
 }
 
 .system-LexArcana .form-group .units
@@ -298,7 +317,7 @@ body.system-LexArcana
 
 .system-LexArcana .tabs .active
 {
-    text-shadow: 0px 0px 4px #ffd700ff;
+    text-shadow: 0px 0px 4px #930101;
 }
 
 .system-LexArcana .biography
@@ -338,6 +357,6 @@ body.system-LexArcana
 , .tox
 {
     padding: 5px;
-	background-color: #e0cfaa;
+	background-color: #cac2b0;
     color: #000000;
 }
