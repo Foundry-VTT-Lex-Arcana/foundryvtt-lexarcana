@@ -207,7 +207,7 @@ export default class LexArcanaActorSheet extends ActorSheet
             {
                 const expression = html.find('input[name="'+config.defaultRollInputName+'"]')[0].value;
                 caller.actor.setVirtuteDefaultRoll(dataSet.virtuteid, expression);
-                caller.actor.roll(expression, config.title);
+                caller.actor.roll(expression, true, config.title);
             };
         }
         else if(dataSet.specialtyid!==undefined)
@@ -231,7 +231,7 @@ export default class LexArcanaActorSheet extends ActorSheet
             {
                 const expression = html.find('input[name="'+config.defaultRollInputName+'"]')[0].value;
                 caller.actor.setPeritiaSpecialtyDefaultRoll(dataSet.peritiaid, dataSet.specialtyid, expression);
-                caller.actor.roll(expression, config.title);
+                caller.actor.roll(expression, true, config.title);
             };
         }
         else
@@ -255,7 +255,7 @@ export default class LexArcanaActorSheet extends ActorSheet
             {
                 const expression = html.find('input[name="'+config.defaultRollInputName+'"]')[0].value;
                 caller.actor.setPeritiaDefaultRoll(dataSet.peritiaid, expression);
-                caller.actor.roll(expression, config.title);
+                caller.actor.roll(expression, true, config.title);
             };
         }
         const expressionTypePrompt = game.i18n.localize('LexArcana.DiceExpressionBalancedPrompt');

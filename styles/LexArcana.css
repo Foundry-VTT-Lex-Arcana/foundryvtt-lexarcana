@@ -329,11 +329,41 @@ body.system-LexArcana
     height: 100%;
 }
 
+/**
+ * Rolls
+ **/
+
+.system-LexArcana .LexArcanaRoll h1
+{
+	font-weight: bold;
+	font-size: 14px;
+}
+
 .system-LexArcana .LexArcanaRoll .fateroll
 {
-    color: #ff0000;
+	background-color: #d4af3722;
+	padding: 5px;
+}
+
+.system-LexArcana .LexArcanaRoll .fateroll .important
+{
+    color: #d4af37;
     font-weight: bold;
 }
+
+.system-LexArcana .LexArcanaRoll .details
+{
+    display: none;
+}
+
+.system-LexArcana .LexArcanaRoll:hover .details
+{
+    display: inline-block;
+}
+
+/**
+ * Items
+ **/
 
 .system-LexArcana .inventory .item
 {

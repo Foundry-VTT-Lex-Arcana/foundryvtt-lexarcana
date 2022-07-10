@@ -121,30 +121,9 @@ export default class LexArcanaActor extends Actor
     /*                  Roll Dices                  */
     /* -------------------------------------------- */
 	
-	roll(expression, info='')
+	roll(expression, _hasFateRoll, info='')
 	{
-        /*const rollMode = game.settings.get('core', 'rollMode');
-        const message =
-        {
-            speaker: {actor: this.id },
-            content: info+" "+expression,
-            blind: rollMode === 'blindroll'
-        };
-        // accept expressions as 1d8, 2d4+1d12, 1d5, 1d6, 1d10, 1d20 etc.
-        const diceFormulaRegExp = '^(([1-9][0-9]*)?d([34568]|(?:10)|(?:12)|(?:20)))(\\+(([1-9][0-9]*)?d([34568]|(?:10)|(?:12)|(?:20))))*';
-        if(expression.match(diceFormulaRegExp))
-        {
-            message.roll = (new Roll(expression)).evaluate({async: false});
-            message.type = CONST.CHAT_MESSAGE_TYPES.ROLL;
-            message.sound = CONFIG.sounds.dice;
-        }
-        else
-        {
-            message.content += game.i18n.localize('LexArcana.InvalidRoll');
-        }
-        return ChatMessage.create(message);*/
-		let message = LexArcanaDice.CreateChatMessage(expression, info);
-        return ChatMessage.create(message);
+        LexArcanaDice.CustomRoll(expression, _hasFateRoll, info);
     }
 
     rollPeritiaSpecialty(_peritiaid, _key, _numDice, _expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED, _info='')
