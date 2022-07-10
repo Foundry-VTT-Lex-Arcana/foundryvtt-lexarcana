@@ -25,7 +25,7 @@
     ],
     "socket": false,
     "initiative": "1d20",
-    "gridDistance": 10,
+    "gridDistance": 2,
     "gridUnits": "m",
     "primaryTokenAttribute": "attributes.hitPoints",
     "secondaryTokenAttribute": "attributes.pietas",
