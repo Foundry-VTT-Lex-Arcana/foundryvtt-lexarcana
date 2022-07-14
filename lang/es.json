@@ -27,11 +27,11 @@
 	"LexArcana.DisciplineName": "Disciplina",
 	"LexArcana.DisciplinesName": "Disciplinas",
 	"LexArcana.Disciplines": {
-		"Precognition": "precognici&oacute;n",
+		"Precognition": "Precognición",
 		"Clairvoyance": "Clarividencia",
-		"Retrocognition": "Retrocognici&oacute;n",
-		"InterpretationOfOmens": "Interpretaci&oacute;n de presajios",
-		"InterpretationOfDreams": "Interpretaci&oacute;n de sue&ntilde;os",
+		"Retrocognition": "Retrocognición",
+		"InterpretationOfOmens": "Interpretación de presajios",
+		"InterpretationOfDreams": "Interpretación de sueños",
 		"FavorOfTheGods": "Favor de los dioses"
 	},
 	"LexArcana.Name": "Nombre",
@@ -57,7 +57,7 @@
 	"LexArcana.HitPoints": "Puntos Vida",
 	"LexArcana.Pietas": "Pietas",
 	"LexArcana.Inventory": "Inventario",
-	"LexArcana.Rituals": "Rituales",
+	"LexArcana.Rituals": "Invocaciones",
 	"LexArcana.IndigamentaSectionTitle": "Indigamenta",
 	"LexArcana.RitualsSectionTitle": "Rituales",
 	"LexArcana.Description": "Descripción",
@@ -83,5 +83,8 @@
 	"LexArcana.Duration": "Duraci&oacute;n",
 	"LexArcana.Short": "Corto",
 	"LexArcana.Average": "Medio",
-	"LexArcana.Long": "Largo"
+	"LexArcana.Long": "Largo",
+	"LexArcana.DoSMarginalSuccess": "&Eacute;xito marginal",
+	"LexArcana.DoSCompleteSuccess": "&Eacute;xito completo",
+	"LexArcana.DoSExceptionalSuccess": "&Eacute;xito excepcional"
 }

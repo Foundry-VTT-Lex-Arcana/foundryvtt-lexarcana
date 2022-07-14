@@ -5,6 +5,11 @@
     font-family: none;
 }
 
+@font-face {
+    font-family: "Trajan";
+    src: url("../styles/fonts/Trajan-Pro-Regular.ttf")
+}
+
 table td
 , .mce-content-body td
 {
@@ -14,7 +19,7 @@ table td
 
 .system-LexArcana i.fas
 {
-	color: gold;
+    color: #d4af37;
 }
 
 body.system-LexArcana
@@ -27,12 +32,15 @@ body.system-LexArcana
 , .system-LexArcana .sidebar-tab .chat-message
 , .system-LexArcana .sidebar-tab .message
 {
-    font-family: Herculanum;
+    font-family: Trajan;
     font-size: 14px;
     font-weight: bold;
     text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
-	background: none;
-	background-color: #00000055;
+}
+
+.window-app .window-content {
+    background-color: white;
+    background: url("../styles/images/soft_stone.webp") repeat;
 }
 
 .system-LexArcana .window-title
@@ -42,15 +50,15 @@ body.system-LexArcana
 
 .system-LexArcana .window-content
 {
-    background-image:url("../styles/images/marble-black.png");
+    background-image:url("../styles/images/soft_stone.webp");
     background-repeat: repeat;
     background-size: 512px 512px;
-    color: #ffffff;
+    color: #000000;
 }
 
 .system-LexArcana .message p
 {
-	color: #ffffff;
+	color: #fdfdfd;
 }
 
 .system-LexArcana .sidebar-tab .message p.error
@@ -75,16 +83,22 @@ body.system-LexArcana
 {
     font-size: 18px;
     font-weight: bold;
-    border-bottom: 1px solid #d7000055;
+    border-bottom: 2px solid #930101;
 }
 
 /**********************************************************
  * Character sheets
  **********************************************************/
 
+.sheet header.sheet-header img {
+    flex: 0 0 64px;
+    height: 128px;
+    margin-right: 6px;
+}
+
 .system-LexArcana .sheet-navigation
 {
-    color: #ffffffaa;
+    color: #000000aa;
     background-color: #ffffff55;
     text-align: center;
     line-height: 32px;
@@ -157,7 +171,7 @@ body.system-LexArcana
 
 .system-LexArcana .grid-layout3-peritia
 {
-    grid-template-columns: 32px auto 32px;
+    grid-template-columns: auto 32px  32px;
 }
 
 .system-LexArcana .grid-layout3-specialty
@@ -235,6 +249,16 @@ body.system-LexArcana
     text-align: center;
 }
 
+.portrait
+{
+    text-align: center;
+}
+
+.laurel
+{
+    border: none;
+}
+
 .system-LexArcana .peritia-name { font-weight: bold; }
 
 /**********************************************************
@@ -243,13 +267,13 @@ body.system-LexArcana
 
 .system-LexArcana .chat-message .message-header
 {
-    color: #d70000;
+    color: #930101;
 }
 
 .system-LexArcana .chat-message.whisper .message-header
 {
     background-color: #6b6b6b88;
-    color: #ffd700;
+    color: #930101;
 }
 
 .system-LexArcana .form-header
@@ -259,7 +283,7 @@ body.system-LexArcana
 , #module-management .package-list .package-title
 , #module-management .notes
 {
-    color: #ffffff;
+    color: #000000;
 }
 
 .system-LexArcana .form-group .units
@@ -298,7 +322,7 @@ body.system-LexArcana
 
 .system-LexArcana .tabs .active
 {
-    text-shadow: 0px 0px 4px #ffd700ff;
+    text-shadow: 0px 0px 4px #930101;
 }
 
 .system-LexArcana .biography
@@ -310,11 +334,69 @@ body.system-LexArcana
     height: 100%;
 }
 
+/**
+ * Rolls
+ **/
+
+.system-LexArcana .LexArcanaRoll h1
+{
+	font-weight: bold;
+	font-size: 14px;
+}
+
 .system-LexArcana .LexArcanaRoll .fateroll
 {
-    color: #ff0000;
+	background-color: #d4af3722;
+	padding: 5px;
+}
+
+.system-LexArcana .LexArcanaRoll .fateroll .important
+{
+    color: #d4af37;
     font-weight: bold;
 }
+
+.system-LexArcana .LexArcanaRoll .failure
+{
+    color: #d43737;
+    font-weight: bold;
+	text-decoration:underline;
+}
+
+.system-LexArcana .LexArcanaRoll .DoS1
+{
+    color: #d4af37;
+    font-weight: bold;
+}
+
+.system-LexArcana .LexArcanaRoll .DoS2
+{
+    color: #d4af37;
+    font-weight: bold;
+	font-size: 16px;
+}
+
+.system-LexArcana .LexArcanaRoll .DoS3
+{
+    color: #d4af37;
+    font-weight: bold;
+	font-size: 16px;
+	text-decoration:underline;
+}
+
+.system-LexArcana .LexArcanaRoll .details
+{
+    display: none;
+}
+
+.system-LexArcana .LexArcanaRoll:hover .details
+{
+    display: inline-block;
+}
+
+/**
+ * Items
+ **/
 
 .system-LexArcana .inventory .item
 {
@@ -338,6 +420,76 @@ body.system-LexArcana
 , .tox
 {
     padding: 5px;
-	background-color: #e0cfaa;
+	background-color: #cac2b0;
     color: #000000;
+}
+
+/**
+ * Tooltips - coming mainly from BOL system
+ **/
+ /* Tooltip container */
+.system-LexArcana .dialog .window-content .dialog-buttons .tooltip
+{
+	position: relative;
+}
+
+/* Tooltip text */
+.system-LexArcana .dialog .window-content .dialog-buttons .tooltip .tooltipText
+{
+	visibility: hidden;
+	width: 160px;
+	color: gold;
+	text-align: center;
+	padding: 2px 0;
+	border-radius: 6px;
+	border-style: groove;
+	border-color: gold;
+	border-width: 1px;
+	font-size: 12px;
+	background-color: #00000088;
+	line-height: 12px;
+	font-weight: bold;
+
+	/* Position the tooltip text */
+	position: absolute;
+	z-index: 1;
+	bottom: 105%;
+	left: 50%;
+	margin-left: -60px;
+
+	/* Fade in tooltip */
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.system-LexArcana .dialog .window-content .dialog-buttons .scroller {
+	width: 300px;
+	overflow-y: scroll;
+	scrollbar-color: rebeccapurple green;
+	scrollbar-width: thin;
+}
+
+.system-LexArcana .dialog .window-content .dialog-buttons .tooltip .tooltipDescription
+{
+	width: 250px;
+	left: 205%;
+}
+
+.system-LexArcana .dialog .window-content .dialog-buttons .tooltip .tooltipRight
+{
+	left: -200%;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.system-LexArcana .dialog .window-content .dialog-buttons .tooltip:hover .tooltipText
+{
+	visibility: visible;
+	opacity: 1;
+}
+
+.system-LexArcana .dialog .window-content .dialog-buttons .clickable:hover, .clickable:focus
+{
+	color: #000;
+	text-shadow: 0 0 10px red;
+	cursor: pointer;
 }

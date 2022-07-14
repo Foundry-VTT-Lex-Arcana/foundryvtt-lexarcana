@@ -1,6 +1,6 @@
 This project is not official and hence is supported neither by Foundry VTT &trade; nor by Lex Arcana &trade;.
 
-# Rols
+# Rolls
 Due to the nature of Lex Arcana rolls, in order to avoid decision time for players we cut the rolls in five distinct possibilities
 ## The custom roll
 You get to decide the composition of your roll for this ability
@@ -16,6 +16,20 @@ Balanced mode with 3 dices: 3d6
 Unbalanced mode with 3 dices: 1d12+1d3+1d3
 
 # Versions
+## 0.0.5
+* Added tooltips for rolls
+* Grid set to 2m instead of 10
+* Fixed crash on opening provinces sheet
+* Fixed Spanish accents
+* Changed font to Trajan instead of Herculanum
+
+## 0.0.4
+* Fixed crash on opening rituals/indigamenta sheets
+
+## 0.0.3
+* Complete rolling API overhaul
+* Design overhaul
+
 ## 0.0.2
 * Fixed custom rolls - spotted architecture weird things, gotta improve this in later versions
 * Fixed rituals/indigamenta issues
@@ -24,3 +38,5 @@ Unbalanced mode with 3 dices: 1d12+1d3+1d3
 
 ## Prior 0.0.1
 Alpha version, Custos character sheet base, items base and rituals/indigamenta not working
+
+# Credits
