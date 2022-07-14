@@ -27,11 +27,11 @@
 	"LexArcana.DisciplineName": "Disciplina",
 	"LexArcana.DisciplinesName": "Disciplinas",
 	"LexArcana.Disciplines": {
-		"Precognition": "precognici&oacute;n",
+		"Precognition": "Precognición",
 		"Clairvoyance": "Clarividencia",
-		"Retrocognition": "Retrocognici&oacute;n",
-		"InterpretationOfOmens": "Interpretaci&oacute;n de presajios",
-		"InterpretationOfDreams": "Interpretaci&oacute;n de sue&ntilde;os",
+		"Retrocognition": "Retrocognición",
+		"InterpretationOfOmens": "Interpretación de presajios",
+		"InterpretationOfDreams": "Interpretación de sueños",
 		"FavorOfTheGods": "Favor de los dioses"
 	},
 	"LexArcana.Name": "Nombre",
