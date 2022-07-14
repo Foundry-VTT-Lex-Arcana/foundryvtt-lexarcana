@@ -5,6 +5,11 @@
     font-family: none;
 }
 
+@font-face {
+    font-family: "Trajan";
+    src: url("../styles/fonts/Trajan-Pro-Regular.ttf")
+}
+
 table td
 , .mce-content-body td
 {
@@ -14,7 +19,7 @@ table td
 
 .system-LexArcana i.fas
 {
-	color: #930101;
+    color: #d4af37;
 }
 
 body.system-LexArcana
@@ -27,7 +32,7 @@ body.system-LexArcana
 , .system-LexArcana .sidebar-tab .chat-message
 , .system-LexArcana .sidebar-tab .message
 {
-    font-family: Herculanum;
+    font-family: Trajan;
     font-size: 14px;
     font-weight: bold;
     text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
