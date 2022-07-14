@@ -432,23 +432,23 @@ body.system-LexArcana
 .system-LexArcana .dialog .window-content .dialog-buttons .tooltip .tooltipText
 {
 	visibility: hidden;
-	width: 120px;
-	color: black;
+	width: 160px;
+	color: gold;
 	text-align: center;
 	padding: 2px 0;
 	border-radius: 6px;
 	border-style: groove;
-	border-color: #4A2708;
+	border-color: gold;
 	border-width: 1px;
 	font-size: 12px;
-	background-color: #ffffffbb;
+	background-color: #00000088;
 	line-height: 12px;
 	font-weight: bold;
 
 	/* Position the tooltip text */
 	position: absolute;
 	z-index: 1;
-	bottom: 125%;
+	bottom: 105%;
 	left: 50%;
 	margin-left: -60px;
 
