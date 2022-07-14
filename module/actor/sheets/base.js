@@ -187,6 +187,13 @@ export default class LexArcanaActorSheet extends ActorSheet
         event.preventDefault();
         const dataSet = event.currentTarget.dataset;
         let config = {};
+		function createToolTip(numDice, numFaces)
+		{
+			return '<span class="tooltipText scroller">' +
+					'<p>Balanced '+LexArcanaDice.ComputeExpression(numDice, numFaces, LexArcanaDice.EXPRESSIONTYPE.BALANCED).expression+'</p>' +
+					'<p>Unbalanced '+LexArcanaDice.ComputeExpression(numDice, numFaces, LexArcanaDice.EXPRESSIONTYPE.UNBALANCED).expression+'</p>'+
+					'</span>';
+		}
         if(dataSet.virtuteid!==undefined)
         {
             const virtute = this.actor.data.data.virtutes[dataSet.virtuteid];
@@ -196,7 +203,7 @@ export default class LexArcanaActorSheet extends ActorSheet
             config.buttonBuilder = function(caller, numDice)
             {
                 return {
-                    icon: `<span class="roll${numDice}d-icon"></span>`,
+                    icon: `<span class="roll${numDice}d-icon tooltip">` + createToolTip(numDice, virtute.value)+ `</span>`,
                     callback: html => {
                         const expressionType = html.find('input[name="expression-type"]')[0].checked?LexArcanaDice.EXPRESSIONTYPE.BALANCED:LexArcanaDice.EXPRESSIONTYPE.UNBALANCED;
                         caller.actor.rollND(virtute.value, numDice, expressionType, config.title);
@@ -219,8 +226,10 @@ export default class LexArcanaActorSheet extends ActorSheet
             config.title = peritiaNameLoc+" :: "+specialty.name;
             config.buttonBuilder = function(caller, numDice)
             {
+				const specialty = caller.actor.getSpecialty(dataSet.peritiaid, dataSet.specialtyid);
+				const totalFaces = caller.actor.data.data.peritiae[dataSet.peritiaid].value+parseInt(specialty.modifier);
                 return {
-                    icon: `<span class="roll${numDice}d-icon"></span>`,
+                    icon: `<span class="roll${numDice}d-icon tooltip">` + createToolTip(numDice, totalFaces) + `</span>`,
                     callback: html => {
                         const expressionType = html.find('input[name="expression-type"]')[0].checked?LexArcanaDice.EXPRESSIONTYPE.BALANCED:LexArcanaDice.EXPRESSIONTYPE.UNBALANCED;
                         caller.actor.rollPeritiaSpecialty(dataSet.peritiaid, dataSet.specialtyid, numDice, expressionType, config.title);
@@ -244,7 +253,7 @@ export default class LexArcanaActorSheet extends ActorSheet
             config.buttonBuilder = function(caller, numDice)
             {
                 return {
-                    icon: `<span class="roll${numDice}d-icon"></span>`,
+                    icon: `<span class="roll${numDice}d-icon tooltip">` + createToolTip(numDice, peritia.value) + `</span>`,
                     callback: html => {
                         const expressionType = html.find('input[name="expression-type"]')[0].checked?LexArcanaDice.EXPRESSIONTYPE.BALANCED:LexArcanaDice.EXPRESSIONTYPE.UNBALANCED;
                         caller.actor.rollND(peritia.value, numDice, expressionType, config.title);
