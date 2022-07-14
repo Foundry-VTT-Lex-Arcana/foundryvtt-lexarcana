@@ -24,12 +24,54 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 			});
 	}
 
+	setDefaultRollsNoRecursion(obj)
+	{
+		if (typeof obj !== 'object')
+			return;
+		Object.keys(obj).forEach(function(key,index) {
+			if(key === 'defaultRoll' && obj[key] === null)
+			{
+				obj[key] = LexArcanaDice.ComputeExpression(3, obj['value'], LexArcanaDice.EXPRESSIONTYPE.BALANCED);
+			}
+		});
+	}
+
+	setDefaultRolls(obj)
+	{
+		function shouldDefault(v)
+		{
+			return v === null || v === 'null' || v === '[object Object]';
+		}
+		if (typeof obj !== 'object')
+			return;
+		let virtutes = ["coordinatio", "auctoritas", "ratio", "vigor", "ingenium", "sensibilitas"];
+		let peritiae = ["deBello", "deCorpore", "deMagia", "deNatura",  "deScientia", "deSocietate"];
+		virtutes.forEach((v, k) =>
+		{
+			if(shouldDefault(obj.virtutes[v].defaultRoll))
+				obj.virtutes[v].defaultRoll = LexArcanaDice.ComputeExpression(3, obj.virtutes[v].value, LexArcanaDice.EXPRESSIONTYPE.BALANCED).expression;
+		});
+		peritiae.forEach((v, k) =>
+		{
+			if(shouldDefault(obj.peritiae[v].defaultRoll))
+				obj.peritiae[v].defaultRoll = LexArcanaDice.ComputeExpression(3, obj.peritiae[v].value, LexArcanaDice.EXPRESSIONTYPE.BALANCED).expression;
+			Object.keys(obj.peritiae[v].specialties).forEach(function(key,index) {
+				var spe = obj.peritiae[v].specialties[key];
+				if(shouldDefault(spe.defaultRoll))
+				{
+					spe.defaultRoll = LexArcanaDice.ComputeExpression(3, obj.peritiae[v].value+parseInt(spe.modifier), LexArcanaDice.EXPRESSIONTYPE.BALANCED).expression;
+				}
+			});
+		});
+	}
+
 	/** @override */
 	getData()
 	{
 		// Basic data
 		const data = super.getData();
 		// Iterate through items, allocating to containers
+		this.setDefaultRolls(data.data);
 		data.items = [];
 		data.indigamenta = [];
 		data.rituals = [];

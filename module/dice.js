@@ -51,7 +51,7 @@ export class LexArcanaDice {
 		return {expression: computedExpression, totalFaces: (maxFaces-(maxFaces-sumDiceFaces))};
 	}
 
-	static #Compute = function(numDice, maxFaces, expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED)
+	static ComputeExpression = function(numDice, maxFaces, expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED)
 	{
 		switch(expressionType)
 		{
@@ -149,7 +149,7 @@ export class LexArcanaDice {
 
 	static #ComputedRoll = function(_numDice, _maxFaces, _expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED, _hasFateRoll = false, _info='')
 	{
-		let dice = LexArcanaDice.#Compute(_numDice, _maxFaces, _expressionType);
+		let dice = LexArcanaDice.ComputeExpression(_numDice, _maxFaces, _expressionType);
 		return LexArcanaDice.#RollExpression(dice.expression, _hasFateRoll, dice.totalFaces, _info);
 	}
 
