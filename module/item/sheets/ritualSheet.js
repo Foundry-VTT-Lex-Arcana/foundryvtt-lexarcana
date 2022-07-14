@@ -1,6 +1,6 @@
 import {LexArcana} from '../../config.js';
 import {System} from '../../config.js';
-import LexArcanaItemSheet from '../item.js';
+import LexArcanaItemSheet from './base.js';
 
 /**
  * Override and extend the core LexArcanaItemSheet implementation to handle specific item types
