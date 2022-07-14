@@ -17,7 +17,8 @@ Unbalanced mode with 3 dices: 1d12+1d3+1d3
 
 # Versions
 ## 0.0.4
-* Fixed rituals/indigamenta crash on opening sheets
+* Fixed crash on opening rituals/indigamenta sheets
+* Fixed crash on opening provinces sheet
 
 ## 0.0.3
 * Complete rolling API overhaul
