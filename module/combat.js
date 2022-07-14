@@ -8,3 +8,10 @@ export const _getInitiativeFormula = function (combatant)
 {
     return `1d20`;
 };
+
+export class LexArcanaCombat
+{
+	static Combat(actorA, actorB)
+	{
+	}
+};

@@ -123,18 +123,21 @@ export default class LexArcanaActor extends Actor
 	
 	roll(expression, _hasFateRoll, info='')
 	{
-        LexArcanaDice.CustomRoll(expression, _hasFateRoll, info);
+		const difficultyThreshold = 6;
+        LexArcanaDice.CustomRoll(expression, difficultyThreshold, _hasFateRoll, info);
     }
 
     rollPeritiaSpecialty(_peritiaid, _key, _numDice, _expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED, _info='')
     {
         const specialty = this.getSpecialty(_peritiaid, _key);
         const totalFaces = this.data.data.peritiae[_peritiaid].value+parseInt(specialty.modifier);
-        LexArcanaDice.Roll(_numDice, totalFaces, _expressionType, true, _info);
+		const difficultyThreshold = 6;
+        LexArcanaDice.Roll(_numDice, totalFaces, _expressionType, difficultyThreshold, true, _info);
     }
 
     rollND(_numFaces, _numDice, _expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED, _info='')
     {
-        LexArcanaDice.Roll(_numDice, _numFaces, _expressionType, true, _info);
+		const difficultyThreshold = 6;
+        LexArcanaDice.Roll(_numDice, _numFaces, _expressionType, difficultyThreshold, true, _info);
     }
 }

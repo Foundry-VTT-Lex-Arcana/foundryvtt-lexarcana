@@ -83,5 +83,8 @@
 	"LexArcana.Duration": "Duraci&oacute;n",
 	"LexArcana.Short": "Corto",
 	"LexArcana.Average": "Medio",
-	"LexArcana.Long": "Largo"
+	"LexArcana.Long": "Largo",
+	"LexArcana.DoSMarginalSuccess": "&Eacute;xito marginal",
+	"LexArcana.DoSCompleteSuccess": "&Eacute;xito completo",
+	"LexArcana.DoSExceptionalSuccess": "&Eacute;xito excepcional"
 }
