@@ -356,6 +356,34 @@ body.system-LexArcana
     font-weight: bold;
 }
 
+.system-LexArcana .LexArcanaRoll .failure
+{
+    color: #d43737;
+    font-weight: bold;
+	text-decoration:underline;
+}
+
+.system-LexArcana .LexArcanaRoll .DoS1
+{
+    color: #d4af37;
+    font-weight: bold;
+}
+
+.system-LexArcana .LexArcanaRoll .DoS2
+{
+    color: #d4af37;
+    font-weight: bold;
+	font-size: 16px;
+}
+
+.system-LexArcana .LexArcanaRoll .DoS3
+{
+    color: #d4af37;
+    font-weight: bold;
+	font-size: 16px;
+	text-decoration:underline;
+}
+
 .system-LexArcana .LexArcanaRoll .details
 {
     display: none;

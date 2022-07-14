@@ -119,3 +119,10 @@ LexArcana.Duration							= 'LexArcana.Duration';
 LexArcana.Short								= 'LexArcana.Short';
 LexArcana.Average							= 'LexArcana.Average';
 LexArcana.Long								= 'LexArcana.Long';
+
+/**
+ * Rolls
+ **/
+ LexArcana.DoSMarginalSuccess				= 'LexArcana.DoSMarginalSuccess';
+ LexArcana.DoSCompleteSuccess				= 'LexArcana.DoSCompleteSuccess';
+ LexArcana.DoSExceptionalSuccess			= 'LexArcana.DoSExceptionalSuccess';

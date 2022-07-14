@@ -1,6 +1,6 @@
 import {LexArcana} from '../../config.js';
 import {System} from '../../config.js';
-import LexArcanaItemSheet from '../item.js';
+import LexArcanaItemSheet from './base.js';
 
 /**
  * Override and extend the core LexArcanaItemSheet implementation to handle specific item types
@@ -36,7 +36,7 @@ export default class LexArcanaProvinceSheet extends LexArcanaItemSheet
 		const data = super.getData();
 		data.owner = isOwner;
 		data.isGM = game.user.isGM;
-		data.limited = this.entity.limited;
+		data.limited = this.document.limited;
 		data.options = this.options;
 		data.editable = this.isEditable;
 		data.cssClass = isOwner ? 'editable' : 'locked';
