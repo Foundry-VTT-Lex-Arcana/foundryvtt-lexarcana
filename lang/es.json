@@ -89,7 +89,7 @@
 	"LexArcana.DoSExceptionalSuccess": "GdE III excepcional",
 	"LexArcana.RollBalanced": "Compensada",
 	"LexArcana.RollUnbalanced": "Sin Compensar",
-	"LexArcana.RollDetailsThreshold": "Contra dificultad de",
+	"LexArcana.RollDetailsThreshold": "Contra",
 	"LexArcana.RollCustomInput": "Tirada Personalizada",
 	"LexArcana.RollDifficultyThreshold": "Dificultad tirada"
 }

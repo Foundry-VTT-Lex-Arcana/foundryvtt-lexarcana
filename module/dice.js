@@ -123,7 +123,7 @@ export class LexArcanaDice {
 			}
 			else if(!previousHasFated)
 			{
-				message.content+='<span>Result: '+computedTotal+'</span>&nbsp;';
+				message.content+='<span>Result: '+computedTotal+' <i class="fas fa-dice-d6">&nbsp;</i></span>&nbsp;';
 			}
 			let expressionResult = '';
 			evaluatedRoll.dice.forEach((die) => expressionResult+=die.total+' ');
