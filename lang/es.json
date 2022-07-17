@@ -86,5 +86,7 @@
 	"LexArcana.Long": "Largo",
 	"LexArcana.DoSMarginalSuccess": "GdE I marginal",
 	"LexArcana.DoSCompleteSuccess": "GdE II completo",
-	"LexArcana.DoSExceptionalSuccess": "GdE III excepcional"
+	"LexArcana.DoSExceptionalSuccess": "GdE III excepcional",
+	"LexArcana.RollBalanced": "Compensada",
+	"LexArcana.RollUnbalanced": "Descompensada"
 }

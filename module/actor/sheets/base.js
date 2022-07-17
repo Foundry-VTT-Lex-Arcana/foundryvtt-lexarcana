@@ -190,8 +190,8 @@ export default class LexArcanaActorSheet extends ActorSheet
 		function createToolTip(numDice, numFaces)
 		{
 			return '<span class="tooltipText scroller">' +
-					'<p>Balanced '+LexArcanaDice.ComputeExpression(numDice, numFaces, LexArcanaDice.EXPRESSIONTYPE.BALANCED).expression+'</p>' +
-					'<p>Unbalanced '+LexArcanaDice.ComputeExpression(numDice, numFaces, LexArcanaDice.EXPRESSIONTYPE.UNBALANCED).expression+'</p>'+
+					'<p>'+game.i18n.localize(CONFIG.LexArcana.RollBalanced)+' '+LexArcanaDice.ComputeExpression(numDice, numFaces, LexArcanaDice.EXPRESSIONTYPE.BALANCED).expression+'</p>' +
+					'<p>'+game.i18n.localize(CONFIG.LexArcana.RollUnbalanced)+' '+LexArcanaDice.ComputeExpression(numDice, numFaces, LexArcanaDice.EXPRESSIONTYPE.UNBALANCED).expression+'</p>'+
 					'</span>';
 		}
         if(dataSet.virtuteid!==undefined)

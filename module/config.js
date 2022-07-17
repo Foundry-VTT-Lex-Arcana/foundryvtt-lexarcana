@@ -126,3 +126,5 @@ LexArcana.Long								= 'LexArcana.Long';
  LexArcana.DoSMarginalSuccess				= 'LexArcana.DoSMarginalSuccess';
  LexArcana.DoSCompleteSuccess				= 'LexArcana.DoSCompleteSuccess';
  LexArcana.DoSExceptionalSuccess			= 'LexArcana.DoSExceptionalSuccess';
+ LexArcana.RollBalanced						= 'LexArcana.RollBalanced';
+ LexArcana.RollUnbalanced					= 'LexArcana.RollUnbalanced';

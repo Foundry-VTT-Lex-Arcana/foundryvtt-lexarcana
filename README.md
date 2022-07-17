@@ -16,6 +16,9 @@ Balanced mode with 3 dices: 3d6
 Unbalanced mode with 3 dices: 1d12+1d3+1d3
 
 # Versions
+## 0.0.6 not released
+* Fixed tooltips localization
+
 ## 0.0.5
 * Added tooltips for rolls
 * Grid set to 2m instead of 10
