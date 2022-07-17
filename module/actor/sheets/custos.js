@@ -126,10 +126,12 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		super.activateListeners(html);
 		if (!this.options.editable) return;
 
-		html.find('a.item-image').click(this._onImageClick.bind(this));
-		html.find('a.item-name').click(this._onNameClick.bind(this));
-		html.find('a.item-roll').click(this._onRollClick.bind(this));
+		html.find('a.dam_roll').click(this._onDamageClick.bind(this));
+		html.find('a.armor_roll').click(this._onArmorClick.bind(this));
+		html.find('a.item-equip').click(this._onEquipClick.bind(this));
+		html.find('a.item-edit').click(this._onEditClick.bind(this));
 		html.find('a.item-delete').click(this._onDeleteClick.bind(this));
+
 
 		// Drag events for macros.
 		if (this.actor.isOwner)
@@ -152,7 +154,7 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 	/* -------------------------------------------- */
 	/*  Events
 	/* -------------------------------------------- */
-	async _onImageClick(event, data)
+	async _onEquipClick(event, data)
 	{
 		event.preventDefault();
 		const dataset = event.currentTarget.dataset;
@@ -161,7 +163,7 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		return;
 	}
 
-	async _onNameClick(event, data)
+	async _onEditClick(event, data)
 	{
 		event.preventDefault();
 		const dataset = event.currentTarget.dataset;
@@ -170,12 +172,23 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		return;
 	}
 
-	async _onRollClick(event, data)
+	async _onDamageClick(event, data)
 	{
 		event.preventDefault();
 		const dataset = event.currentTarget.dataset;
 		const item = this.actor.items.get(dataset.id);
 		LexArcanaDice.Roll(1, item.data.data.damage, LexArcanaDice.EXPRESSIONTYPE.BALANCED, true, item.name);
+		return;
+	}
+
+	async _onArmorClick(event, data)
+	{
+		event.preventDefault();
+		const dataset = event.currentTarget.dataset;
+		const item = this.actor.items.get(dataset.id);
+		console.log ("ITEM")
+		console.log (item)
+		LexArcanaDice.Roll(1, item.data.data.armor.protection, LexArcanaDice.EXPRESSIONTYPE.BALANCED, true, item.name);
 		return;
 	}
 

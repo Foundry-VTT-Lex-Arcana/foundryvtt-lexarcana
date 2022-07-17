@@ -206,7 +206,7 @@ body.system-LexArcana
 .system-LexArcana .delete-icon { background-image: url("../styles/images/trash_ico.webp"); }
 .system-LexArcana .add-icon { background-image: url("../styles/images/plus_ico.webp"); }
 .system-LexArcana .item-roll { background-image: url("../styles/images/dices_ico_1d.webp"); background-size: 32px; }
-.system-LexArcana .item-delete { background-image: url("../styles/images/trash_ico.webp"); }
+
 .system-LexArcana .discipline-add { background-image: url("../styles/images/plus_ico.webp"); background-size: 32px; }
 .system-LexArcana .discipline-delete { background-image: url("../styles/images/trash_ico.webp"); background-size: 32px; }
 
@@ -405,6 +405,7 @@ body.system-LexArcana
 	margin-top: 5px;
     padding: 0;
     padding-left: 5px;
+    width: 100%;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -412,9 +413,9 @@ body.system-LexArcana
 }
 
 .system-LexArcana .inventory .item-image { grid-area: Area1; width: 32px; }
-.system-LexArcana .inventory .item-name { grid-area: Area2; }
-.system-LexArcana .inventory .item-roll { grid-area: Area3; width: 32px; background-size: 32px; }
-.system-LexArcana .inventory .item-delete { grid-area: Area4; width: 32px; background-size: 32px; }
+.system-LexArcana .inventory .item-name { grid-area: Area2; width: auto;}
+.system-LexArcana .inventory .item-roll_area { grid-area: Area3; width: 64px;}
+.system-LexArcana .inventory .item-modify { grid-area: Area4; width: 96px;}
 
 .editor-content
 , .tox
