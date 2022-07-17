@@ -267,20 +267,6 @@ export default class LexArcanaActorSheet extends ActorSheet
             roll2d: config.buttonBuilder(this, 2),
             roll3d: config.buttonBuilder(this, 3)
         };
-        if(dataSet.specialtyid!==undefined)
-        {
-            buttonSet['delete'] = {
-                icon: `<span class='delete-icon'></span>`,
-                callback: () => {
-                    Dialog.confirm({
-                        title: game.i18n.localize('LexArcana.ConfirmPromptTitle'),
-                        yes: () => this.actor.removePeritiaSpecialty(dataSet.peritiaid, dataSet.specialtyid),
-                        no: () => { mainDialog.render(true); },
-                        defaultYes: false
-                       });
-                }
-            };
-        }
         let mainDialog = new Dialog({
           title: config.title,
           content: htmlContent,
