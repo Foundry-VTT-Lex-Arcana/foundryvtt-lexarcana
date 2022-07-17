@@ -152,6 +152,7 @@ export class LexArcanaDice {
 		{
 			message.content += '<span class="failure">FAILURE!</span>';
 		}
+		message.content+='&nbsp;<span class="details">'+game.i18n.localize(CONFIG.LexArcana.RollDetailsThreshold)+' "'+_difficultyThreshold+'"</span>';
 		message.content += '</div>';
 
 		message.content += '</div>';
@@ -177,7 +178,7 @@ export class LexArcanaDice {
 		LexArcanaDice.#CreateChatMessage(res.message);
 	}
 
-	static CustomRoll(_expression, _difficultyThreshold = 6, _hasFateRoll = false, _info='')
+	static RollExpression(_expression, _difficultyThreshold = 6, _hasFateRoll = false, _info='')
 	{
 		let res = LexArcanaDice.#RollExpression(_expression, _difficultyThreshold, _hasFateRoll, null, _info);
 		LexArcanaDice.#CreateChatMessage(res.message);

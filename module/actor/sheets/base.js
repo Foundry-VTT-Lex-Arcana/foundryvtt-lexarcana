@@ -187,12 +187,21 @@ export default class LexArcanaActorSheet extends ActorSheet
         event.preventDefault();
         const dataSet = event.currentTarget.dataset;
         let config = {};
-		function createToolTip(numDice, numFaces)
+		let hasFateRoll = true;
+		function retrieveRollInputFromHTML(_html, _defaultRollInputName)
 		{
-			return '<span class="tooltipText scroller">' +
-					'<p>'+game.i18n.localize(CONFIG.LexArcana.RollBalanced)+' '+LexArcanaDice.ComputeExpression(numDice, numFaces, LexArcanaDice.EXPRESSIONTYPE.BALANCED).expression+'</p>' +
-					'<p>'+game.i18n.localize(CONFIG.LexArcana.RollUnbalanced)+' '+LexArcanaDice.ComputeExpression(numDice, numFaces, LexArcanaDice.EXPRESSIONTYPE.UNBALANCED).expression+'</p>'+
-					'</span>';
+			return {
+					expressionType: _html.find('input[name="expression-type"]')[0].checked?LexArcanaDice.EXPRESSIONTYPE.BALANCED:LexArcanaDice.EXPRESSIONTYPE.UNBALANCED
+					, customExpression: _defaultRollInputName!==''?_html.find('input[name="'+_defaultRollInputName+'"]')[0].value:''
+					, difficultyThreshold: _html.find('input[name="difficulty-threshold"]')[0].value
+			};
+		}
+		function createToolTip(_numDice, _numFaces)
+		{
+			return `<span class="roll${_numDice}d-icon tooltip">` + '<span class="tooltipText scroller">' +
+					'<p>'+game.i18n.localize(CONFIG.LexArcana.RollBalanced)+' '+LexArcanaDice.ComputeExpression(_numDice, _numFaces, LexArcanaDice.EXPRESSIONTYPE.BALANCED).expression+'</p>' +
+					'<p>'+game.i18n.localize(CONFIG.LexArcana.RollUnbalanced)+' '+LexArcanaDice.ComputeExpression(_numDice, _numFaces, LexArcanaDice.EXPRESSIONTYPE.UNBALANCED).expression+'</p>'+
+					'</span></span>';
 		}
         if(dataSet.virtuteid!==undefined)
         {
@@ -203,18 +212,18 @@ export default class LexArcanaActorSheet extends ActorSheet
             config.buttonBuilder = function(caller, numDice)
             {
                 return {
-                    icon: `<span class="roll${numDice}d-icon tooltip">` + createToolTip(numDice, virtute.value)+ `</span>`,
+                    icon: createToolTip(numDice, virtute.value),
                     callback: html => {
-                        const expressionType = html.find('input[name="expression-type"]')[0].checked?LexArcanaDice.EXPRESSIONTYPE.BALANCED:LexArcanaDice.EXPRESSIONTYPE.UNBALANCED;
-                        caller.actor.rollND(virtute.value, numDice, expressionType, config.title);
+                        let inputs = retrieveRollInputFromHTML(html, '');
+                        caller.actor.rollND(virtute.value, numDice, hasFateRoll, inputs.difficultyThreshold, inputs.expressionType, config.title);
                     }
                 };
             };
             config.customRoll = function(caller, html)
             {
-                const expression = html.find('input[name="'+config.defaultRollInputName+'"]')[0].value;
-                caller.actor.setVirtuteDefaultRoll(dataSet.virtuteid, expression);
-                caller.actor.roll(expression, true, config.title);
+				let inputs = retrieveRollInputFromHTML(html, config.defaultRollInputName);
+                caller.actor.setVirtuteDefaultRoll(dataSet.virtuteid, inputs.customExpression);
+                caller.actor.roll(inputs.customExpression, hasFateRoll, inputs.difficultyThreshold, config.title);
             };
         }
         else if(dataSet.specialtyid!==undefined)
@@ -229,18 +238,18 @@ export default class LexArcanaActorSheet extends ActorSheet
 				const specialty = caller.actor.getSpecialty(dataSet.peritiaid, dataSet.specialtyid);
 				const totalFaces = caller.actor.data.data.peritiae[dataSet.peritiaid].value+parseInt(specialty.modifier);
                 return {
-                    icon: `<span class="roll${numDice}d-icon tooltip">` + createToolTip(numDice, totalFaces) + `</span>`,
+                    icon: createToolTip(numDice, totalFaces),
                     callback: html => {
-                        const expressionType = html.find('input[name="expression-type"]')[0].checked?LexArcanaDice.EXPRESSIONTYPE.BALANCED:LexArcanaDice.EXPRESSIONTYPE.UNBALANCED;
-                        caller.actor.rollPeritiaSpecialty(dataSet.peritiaid, dataSet.specialtyid, numDice, expressionType, config.title);
+						let inputs = retrieveRollInputFromHTML(html, '');
+                        caller.actor.rollPeritiaSpecialty(dataSet.peritiaid, dataSet.specialtyid, numDice, hasFateRoll, inputs.difficultyThreshold, inputs.expressionType, config.title);
                     }
                 };
             };
             config.customRoll = function(caller, html)
             {
-                const expression = html.find('input[name="'+config.defaultRollInputName+'"]')[0].value;
-                caller.actor.setPeritiaSpecialtyDefaultRoll(dataSet.peritiaid, dataSet.specialtyid, expression);
-                caller.actor.roll(expression, true, config.title);
+				let inputs = retrieveRollInputFromHTML(html, '');
+                caller.actor.setPeritiaSpecialtyDefaultRoll(dataSet.peritiaid, dataSet.specialtyid, inputs.customExpression);
+                caller.actor.roll(inputs.customExpression, hasFateRoll, inputs.difficultyThreshold, config.title);
             };
         }
         else
@@ -253,18 +262,18 @@ export default class LexArcanaActorSheet extends ActorSheet
             config.buttonBuilder = function(caller, numDice)
             {
                 return {
-                    icon: `<span class="roll${numDice}d-icon tooltip">` + createToolTip(numDice, peritia.value) + `</span>`,
+                    icon: createToolTip(numDice, peritia.value),
                     callback: html => {
-                        const expressionType = html.find('input[name="expression-type"]')[0].checked?LexArcanaDice.EXPRESSIONTYPE.BALANCED:LexArcanaDice.EXPRESSIONTYPE.UNBALANCED;
-                        caller.actor.rollND(peritia.value, numDice, expressionType, config.title);
+						let inputs = retrieveRollInputFromHTML(html, '');
+                        caller.actor.rollND(peritia.value, numDice, hasFateRoll, inputs.difficultyThreshold, inputs.expressionType, config.title);
                     }
                 };
             };
             config.customRoll = function(caller, html)
             {
-                const expression = html.find('input[name="'+config.defaultRollInputName+'"]')[0].value;
-                caller.actor.setPeritiaDefaultRoll(dataSet.peritiaid, expression);
-                caller.actor.roll(expression, true, config.title);
+				let inputs = retrieveRollInputFromHTML(html, config.defaultRollInputName);
+                caller.actor.setPeritiaDefaultRoll(dataSet.peritiaid, inputs.customExpression);
+                caller.actor.roll(inputs.customExpression, hasFateRoll, inputs.difficultyThreshold, config.title);
             };
         }
         const expressionTypePrompt = game.i18n.localize('LexArcana.DiceExpressionBalancedPrompt');
@@ -272,7 +281,10 @@ export default class LexArcanaActorSheet extends ActorSheet
                                 ${expressionTypePrompt}: <input type='checkbox' name='expression-type'/>
                             </div>
                             <div>
-                                <input type='text' name="${config.defaultRollInputName}" value="${config.defaultRoll}"/>
+                                <span>${game.i18n.localize(CONFIG.LexArcana.RollCustomInput)}</span>&nbsp;<input type='text' name="${config.defaultRollInputName}" value="${config.defaultRoll}"/>
+                            </div>
+                            <div>
+								<span>${game.i18n.localize(CONFIG.LexArcana.RollDifficultyThreshold)}</span>&nbsp;<input type='text' name="difficulty-threshold" value="6"/>
                             </div>`;
         let buttonSet = {
             customroll: {

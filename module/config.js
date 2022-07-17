@@ -128,3 +128,6 @@ LexArcana.Long								= 'LexArcana.Long';
  LexArcana.DoSExceptionalSuccess			= 'LexArcana.DoSExceptionalSuccess';
  LexArcana.RollBalanced						= 'LexArcana.RollBalanced';
  LexArcana.RollUnbalanced					= 'LexArcana.RollUnbalanced';
+ LexArcana.RollDetailsThreshold				= 'LexArcana.RollDetailsThreshold';
+ LexArcana.RollCustomInput					= 'LexArcana.RollCustomInput';
+ LexArcana.RollDifficultyThreshold			= 'LexArcana.RollDifficultyThreshold';

@@ -88,5 +88,8 @@
 	"LexArcana.DoSCompleteSuccess": "GdE II completo",
 	"LexArcana.DoSExceptionalSuccess": "GdE III excepcional",
 	"LexArcana.RollBalanced": "Compensada",
-	"LexArcana.RollUnbalanced": "Descompensada"
+	"LexArcana.RollUnbalanced": "Descompensada",
+	"LexArcana.RollDetailsThreshold": "Contra difficultad de",
+	"LexArcana.RollCustomInput": "Tirada Customizada",
+	"LexArcana.RollDifficultyThreshold": "Dificultad de tirada"
 }
