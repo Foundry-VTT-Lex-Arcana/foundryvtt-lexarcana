@@ -211,8 +211,7 @@
                 "physical",
                 "weapon"
             ],
-            "peritia": "deBello",
-            "especialitate": 0
+            "peritia": "deBello"
         },
         "rangedWeapon": {
             "templates": [
@@ -221,8 +220,7 @@
                 "weapon"
             ],
             "range": "short",
-            "peritia": "deBello",
-            "especialitate": 0
+            "peritia": "deBello"
         },
         "armor": {
             "templates": [
@@ -244,8 +242,7 @@
             ],
             "cost": 6,
 			"peritia": "deMagia",
-			"virtute": "none",
-            "especialitate": 0
+			"virtute": "none"
         },
         "ritual": {
             "templates": [
@@ -254,8 +251,7 @@
             "cost": 6,
 			"disciplines": [],
 			"duration": "Short",
-            "peritia": "deMagia",
-            "especialitate": 0
+            "peritia": "deMagia"
         }
     }
 }
