@@ -88,5 +88,8 @@
 	"LexArcana.DoSCompleteSuccess": "Complete success",
 	"LexArcana.DoSExceptionalSuccess": "Exceptional success",
 	"LexArcana.RollBalanced": "Balanced",
-	"LexArcana.RollUnbalanced": "Unbalanced"
+	"LexArcana.RollUnbalanced": "Unbalanced",
+	"LexArcana.RollDetailsThreshold": "Against a DT of",
+	"LexArcana.RollCustomInput": "Custom roll",
+	"LexArcana.RollDifficultyThreshold": "Difficulty Threshold"
 }

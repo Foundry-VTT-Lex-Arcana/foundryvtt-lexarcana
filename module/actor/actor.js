@@ -84,6 +84,11 @@ export default class LexArcanaActor extends Actor
         let specialties = this.data.data.peritiae?.[peritiaId]?.specialties ?? [];
         return LexArcanaUtils.ObjectToArray(specialties);
     }
+	getSpecialtyScore(_peritiaid, _specialtyId)
+	{
+        const specialty = this.getSpecialty(_peritiaid, _specialtyId);
+        return this.data.data.peritiae[_peritiaid].value+parseInt(specialty.modifier);
+	}
 
     /* -------------------------------------------- */
     /*                  Manipulators                */
@@ -121,23 +126,13 @@ export default class LexArcanaActor extends Actor
     /*                  Roll Dices                  */
     /* -------------------------------------------- */
 	
-	roll(expression, _hasFateRoll, info='')
+	rollCustom(expression, _hasFateRoll, _difficultyThreshold = 6, info='')
 	{
-		const difficultyThreshold = 6;
-        LexArcanaDice.CustomRoll(expression, difficultyThreshold, _hasFateRoll, info);
+        LexArcanaDice.RollExpression(expression, _difficultyThreshold, _hasFateRoll, info);
     }
 
-    rollPeritiaSpecialty(_peritiaid, _key, _numDice, _expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED, _info='')
+    rollND(_numDice, _numFaces, _hasFateRoll, _difficultyThreshold = 6, _expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED, _info='')
     {
-        const specialty = this.getSpecialty(_peritiaid, _key);
-        const totalFaces = this.data.data.peritiae[_peritiaid].value+parseInt(specialty.modifier);
-		const difficultyThreshold = 6;
-        LexArcanaDice.Roll(_numDice, totalFaces, _expressionType, difficultyThreshold, true, _info);
-    }
-
-    rollND(_numFaces, _numDice, _expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED, _info='')
-    {
-		const difficultyThreshold = 6;
-        LexArcanaDice.Roll(_numDice, _numFaces, _expressionType, difficultyThreshold, true, _info);
+        LexArcanaDice.Roll(_numDice, _numFaces, _expressionType, _difficultyThreshold, _hasFateRoll, _info);
     }
 }
