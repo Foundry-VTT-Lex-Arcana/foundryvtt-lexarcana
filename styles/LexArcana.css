@@ -183,6 +183,11 @@ body.system-LexArcana
 .system-LexArcana .grid-layout3-area2 { grid-area: Area2; }
 .system-LexArcana .grid-layout3-area3 { grid-area: Area3; }
 
+.system-LexArcana .disabled
+{
+	filter: grayscale(100%);
+}
+
 .system-LexArcana .rollcustom-icon
 , .system-LexArcana .roll1d-icon
 , .system-LexArcana .roll2d-icon

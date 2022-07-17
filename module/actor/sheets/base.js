@@ -196,18 +196,29 @@ export default class LexArcanaActorSheet extends ActorSheet
 					, difficultyThreshold: _html.find('input[name="difficulty-threshold"]')[0].value
 			};
 		}
-		function createToolTip(_numDice, _numFaces)
+		function createButtonWithToolTip(_numDice, _numFaces)
 		{
-			if(_numDice == 1)
+			let contentButton = '';
+			let disableButton = false;
+			if(_numDice>1 && LexArcanaDice.ComputeNumDices(_numDice, _numFaces)<_numDice)
 			{
-				return `<span class="roll${_numDice}d-icon tooltip"><span class="tooltipText scroller">` +
+				contentButton = `<span class="roll${_numDice}d-icon disabled"></span>`;
+				disableButton = true;
+			}
+			else if(_numDice == 1)
+			{
+				contentButton = `<span class="roll${_numDice}d-icon tooltip"><span class="tooltipText scroller">` +
 						'<p>'+LexArcanaDice.ComputeExpression(_numDice, _numFaces, LexArcanaDice.EXPRESSIONTYPE.BALANCED).expression+'</p>'+
 						'</span></span>';
 			}
-			return `<span class="roll${_numDice}d-icon tooltip"><span class="tooltipText scroller">` +
+			else
+			{
+				contentButton = `<span class="roll${_numDice}d-icon tooltip"><span class="tooltipText scroller">` +
 					'<p>'+game.i18n.localize(CONFIG.LexArcana.RollBalanced)+' '+LexArcanaDice.ComputeExpression(_numDice, _numFaces, LexArcanaDice.EXPRESSIONTYPE.BALANCED).expression+'</p>' +
 					'<p>'+game.i18n.localize(CONFIG.LexArcana.RollUnbalanced)+' '+LexArcanaDice.ComputeExpression(_numDice, _numFaces, LexArcanaDice.EXPRESSIONTYPE.UNBALANCED).expression+'</p>'+
 					'</span></span>';
+			}
+			return {disable: disableButton, content: contentButton};
 		}
         if(dataSet.virtuteid!==undefined)
         {
@@ -246,13 +257,23 @@ export default class LexArcanaActorSheet extends ActorSheet
 		};
 		config.buttonBuilder = function(_caller, _numDice)
 		{
-			return {
-				icon: createToolTip(_numDice, config.numFaces),
-				callback: html => {
-					let inputs = retrieveRollInputFromHTML(html, '');
-					_caller.actor.rollND(_numDice, config.numFaces, hasFateRoll, inputs.difficultyThreshold, inputs.expressionType, config.title);
-				}
-			};
+			let button = createButtonWithToolTip(_numDice, config.numFaces);
+			if(button.disable)
+			{
+				return { icon: button.content };
+			}
+			else
+				return {
+					icon: button.content,
+					callback: html => {
+						if(LexArcanaDice.ComputeNumDices(_numDice, config.numFaces)<_numDice)
+						{
+							return;
+						}
+						let inputs = retrieveRollInputFromHTML(html, '');
+						_caller.actor.rollND(_numDice, config.numFaces, hasFateRoll, inputs.difficultyThreshold, inputs.expressionType, config.title);
+					}
+				};
 		};
         const expressionTypePrompt = game.i18n.localize('LexArcana.DiceExpressionBalancedPrompt');
         const htmlContent = `<div>

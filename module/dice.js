@@ -2,53 +2,68 @@ import { LexArcana } from "./config.js";
 
 export class LexArcanaDice {
 	static EXPRESSIONTYPE = { BALANCED: 0, UNBALANCED: 1 };
-	static #ComputeBalanced = function(numDice, maxFaces)
+	static VALIDDICES = [20, 12, 10, 8, 6, 5, 4, 3];
+	static ComputeNumDices = function(_numDice, _maxFaces)
 	{
-		const validDices = [20, 12, 10, 8, 6, 5, 4, 3];
-		let currentMaxFaces = maxFaces;
-		let computedExpression = "";
-		for(let current = 0;current<numDice;++current)
+		let numDices = 0;
+		let currentMaxFaces = _maxFaces;
+		for(let current = 0;current<_numDice;++current)
 		{
-			const filterFaces = currentMaxFaces/(numDice-current);
-			const nextFace = validDices.find(value => value<=filterFaces);
+			const filterFaces = currentMaxFaces/(_numDice-current);
+			const nextFace = this.VALIDDICES.find(value => value<=filterFaces);
+			if(nextFace<(currentMaxFaces+1))
+			{
+				currentMaxFaces -= nextFace;
+				++numDices;
+			}
+		}
+		return numDices;
+	}
+	static #ComputeBalanced = function(_numDice, _maxFaces)
+	{
+		let currentMaxFaces = _maxFaces;
+		let computedExpression = "";
+		for(let current = 0;current<_numDice;++current)
+		{
+			const filterFaces = currentMaxFaces/(_numDice-current);
+			const nextFace = this.VALIDDICES.find(value => value<=filterFaces);
 			if(nextFace<(currentMaxFaces+1))
 			{
 				currentMaxFaces -= nextFace;
 				computedExpression += (computedExpression!==''?'+':'')+'1d'+nextFace;
 			}
 		}
-		return {expression: computedExpression, totalFaces: (maxFaces-currentMaxFaces)};
+		return {expression: computedExpression, totalFaces: (_maxFaces-currentMaxFaces)};
 	}
-	static #ComputeUnbalanced = function(numDice, maxFaces)
+	static #ComputeUnbalanced = function(_numDice, _maxFaces)
 	{
-		const validDices = [20, 12, 10, 8, 6, 5, 4, 3];
 		let diceFaces = [];
 		let sumDiceFaces = 0;
 		let computedExpression = '';
-		if(maxFaces<3*numDice)
+		if(_maxFaces<3*_numDice)
 		{
-			--numDice;
+			--_numDice;
 		}
-		for(let i = 0;i<numDice;++i)
+		for(let i = 0;i<_numDice;++i)
 		{
 			diceFaces[i] = 3;
 			sumDiceFaces += diceFaces[i];
 		}
 		let i = 0;
 		let nMaxIterations = 12;
-		while(sumDiceFaces<maxFaces && --nMaxIterations>0)
+		while(sumDiceFaces<_maxFaces && --nMaxIterations>0)
 		{
-			const filterFaces = (maxFaces-sumDiceFaces)+diceFaces[i];
+			const filterFaces = (_maxFaces-sumDiceFaces)+diceFaces[i];
 			sumDiceFaces -= diceFaces[i];
-			diceFaces[i] = validDices.find(value => value<=filterFaces);
+			diceFaces[i] = this.VALIDDICES.find(value => value<=filterFaces);
 			sumDiceFaces += diceFaces[i];
-			i = (i+1)%numDice;
+			i = (i+1)%_numDice;
 		}
-		for(i = 0;i<numDice;++i)
+		for(i = 0;i<_numDice;++i)
 		{
 			computedExpression += (computedExpression!==''?'+':'')+'1d'+diceFaces[i];
 		}
-		return {expression: computedExpression, totalFaces: (maxFaces-(maxFaces-sumDiceFaces))};
+		return {expression: computedExpression, totalFaces: (_maxFaces-(_maxFaces-sumDiceFaces))};
 	}
 
 	static ComputeExpression = function(numDice, maxFaces, expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED)
