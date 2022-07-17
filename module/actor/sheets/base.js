@@ -207,7 +207,7 @@ export default class LexArcanaActorSheet extends ActorSheet
         {
             const virtute = this.actor.data.data.virtutes[dataSet.virtuteid];
             config.title = game.i18n.format(game.i18n.localize(CONFIG.LexArcana.Virtutes[dataSet.virtuteid]));
-            config.defaultRoll = virtute.defaultRoll===undefined?'1d3+1d4':virtute.defaultRoll;
+            config.defaultRoll = virtute.defaultRoll===undefined?'1d6':virtute.defaultRoll;
             config.defaultRollInputName = 'virtute-default-roll';
 			config.numFaces = virtute.value;
 			config.callbackCustomRoll = function(_actor, _expression) { _actor.setVirtuteDefaultRoll(dataSet.virtuteid, _expression); }
@@ -216,7 +216,7 @@ export default class LexArcanaActorSheet extends ActorSheet
         {
             const peritiaNameLoc = game.i18n.format(game.i18n.localize(CONFIG.LexArcana.Peritia[dataSet.peritiaid]));
             const specialty = this.actor.getSpecialty(dataSet.peritiaid, dataSet.specialtyid);
-            config.defaultRoll = specialty.defaultRoll===undefined?"1d3+1d4":specialty.defaultRoll;
+            config.defaultRoll = specialty.defaultRoll===undefined?"1d6":specialty.defaultRoll;
             config.defaultRollInputName = 'specialty-default-roll';
             config.title = peritiaNameLoc+" :: "+specialty.name;
 			config.numFaces = this.actor.getSpecialtyScore(dataSet.peritiaid, dataSet.specialtyid);
