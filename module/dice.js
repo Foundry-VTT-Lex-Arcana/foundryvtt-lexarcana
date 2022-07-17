@@ -78,7 +78,9 @@ export class LexArcanaDice {
 			message.sound = CONFIG.sounds.dice;
 			message.content += '<p class="error">'+game.i18n.localize('LexArcana.InvalidRoll')+'</p>';
 			message.content += '</div>';
-			return {result: computedTotal, diceHasFated: diceHasFated, message: message};
+			message.isRoll = false;
+			message.roll = null;
+			return {result: 0, diceHasFated: false, message: message, hasError: true};
 		}
 		let diceHasFated = false;
 		let computedTotal = 0;
@@ -95,7 +97,9 @@ export class LexArcanaDice {
 				message.sound = CONFIG.sounds.dice;
 				message.content += '<p class="error">'+game.i18n.localize('LexArcana.InvalidRoll')+'</p>';
 				message.content += '</div>';
-				return {result: computedTotal, diceHasFated: diceHasFated, message: message};
+				message.isRoll = false;
+				message.roll = null;
+				return {result: computedTotal, diceHasFated: diceHasFated, message: message, hasError: true};
 			}
 			rollEval.dice.forEach((die) => totalFaces+=die.faces);
 		}
@@ -158,7 +162,7 @@ export class LexArcanaDice {
 		message.content += '</div>';
 		message.type = CONST.CHAT_MESSAGE_TYPES.ROLL;
 		message.sound = CONFIG.sounds.dice;
-		return {result: computedTotal, diceHasFated: diceHasFated, message: message};
+		return {result: computedTotal, diceHasFated: diceHasFated, message: message, hasError: false};
 	}
 
 	static #CreateChatMessage = function(_message)

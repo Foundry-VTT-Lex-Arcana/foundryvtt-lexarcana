@@ -209,22 +209,8 @@ export default class LexArcanaActorSheet extends ActorSheet
             config.title = game.i18n.format(game.i18n.localize(CONFIG.LexArcana.Virtutes[dataSet.virtuteid]));
             config.defaultRoll = virtute.defaultRoll===undefined?'1d3+1d4':virtute.defaultRoll;
             config.defaultRollInputName = 'virtute-default-roll';
-            config.buttonBuilder = function(caller, numDice)
-            {
-                return {
-                    icon: createToolTip(numDice, virtute.value),
-                    callback: html => {
-                        let inputs = retrieveRollInputFromHTML(html, '');
-                        caller.actor.rollND(virtute.value, numDice, hasFateRoll, inputs.difficultyThreshold, inputs.expressionType, config.title);
-                    }
-                };
-            };
-            config.customRoll = function(caller, html)
-            {
-				let inputs = retrieveRollInputFromHTML(html, config.defaultRollInputName);
-                caller.actor.setVirtuteDefaultRoll(dataSet.virtuteid, inputs.customExpression);
-                caller.actor.roll(inputs.customExpression, hasFateRoll, inputs.difficultyThreshold, config.title);
-            };
+			config.numFaces = virtute.value;
+			config.callbackCustomRoll = function(_actor, _expression) { _actor.setVirtuteDefaultRoll(dataSet.virtuteid, _expression); }
         }
         else if(dataSet.specialtyid!==undefined)
         {
@@ -233,24 +219,8 @@ export default class LexArcanaActorSheet extends ActorSheet
             config.defaultRoll = specialty.defaultRoll===undefined?"1d3+1d4":specialty.defaultRoll;
             config.defaultRollInputName = 'specialty-default-roll';
             config.title = peritiaNameLoc+" :: "+specialty.name;
-            config.buttonBuilder = function(caller, numDice)
-            {
-				const specialty = caller.actor.getSpecialty(dataSet.peritiaid, dataSet.specialtyid);
-				const totalFaces = caller.actor.data.data.peritiae[dataSet.peritiaid].value+parseInt(specialty.modifier);
-                return {
-                    icon: createToolTip(numDice, totalFaces),
-                    callback: html => {
-						let inputs = retrieveRollInputFromHTML(html, '');
-                        caller.actor.rollPeritiaSpecialty(dataSet.peritiaid, dataSet.specialtyid, numDice, hasFateRoll, inputs.difficultyThreshold, inputs.expressionType, config.title);
-                    }
-                };
-            };
-            config.customRoll = function(caller, html)
-            {
-				let inputs = retrieveRollInputFromHTML(html, '');
-                caller.actor.setPeritiaSpecialtyDefaultRoll(dataSet.peritiaid, dataSet.specialtyid, inputs.customExpression);
-                caller.actor.roll(inputs.customExpression, hasFateRoll, inputs.difficultyThreshold, config.title);
-            };
+			config.numFaces = this.actor.getSpecialtyScore(dataSet.peritiaid, dataSet.specialtyid);
+			config.callbackCustomRoll = function(_actor, _expression) { _actor.setPeritiaSpecialtyDefaultRoll(dataSet.peritiaid, dataSet.specialtyid, _expression); }
         }
         else
         {
@@ -259,23 +229,25 @@ export default class LexArcanaActorSheet extends ActorSheet
             config.defaultRoll = peritia.defaultRoll;
             config.defaultRollInputName = 'peritia-default-roll';
             config.title = peritiaNameLoc;
-            config.buttonBuilder = function(caller, numDice)
-            {
-                return {
-                    icon: createToolTip(numDice, peritia.value),
-                    callback: html => {
-						let inputs = retrieveRollInputFromHTML(html, '');
-                        caller.actor.rollND(peritia.value, numDice, hasFateRoll, inputs.difficultyThreshold, inputs.expressionType, config.title);
-                    }
-                };
-            };
-            config.customRoll = function(caller, html)
-            {
-				let inputs = retrieveRollInputFromHTML(html, config.defaultRollInputName);
-                caller.actor.setPeritiaDefaultRoll(dataSet.peritiaid, inputs.customExpression);
-                caller.actor.roll(inputs.customExpression, hasFateRoll, inputs.difficultyThreshold, config.title);
-            };
+			config.numFaces = peritia.value;
+			config.callbackCustomRoll = function(_actor, _expression) { _actor.setPeritiaDefaultRoll(dataSet.peritiaid, _expression); }
         }
+		config.customRoll = function(_caller, _callback, _html)
+		{
+			let inputs = retrieveRollInputFromHTML(_html, config.defaultRollInputName);
+			_callback(_caller.actor, inputs.customExpression);
+			_caller.actor.rollCustom(inputs.customExpression, hasFateRoll, inputs.difficultyThreshold, config.title);
+		};
+		config.buttonBuilder = function(_caller, _numDice)
+		{
+			return {
+				icon: createToolTip(_numDice, config.numFaces),
+				callback: html => {
+					let inputs = retrieveRollInputFromHTML(html, '');
+					_caller.actor.rollND(_numDice, config.numFaces, hasFateRoll, inputs.difficultyThreshold, inputs.expressionType, config.title);
+				}
+			};
+		};
         const expressionTypePrompt = game.i18n.localize('LexArcana.DiceExpressionBalancedPrompt');
         const htmlContent = `<div>
                                 ${expressionTypePrompt}: <input type='checkbox' name='expression-type'/>
@@ -289,7 +261,7 @@ export default class LexArcanaActorSheet extends ActorSheet
         let buttonSet = {
             customroll: {
                 icon: `<i class='rollcustom-icon'></i>`,
-                callback: html => { config.customRoll(this, html); }
+                callback: html => { config.customRoll(this, config.callbackCustomRoll, html); }
             },
             roll1d: config.buttonBuilder(this, 1),
             roll2d: config.buttonBuilder(this, 2),
