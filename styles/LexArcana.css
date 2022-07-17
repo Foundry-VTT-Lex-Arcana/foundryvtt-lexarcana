@@ -249,6 +249,17 @@ body.system-LexArcana
     text-align: center;
 }
 
+.system-LexArcana .dialog-buttons
+{
+	width: 80%;
+	margin: auto;
+}
+
+.system-LexArcana .dialog-buttons.dialog-button
+{
+	max-width: 80px;
+}
+
 .portrait
 {
     text-align: center;
@@ -456,7 +467,7 @@ body.system-LexArcana
 	z-index: 1;
 	bottom: 105%;
 	left: 50%;
-	margin-left: -60px;
+	margin-left: -80px;
 
 	/* Fade in tooltip */
 	opacity: 0;

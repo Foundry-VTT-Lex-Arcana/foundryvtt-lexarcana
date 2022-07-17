@@ -198,7 +198,13 @@ export default class LexArcanaActorSheet extends ActorSheet
 		}
 		function createToolTip(_numDice, _numFaces)
 		{
-			return `<span class="roll${_numDice}d-icon tooltip">` + '<span class="tooltipText scroller">' +
+			if(_numDice == 1)
+			{
+				return `<span class="roll${_numDice}d-icon tooltip"><span class="tooltipText scroller">` +
+						'<p>'+LexArcanaDice.ComputeExpression(_numDice, _numFaces, LexArcanaDice.EXPRESSIONTYPE.BALANCED).expression+'</p>'+
+						'</span></span>';
+			}
+			return `<span class="roll${_numDice}d-icon tooltip"><span class="tooltipText scroller">` +
 					'<p>'+game.i18n.localize(CONFIG.LexArcana.RollBalanced)+' '+LexArcanaDice.ComputeExpression(_numDice, _numFaces, LexArcanaDice.EXPRESSIONTYPE.BALANCED).expression+'</p>' +
 					'<p>'+game.i18n.localize(CONFIG.LexArcana.RollUnbalanced)+' '+LexArcanaDice.ComputeExpression(_numDice, _numFaces, LexArcanaDice.EXPRESSIONTYPE.UNBALANCED).expression+'</p>'+
 					'</span></span>';
