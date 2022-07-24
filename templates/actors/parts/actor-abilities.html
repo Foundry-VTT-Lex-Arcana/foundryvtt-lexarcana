@@ -27,11 +27,12 @@
                                         
                                 </div>
                                 {{#each peritiaValue.specialties as |specialtyValue specialtyKey|}}
-                                <div class="grid-layout3 grid-layout3-specialty">
+                                <div class="grid-layout4 grid-layout4-specialty">
+                                        <a class="grid-layout4-area0 delete-peritiae-specialty fas fa-trash" data-peritiaid="{{peritiaKey}}" data-specialtyid="{{specialtyValue.name}}">&nbsp;</a>
                                         <input style="display:none;" name="data.peritiae.{{peritiaKey}}.specialties.{{specialtyKey}}.defaultRoll" value="{{specialtyValue.defaultRoll}}" data-dtype="text" type="text"/>
-                                        <input class="peritia-name grid-layout3-area1" name="data.peritiae.{{peritiaKey}}.specialties.{{specialtyKey}}.name" value="{{specialtyValue.name}}" data-dtype="text" type="text"/>
-                                        <input class="peritia-value grid-layout3-area2" name="data.peritiae.{{peritiaKey}}.specialties.{{specialtyKey}}.modifier" value="{{specialtyValue.modifier}}" data-dtype="text" type="text"/>
-                                        <i class="dialog-roll roll1d-icon grid-layout3-area3" data-peritiaid="{{peritiaKey}}" data-specialtyid="{{specialtyValue.name}}"></i>
+                                        <input class="peritia-name grid-layout4-area1" name="data.peritiae.{{peritiaKey}}.specialties.{{specialtyKey}}.name" value="{{specialtyValue.name}}" data-dtype="text" type="text"/>
+                                        <input class="peritia-value grid-layout4-area2" name="data.peritiae.{{peritiaKey}}.specialties.{{specialtyKey}}.modifier" value="{{specialtyValue.modifier}}" data-dtype="text" type="text"/>
+                                        <i class="dialog-roll roll1d-icon grid-layout4-area3" data-peritiaid="{{peritiaKey}}" data-specialtyid="{{specialtyValue.name}}"></i>
                                 </div>
                                 {{/each}}
                         </li>

@@ -179,6 +179,29 @@ body.system-LexArcana
     grid-template-columns: auto 32px 32px;
 }
 
+
+.system-LexArcana .grid-layout3-area1 { grid-area: Area1; }
+.system-LexArcana .grid-layout3-area2 { grid-area: Area2; }
+.system-LexArcana .grid-layout3-area3 { grid-area: Area3; }
+
+.system-LexArcana .grid-layout4
+{
+    display: grid;
+    margin: 0;
+    padding: 0;
+    padding-left: 5px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    grid-template-areas: "Area0 Area1 Area2 Area3";
+}
+
+.system-LexArcana .grid-layout4-specialty
+{
+    grid-template-columns: 32px auto 32px 32px;
+}
+
+.system-LexArcana .grid-layout3-area0 { grid-area: Area0; }
 .system-LexArcana .grid-layout3-area1 { grid-area: Area1; }
 .system-LexArcana .grid-layout3-area2 { grid-area: Area2; }
 .system-LexArcana .grid-layout3-area3 { grid-area: Area3; }

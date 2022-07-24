@@ -128,6 +128,7 @@ export default class LexArcanaActorSheet extends ActorSheet
         html.find('.default-roll-input-toggle').contextmenu(this._onToggleDefaultRoll.bind(this));
 
         html.find('.add-peritiae-specialty').click(this._onAddSpecialty.bind(this));
+        html.find('.delete-peritiae-specialty').click(this._onDeleteSpecialty.bind(this));
         html.find('.dialog-roll').click(this._onRollDialog.bind(this));
     }
 
@@ -175,6 +176,17 @@ export default class LexArcanaActorSheet extends ActorSheet
         return this.addPeritiaeSpecialty(dataSet.peritiaid);
     }
 
+    /**
+     * Handle click on delete Peritiae buttons
+     * @param {Event} event   The triggering click event
+     * @private
+     */
+     _onDeleteSpecialty(event)
+     {
+         event.preventDefault();
+         const dataSet = event.currentTarget.dataset;
+         return this.actor.removePeritiaSpecialty(dataSet.peritiaid, dataSet.specialtyid)
+     }
     /* -------------------------------------------- */
   
     /**
