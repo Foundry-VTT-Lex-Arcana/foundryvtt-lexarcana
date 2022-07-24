@@ -188,7 +188,7 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		const item = this.actor.items.get(dataset.id);
 		console.log ("ITEM")
 		console.log (item)
-		LexArcanaDice.Roll(1, item.data.data.armor.protection, LexArcanaDice.EXPRESSIONTYPE.BALANCED, true, item.name);
+		LexArcanaDice.Roll(1, item.data.data.protection, LexArcanaDice.EXPRESSIONTYPE.BALANCED, true, item.name);
 		return;
 	}
 
