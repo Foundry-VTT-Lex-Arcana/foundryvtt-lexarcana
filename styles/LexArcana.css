@@ -10,6 +10,24 @@
     src: url("../styles/fonts/Trajan-Pro-Regular.ttf")
 }
 
+strong {
+    font-family: Signika;
+    font-weight: bold;
+}
+
+p, li
+{
+    font-family: Signika, sans-serif;
+    font-weight: normal;
+}
+
+h3
+{
+    font-family: Trajan;
+    font-weight: bold;
+    border-bottom: none;
+}
+
 table td
 , .mce-content-body td
 {
@@ -81,9 +99,9 @@ body.system-LexArcana
 .system-LexArcana .window-app h3
 , .system-LexArcana .window-app h4
 {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
-    border-bottom: 2px solid #930101;
+    border-bottom: 1px solid #AB0000;
 }
 
 /**********************************************************
