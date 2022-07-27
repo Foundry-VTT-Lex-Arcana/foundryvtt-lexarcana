@@ -30,7 +30,7 @@
 			<div class="form-group">
 				<label>{{ localize "LexArcana.Encumbrance" }}</label>
 				<div class="form-fields">
-					<input type="text" name="data.shield.encumbrance" value="{{data.data.shield.encumbrance}}" data-dtype="Number"/>
+					<input type="text" name="data.encumbrance" value="{{data.data.encumbrance}}" data-dtype="Number"/>
 				</div>
 			</div>
 
@@ -38,14 +38,14 @@
 			<div class="form-group">
 				<label>{{ localize "LexArcana.Parry" }}</label>
 				<div class="form-fields">
-					<input type="text" name="data.shield.parry" value="{{data.data.shield.parry}}" data-dtype="Number"/>
+					<input type="text" name="data.parry" value="{{data.data.parry}}" data-dtype="Number"/>
 				</div>
 			</div>
 		</div>
 
         {{!-- Description --}}
         <div class="description tab flexrow" data-group="primary" data-tab="description">
-            {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable}}
+            {{editor content=data.data.description target="data.data.description" button=true owner=owner editable=editable}}
         </div>
     </section>
 </form>
