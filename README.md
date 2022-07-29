@@ -16,7 +16,7 @@ Balanced mode with 3 dices: 3d6
 Unbalanced mode with 3 dices: 1d12+1d3+1d3
 
 # Versions
-## 0.0.6 not released yet
+## 0.0.6
 * Fixed tooltips localization
 * Fixed default values for custom rolls
 * Added degrees of succes in usual rolls
@@ -25,6 +25,7 @@ Unbalanced mode with 3 dices: 1d12+1d3+1d3
 * Changed dices icons
 * Added difficulty threshold to rolls dialogs
 * Refactored the roll dialog code for better maintenance
+* Various UI fixes from Forja
 
 ## 0.0.5
 * Added tooltips for rolls
