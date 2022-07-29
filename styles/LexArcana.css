@@ -155,6 +155,18 @@ body.system-LexArcana
     grid-template-columns: repeat(3, 1fr);
 }
 
+.system-LexArcana .grid-layout-4c
+{
+    display: grid;
+    margin: 0;
+    padding: 0;
+    padding-left: 5px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    grid-template-columns: repeat(4, 1fr);
+}
+
 .system-LexArcana .grid-layout2
 {
     display: grid;
@@ -187,6 +199,15 @@ body.system-LexArcana
     grid-template-areas: "Area1 Area2 Area3";
 }
 
+.system-LexArcana .grid-layout3-virtute
+{
+    grid-template-columns: 62% 32px 32px;
+}
+
+.system-LexArcana .grid-layout3-area1 { grid-area: Area1; }
+.system-LexArcana .grid-layout3-area2 { grid-area: Area2; }
+.system-LexArcana .grid-layout3-area3 { grid-area: Area3; }
+
 .system-LexArcana .grid-layout3-peritia
 {
     grid-template-columns: auto 32px  32px;
@@ -214,9 +235,14 @@ body.system-LexArcana
     grid-template-areas: "Area0 Area1 Area2 Area3";
 }
 
+.system-LexArcana .grid-layout4-peritia
+{
+    grid-template-columns: 32px 50% 32px  32px;
+}
+
 .system-LexArcana .grid-layout4-specialty
 {
-    grid-template-columns: 32px auto 32px 32px;
+    grid-template-columns: 32px 50% 32px 32px;
 }
 
 .system-LexArcana .grid-layout3-area0 { grid-area: Area0; }
@@ -316,6 +342,7 @@ body.system-LexArcana
     border: none;
 }
 
+.system-LexArcana .virtute-name { font-weight: bold; }
 .system-LexArcana .peritia-name { font-weight: bold; }
 
 /**********************************************************
