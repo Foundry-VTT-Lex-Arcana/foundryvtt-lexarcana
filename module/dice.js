@@ -2,56 +2,71 @@ import { LexArcana } from "./config.js";
 
 export class LexArcanaDice {
 	static EXPRESSIONTYPE = { BALANCED: 0, UNBALANCED: 1 };
-	static #ComputeBalanced = function(numDice, maxFaces)
+	static VALIDDICES = [20, 12, 10, 8, 6, 5, 4, 3];
+	static ComputeNumDices = function(_numDice, _maxFaces)
 	{
-		const validDices = [20, 12, 10, 8, 6, 5, 4, 3];
-		let currentMaxFaces = maxFaces;
-		let computedExpression = "";
-		for(let current = 0;current<numDice;++current)
+		let numDices = 0;
+		let currentMaxFaces = _maxFaces;
+		for(let current = 0;current<_numDice;++current)
 		{
-			const filterFaces = currentMaxFaces/(numDice-current);
-			const nextFace = validDices.find(value => value<=filterFaces);
+			const filterFaces = currentMaxFaces/(_numDice-current);
+			const nextFace = this.VALIDDICES.find(value => value<=filterFaces);
+			if(nextFace<(currentMaxFaces+1))
+			{
+				currentMaxFaces -= nextFace;
+				++numDices;
+			}
+		}
+		return numDices;
+	}
+	static #ComputeBalanced = function(_numDice, _maxFaces)
+	{
+		let currentMaxFaces = _maxFaces;
+		let computedExpression = "";
+		for(let current = 0;current<_numDice;++current)
+		{
+			const filterFaces = currentMaxFaces/(_numDice-current);
+			const nextFace = this.VALIDDICES.find(value => value<=filterFaces);
 			if(nextFace<(currentMaxFaces+1))
 			{
 				currentMaxFaces -= nextFace;
 				computedExpression += (computedExpression!==''?'+':'')+'1d'+nextFace;
 			}
 		}
-		return {expression: computedExpression, totalFaces: (maxFaces-currentMaxFaces)};
+		return {expression: computedExpression, totalFaces: (_maxFaces-currentMaxFaces)};
 	}
-	static #ComputeUnbalanced = function(numDice, maxFaces)
+	static #ComputeUnbalanced = function(_numDice, _maxFaces)
 	{
-		const validDices = [20, 12, 10, 8, 6, 5, 4, 3];
 		let diceFaces = [];
 		let sumDiceFaces = 0;
 		let computedExpression = '';
-		if(maxFaces<3*numDice)
+		if(_maxFaces<3*_numDice)
 		{
-			--numDice;
+			--_numDice;
 		}
-		for(let i = 0;i<numDice;++i)
+		for(let i = 0;i<_numDice;++i)
 		{
 			diceFaces[i] = 3;
 			sumDiceFaces += diceFaces[i];
 		}
 		let i = 0;
 		let nMaxIterations = 12;
-		while(sumDiceFaces<maxFaces && --nMaxIterations>0)
+		while(sumDiceFaces<_maxFaces && --nMaxIterations>0)
 		{
-			const filterFaces = (maxFaces-sumDiceFaces)+diceFaces[i];
+			const filterFaces = (_maxFaces-sumDiceFaces)+diceFaces[i];
 			sumDiceFaces -= diceFaces[i];
-			diceFaces[i] = validDices.find(value => value<=filterFaces);
+			diceFaces[i] = this.VALIDDICES.find(value => value<=filterFaces);
 			sumDiceFaces += diceFaces[i];
-			i = (i+1)%numDice;
+			i = (i+1)%_numDice;
 		}
-		for(i = 0;i<numDice;++i)
+		for(i = 0;i<_numDice;++i)
 		{
 			computedExpression += (computedExpression!==''?'+':'')+'1d'+diceFaces[i];
 		}
-		return {expression: computedExpression, totalFaces: (maxFaces-(maxFaces-sumDiceFaces))};
+		return {expression: computedExpression, totalFaces: (_maxFaces-(_maxFaces-sumDiceFaces))};
 	}
 
-	static #Compute = function(numDice, maxFaces, expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED)
+	static ComputeExpression = function(numDice, maxFaces, expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED)
 	{
 		switch(expressionType)
 		{
@@ -61,7 +76,7 @@ export class LexArcanaDice {
 		}
 	}
 
-	static #RollExpression = function(_expression, _hasFateRoll = false, _totalFaces = null, _info = '')
+	static #RollExpression = function(_expression, _difficultyThreshold = 6, _hasFateRoll = false, _totalFaces = null, _info = '')
 	{
 		const rollMode = game.settings.get('core', 'rollMode');
 		const message =
@@ -78,7 +93,9 @@ export class LexArcanaDice {
 			message.sound = CONFIG.sounds.dice;
 			message.content += '<p class="error">'+game.i18n.localize('LexArcana.InvalidRoll')+'</p>';
 			message.content += '</div>';
-			return {result: computedTotal, diceHasFated: diceHasFated, message: message};
+			message.isRoll = false;
+			message.roll = null;
+			return {result: 0, diceHasFated: false, message: message, hasError: true};
 		}
 		let diceHasFated = false;
 		let computedTotal = 0;
@@ -95,7 +112,9 @@ export class LexArcanaDice {
 				message.sound = CONFIG.sounds.dice;
 				message.content += '<p class="error">'+game.i18n.localize('LexArcana.InvalidRoll')+'</p>';
 				message.content += '</div>';
-				return {result: computedTotal, diceHasFated: diceHasFated, message: message};
+				message.isRoll = false;
+				message.roll = null;
+				return {result: computedTotal, diceHasFated: diceHasFated, message: message, hasError: true};
 			}
 			rollEval.dice.forEach((die) => totalFaces+=die.faces);
 		}
@@ -119,7 +138,7 @@ export class LexArcanaDice {
 			}
 			else if(!previousHasFated)
 			{
-				message.content+='<span>Result: '+computedTotal+'</span>&nbsp;';
+				message.content+='<span>Result: '+computedTotal+' <i class="fas fa-dice-d6">&nbsp;</i></span>&nbsp;';
 			}
 			let expressionResult = '';
 			evaluatedRoll.dice.forEach((die) => expressionResult+=die.total+' ');
@@ -136,10 +155,29 @@ export class LexArcanaDice {
 			}
 		}while(diceHasFated);
 
+		message.content += '<div>';
+		if(computedTotal>_difficultyThreshold)
+		{
+			let difference = computedTotal-_difficultyThreshold;
+			switch(parseInt(difference/3))
+			{
+				case 0: message.content += '<span class="DoS1">'+game.i18n.localize(CONFIG.LexArcana.DoSMarginalSuccess)+'</span>'; break;
+				case 1: message.content += '<span class="DoS2">'+game.i18n.localize(CONFIG.LexArcana.DoSCompleteSuccess)+'</span>'; break;
+				case 2:
+				default: message.content += '<span class="DoS3">'+game.i18n.localize(CONFIG.LexArcana.DoSExceptionalSuccess)+'</span>'; break;
+			}
+		}
+		else
+		{
+			message.content += '<span class="failure">FAILURE!</span>';
+		}
+		message.content+='&nbsp;<span class="details">'+game.i18n.localize(CONFIG.LexArcana.RollDetailsThreshold)+' "'+_difficultyThreshold+'"</span>';
+		message.content += '</div>';
+
 		message.content += '</div>';
 		message.type = CONST.CHAT_MESSAGE_TYPES.ROLL;
 		message.sound = CONFIG.sounds.dice;
-		return {result: computedTotal, diceHasFated: diceHasFated, message: message};
+		return {result: computedTotal, diceHasFated: diceHasFated, message: message, hasError: false};
 	}
 
 	static #CreateChatMessage = function(_message)
@@ -147,21 +185,21 @@ export class LexArcanaDice {
 		return ChatMessage.create(_message);
 	}
 
-	static #ComputedRoll = function(_numDice, _maxFaces, _expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED, _hasFateRoll = false, _info='')
+	static #ComputedRoll = function(_numDice, _maxFaces, _expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED, _difficultyThreshold = 6, _hasFateRoll = false, _info='')
 	{
-		let dice = LexArcanaDice.#Compute(_numDice, _maxFaces, _expressionType);
-		return LexArcanaDice.#RollExpression(dice.expression, _hasFateRoll, dice.totalFaces, _info);
+		let dice = LexArcanaDice.ComputeExpression(_numDice, _maxFaces, _expressionType);
+		return LexArcanaDice.#RollExpression(dice.expression, _difficultyThreshold, _hasFateRoll, dice.totalFaces, _info);
 	}
 
-	static Roll(_numDice, _maxFaces, _expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED, _hasFateRoll = false, _info='')
+	static Roll(_numDice, _maxFaces, _expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED, _difficultyThreshold = 6, _hasFateRoll = false, _info='')
 	{
-		let res = LexArcanaDice.#ComputedRoll(_numDice, _maxFaces, _expressionType, _hasFateRoll, _info);
+		let res = LexArcanaDice.#ComputedRoll(_numDice, _maxFaces, _expressionType, _difficultyThreshold, _hasFateRoll, _info);
 		LexArcanaDice.#CreateChatMessage(res.message);
 	}
 
-	static CustomRoll(_expression, _hasFateRoll = false, _info='')
+	static RollExpression(_expression, _difficultyThreshold = 6, _hasFateRoll = false, _info='')
 	{
-		let res = LexArcanaDice.#RollExpression(_expression, _hasFateRoll, null, _info);
+		let res = LexArcanaDice.#RollExpression(_expression, _difficultyThreshold, _hasFateRoll, null, _info);
 		LexArcanaDice.#CreateChatMessage(res.message);
 	}
 };

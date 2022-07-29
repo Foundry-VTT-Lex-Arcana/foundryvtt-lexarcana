@@ -210,7 +210,8 @@
                 "common",
                 "physical",
                 "weapon"
-            ]
+            ],
+            "peritia": "deBello"
         },
         "rangedWeapon": {
             "templates": [
@@ -218,7 +219,8 @@
                 "physical",
                 "weapon"
             ],
-            "range": "short"
+            "range": "short",
+            "peritia": "deBello"
         },
         "armor": {
             "templates": [
@@ -248,7 +250,8 @@
             ],
             "cost": 6,
 			"disciplines": [],
-			"duration": "Short"
+			"duration": "Short",
+            "peritia": "deMagia"
         }
     }
 }

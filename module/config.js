@@ -119,3 +119,15 @@ LexArcana.Duration							= 'LexArcana.Duration';
 LexArcana.Short								= 'LexArcana.Short';
 LexArcana.Average							= 'LexArcana.Average';
 LexArcana.Long								= 'LexArcana.Long';
+
+/**
+ * Rolls
+ **/
+ LexArcana.DoSMarginalSuccess				= 'LexArcana.DoSMarginalSuccess';
+ LexArcana.DoSCompleteSuccess				= 'LexArcana.DoSCompleteSuccess';
+ LexArcana.DoSExceptionalSuccess			= 'LexArcana.DoSExceptionalSuccess';
+ LexArcana.RollBalanced						= 'LexArcana.RollBalanced';
+ LexArcana.RollUnbalanced					= 'LexArcana.RollUnbalanced';
+ LexArcana.RollDetailsThreshold				= 'LexArcana.RollDetailsThreshold';
+ LexArcana.RollCustomInput					= 'LexArcana.RollCustomInput';
+ LexArcana.RollDifficultyThreshold			= 'LexArcana.RollDifficultyThreshold';

@@ -16,8 +16,26 @@ Balanced mode with 3 dices: 3d6
 Unbalanced mode with 3 dices: 1d12+1d3+1d3
 
 # Versions
+## 0.0.6
+* Fixed tooltips localization
+* Fixed default values for custom rolls
+* Added degrees of succes in usual rolls
+* Localizations various fixes
+* Overhaul of the inventory
+* Changed dices icons
+* Added difficulty threshold to rolls dialogs
+* Refactored the roll dialog code for better maintenance
+* Various UI fixes from Forja
+
+## 0.0.5
+* Added tooltips for rolls
+* Grid set to 2m instead of 10
+* Fixed crash on opening provinces sheet
+* Fixed Spanish accents
+* Changed font to Trajan instead of Herculanum
+
 ## 0.0.4
-* Fixed rituals/indigamenta crash on opening sheets
+* Fixed crash on opening rituals/indigamenta sheets
 
 ## 0.0.3
 * Complete rolling API overhaul

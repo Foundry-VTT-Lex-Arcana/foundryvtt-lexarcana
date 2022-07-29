@@ -128,6 +128,7 @@ export default class LexArcanaActorSheet extends ActorSheet
         html.find('.default-roll-input-toggle').contextmenu(this._onToggleDefaultRoll.bind(this));
 
         html.find('.add-peritiae-specialty').click(this._onAddSpecialty.bind(this));
+        html.find('.delete-peritiae-specialty').click(this._onDeleteSpecialty.bind(this));
         html.find('.dialog-roll').click(this._onRollDialog.bind(this));
     }
 
@@ -175,6 +176,17 @@ export default class LexArcanaActorSheet extends ActorSheet
         return this.addPeritiaeSpecialty(dataSet.peritiaid);
     }
 
+    /**
+     * Handle click on delete Peritiae buttons
+     * @param {Event} event   The triggering click event
+     * @private
+     */
+     _onDeleteSpecialty(event)
+     {
+         event.preventDefault();
+         const dataSet = event.currentTarget.dataset;
+         return this.actor.removePeritiaSpecialty(dataSet.peritiaid, dataSet.specialtyid)
+     }
     /* -------------------------------------------- */
   
     /**
@@ -187,52 +199,57 @@ export default class LexArcanaActorSheet extends ActorSheet
         event.preventDefault();
         const dataSet = event.currentTarget.dataset;
         let config = {};
+		let hasFateRoll = true;
+		function retrieveRollInputFromHTML(_html, _defaultRollInputName)
+		{
+			return {
+					expressionType: _html.find('input[name="expression-type"]')[0].checked?LexArcanaDice.EXPRESSIONTYPE.BALANCED:LexArcanaDice.EXPRESSIONTYPE.UNBALANCED
+					, customExpression: _defaultRollInputName!==''?_html.find('input[name="'+_defaultRollInputName+'"]')[0].value:''
+					, difficultyThreshold: _html.find('input[name="difficulty-threshold"]')[0].value
+			};
+		}
+		function createButtonWithToolTip(_numDice, _numFaces)
+		{
+			let contentButton = '';
+			let disableButton = false;
+			if(_numDice>1 && LexArcanaDice.ComputeNumDices(_numDice, _numFaces)<_numDice)
+			{
+				contentButton = `<span class="roll${_numDice}d-icon disabled"></span>`;
+				disableButton = true;
+			}
+			else if(_numDice == 1)
+			{
+				contentButton = `<span class="roll${_numDice}d-icon tooltip"><span class="tooltipText scroller">` +
+						'<p>'+LexArcanaDice.ComputeExpression(_numDice, _numFaces, LexArcanaDice.EXPRESSIONTYPE.BALANCED).expression+'</p>'+
+						'</span></span>';
+			}
+			else
+			{
+				contentButton = `<span class="roll${_numDice}d-icon tooltip"><span class="tooltipText scroller">` +
+					'<p>'+game.i18n.localize(CONFIG.LexArcana.RollBalanced)+' '+LexArcanaDice.ComputeExpression(_numDice, _numFaces, LexArcanaDice.EXPRESSIONTYPE.BALANCED).expression+'</p>' +
+					'<p>'+game.i18n.localize(CONFIG.LexArcana.RollUnbalanced)+' '+LexArcanaDice.ComputeExpression(_numDice, _numFaces, LexArcanaDice.EXPRESSIONTYPE.UNBALANCED).expression+'</p>'+
+					'</span></span>';
+			}
+			return {disable: disableButton, content: contentButton};
+		}
         if(dataSet.virtuteid!==undefined)
         {
             const virtute = this.actor.data.data.virtutes[dataSet.virtuteid];
             config.title = game.i18n.format(game.i18n.localize(CONFIG.LexArcana.Virtutes[dataSet.virtuteid]));
-            config.defaultRoll = virtute.defaultRoll===undefined?'1d3+1d4':virtute.defaultRoll;
+            config.defaultRoll = virtute.defaultRoll===undefined?'1d6':virtute.defaultRoll;
             config.defaultRollInputName = 'virtute-default-roll';
-            config.buttonBuilder = function(caller, numDice)
-            {
-                return {
-                    icon: `<span class="roll${numDice}d-icon"></span>`,
-                    callback: html => {
-                        const expressionType = html.find('input[name="expression-type"]')[0].checked?LexArcanaDice.EXPRESSIONTYPE.BALANCED:LexArcanaDice.EXPRESSIONTYPE.UNBALANCED;
-                        caller.actor.rollND(virtute.value, numDice, expressionType, config.title);
-                    }
-                };
-            };
-            config.customRoll = function(caller, html)
-            {
-                const expression = html.find('input[name="'+config.defaultRollInputName+'"]')[0].value;
-                caller.actor.setVirtuteDefaultRoll(dataSet.virtuteid, expression);
-                caller.actor.roll(expression, true, config.title);
-            };
+			config.numFaces = virtute.value;
+			config.callbackCustomRoll = function(_actor, _expression) { _actor.setVirtuteDefaultRoll(dataSet.virtuteid, _expression); }
         }
         else if(dataSet.specialtyid!==undefined)
         {
             const peritiaNameLoc = game.i18n.format(game.i18n.localize(CONFIG.LexArcana.Peritia[dataSet.peritiaid]));
             const specialty = this.actor.getSpecialty(dataSet.peritiaid, dataSet.specialtyid);
-            config.defaultRoll = specialty.defaultRoll===undefined?"1d3+1d4":specialty.defaultRoll;
+            config.defaultRoll = specialty.defaultRoll===undefined?"1d6":specialty.defaultRoll;
             config.defaultRollInputName = 'specialty-default-roll';
             config.title = peritiaNameLoc+" :: "+specialty.name;
-            config.buttonBuilder = function(caller, numDice)
-            {
-                return {
-                    icon: `<span class="roll${numDice}d-icon"></span>`,
-                    callback: html => {
-                        const expressionType = html.find('input[name="expression-type"]')[0].checked?LexArcanaDice.EXPRESSIONTYPE.BALANCED:LexArcanaDice.EXPRESSIONTYPE.UNBALANCED;
-                        caller.actor.rollPeritiaSpecialty(dataSet.peritiaid, dataSet.specialtyid, numDice, expressionType, config.title);
-                    }
-                };
-            };
-            config.customRoll = function(caller, html)
-            {
-                const expression = html.find('input[name="'+config.defaultRollInputName+'"]')[0].value;
-                caller.actor.setPeritiaSpecialtyDefaultRoll(dataSet.peritiaid, dataSet.specialtyid, expression);
-                caller.actor.roll(expression, true, config.title);
-            };
+			config.numFaces = this.actor.getSpecialtyScore(dataSet.peritiaid, dataSet.specialtyid);
+			config.callbackCustomRoll = function(_actor, _expression) { _actor.setPeritiaSpecialtyDefaultRoll(dataSet.peritiaid, dataSet.specialtyid, _expression); }
         }
         else
         {
@@ -241,53 +258,54 @@ export default class LexArcanaActorSheet extends ActorSheet
             config.defaultRoll = peritia.defaultRoll;
             config.defaultRollInputName = 'peritia-default-roll';
             config.title = peritiaNameLoc;
-            config.buttonBuilder = function(caller, numDice)
-            {
-                return {
-                    icon: `<span class="roll${numDice}d-icon"></span>`,
-                    callback: html => {
-                        const expressionType = html.find('input[name="expression-type"]')[0].checked?LexArcanaDice.EXPRESSIONTYPE.BALANCED:LexArcanaDice.EXPRESSIONTYPE.UNBALANCED;
-                        caller.actor.rollND(peritia.value, numDice, expressionType, config.title);
-                    }
-                };
-            };
-            config.customRoll = function(caller, html)
-            {
-                const expression = html.find('input[name="'+config.defaultRollInputName+'"]')[0].value;
-                caller.actor.setPeritiaDefaultRoll(dataSet.peritiaid, expression);
-                caller.actor.roll(expression, true, config.title);
-            };
+			config.numFaces = peritia.value;
+			config.callbackCustomRoll = function(_actor, _expression) { _actor.setPeritiaDefaultRoll(dataSet.peritiaid, _expression); }
         }
+		config.customRoll = function(_caller, _callback, _html)
+		{
+			let inputs = retrieveRollInputFromHTML(_html, config.defaultRollInputName);
+			_callback(_caller.actor, inputs.customExpression);
+			_caller.actor.rollCustom(inputs.customExpression, hasFateRoll, inputs.difficultyThreshold, config.title);
+		};
+		config.buttonBuilder = function(_caller, _numDice)
+		{
+			let button = createButtonWithToolTip(_numDice, config.numFaces);
+			if(button.disable)
+			{
+				return { icon: button.content };
+			}
+			else
+				return {
+					icon: button.content,
+					callback: html => {
+						if(LexArcanaDice.ComputeNumDices(_numDice, config.numFaces)<_numDice)
+						{
+							return;
+						}
+						let inputs = retrieveRollInputFromHTML(html, '');
+						_caller.actor.rollND(_numDice, config.numFaces, hasFateRoll, inputs.difficultyThreshold, inputs.expressionType, config.title);
+					}
+				};
+		};
         const expressionTypePrompt = game.i18n.localize('LexArcana.DiceExpressionBalancedPrompt');
         const htmlContent = `<div>
                                 ${expressionTypePrompt}: <input type='checkbox' name='expression-type'/>
                             </div>
                             <div>
-                                <input type='text' name="${config.defaultRollInputName}" value="${config.defaultRoll}"/>
+                                <span>${game.i18n.localize(CONFIG.LexArcana.RollCustomInput)}</span>&nbsp;<input type='text' name="${config.defaultRollInputName}" value="${config.defaultRoll}"/>
+                            </div>
+                            <div>
+								<span>${game.i18n.localize(CONFIG.LexArcana.RollDifficultyThreshold)}</span>&nbsp;<input type='text' name="difficulty-threshold" value="6"/>
                             </div>`;
         let buttonSet = {
             customroll: {
                 icon: `<i class='rollcustom-icon'></i>`,
-                callback: html => { config.customRoll(this, html); }
+                callback: html => { config.customRoll(this, config.callbackCustomRoll, html); }
             },
             roll1d: config.buttonBuilder(this, 1),
             roll2d: config.buttonBuilder(this, 2),
             roll3d: config.buttonBuilder(this, 3)
         };
-        if(dataSet.specialtyid!==undefined)
-        {
-            buttonSet['delete'] = {
-                icon: `<span class='delete-icon'></span>`,
-                callback: () => {
-                    Dialog.confirm({
-                        title: game.i18n.localize('LexArcana.ConfirmPromptTitle'),
-                        yes: () => this.actor.removePeritiaSpecialty(dataSet.peritiaid, dataSet.specialtyid),
-                        no: () => { mainDialog.render(true); },
-                        defaultYes: false
-                       });
-                }
-            };
-        }
         let mainDialog = new Dialog({
           title: config.title,
           content: htmlContent,

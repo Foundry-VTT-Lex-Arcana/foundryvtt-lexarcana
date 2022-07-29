@@ -6,14 +6,26 @@
 			{{#ife item.data.active true}}
 				<li class="item">
 					<a class="item-image" data-id="{{item._id}}"><img src="{{item.img}}" title="{{item.name}}" width="32" height="32" /></a>
-					<a class="item-name" title="{{item.name}}" data-id="{{item._id}}">{{item.name}}</a>
-                    {{#ife item.type 'meleeWeapon'}}
-					<a class="item-roll icon" data-id="{{item._id}}">&nbsp;</a>
-					{{/ife}}
-                    {{#ife item.type 'rangedWeapon'}}
-					<a class="item-roll icon" data-id="{{item._id}}">&nbsp;</a>
-					{{/ife}}
-					<a class="item-delete icon" data-id="{{item._id}}">&nbsp;</a>
+					<a class="item-name" title="{{item.name}}">{{item.name}}</a>
+					<div class="item-roll_area">
+						{{#ife item.type 'meleeWeapon'}}
+							<a class="fas fa-dice dialog-roll" data-peritiaid="{{item.data.peritia}}"" data-id="{{item._id}}" data-peritiaid="{{item.data.peritia}}">&nbsp;</a>
+							<a class="fas fa-heartbeat dam_roll" data-id="{{item._id}}">&nbsp;</a>
+						{{/ife}}
+                   		{{#ife item.type 'rangedWeapon'}}
+						   <a class="fas fa-dice dialog-roll" data-peritiaid="{{item.data.peritia}}"" data-id="{{item._id}}" data-peritiaid="{{item.data.peritia}}">&nbsp;</a>
+							<a class="fas fa-heartbeat dam_roll" data-id="{{item._id}}">&nbsp;</a>
+						{{/ife}}
+						{{#ife item.type 'armor'}}
+						 	<a class="fas fa-tshirt armor_roll" data-id="{{item._id}}">&nbsp;</a>
+					    {{/ife}}
+					</div>
+                    <div class="item-modify">
+						<a class="item-equip fas fa-thumbs-up" data-id="{{item._id}}">&nbsp;</a>
+						<a class="item-edit fas fa-edit" data-id="{{item._id}}">&nbsp;</a>
+						<a class="item-delete fas fa-trash" data-id="{{item._id}}">&nbsp;</a>
+					</div>
+					
 				</li>
 			{{/ife}}
 		{{/each}}
@@ -27,9 +39,11 @@
 			<li class="item">
 				<a class="item-image" data-id="{{item._id}}"><img src="{{item.img}}" title="{{item.name}}" width="32" height="32" /></a>
 				<a class="item-name" title="{{item.name}}" data-id="{{item._id}}">{{item.name}}</a>
-				{{#ife item.type 'meleeWeapon'}}
-				<a class="rollItem-icon icon" data-id="{{item._id}}">&nbsp;</a>
-				{{/ife}}
+				<div class="item-modify">
+					<a class="item-equip fas fa-hand-rock" data-id="{{item._id}}">&nbsp;</a>
+					<a class="item-edit fas fa-edit" data-id="{{item._id}}">&nbsp;</a>
+					<a class="item-delete fas fa-trash" data-id="{{item._id}}">&nbsp;</a>
+				</div>
 			</li>
 			{{/ifne}}
 		{{/each}}
