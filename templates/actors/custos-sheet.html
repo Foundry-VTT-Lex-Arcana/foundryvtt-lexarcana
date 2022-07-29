@@ -44,7 +44,7 @@
                 <li class="attribute languages">
                     <h4 class="attribute-name box-title">{{ localize "LexArcana.Languages" }}</h4>
                     <div class="attribute-wide-value">
-                        <input name="data.languages" type="text" value="{{data.languages}}" placeholder="N/A" data-dtype="String"/>
+                        <input name="data.languages" type="text" value="{{data.languages}}" placeholder="N/A" data-dtype="String" style="width: auto";/>
                     </div>
                 </li>
                 <li class="attribute office">
@@ -114,6 +114,11 @@
         {{!-- Rituals Tab --}}
         <div class="tab rituals flexcol" data-group="primary" data-tab="rituals">
             {{> "systems/LexArcana/templates/actors/parts/actor-rituals.html"}}
+        </div>
+
+        {{!-- Talents Tab --}}
+        <div class="tab talents flexcol" data-group="primary" data-tab="talents">
+            {{> "systems/LexArcana/templates/actors/parts/actor-talents.html"}}
         </div>
 
         {{!-- Biography Tab --}}

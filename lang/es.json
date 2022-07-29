@@ -49,7 +49,7 @@
 	"LexArcana.AddPeritiaeSpecialtyPromptTitle": "Añadir especialidad en Peritia {peritiaName}",
 	"LexArcana.InputLabelName": "Nombre",
 	"LexArcana.InputLabelModifier": "Modificador",
-	"LexArcana.DiceExpressionBalancedPrompt": "¿Compensada?",
+	"LexArcana.DiceExpressionBalancedPrompt": "Compensar dados",
 	"LexArcana.InvalidRoll": "Tirada inválida",
 	"LexArcana.ActionAdd": "Añadir",
 	"LexArcana.ActionCancel": "Cancelar",
@@ -90,6 +90,6 @@
 	"LexArcana.RollBalanced": "Compensada",
 	"LexArcana.RollUnbalanced": "Sin Compensar",
 	"LexArcana.RollDetailsThreshold": "Contra",
-	"LexArcana.RollCustomInput": "Tirada Personalizada",
-	"LexArcana.RollDifficultyThreshold": "Dificultad tirada"
+	"LexArcana.RollCustomInput": "Personalizada",
+	"LexArcana.RollDifficultyThreshold": "Dificultad"
 }

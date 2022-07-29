@@ -1,0 +1,26 @@
+<div class="inventory-filters inventory">
+	<div>
+		<h2>{{ localize "LexArcana.IndigamentaSectionTitle" }}</h2>
+		<ul>
+		{{#each indigamenta as |indigamentum key|}}
+			<li class="indigamentum">
+				<a class="item-image" data-id="{{indigamentum._id}}"><img src="{{indigamentum.img}}" title="{{indigamentum.name}}" width="32" height="32" /></a>
+				<a class="item-name" title="{{indigamentum.name}}" data-id="{{indigamentum._id}}">{{indigamentum.name}}</a>
+				<a class="item-delete icon" data-id="{{indigamentum._id}}">&nbsp;</a>
+			</li>
+		{{/each}}
+		</ul>
+	</div>
+	<div>
+		<h2>{{ localize "LexArcana.RitualsSectionTitle" }}</h2>
+		<ul>
+		{{#each rituals as |ritual key|}}
+			<li class="item">
+				<a class="item-image" data-id="{{ritual._id}}"><img src="{{ritual.img}}" title="{{ritual.name}}" width="32" height="32" /></a>
+				<a class="item-name" title="{{ritual.name}}" data-id="{{ritual._id}}">{{ritual.name}}</a>
+				<a class="item-delete icon" data-id="{{ritual._id}}">&nbsp;</a>
+			</li>
+		{{/each}}
+		</ul>
+	</div>
+</div>
