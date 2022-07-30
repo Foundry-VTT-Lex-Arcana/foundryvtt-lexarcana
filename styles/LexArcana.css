@@ -11,13 +11,13 @@
 }
 
 strong {
-    font-family: Trajan;
+    font-family: Signika;
     font-weight: bold;
 }
 
 p, li
 {
-    font-family: Trajan;
+    font-family: Signika, sans-serif;
     font-weight: normal;
 }
 
@@ -97,8 +97,7 @@ body.system-LexArcana
     max-height: 64px;
 }*/
 
-.system-LexArcana .window-content .sheet-header ul
-, .system-LexArcana .window-content .sheet-body ul
+.no-circle ul
 {
     list-style: none;
 }
@@ -438,8 +437,11 @@ body.system-LexArcana
 , .system-LexArcana .editor-content
 , .system-LexArcana .tox-edit-area
 {
+    text-align: left;
+    font-family: Signika, sans-serif;
     height: 100%;
 }
+
 
 /**
  * Rolls
@@ -528,7 +530,9 @@ body.system-LexArcana
 .editor-content
 , .tox
 {
-    font-family: Trajan;
+    list-style: circle;
+    font-family: Signika, sans-serif;
+    text-align: left;
     padding: 5px;
 	background-color: #cac2b085;
     color: #000000;
