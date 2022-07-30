@@ -5,22 +5,23 @@
 		{{#each items as |item key|}}
 			{{#ife item.data.active true}}
 				<li class="item">
-					<a class="item-image" data-id="{{item._id}}"><img src="{{item.img}}" title="{{item.name}}" width="32" height="32" /></a>
-					<a class="item-name" title="{{item.name}}">{{item.name}}</a>
-					<div class="item-roll_area">
+					<div class="grid-layout5-area0"><a class="item-image grid-layout5-inventory" data-id="{{item._id}}"><img src="{{item.img}}" title="{{item.name}}" width="32" height="32" /></a></div>
+					<div class="grid-layout5-area1"><a class="item-name grid-layout5-inventory" title="{{item.name}}">{{item.name}}</a></div>
+					<div class="item-roll_area grid-layout5-area2 grid-layout5-inventory">
 						{{#ife item.type 'meleeWeapon'}}
-							<a class="fas fa-dice dialog-roll" data-peritiaid="{{item.data.peritia}}"" data-id="{{item._id}}" data-peritiaid="{{item.data.peritia}}">&nbsp;</a>
+							<a class="fas fa-dice dialog-roll" data-peritiaid="{{item.data.peritia}}" data-id="{{item._id}}" data-peritiaid="{{item.data.peritia}}">&nbsp;</a>
 							<a class="fas fa-heartbeat dam_roll" data-id="{{item._id}}">&nbsp;</a>
 						{{/ife}}
                    		{{#ife item.type 'rangedWeapon'}}
-						   <a class="fas fa-dice dialog-roll" data-peritiaid="{{item.data.peritia}}"" data-id="{{item._id}}" data-peritiaid="{{item.data.peritia}}">&nbsp;</a>
+						   <a class="fas fa-dice dialog-roll" data-peritiaid="{{item.data.peritia}}" data-id="{{item._id}}" data-peritiaid="{{item.data.peritia}}">&nbsp;</a>
 							<a class="fas fa-heartbeat dam_roll" data-id="{{item._id}}">&nbsp;</a>
 						{{/ife}}
 						{{#ife item.type 'armor'}}
 						 	<a class="fas fa-tshirt armor_roll" data-id="{{item._id}}">&nbsp;</a>
 					    {{/ife}}
 					</div>
-                    <div class="item-modify">
+					<div class="fas fa-anchor grid-layout5-area3 grid-layout5-inventory"> {{item.data.encumbrance}}</div>
+                    <div class="item-modify grid-layout5-area4 grid-layout5-inventory">
 						<a class="item-equip fas fa-thumbs-up" data-id="{{item._id}}">&nbsp;</a>
 						<a class="item-edit fas fa-edit" data-id="{{item._id}}">&nbsp;</a>
 						<a class="item-delete fas fa-trash" data-id="{{item._id}}">&nbsp;</a>
