@@ -10,7 +10,7 @@
             </h1>
 
             <div class="item-subtitle">
-                <h4 class="item-type">{{itemType}}</h4>
+                <h4 class="item-type">{{data.type}}</h4>
                 <span class="item-status">{{itemStatus}}</span>
             </div>
         </div>
@@ -45,7 +45,7 @@
 
         {{!-- Description --}}
         <div class="description tab flexrow" data-group="primary" data-tab="description">
-            {{editor content=data.data.description target="data.data.description" button=true owner=owner editable=editable}}
+            {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable}}
         </div>
     </section>
 </form>

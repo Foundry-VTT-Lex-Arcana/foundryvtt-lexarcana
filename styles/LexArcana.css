@@ -150,6 +150,11 @@ body.system-LexArcana
     grid-template-columns: auto 32px;
 }
 
+.system-LexArcana .grid-layout2c-left-text-right-number label
+{
+    font-family: Trajan;
+}
+
 .system-LexArcana .grid-layout-3c
 {
     display: grid;
@@ -305,6 +310,7 @@ body.system-LexArcana
 {
 	border: 1px solid #000000;
 	padding: 5px;
+    font-family: Trajan;
 }
 
 .system-LexArcana input.peritia-value
@@ -325,7 +331,6 @@ body.system-LexArcana
 , .system-LexArcana .dialog-buttons button.yes
 , .system-LexArcana .dialog-buttons button.no
 , .system-LexArcana .form-group button
-, .system-LexArcana select
 , .system-LexArcana textarea
 , .system-LexArcana form input
 , .system-LexArcana .directory-footer
@@ -338,6 +343,14 @@ body.system-LexArcana
     color: #000000;
     background-color: #ffffff88;
     text-align: center;
+}
+.system-LexArcana select
+{
+    color: #000000;
+    background-color: #ffffff88;
+    text-align: center;
+    font-family: Trajan;
+
 }
 
 .system-LexArcana .dialog-buttons
@@ -387,11 +400,17 @@ body.system-LexArcana
 , #module-management .notes
 {
     color: #000000;
+    font-family: Trajan;
 }
 
 .system-LexArcana .form-group .units
 {
     color: #ffd700;
+}
+
+.system-LexArcana .form-group label
+{
+    font-family: Trajan;
 }
 
 .system-LexArcana .window-content .sheet-header .profile
