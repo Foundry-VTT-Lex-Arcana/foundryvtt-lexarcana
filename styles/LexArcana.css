@@ -262,17 +262,6 @@ body.system-LexArcana
     grid-template-areas: "Area0 Area1 Area2 Area3 Area4";
 }
 
-.system-LexArcana .grid-layout5-inventory
-{
-    grid-template-columns: 32px auto 32px 32px 32px;
-}
-
-.system-LexArcana .grid-layout5-area0 { grid-area: Area0; }
-.system-LexArcana .grid-layout5-area1 { grid-area: Area1; }
-.system-LexArcana .grid-layout5-area2 { grid-area: Area2; }
-.system-LexArcana .grid-layout5-area3 { grid-area: Area3; }
-.system-LexArcana .grid-layout5-area4 { grid-area: Area4; }
-
 .system-LexArcana .disabled
 {
 	filter: grayscale(100%);
@@ -516,12 +505,13 @@ body.system-LexArcana
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    grid-template-areas: "Area1 Area2 Area3 Area4";
+    grid-template-areas: "Area0 Area1 Area2 Area3 Area4";
 }
 
-.system-LexArcana .inventory .item-image { grid-area: Area1; width: 32px; }
-.system-LexArcana .inventory .item-name { grid-area: Area2; width: auto;}
-.system-LexArcana .inventory .item-roll_area { grid-area: Area3; width: 64px;}
+.system-LexArcana .inventory .item-image { grid-area: Area0; width: 32px;}
+.system-LexArcana .inventory .item-name { grid-area: Area1; width: 400px;}
+.system-LexArcana .inventory .item-roll_area { grid-area: Area2; width: 64px;}
+.system-LexArcana .inventory .item-stats { grid-area: Area3; width: 64px;}
 .system-LexArcana .inventory .item-modify { grid-area: Area4; width: 96px;}
 
 .editor-content
