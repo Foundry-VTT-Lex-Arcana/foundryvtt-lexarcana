@@ -75,7 +75,7 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		data.items = [];
 		data.indigamenta = [];
 		data.rituals = [];
-		for (let i of data.actor.items)
+		for (let i of data.items)
 		{
 			switch (i.type)
 			{

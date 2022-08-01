@@ -46,21 +46,20 @@ export default class LexArcanaActorSheet extends ActorSheet
             options: this.options,
             editable: this.isEditable,
             cssClass: this.document.isOwner ? 'editable' : 'locked',
-            isCharacter: !this.document.data.data.attributes.npc,
-            isNPC: this.document.data.data.attributes.npc,
+            isCharacter: !this.document.system.attributes.npc,
+            isNPC: this.document.system.attributes.npc,
             isGM: game.user.isGM,
             config: CONFIG.LexArcana
         };
         // The Actor and its Items
-        data.actor = duplicate(this.actor.data);
-        data.data = data.actor.data;
+        data.actor = duplicate(this.object.system);
 
         // Ability Scores
-        for ( let [k, v] of Object.entries(data.actor.data.virtutes))
+        for ( let [k, v] of Object.entries(data.actor.virtutes))
         {
             v.label = CONFIG.LexArcana.Virtutes[k];
         }
-        for ( let [k, v] of Object.entries(data.actor.data.peritiae))
+        for ( let [k, v] of Object.entries(data.actor.peritiae))
         {
             v.label = CONFIG.LexArcana.Peritia[k];
         }
@@ -73,6 +72,8 @@ export default class LexArcanaActorSheet extends ActorSheet
     /** @override */
     get template()
     {
+        console.log ("THIS ACTOR 2")
+        console.log (this)
         if (!game.user.isGM && this.actor.limited) return System.Path + "/templates/actors/limited-sheet.html";
         return System.Path + `/templates/actors/${this.actor.data.type}-sheet.html`;
     }

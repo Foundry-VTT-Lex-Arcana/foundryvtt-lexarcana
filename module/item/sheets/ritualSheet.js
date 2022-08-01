@@ -42,8 +42,7 @@ export default class LexArcanaRitualSheet extends LexArcanaItemSheet
 		data.cssClass = isOwner ? 'editable' : 'locked';
 		data.config = CONFIG.LexArcana;
 		// The Actor and its Items
-		data.object = duplicate(this.object.data);
-		data.data = data.object.data;
+		data.object = duplicate(this.object.system);
 		// Return data to the sheet
 		return data;
 	}
@@ -72,7 +71,7 @@ export default class LexArcanaRitualSheet extends LexArcanaItemSheet
 		{
 			const id = this.dataset.itemId;
 			let item = game.items.get(id);
-			let disciplines = item.data.data.disciplines ?? new Array();
+			let disciplines = item.system.disciplines ?? new Array();
 			disciplines.push({name:'precognition', difficultyThreshold: 6});
 			item.update({ 'data.disciplines': LexArcanaRitualSheet.toArray(disciplines) });
 		});
@@ -80,12 +79,12 @@ export default class LexArcanaRitualSheet extends LexArcanaItemSheet
 		{
 			const id = this.dataset.itemId;
 			let item = game.items.get(id);
-			if(item.data.data.disciplines===undefined)
+			if(item.system.disciplines===undefined)
 				return;
 
-			item.data.data.disciplines = LexArcanaRitualSheet.toArray(item.data.data.disciplines);
-			/*delete */item.data.data.disciplines.splice(this.dataset.disciplineId, 1);
-			item.update({ 'data.disciplines': item.data.data.disciplines });
+			item.system.disciplines = LexArcanaRitualSheet.toArray(item.system.disciplines);
+			/*delete */item.system.disciplines.splice(this.dataset.disciplineId, 1);
+			item.update({ 'system.disciplines': item.system.disciplines });
 		});
 	}
 }
