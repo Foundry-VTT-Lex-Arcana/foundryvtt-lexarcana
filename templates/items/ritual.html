@@ -41,8 +41,7 @@
 					<div class="form-fields">
 						<div class="form-group">
 							<label>{{ localize "LexArcana.DisciplineName" }}</label>
-							<label>{{discipline.name}}</label>
-							<select name="discipline.name">
+							<select name="system.disciplines.{{id}}.name">
 								{{#select discipline.name}}
 								<option value="precognition">{{ localize "LexArcana.Disciplines.Precognition"}}</option>
 								<option value="clairvoyance">{{ localize "LexArcana.Disciplines.Clairvoyance"}}</option>
@@ -56,8 +55,7 @@
 						<div class="form-group">
 							<label>{{ localize "LexArcana.DifficultyThreshold" }}</label>
 							<div class="form-fields">
-								<label>{{discipline.difficultyThreshold}}</label>
-								<input type="text" name="difficultyThreshold" value="{{discipline.difficultyThreshold}}" data-dtype="Number"/>
+								<input type="text" name="system.disciplines.{{id}}.difficultyThreshold" value="{{discipline.difficultyThreshold}}" data-dtype="Number"/>
 							</div>
 						</div>
 					</div>
