@@ -52,14 +52,14 @@ export default class LexArcanaActorSheet extends ActorSheet
             config: CONFIG.LexArcana
         };
         // The Actor and its Items
-        data.actor = duplicate(this.object.system);
+        data.actor = duplicate(this.object);
 
         // Ability Scores
-        for ( let [k, v] of Object.entries(data.actor.virtutes))
+        for ( let [k, v] of Object.entries(data.actor.system.virtutes))
         {
             v.label = CONFIG.LexArcana.Virtutes[k];
         }
-        for ( let [k, v] of Object.entries(data.actor.peritiae))
+        for ( let [k, v] of Object.entries(data.actor.system.peritiae))
         {
             v.label = CONFIG.LexArcana.Peritia[k];
         }
