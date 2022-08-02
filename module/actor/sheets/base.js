@@ -72,10 +72,9 @@ export default class LexArcanaActorSheet extends ActorSheet
     /** @override */
     get template()
     {
-        console.log ("THIS ACTOR 2")
-        console.log (this)
         if (!game.user.isGM && this.actor.limited) return System.Path + "/templates/actors/limited-sheet.html";
-        return System.Path + `/templates/actors/${this.actor.data.type}-sheet.html`;
+        
+        return System.Path + `/templates/actors/${this.actor.type}-sheet.html`;
     }
 
     /* -------------------------------------------- */

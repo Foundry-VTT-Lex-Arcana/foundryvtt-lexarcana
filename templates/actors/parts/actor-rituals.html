@@ -3,10 +3,17 @@
 		<h3>{{ localize "LexArcana.IndigamentaSectionTitle" }}</h3>
 		<ul>
 		{{#each indigamenta as |indigamentum key|}}
-			<li class="indigamentum">
-				<a class="item-image" data-id="{{indigamentum._id}}"><img src="{{indigamentum.img}}" title="{{indigamentum.name}}" width="32" height="32" /></a>
-				<a class="item-name" title="{{indigamentum.name}}" data-id="{{indigamentum._id}}">{{indigamentum.name}}</a>
-				<a class="item-delete icon" data-id="{{indigamentum._id}}">&nbsp;</a>
+		<li class="item">
+				<a class="item-image inventory" data-id="{{indigamentum._id}}"><img src="{{indigamentum.img}}" title="{{indigamentum.name}}" width="32" height="32" /></a>
+				<a class="item-name inventory" title="{{indigamentum.name}}">{{indigamentum.name}}</a>
+				<div class="item-roll_area inventory">
+					<a class="fas fa-dice dialog-roll" data-id="{{indigamentum._id}}" data-peritiaid="{{indigamentum.system.peritia}}">&nbsp;</a>
+				</div>
+				<div class="fas fa-bolt inventory"> {{indigamentum.system.cost}}</div>
+				<div class="item-modify inventory">
+					<a class="item-edit fas fa-edit" data-id="{{indigamentum._id}}">&nbsp;</a>
+					<a class="item-delete fas fa-trash" data-id="{{indigamentum._id}}">&nbsp;</a>
+				</div>
 			</li>
 		{{/each}}
 		</ul>
@@ -16,10 +23,18 @@
 		<ul>
 		{{#each rituals as |ritual key|}}
 			<li class="item">
-				<a class="item-image" data-id="{{ritual._id}}"><img src="{{ritual.img}}" title="{{ritual.name}}" width="32" height="32" /></a>
-				<a class="item-name" title="{{ritual.name}}" data-id="{{ritual._id}}">{{ritual.name}}</a>
-				<a class="item-delete icon" data-id="{{ritual._id}}">&nbsp;</a>
+				<a class="item-image inventory" data-id="{{ritual._id}}"><img src="{{ritual.img}}" title="{{ritual.name}}" width="32" height="32" /></a>
+				<a class="item-name inventory" title="{{ritual.name}}">{{ritual.name}}</a>
+				<div class="item-roll_area inventory">
+					<a class="fas fa-dice dialog-roll" data-id="{{ritual._id}}" data-peritiaid="{{ritual.system.peritia}}">&nbsp;</a>
+				</div>
+				<div class="fas fa-bolt inventory"> {{ritual.system.cost}}</div>
+				<div class="item-modify inventory">
+					<a class="item-edit fas fa-edit" data-id="{{ritual._id}}">&nbsp;</a>
+					<a class="item-delete fas fa-trash" data-id="{{ritual._id}}">&nbsp;</a>
+				</div>
 			</li>
+			
 		{{/each}}
 		</ul>
 	</div>

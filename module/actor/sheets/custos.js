@@ -70,19 +70,13 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 	{
 		// Basic data
 		const data = super.getData();
-		console.log ("DATA")
-		console.log (data)
 		// Iterate through items, allocating to containers
 		this.setDefaultRolls(data.data);
 		data.items = [];
 		data.indigamenta = [];
 		data.rituals = [];
-		console.log ("DATA ITEMS")
-		console.log (data.actor.items)
 		for (let i of data.actor.items)
 		{
-			console.log ("IIIIIIIIIIIII")
-			console.log (i)
 			switch (i.type)
 			{
 				case 'province':
@@ -114,12 +108,6 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 				}
 			}
 		}
-		console.log ("ITEMS")
-		console.log (data.items)
-		console.log ("INDIGAMENTA")
-		console.log (data.indigamenta)
-		console.log ("RITUALS")
-		console.log (data.rituals)
 
 		return data;
 	}
@@ -199,8 +187,6 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		event.preventDefault();
 		const dataset = event.currentTarget.dataset;
 		const item = this.actor.items.get(dataset.id);
-		console.log ("ITEM")
-		console.log (item)
 		LexArcanaDice.Roll(1, item.data.data.protection, LexArcanaDice.EXPRESSIONTYPE.BALANCED, true, item.name);
 		return;
 	}
