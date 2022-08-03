@@ -160,7 +160,7 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		event.preventDefault();
 		const dataset = event.currentTarget.dataset;
 		const item = this.actor.items.get(dataset.id);
-		item.update({ 'data.active': !item.data.data.active });
+		item.update({ 'system.active': !item.system.active });
 		return;
 	}
 
@@ -178,7 +178,7 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		event.preventDefault();
 		const dataset = event.currentTarget.dataset;
 		const item = this.actor.items.get(dataset.id);
-		LexArcanaDice.Roll(1, item.data.data.damage, LexArcanaDice.EXPRESSIONTYPE.BALANCED, true, item.name);
+		LexArcanaDice.Roll(1, item.system.damage, LexArcanaDice.EXPRESSIONTYPE.BALANCED, true, item.name);
 		return;
 	}
 
@@ -187,7 +187,7 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		event.preventDefault();
 		const dataset = event.currentTarget.dataset;
 		const item = this.actor.items.get(dataset.id);
-		LexArcanaDice.Roll(1, item.data.data.protection, LexArcanaDice.EXPRESSIONTYPE.BALANCED, true, item.name);
+		LexArcanaDice.Roll(1, item.system.protection, LexArcanaDice.EXPRESSIONTYPE.BALANCED, true, item.name);
 		return;
 	}
 

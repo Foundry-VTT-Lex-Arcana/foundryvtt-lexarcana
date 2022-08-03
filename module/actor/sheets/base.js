@@ -234,7 +234,7 @@ export default class LexArcanaActorSheet extends ActorSheet
 		}
         if(dataSet.virtuteid!==undefined)
         {
-            const virtute = this.actor.data.data.virtutes[dataSet.virtuteid];
+            const virtute = this.actor.system.virtutes[dataSet.virtuteid];
             config.title = game.i18n.format(game.i18n.localize(CONFIG.LexArcana.Virtutes[dataSet.virtuteid]));
             config.defaultRoll = virtute.defaultRoll===undefined?'1d6':virtute.defaultRoll;
             config.defaultRollInputName = 'virtute-default-roll';
@@ -254,7 +254,7 @@ export default class LexArcanaActorSheet extends ActorSheet
         else
         {
             const peritiaNameLoc = game.i18n.format(game.i18n.localize(CONFIG.LexArcana.Peritia[dataSet.peritiaid]));
-            const peritia = this.actor.data.data.peritiae[dataSet.peritiaid];
+            const peritia = this.actor.system.peritiae[dataSet.peritiaid];
             config.defaultRoll = peritia.defaultRoll;
             config.defaultRollInputName = 'peritia-default-roll';
             config.title = peritiaNameLoc;
