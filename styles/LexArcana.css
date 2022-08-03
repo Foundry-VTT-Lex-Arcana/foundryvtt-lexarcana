@@ -11,13 +11,15 @@
 }
 
 strong {
-    font-family: Signika;
+    /*font-family: Signika;*/
+    font-family: Book Antiqua,Palatino,Palatino Linotype,Palatino LT STD,Georgia,serif; 
     font-weight: bold;
 }
 
 p, li
 {
-    font-family: Signika, sans-serif;
+    /*font-family: Signika, sans-serif;*/
+    font-family: Book Antiqua,Palatino,Palatino Linotype,Palatino LT STD,Georgia,serif; 
     font-weight: normal;
 }
 

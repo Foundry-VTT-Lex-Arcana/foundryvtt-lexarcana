@@ -205,7 +205,7 @@ export default class LexArcanaActorSheet extends ActorSheet
 			return {
 					expressionType: _html.find('input[name="expression-type"]')[0].checked?LexArcanaDice.EXPRESSIONTYPE.BALANCED:LexArcanaDice.EXPRESSIONTYPE.UNBALANCED
 					, customExpression: _defaultRollInputName!==''?_html.find('input[name="'+_defaultRollInputName+'"]')[0].value:''
-					, difficultyThreshold: _html.find('input[name="difficulty-threshold"]')[0].value
+					, difficultyThreshold: parseInt(_html.find('input[name="difficulty-threshold"]')[0].value)
 			};
 		}
 		function createButtonWithToolTip(_numDice, _numFaces)
