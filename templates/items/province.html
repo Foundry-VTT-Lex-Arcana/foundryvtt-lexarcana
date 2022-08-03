@@ -2,16 +2,15 @@
 
     {{!-- Item Sheet Header --}}
     <header class="sheet-header flexrow">
-        <img class="profile" src="{{object.img}}" title="{{object.name}}" data-edit="img"/>
+        <img class="profile" src="{{item.img}}" title="{{item.name}}" data-edit="img"/>
 
         <div class="header-details flexrow">
             <h1>
-                <input name="name" type="text" value="{{object.name}}" placeholder="{{ localize 'LexArcana.ItemName' }}"/>
+                <input name="name" type="text" value="{{item.name}}" placeholder="{{ localize 'LexArcana.ItemName' }}"/>
             </h1>
 
             <div class="item-subtitle">
-                <h4 class="item-type">{{object.type}}</h4>
-                <span class="item-status">{{itemStatus}}</span>
+                <h4 class="item-type">{{item.type}}</h4>
             </div>
         </div>
     </header>
@@ -30,7 +29,7 @@
             <div>
                 <h3>{{ localize "LexArcana.LanguagesSpokenLabel" }}</h3>
                 <div class="grid-layout-2c">
-                    <input style="width: 100%" type="text" name="data.languages" value="{{data.languages}}" data-dtype="Text"/>
+                    <input style="width: 100%" type="text" name="system.languages" value="{{item.system.languages}}" data-dtype="Text"/>
                 </div>
             </div>
 
@@ -39,18 +38,18 @@
                 <h3>{{ localize "LexArcana.ProvincePeritiaeModifiersLabel" }}</h3>
                 <div>
                     <ul class="grid-layout-2c grid-layout2c-left-text-right-number">
-                        <li><label>{{data.peritiaeModifiers.deBello.label}}</label></li>
-                        <li><input type="text" name="data.peritiaeModifiers.deBello.value" value="{{data.peritiaeModifiers.deBello.value}}" data-dtype="Number"/></li>
-                        <li><label>{{data.peritiaeModifiers.deNatura.label}}</label></li>
-                        <li><input type="text" name="data.peritiaeModifiers.deNatura.value" value="{{data.peritiaeModifiers.deNatura.value}}" data-dtype="Number"/></li>
-                        <li><label>{{data.peritiaeModifiers.deSocietate.label}}</label></li>
-                        <li><input type="text" name="data.peritiaeModifiers.deSocietate.value" value="{{data.peritiaeModifiers.deSocietate.value}}" data-dtype="Number"/></li>
-                        <li><label>{{data.peritiaeModifiers.deMagia.label}}</label></li>
-                        <li><input type="text" name="data.peritiaeModifiers.deMagia.value" value="{{data.peritiaeModifiers.deMagia.value}}" data-dtype="Number"/></li>
-                        <li><label>{{data.peritiaeModifiers.deScientia.label}}</label></li>
-                        <li><input type="text" name="data.peritiaeModifiers.deScientia.value" value="{{data.peritiaeModifiers.deScientia.value}}" data-dtype="Number"/></li>
-                        <li><label>{{data.peritiaeModifiers.deCorpore.label}}</label></li>
-                        <li><input type="text" name="data.peritiaeModifiers.deCorpore.value" value="{{data.peritiaeModifiers.deCorpore.value}}" data-dtype="Number"/></li>
+                        <li><label>{{ localize "LexArcana.Peritia.DeBello" }}</label></li>
+                        <li><input type="text" name="system.peritiaeModifiers.deBello.value" value="{{item.system.peritiaeModifiers.deBello.value}}" data-dtype="Number"/></li>
+                        <li><label>{{ localize "LexArcana.Peritia.DeNatura" }}</label></li>
+                        <li><input type="text" name="system.peritiaeModifiers.deNatura.value" value="{{item.system.peritiaeModifiers.deNatura.value}}" data-dtype="Number"/></li>
+                        <li><label>{{ localize "LexArcana.Peritia.DeSocietate" }}</label></li>
+                        <li><input type="text" name="system.peritiaeModifiers.deSocietate.value" value="{{item.system.peritiaeModifiers.deSocietate.value}}" data-dtype="Number"/></li>
+                        <li><label>{{ localize "LexArcana.Peritia.DeMagia" }}</label></li>
+                        <li><input type="text" name="system.peritiaeModifiers.deMagia.value" value="{{item.system.peritiaeModifiers.deMagia.value}}" data-dtype="Number"/></li>
+                        <li><label>{{ localize "LexArcana.Peritia.DeScientia" }}</label></li>
+                        <li><input type="text" name="system.peritiaeModifiers.deScientia.value" value="{{item.system.peritiaeModifiers.deScientia.value}}" data-dtype="Number"/></li>
+                        <li><label>{{ localize "LexArcana.Peritia.DeCorpore" }}</label></li>
+                        <li><input type="text" name="system.peritiaeModifiers.deCorpore.value" value="{{item.system.peritiaeModifiers.deCorpore.value}}" data-dtype="Number"/></li>
                     </ul>
                     
                 </div>
@@ -59,7 +58,7 @@
 
         {{!-- Description Tab --}}
         <div class="tab flexrow description" data-group="primary" data-tab="description">
-            {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+            {{editor item.system.description target="system.description" button=true owner=owner editable=true}}
         </div>
     </section>
 </form>
