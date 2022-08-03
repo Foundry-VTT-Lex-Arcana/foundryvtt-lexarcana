@@ -10,8 +10,7 @@
             </h1>
 
             <div class="item-subtitle">
-                <h4 class="item-type">{{data.type}}</h4>
-                <span class="item-status">{{itemStatus}}</span>
+                <h4 class="item-type">{{item.type}}</h4>
             </div>
         </div>
     </header>
@@ -30,7 +29,7 @@
 			<div class="form-group">
 				<label>{{ localize "LexArcana.Encumbrance" }}</label>
 				<div class="form-fields">
-					<input type="text" name="data.encumbrance" value="{{data.data.encumbrance}}" data-dtype="Number"/>
+					<input type="text" name="system.encumbrance" value="{{item.system.encumbrance}}" data-dtype="Number"/>
 				</div>
 			</div>
 			
@@ -38,7 +37,7 @@
 			<div class="form-group">
 				<label>{{ localize "LexArcana.Damage" }}</label>
 				<div class="form-fields">
-					<input type="text" name="data.damage" value="{{data.data.damage}}" data-dtype="Number"/>
+					<input type="text" name="system.damage" value="{{item.system.damage}}" data-dtype="Number"/>
 				</div>
 			</div>
 
@@ -46,7 +45,7 @@
 			<div class="form-group">
 				<label>{{ localize "LexArcana.Difficulty" }}</label>
 				<div class="form-fields">
-					<input type="text" name="data.difficulty" value="{{data.data.difficulty}}" data-dtype="Number"/>
+					<input type="text" name="system.difficulty" value="{{item.system.difficulty}}" data-dtype="Number"/>
 				</div>
 			</div>
 			
@@ -54,7 +53,7 @@
 			<div class="form-group">
 				<label>{{ localize "LexArcana.Feat" }}</label>
 				<div class="form-fields">
-					<input type="text" name="data.feat" value="{{data.data.feat}}"/>
+					<input type="text" name="system.feat" value="{{item.system.feat}}"/>
 				</div>
 			</div>
 
@@ -62,8 +61,8 @@
 			<div class="form-group">
 				<label>{{ localize "LexArcana.PeritiaeName" }}</label>
 				<div class="form-fields">
-					<select name="data.peritia" data-dtype="String">
-						{{#select data.data.peritia}}
+					<select name="system.peritia" data-dtype="String">
+						{{#select item.system.peritia}}
 						<option value="deBello">{{ localize "LexArcana.Peritia.DeBello" }}</option>
 						<option value="deCorpore">{{ localize "LexArcana.Peritia.DeCorpore" }}</option>
 						<option value="deMagia">{{ localize "LexArcana.Peritia.DeMagia" }}</option>
@@ -78,7 +77,7 @@
 
         {{!-- Description --}}
         <div class="description tab flexrow" data-group="primary" data-tab="description">
-            {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable}}
+            {{editor item.system.description target="system.description" button=true owner=owner editable=true}}
         </div>
     </section>
 </form>

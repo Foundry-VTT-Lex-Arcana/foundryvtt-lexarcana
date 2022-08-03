@@ -15,7 +15,7 @@ export default class LexArcanaAntagonistActorSheet extends LexArcanaActorSheet
             {
                 classes: ['LexArcana', 'sheet', 'actor', LexArcana.ActorType.antagonist],
                 width: 600,
-                height: 680
+                height: 500
             });
     }
 }
