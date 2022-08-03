@@ -158,8 +158,8 @@ export class LexArcanaDice {
 		message.content += '<div>';
 		if(computedTotal>_difficultyThreshold)
 		{
-			let difference = computedTotal-_difficultyThreshold;
-			switch(parseInt(difference/3))
+			let difference = computedTotal-_difficultyThreshold-1;
+			switch((difference-(difference%3))/3)
 			{
 				case 0: message.content += '<span class="DoS1">'+game.i18n.localize(CONFIG.LexArcana.DoSMarginalSuccess)+'</span>'; break;
 				case 1: message.content += '<span class="DoS2">'+game.i18n.localize(CONFIG.LexArcana.DoSCompleteSuccess)+'</span>'; break;
