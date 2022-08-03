@@ -16,6 +16,11 @@ Balanced mode with 3 dices: 3d6
 Unbalanced mode with 3 dices: 1d12+1d3+1d3
 
 # Versions
+## future 0.0.7
+* Various fixes for invetory tab
+* Various fixes for ritual tab
+* Fixed Degrees of Success being shifter of one
+
 ## 0.0.6
 * Fixed tooltips localization
 * Fixed default values for custom rolls

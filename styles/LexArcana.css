@@ -11,17 +11,26 @@
 }
 
 strong {
-    font-family: Signika;
+    /*font-family: Signika;*/
+    font-family: Book Antiqua,Palatino,Palatino Linotype,Palatino LT STD,Georgia,serif; 
     font-weight: bold;
 }
 
 p, li
 {
-    font-family: Signika, sans-serif;
+    /*font-family: Signika, sans-serif;*/
+    font-family: Book Antiqua,Palatino,Palatino Linotype,Palatino LT STD,Georgia,serif; 
     font-weight: normal;
 }
 
 h3
+{
+    font-family: Trajan;
+    font-weight: bold;
+    border-bottom: none;
+}
+
+h2
 {
     font-family: Trajan;
     font-weight: bold;
@@ -90,8 +99,7 @@ body.system-LexArcana
     max-height: 64px;
 }*/
 
-.system-LexArcana .window-content .sheet-header ul
-, .system-LexArcana .window-content .sheet-body ul
+.no-circle ul
 {
     list-style: none;
 }
@@ -99,6 +107,7 @@ body.system-LexArcana
 .system-LexArcana .window-app h3
 , .system-LexArcana .window-app h4
 {
+    font-family: Trajan;
     font-size: 16px;
     font-weight: bold;
     border-bottom: 1px solid #AB0000;
@@ -141,6 +150,11 @@ body.system-LexArcana
 .system-LexArcana .grid-layout2c-left-text-right-number
 {
     grid-template-columns: auto 32px;
+}
+
+.system-LexArcana .grid-layout2c-left-text-right-number label
+{
+    font-family: Trajan;
 }
 
 .system-LexArcana .grid-layout-3c
@@ -245,10 +259,22 @@ body.system-LexArcana
     grid-template-columns: 32px 50% 32px 32px;
 }
 
-.system-LexArcana .grid-layout3-area0 { grid-area: Area0; }
-.system-LexArcana .grid-layout3-area1 { grid-area: Area1; }
-.system-LexArcana .grid-layout3-area2 { grid-area: Area2; }
-.system-LexArcana .grid-layout3-area3 { grid-area: Area3; }
+.system-LexArcana .grid-layout4-area0 { grid-area: Area0; }
+.system-LexArcana .grid-layout4-area1 { grid-area: Area1; }
+.system-LexArcana .grid-layout4-area2 { grid-area: Area2; }
+.system-LexArcana .grid-layout4-area3 { grid-area: Area3; }
+
+.system-LexArcana .grid-layout5
+{
+    display: grid;
+    margin: 0;
+    padding: 0;
+    padding-left: 5px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    grid-template-areas: "Area0 Area1 Area2 Area3 Area4";
+}
 
 .system-LexArcana .disabled
 {
@@ -286,6 +312,7 @@ body.system-LexArcana
 {
 	border: 1px solid #000000;
 	padding: 5px;
+    font-family: Trajan;
 }
 
 .system-LexArcana input.peritia-value
@@ -306,7 +333,6 @@ body.system-LexArcana
 , .system-LexArcana .dialog-buttons button.yes
 , .system-LexArcana .dialog-buttons button.no
 , .system-LexArcana .form-group button
-, .system-LexArcana select
 , .system-LexArcana textarea
 , .system-LexArcana form input
 , .system-LexArcana .directory-footer
@@ -319,6 +345,14 @@ body.system-LexArcana
     color: #000000;
     background-color: #ffffff88;
     text-align: center;
+}
+.system-LexArcana select
+{
+    color: #000000;
+    background-color: #ffffff88;
+    text-align: center;
+    font-family: Trajan;
+
 }
 
 .system-LexArcana .dialog-buttons
@@ -342,8 +376,8 @@ body.system-LexArcana
     border: none;
 }
 
-.system-LexArcana .virtute-name { font-weight: bold; }
-.system-LexArcana .peritia-name { font-weight: bold; }
+.system-LexArcana .virtute-name { font-weight: bold; font-family: 'Trajan'}
+.system-LexArcana .peritia-name { font-weight: bold; font-family: 'Trajan'}
 
 /**********************************************************
  * End of Character sheets
@@ -368,11 +402,17 @@ body.system-LexArcana
 , #module-management .notes
 {
     color: #000000;
+    font-family: Trajan;
 }
 
 .system-LexArcana .form-group .units
 {
     color: #ffd700;
+}
+
+.system-LexArcana .form-group label
+{
+    font-family: Trajan;
 }
 
 .system-LexArcana .window-content .sheet-header .profile
@@ -394,6 +434,7 @@ body.system-LexArcana
 
 .system-LexArcana .tabs
 {
+    font-family: 'Trajan';
     margin-top: 5px;
     border-top-left-radius: 1em;
     border-top-right-radius: 1em;
@@ -401,11 +442,13 @@ body.system-LexArcana
 
 .system-LexArcana .tabs .item
 {
+    font-family: 'Trajan';
     text-shadow: 0px 0px 4px #00000088;
 }
 
 .system-LexArcana .tabs .active
 {
+    font-family: 'Trajan';
     text-shadow: 0px 0px 4px #930101;
 }
 
@@ -415,8 +458,11 @@ body.system-LexArcana
 , .system-LexArcana .editor-content
 , .system-LexArcana .tox-edit-area
 {
+    text-align: left;
+    font-family: Signika, sans-serif;
     height: 100%;
 }
+
 
 /**
  * Rolls
@@ -493,19 +539,23 @@ body.system-LexArcana
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    grid-template-areas: "Area1 Area2 Area3 Area4";
+    grid-template-areas: "Area0 Area1 Area2 Area3 Area4";
 }
 
-.system-LexArcana .inventory .item-image { grid-area: Area1; width: 32px; }
-.system-LexArcana .inventory .item-name { grid-area: Area2; width: auto;}
-.system-LexArcana .inventory .item-roll_area { grid-area: Area3; width: 64px;}
+.system-LexArcana .inventory .item-image { grid-area: Area0; width: 32px;}
+.system-LexArcana .inventory .item-name { grid-area: Area1; width: 400px;}
+.system-LexArcana .inventory .item-roll_area { grid-area: Area2; width: 64px;}
+.system-LexArcana .inventory .item-stats { grid-area: Area3; width: 64px;}
 .system-LexArcana .inventory .item-modify { grid-area: Area4; width: 96px;}
 
 .editor-content
 , .tox
 {
+    list-style: circle;
+    font-family: Signika, sans-serif;
+    text-align: left;
     padding: 5px;
-	background-color: #cac2b0;
+	background-color: #cac2b085;
     color: #000000;
 }
 
