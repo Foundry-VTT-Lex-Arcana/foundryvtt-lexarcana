@@ -12,16 +12,16 @@ export default class LexArcanaActor extends Actor
     /** @override */
     prepareBaseData()
     {
-        switch (this.type)
+        switch (this.data.type)
         {
             case LexArcana.ActorType.custos:
-                return this._prepareCustosData(this.system);
+                return this._prepareCustosData(this.data);
             case LexArcana.ActorType.friendly:
-                return this._prepareFriendlyTypeData(this.system);
+                return this._prepareFriendlyTypeData(this.data);
             case LexArcana.ActorType.antagonist:
-                return this._prepareAntagonistTypeData(this.system);
+                return this._prepareAntagonistTypeData(this.data);
             case LexArcana.ActorType.fantasticalCreature:
-                return this._preparefantasticalCreatureTypeData(this.system);
+                return this._preparefantasticalCreatureTypeData(this.data);
         }
     }
 
@@ -34,7 +34,7 @@ export default class LexArcanaActor extends Actor
      */
     _prepareCustosData(actorData)
     {
-        const data = actorData;
+        const data = actorData.data;
     }
 
     /* -------------------------------------------- */
@@ -44,7 +44,7 @@ export default class LexArcanaActor extends Actor
      */
     _prepareFriendlyTypeData(actorData)
     {
-        const data = actorData;
+        const data = actorData.data;
     }
 
     /* -------------------------------------------- */
@@ -76,18 +76,18 @@ export default class LexArcanaActor extends Actor
     /* -------------------------------------------- */
     getSpecialty(peritiaId, speName)
     {
-        const peritia = this.system.peritiae[peritiaId];
+        const peritia = this.data.data.peritiae[peritiaId];
         return LexArcanaUtils.ObjectToArray(peritia.specialties).find(item => item.name===speName);
     }
     getSpecialties(peritiaId)
     {
-        let specialties = this.system.peritiae?.[peritiaId]?.specialties ?? [];
+        let specialties = this.data.data.peritiae?.[peritiaId]?.specialties ?? [];
         return LexArcanaUtils.ObjectToArray(specialties);
     }
 	getSpecialtyScore(_peritiaid, _specialtyId)
 	{
         const specialty = this.getSpecialty(_peritiaid, _specialtyId);
-        return this.system.peritiae[_peritiaid].value+parseInt(specialty.modifier);
+        return this.data.data.peritiae[_peritiaid].value+parseInt(specialty.modifier);
 	}
 
     /* -------------------------------------------- */

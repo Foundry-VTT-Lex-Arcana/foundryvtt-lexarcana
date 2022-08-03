@@ -10,7 +10,8 @@
             </h1>
 
             <div class="item-subtitle">
-                <h4 class="item-type">{{item.type}}</h4>
+                <h4 class="item-type">{{object.type}}</h4>
+                <span class="item-status">{{itemStatus}}</span>
             </div>
         </div>
     </header>
@@ -29,7 +30,7 @@
 			<div class="form-group">
 				<label>{{ localize "LexArcana.Cost" }}</label>
 				<div class="form-fields">
-					<input type="text" name="system.cost" value="{{item.system.cost}}" data-dtype="Number"/>
+					<input type="text" name="data.cost" value="{{data.cost}}" data-dtype="Number"/>
 				</div>
 			</div>
 			
@@ -37,8 +38,8 @@
 			<div class="form-group">
 				<label>{{ localize "LexArcana.PeritiaName" }}</label>
 				<div class="form-fields">
-					<select name="system.peritia" data-dtype="String">
-						{{#select item.system.peritia}}
+					<select name="data.peritia" data-dtype="{{data.peritia}}">
+						{{#select data.peritia}}
 						<option value="deBello">{{ localize "LexArcana.Peritia.DeBello"}}</option>
 						<option value="deNatura">{{ localize "LexArcana.Peritia.DeNatura"}}</option>
 						<option value="deSocietate">{{ localize "LexArcana.Peritia.DeSocietate"}}</option>
@@ -54,8 +55,8 @@
 			<div class="form-group">
 				<label>{{ localize "LexArcana.VirtutesName" }}</label>
 				<div class="form-fields">
-					<select name="system.virtute" data-dtype="String">
-						{{#select item.system.virtute}}
+					<select name="data.virtute" data-dtype="{{data.virtute}}">
+						{{#select data.virtute}}
 						<option value="none">{{ localize "LexArcana.Virtutes.None"}}</option>
 						<option value="coordinatio">{{ localize "LexArcana.Virtutes.Coordinatio"}}</option>
 						<option value="auctoritas">{{ localize "LexArcana.Virtutes.Auctoritas"}}</option>
@@ -71,7 +72,7 @@
 
         {{!-- Description --}}
         <div class="description tab flexrow" data-group="primary" data-tab="description">
-			{{editor item.system.description target="system.description" button=true owner=owner editable=true}}
+            {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
         </div>
     </section>
 </form>

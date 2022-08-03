@@ -10,7 +10,8 @@
             </h1>
 
             <div class="item-subtitle">
-                <h4 class="item-type">{{item.type}}</h4>
+                <h4 class="item-type">{{object.type}}</h4>
+                <span class="item-status">{{itemStatus}}</span>
             </div>
         </div>
     </header>
@@ -29,19 +30,19 @@
 			<div class="form-group">
 				<label>{{ localize "LexArcana.Cost" }}</label>
 				<div class="form-fields">
-					<input type="text" name="system.cost" value="{{item.system.cost}}" data-dtype="Number"/>
+					<input type="text" name="data.cost" value="{{data.cost}}" data-dtype="Number"/>
 				</div>
 			</div>
 			
 			{{!-- Discipline --}}
 			<div class="form-group">
 				<label>{{ localize "LexArcana.DisciplinesName" }}</label>
-				{{#each item.system.disciplines as |discipline id|}}
+				{{#each data.disciplines as |discipline key|}}
 				<div class="form-separator">
 					<div class="form-fields">
 						<div class="form-group">
 							<label>{{ localize "LexArcana.DisciplineName" }}</label>
-							<select name="system.disciplines.{{id}}.name">
+							<select name="data.disciplines.{{key}}.name">
 								{{#select discipline.name}}
 								<option value="precognition">{{ localize "LexArcana.Disciplines.Precognition"}}</option>
 								<option value="clairvoyance">{{ localize "LexArcana.Disciplines.Clairvoyance"}}</option>
@@ -55,7 +56,7 @@
 						<div class="form-group">
 							<label>{{ localize "LexArcana.DifficultyThreshold" }}</label>
 							<div class="form-fields">
-								<input type="text" name="system.disciplines.{{id}}.difficultyThreshold" value="{{discipline.difficultyThreshold}}" data-dtype="Number"/>
+								<input type="text" name="data.disciplines.{{key}}.difficultyThreshold" value="{{discipline.difficultyThreshold}}" data-dtype="Number"/>
 							</div>
 						</div>
 					</div>
@@ -71,8 +72,8 @@
 			<div class="form-group">
 				<label>{{ localize "LexArcana.Duration" }}</label>
 				<div class="form-fields">
-					<select name="system.duration">
-						{{#select item.system.duration}}
+					<select name="data.duration">
+						{{#select data.duration}}
 						<option value="short">{{ localize "LexArcana.Short"}}</option>
 						<option value="average">{{ localize "LexArcana.Average"}}</option>
 						<option value="long">{{ localize "LexArcana.Long"}}</option>
@@ -84,7 +85,7 @@
 
         {{!-- Description --}}
         <div class="description tab flexrow" data-group="primary" data-tab="description">
-			{{editor item.system.description target="system.description" button=true owner=owner editable=true}}
+            {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
         </div>
     </section>
 </form>

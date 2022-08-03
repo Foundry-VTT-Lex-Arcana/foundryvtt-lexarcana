@@ -7,9 +7,9 @@
 				<a class="item-image inventory" data-id="{{indigamentum._id}}"><img src="{{indigamentum.img}}" title="{{indigamentum.name}}" width="32" height="32" /></a>
 				<a class="item-name inventory" title="{{indigamentum.name}}">{{indigamentum.name}}</a>
 				<div class="item-roll_area inventory">
-					<a class="fas fa-dice dialog-roll" data-id="{{indigamentum._id}}" data-peritiaid="{{indigamentum.system.peritia}}">&nbsp;</a>
+					<a class="fas fa-dice dialog-roll" data-peritiaid="{{indigamentum.data.peritia}}" data-id="{{indigamentum._id}}" data-peritiaid="{{indigamentum.data.peritia}}">&nbsp;</a>
 				</div>
-				<div class="fas fa-bolt inventory"> {{indigamentum.system.cost}}</div>
+				<div class="fas fa-bolt inventory"> {{indigamentum.data.cost}}</div>
 				<div class="item-modify inventory">
 					<a class="item-edit fas fa-edit" data-id="{{indigamentum._id}}">&nbsp;</a>
 					<a class="item-delete fas fa-trash" data-id="{{indigamentum._id}}">&nbsp;</a>
@@ -26,9 +26,9 @@
 				<a class="item-image inventory" data-id="{{ritual._id}}"><img src="{{ritual.img}}" title="{{ritual.name}}" width="32" height="32" /></a>
 				<a class="item-name inventory" title="{{ritual.name}}">{{ritual.name}}</a>
 				<div class="item-roll_area inventory">
-					<a class="fas fa-dice dialog-roll" data-id="{{ritual._id}}" data-peritiaid="{{ritual.system.peritia}}">&nbsp;</a>
+					<a class="fas fa-dice dialog-roll" data-peritiaid="{{ritual.data.peritia}}" data-id="{{ritual._id}}" data-peritiaid="{{ritual.data.peritia}}">&nbsp;</a>
 				</div>
-				<div class="fas fa-bolt inventory"> {{ritual.system.cost}}</div>
+				<div class="fas fa-bolt inventory"> {{ritual.data.cost}}</div>
 				<div class="item-modify inventory">
 					<a class="item-edit fas fa-edit" data-id="{{ritual._id}}">&nbsp;</a>
 					<a class="item-delete fas fa-trash" data-id="{{ritual._id}}">&nbsp;</a>

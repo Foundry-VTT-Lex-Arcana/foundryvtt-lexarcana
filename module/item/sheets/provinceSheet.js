@@ -42,10 +42,11 @@ export default class LexArcanaProvinceSheet extends LexArcanaItemSheet
 		data.cssClass = isOwner ? 'editable' : 'locked';
 		data.config = CONFIG.LexArcana;
 		// The Actor and its Items
-		data.object = duplicate(this.object.system);
+		data.object = duplicate(this.object.data);
+		data.data = data.object.data;
 
 		// Ability Scores
-		for ( let [k, v] of Object.entries(data.object.peritiaeModifiers))
+		for ( let [k, v] of Object.entries(data.object.data.peritiaeModifiers))
 		{
 			v.label = CONFIG.LexArcana.Peritia[k];
 		}

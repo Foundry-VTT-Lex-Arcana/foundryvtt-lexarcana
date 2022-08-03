@@ -30,7 +30,7 @@ export default class LexArcanaItem extends Item
      */
     get isVersatile()
     {
-        return !!(this.isWeapon() && ["versatile"].includes(this.system.feat));
+        return !!(this.isWeapon() && ["versatile"].includes(this.data.data.feat));
     }
 
     /* -------------------------------------------- */
@@ -46,8 +46,9 @@ export default class LexArcanaItem extends Item
         super.prepareData();
 
         // Get the Item's data
-        const itemData = this.system;
-        const data = itemData;
+        const itemData = this.data;
+        const data = itemData.data;
+
         // Activated Items
         if (data.hasOwnProperty("range"))
         {

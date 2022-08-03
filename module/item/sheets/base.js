@@ -33,6 +33,6 @@ export default class LexArcanaItemSheet extends ItemSheet
     get template()
     {
         const path = System.Path + '/templates/items/';
-        return `${path}/${this.object.type}.html`;
+        return `${path}/${this.item.data.type}.html`;
     }
 }
