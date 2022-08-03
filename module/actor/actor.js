@@ -76,18 +76,18 @@ export default class LexArcanaActor extends Actor
     /* -------------------------------------------- */
     getSpecialty(peritiaId, speName)
     {
-        const peritia = this.data.data.peritiae[peritiaId];
+        const peritia = this.system.peritiae[peritiaId];
         return LexArcanaUtils.ObjectToArray(peritia.specialties).find(item => item.name===speName);
     }
     getSpecialties(peritiaId)
     {
-        let specialties = this.data.data.peritiae?.[peritiaId]?.specialties ?? [];
+        let specialties = this.system.peritiae?.[peritiaId]?.specialties ?? [];
         return LexArcanaUtils.ObjectToArray(specialties);
     }
 	getSpecialtyScore(_peritiaid, _specialtyId)
 	{
         const specialty = this.getSpecialty(_peritiaid, _specialtyId);
-        return this.data.data.peritiae[_peritiaid].value+parseInt(specialty.modifier);
+        return this.system.peritiae[_peritiaid].value+parseInt(specialty.modifier);
 	}
 
     /* -------------------------------------------- */
