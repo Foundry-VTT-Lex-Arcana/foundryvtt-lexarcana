@@ -27,12 +27,26 @@
                                         <i class="dialog-roll roll1d-icon grid-layout4-area3" data-peritiaid="{{peritiaKey}}"></i>
                                 </div>
                                 {{#each peritiaValue.specialties as |specialtyValue specialtyKey|}}
-                                <div class="grid-layout4 grid-layout4-specialty">
-                                        <a class="grid-layout4-area0 delete-peritiae-specialty fas fa-trash" data-peritiaid="{{peritiaKey}}" data-specialtyid="{{specialtyValue.name}}">&nbsp;</a>
+                                <div class="grid-layout5 grid-layout5-specialty">
+                                        <a class="grid-layout5-area0 delete-peritiae-specialty fas fa-trash" data-peritiaid="{{peritiaKey}}" data-specialtyid="{{specialtyValue.name}}">&nbsp;</a>
                                         <input style="display:none;" name="data.peritiae.{{peritiaKey}}.specialties.{{specialtyKey}}.defaultRoll" value="{{specialtyValue.defaultRoll}}" data-dtype="text" type="text"/>
-                                        <input class="peritia-name grid-layout4-area1" name="data.peritiae.{{peritiaKey}}.specialties.{{specialtyKey}}.name" value="{{specialtyValue.name}}" data-dtype="text" type="text"/>
-                                        <input class="peritia-value grid-layout4-area2" name="data.peritiae.{{peritiaKey}}.specialties.{{specialtyKey}}.modifier" value="{{specialtyValue.modifier}}" data-dtype="text" type="text"/>
-                                        <i class="dialog-roll roll1d-icon grid-layout4-area3" data-peritiaid="{{peritiaKey}}" data-specialtyid="{{specialtyValue.name}}"></i>
+                                        <input class="peritia-name grid-layout5-area1" name="data.peritiae.{{peritiaKey}}.specialties.{{specialtyKey}}.name" value="{{specialtyValue.name}}" data-dtype="text" type="text"/>
+                                        <input class="peritia-value grid-layout5-area2" name="data.peritiae.{{peritiaKey}}.specialties.{{specialtyKey}}.modifier" value="{{specialtyValue.modifier}}" data-dtype="text" type="text"/>
+										{{#ife peritiaKey 'deBello'}}
+                                        <select class="peritia-value grid-layout5-area3" name="data.peritiae.{{peritiaKey}}.specialties.{{specialtyKey}}.itemClass">
+											{{#each ../../itemClasses as |itemClass itemKey|}}
+												<!-- {{specialtyValue.itemClass}} -->
+												<option value="" selected>{{ localize "LexArcana.ItemClassEmpty" }}</option>
+												{{#ife itemClass specialtyValue.itemClass }}
+													<option value="{{itemClass}}" selected>{{itemClass}}</option>
+												{{/ife}}
+												{{#ifne itemClass specialtyValue.itemClass }}
+													<option value="{{itemClass}}">{{itemClass}}</option>
+												{{/ifne}}
+											{{/each}}
+										</select>
+										{{/ife}}
+                                        <i class="dialog-roll roll1d-icon grid-layout5-area4" data-peritiaid="{{peritiaKey}}" data-specialtyid="{{specialtyValue.name}}"></i>
                                 </div>
                                 {{/each}}
                         </li>

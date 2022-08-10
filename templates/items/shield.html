@@ -26,6 +26,15 @@
     <section class="sheet-body">
 
 		<div class="tab stats flexcol" data-group="primary" data-tab="stats">
+			
+			{{!-- Class --}}
+			<div class="form-group">
+				<label>{{ localize "LexArcana.ItemClass" }}</label>
+				<div class="form-fields">
+					<input type="text" name="data.class" value="{{data.data.class}}"/>
+				</div>
+			</div>
+			
 			{{!-- Encumbrance --}}
 			<div class="form-group">
 				<label>{{ localize "LexArcana.Encumbrance" }}</label>
