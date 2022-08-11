@@ -30,15 +30,13 @@
                                 <div class="grid-layout4 grid-layout4-specialty">
                                         <a class="grid-layout4-area0 delete-peritiae-specialty fas fa-trash" data-peritiaid="{{peritiaKey}}" data-specialtyid="{{specialtyValue.name}}">&nbsp;</a>
                                         <input style="display:none;" name="data.peritiae.{{peritiaKey}}.specialties.{{specialtyKey}}.defaultRoll" value="{{specialtyValue.defaultRoll}}" data-dtype="text" type="text"/>
-                                        {{#ifne peritiaKey 'deBello'}}
                                         <input class="peritia-name grid-layout4-area1" name="data.peritiae.{{peritiaKey}}.specialties.{{specialtyKey}}.name" value="{{specialtyValue.name}}" data-dtype="text" type="text"/>
-                                        {{/ifne}}
                                         <input class="peritia-value grid-layout4-area2" name="data.peritiae.{{peritiaKey}}.specialties.{{specialtyKey}}.modifier" value="{{specialtyValue.modifier}}" data-dtype="text" type="text"/>
 										{{#ife peritiaKey 'deBello'}}
                                         <select class="peritia-value grid-layout4-area1" name="data.peritiae.{{peritiaKey}}.specialties.{{specialtyKey}}.itemClass">
 											{{#each ../../itemClasses as |itemClass itemKey|}}
 												<!-- {{specialtyValue.itemClass}} -->
-												<option value="" selected>{{ localize "LexArcana.ItemClassEmpty" }}{{specialtyValue.name}}</option>
+												<option value="" selected>{{ localize "LexArcana.ItemClassEmpty" }}</option>
 												{{#ife itemClass specialtyValue.itemClass }}
 													<option value="{{itemClass}}" selected>{{itemClass}}</option>
 												{{/ife}}
