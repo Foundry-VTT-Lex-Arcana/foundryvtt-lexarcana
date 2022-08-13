@@ -183,9 +183,16 @@ export default class LexArcanaActorSheet extends ActorSheet
      */
      _onDeleteSpecialty(event)
      {
-         event.preventDefault();
-         const dataSet = event.currentTarget.dataset;
-         return this.actor.removePeritiaSpecialty(dataSet.peritiaid, dataSet.specialtyid)
+        event.preventDefault();
+        const dataSet = event.currentTarget.dataset;
+        Dialog.confirm({
+		    title: game.i18n.localize("LexArcana.Confirm"),
+			content: game.i18n.localize("LexArcana.ConfirmSpecialityDeletion"),
+			yes: () => this.actor.removePeritiaSpecialty(dataSet.peritiaid, dataSet.specialtyid),
+			no: () => {},
+			defaultYes: false
+		});
+        return 
      }
     /* -------------------------------------------- */
   

@@ -80,6 +80,7 @@
 	"LexArcana.Attributes": "Atributos",
 	"LexArcana.Confirm": "¿Seguro?",
 	"LexArcana.ConfirmItemDeletion": "Vas a eliminar un objeto del inventario, se perderá",
+	"LexArcana.ConfirmSpecialityDeletion": "Vas a eliminar una especialidad de tu custos, se perderá",
 	"LexArcana.DifficultyThreshold": "Dificultad",
 	"LexArcana.Duration": "Duración",
 	"LexArcana.Short": "Corto",
