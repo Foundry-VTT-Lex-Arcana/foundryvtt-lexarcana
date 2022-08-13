@@ -76,6 +76,7 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		data.indigamenta = [];
 		data.rituals = [];
 		data.talents = [];
+		let encumbrance=0;
 		for (let i of data.actor.items)
 		{
 			switch (i.type)
@@ -113,7 +114,10 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 					break;
 				}
 			}
+			//Now that it is iterating, let's use this to calculate encumbrance
+			encumbrance += i.system.encumbrance | 0
 		}
+		this.actor.update ({ 'system.encumbrance': encumbrance });
 
 		return data;
 	}
