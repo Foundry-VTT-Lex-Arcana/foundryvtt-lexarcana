@@ -171,11 +171,12 @@
             "armor",
             "shield",
 			"indigamentum",
+            "talent",
 			"ritual"
         ],
         "templates": {
             "common": {
-                "description": "LORE IPSUM"
+                "description": ""
             },
             "physical":
             {
@@ -252,6 +253,11 @@
 			"disciplines": [],
 			"duration": "Short",
             "peritia": "deMagia"
+        },
+        "talent": {
+            "templates": [
+                "common"
+            ]
         }
     }
 }

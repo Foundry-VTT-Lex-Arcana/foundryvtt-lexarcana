@@ -131,7 +131,7 @@ Hooks.once('init', function ()
 	Items.registerSheet(System.Code,
 		LexArcanaRitualSheet,
 		{
-			types: [LexArcana.ItemType.indigamentum, LexArcana.ItemType.ritual],
+			types: [LexArcana.ItemType.indigamentum, LexArcana.ItemType.ritual, LexArcana.ItemType.talent],
 			makeDefault: true,
 			label: 'LexArcana.SheetClassRitual'
 		});

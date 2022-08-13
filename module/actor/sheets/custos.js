@@ -75,6 +75,7 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		data.items = [];
 		data.indigamenta = [];
 		data.rituals = [];
+		data.talents = [];
 		for (let i of data.actor.items)
 		{
 			switch (i.type)
@@ -100,6 +101,11 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 				case 'ritual':
 				{
 					data.rituals.push(i);
+					break;
+				}
+				case 'talent':
+				{
+					data.talents.push(i);
 					break;
 				}
 				default:
