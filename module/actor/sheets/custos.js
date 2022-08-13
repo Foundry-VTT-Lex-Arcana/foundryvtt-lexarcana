@@ -1,6 +1,7 @@
 import LexArcanaActorSheet from "./base.js";
 import LexArcanaActor from "../actor.js";
 import { LexArcana } from '../../config.js';
+import { LexArcanaUtils } from '../../utils.js';
 import {LexArcanaDice} from '../../dice.js';
 
 /**
@@ -108,6 +109,7 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 				}
 			}
 		}
+		data.itemClasses = LexArcanaUtils.getItemClasses();
 		return data;
 	}
 
@@ -178,6 +180,7 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		const dataset = event.currentTarget.dataset;
 		const item = this.actor.items.get(dataset.id);
 		LexArcanaDice.Roll(1, item.data.data.damage, LexArcanaDice.EXPRESSIONTYPE.BALANCED, true, item.name);
+		this.actor.combatTurn();
 		return;
 	}
 

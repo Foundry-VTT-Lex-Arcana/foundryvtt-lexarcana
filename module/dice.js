@@ -156,20 +156,23 @@ export class LexArcanaDice {
 		}while(diceHasFated);
 
 		message.content += '<div>';
-		if(computedTotal>_difficultyThreshold)
+		if(_difficultyThreshold>0)
 		{
-			let difference = computedTotal-_difficultyThreshold-1;
-			switch((difference-(difference%3))/3)
+			if(computedTotal>_difficultyThreshold)
 			{
-				case 0: message.content += '<span class="DoS1">'+game.i18n.localize(CONFIG.LexArcana.DoSMarginalSuccess)+'</span>'; break;
-				case 1: message.content += '<span class="DoS2">'+game.i18n.localize(CONFIG.LexArcana.DoSCompleteSuccess)+'</span>'; break;
-				case 2:
-				default: message.content += '<span class="DoS3">'+game.i18n.localize(CONFIG.LexArcana.DoSExceptionalSuccess)+'</span>'; break;
+				let difference = computedTotal-_difficultyThreshold-1;
+				switch((difference-(difference%3))/3)
+				{
+					case 0: message.content += '<span class="DoS1">'+game.i18n.localize(CONFIG.LexArcana.DoSMarginalSuccess)+'</span>'; break;
+					case 1: message.content += '<span class="DoS2">'+game.i18n.localize(CONFIG.LexArcana.DoSCompleteSuccess)+'</span>'; break;
+					case 2:
+					default: message.content += '<span class="DoS3">'+game.i18n.localize(CONFIG.LexArcana.DoSExceptionalSuccess)+'</span>'; break;
+				}
 			}
-		}
-		else
-		{
-			message.content += '<span class="failure">FAILURE!</span>';
+			else
+			{
+				message.content += '<span class="failure">FAILURE!</span>';
+			}
 		}
 		message.content+='&nbsp;<span class="details">'+game.i18n.localize(CONFIG.LexArcana.RollDetailsThreshold)+' "'+_difficultyThreshold+'"</span>';
 		message.content += '</div>';
@@ -189,6 +192,12 @@ export class LexArcanaDice {
 	{
 		let dice = LexArcanaDice.ComputeExpression(_numDice, _maxFaces, _expressionType);
 		return LexArcanaDice.#RollExpression(dice.expression, _difficultyThreshold, _hasFateRoll, dice.totalFaces, _info);
+	}
+
+	static RollFlat = function(_numDice, _maxFaces, _expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED, _hasFateRoll = false, _info='')
+	{
+		let dice = LexArcanaDice.ComputeExpression(_numDice, _maxFaces, _expressionType);
+		return LexArcanaDice.#RollExpression(dice.expression, -1, _hasFateRoll, dice.totalFaces, _info);
 	}
 
 	static Roll(_numDice, _maxFaces, _expressionType = LexArcanaDice.EXPRESSIONTYPE.BALANCED, _difficultyThreshold = 6, _hasFateRoll = false, _info='')
