@@ -32,9 +32,9 @@ export default class LexArcanaActor extends Actor
     /**
      * Prepare Character type specific data
      */
-    _prepareCustosData(/*actorData*/)
+    _prepareCustosData(actorData)
     {
-        //const data = actorData.data;
+        const data = actorData;
     }
 
     /* -------------------------------------------- */
@@ -42,9 +42,9 @@ export default class LexArcanaActor extends Actor
     /**
      * Prepare Friendly type specific data
      */
-    _prepareFriendlyTypeData(/*actorData*/)
+    _prepareFriendlyTypeData(actorData)
     {
-        //const data = actorData;
+        const data = actorData;
     }
 
     /* -------------------------------------------- */
@@ -54,7 +54,7 @@ export default class LexArcanaActor extends Actor
      * @param actorData
      * @private
      */
-    _prepareAntagonistTypeData(/*actorData*/)
+    _prepareAntagonistTypeData(actorData)
     {
 
     }
@@ -66,7 +66,7 @@ export default class LexArcanaActor extends Actor
      * @param actorData
      * @private
      */
-    _preparefantasticalCreatureTypeData(/*actorData*/)
+    _preparefantasticalCreatureTypeData(actorData)
     {
 
     }
