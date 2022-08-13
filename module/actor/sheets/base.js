@@ -46,21 +46,20 @@ export default class LexArcanaActorSheet extends ActorSheet
             options: this.options,
             editable: this.isEditable,
             cssClass: this.document.isOwner ? 'editable' : 'locked',
-            isCharacter: !this.document.data.data.attributes.npc,
-            isNPC: this.document.data.data.attributes.npc,
+            isCharacter: !this.document.system.attributes.npc,
+            isNPC: this.document.system.attributes.npc,
             isGM: game.user.isGM,
             config: CONFIG.LexArcana
         };
         // The Actor and its Items
-        data.actor = duplicate(this.actor.data);
-        data.data = data.actor.data;
+        data.actor = duplicate(this.object);
 
         // Ability Scores
-        for ( let [k, v] of Object.entries(data.actor.data.virtutes))
+        for ( let [k, v] of Object.entries(data.actor.system.virtutes))
         {
             v.label = CONFIG.LexArcana.Virtutes[k];
         }
-        for ( let [k, v] of Object.entries(data.actor.data.peritiae))
+        for ( let [k, v] of Object.entries(data.actor.system.peritiae))
         {
             v.label = CONFIG.LexArcana.Peritia[k];
         }
@@ -74,7 +73,7 @@ export default class LexArcanaActorSheet extends ActorSheet
     get template()
     {
         if (!game.user.isGM && this.actor.limited) return System.Path + "/templates/actors/limited-sheet.html";
-        return System.Path + `/templates/actors/${this.actor.data.type}-sheet.html`;
+        return System.Path + `/templates/actors/${this.actor.type}-sheet.html`;
     }
 
     /* -------------------------------------------- */
@@ -234,7 +233,7 @@ export default class LexArcanaActorSheet extends ActorSheet
 		}
         if(dataSet.virtuteid!==undefined)
         {
-            const virtute = this.actor.data.data.virtutes[dataSet.virtuteid];
+            const virtute = this.actor.system.virtutes[dataSet.virtuteid];
             config.title = game.i18n.format(game.i18n.localize(CONFIG.LexArcana.Virtutes[dataSet.virtuteid]));
             config.defaultRoll = virtute.defaultRoll===undefined?'1d6':virtute.defaultRoll;
             config.defaultRollInputName = 'virtute-default-roll';
@@ -254,7 +253,7 @@ export default class LexArcanaActorSheet extends ActorSheet
         else
         {
             const peritiaNameLoc = game.i18n.format(game.i18n.localize(CONFIG.LexArcana.Peritia[dataSet.peritiaid]));
-            const peritia = this.actor.data.data.peritiae[dataSet.peritiaid];
+            const peritia = this.actor.system.peritiae[dataSet.peritiaid];
             config.defaultRoll = peritia.defaultRoll;
             config.defaultRollInputName = 'peritia-default-roll';
             config.title = peritiaNameLoc;

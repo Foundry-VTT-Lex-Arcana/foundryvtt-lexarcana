@@ -12,16 +12,16 @@ export default class LexArcanaActor extends Actor
     /** @override */
     prepareBaseData()
     {
-        switch (this.data.type)
+        switch (this.type)
         {
             case LexArcana.ActorType.custos:
-                return this._prepareCustosData(this.data);
+                return this._prepareCustosData(this.system);
             case LexArcana.ActorType.friendly:
-                return this._prepareFriendlyTypeData(this.data);
+                return this._prepareFriendlyTypeData(this.system);
             case LexArcana.ActorType.antagonist:
-                return this._prepareAntagonistTypeData(this.data);
+                return this._prepareAntagonistTypeData(this.system);
             case LexArcana.ActorType.fantasticalCreature:
-                return this._preparefantasticalCreatureTypeData(this.data);
+                return this._preparefantasticalCreatureTypeData(this.system);
         }
     }
 
@@ -32,9 +32,9 @@ export default class LexArcanaActor extends Actor
     /**
      * Prepare Character type specific data
      */
-    _prepareCustosData(actorData)
+    _prepareCustosData(/*actorData*/)
     {
-        const data = actorData.data;
+        //const data = actorData.data;
     }
 
     /* -------------------------------------------- */
@@ -42,9 +42,9 @@ export default class LexArcanaActor extends Actor
     /**
      * Prepare Friendly type specific data
      */
-    _prepareFriendlyTypeData(actorData)
+    _prepareFriendlyTypeData(/*actorData*/)
     {
-        const data = actorData.data;
+        //const data = actorData;
     }
 
     /* -------------------------------------------- */
@@ -54,7 +54,7 @@ export default class LexArcanaActor extends Actor
      * @param actorData
      * @private
      */
-    _prepareAntagonistTypeData(actorData)
+    _prepareAntagonistTypeData(/*actorData*/)
     {
 
     }
@@ -66,7 +66,7 @@ export default class LexArcanaActor extends Actor
      * @param actorData
      * @private
      */
-    _preparefantasticalCreatureTypeData(actorData)
+    _preparefantasticalCreatureTypeData(/*actorData*/)
     {
 
     }
@@ -76,18 +76,18 @@ export default class LexArcanaActor extends Actor
     /* -------------------------------------------- */
     getSpecialty(peritiaId, speName)
     {
-        const peritia = this.data.data.peritiae[peritiaId];
+        const peritia = this.system.peritiae[peritiaId];
         return LexArcanaUtils.ObjectToArray(peritia.specialties).find(item => item.name===speName);
     }
     getSpecialties(peritiaId)
     {
-        let specialties = this.data.data.peritiae?.[peritiaId]?.specialties ?? [];
+        let specialties = this.system.peritiae?.[peritiaId]?.specialties ?? [];
         return LexArcanaUtils.ObjectToArray(specialties);
     }
 	getSpecialtyScore(_peritiaid, _specialtyId)
 	{
         const specialty = this.getSpecialty(_peritiaid, _specialtyId);
-        return this.data.data.peritiae[_peritiaid].value+parseInt(specialty.modifier);
+        return this.system.peritiae[_peritiaid].value+parseInt(specialty.modifier);
 	}
 
     /* -------------------------------------------- */
