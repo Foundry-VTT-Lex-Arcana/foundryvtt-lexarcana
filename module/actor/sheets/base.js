@@ -73,7 +73,6 @@ export default class LexArcanaActorSheet extends ActorSheet
     get template()
     {
         if (!game.user.isGM && this.actor.limited) return System.Path + "/templates/actors/limited-sheet.html";
-        
         return System.Path + `/templates/actors/${this.actor.type}-sheet.html`;
     }
 

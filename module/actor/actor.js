@@ -32,9 +32,9 @@ export default class LexArcanaActor extends Actor
     /**
      * Prepare Character type specific data
      */
-    _prepareCustosData(actorData)
+    _prepareCustosData(/*actorData*/)
     {
-        const data = actorData;
+        //const data = actorData.data;
     }
 
     /* -------------------------------------------- */
@@ -42,9 +42,9 @@ export default class LexArcanaActor extends Actor
     /**
      * Prepare Friendly type specific data
      */
-    _prepareFriendlyTypeData(actorData)
+    _prepareFriendlyTypeData(/*actorData*/)
     {
-        const data = actorData;
+        //const data = actorData;
     }
 
     /* -------------------------------------------- */
@@ -54,7 +54,7 @@ export default class LexArcanaActor extends Actor
      * @param actorData
      * @private
      */
-    _prepareAntagonistTypeData(actorData)
+    _prepareAntagonistTypeData(/*actorData*/)
     {
 
     }
@@ -66,7 +66,7 @@ export default class LexArcanaActor extends Actor
      * @param actorData
      * @private
      */
-    _preparefantasticalCreatureTypeData(actorData)
+    _preparefantasticalCreatureTypeData(/*actorData*/)
     {
 
     }
@@ -135,4 +135,26 @@ export default class LexArcanaActor extends Actor
     {
         LexArcanaDice.Roll(_numDice, _numFaces, _expressionType, _difficultyThreshold, _hasFateRoll, _info);
     }
+
+	rollDeBello(_specialtyName = '')
+	{
+		let score = this.getSpecialtyScore('deBello', _specialtyName);
+        return LexArcanaDice.RollFlat(min(3, parseInt(score/6)+1), score, LexArcanaDice.EXPRESSIONTYPE.BALANCED, _hasFateRoll, _info);
+	}
+
+	combatTurn()
+	{
+		let targetObject = Array.from(game.user.targets)[0];
+		let selfRoll = this.actor.rollDeBello('');
+		let otherRoll = targetObject.rollDeBello('');
+		const message =
+		{
+			speaker: {actor: this.id },
+			content: '<div class="CombatAction"><h1>Combat</h1>',
+			blind: false
+		};
+		message.content += '<p>Combat diff : ('+selfRoll.result+'-'+otherRoll.result+') = '+(selfRoll.result-otherRoll.result)+'</p>';
+		message.content += '</div>';
+		ChatMessage.Create(message);
+	}
 }

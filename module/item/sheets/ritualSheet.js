@@ -73,7 +73,7 @@ export default class LexArcanaRitualSheet extends LexArcanaItemSheet
 			let item = game.items.get(id);
 			let disciplines = item.system.disciplines ?? new Array();
 			disciplines.push({name:'precognition', difficultyThreshold: 6});
-			item.update({ 'data.disciplines': LexArcanaRitualSheet.toArray(disciplines) });
+			item.update({ 'system.disciplines': LexArcanaRitualSheet.toArray(disciplines) });
 		});
 		html.find('a.discipline-delete').click(function()
 		{

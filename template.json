@@ -182,7 +182,8 @@
             {
                 "encumbrance": 0,
 				"active": false,
-                "actionType": null
+                "actionType": null,
+				"class": ""
             },
             "weapon": {
                 "damage": 3,

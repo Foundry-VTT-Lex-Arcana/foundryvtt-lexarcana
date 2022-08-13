@@ -11,6 +11,7 @@
 
             <div class="item-subtitle">
                 <h4 class="item-type">{{item.type}}</h4>
+                <span class="item-status">{{itemStatus}}</span>
             </div>
         </div>
     </header>
@@ -25,6 +26,15 @@
     <section class="sheet-body trajan-font">
 
 		<div class="tab stats flexcol" data-group="primary" data-tab="stats">
+			
+			{{!-- Class --}}
+			<div class="form-group">
+				<label>{{ localize "LexArcana.ItemClass" }}</label>
+				<div class="form-fields">
+					<input type="text" name="system.class" value="{{item.system.class}}"/>
+				</div>
+			</div>
+
 			{{!-- Encumbrance --}}
 			<div class="form-group">
 				<label>{{ localize "LexArcana.Encumbrance" }}</label>

@@ -3,7 +3,7 @@
 		<h3>{{ localize "LexArcana.InventoryEquipedSectionTitle" }}</h3>
 		<ul>
 		{{#each items as |item key|}}
-			{{#ife item.system.active true}} 
+			{{#ife item.system.active true}}
 				<li class="item">
 					<a class="item-image inventory" data-id="{{item._id}}"><img src="{{item.img}}" title="{{item.name}}" width="32" height="32" /></a>
 					<a class="item-name inventory" title="{{item.name}}">{{item.name}}</a>

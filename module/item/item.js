@@ -48,6 +48,7 @@ export default class LexArcanaItem extends Item
         // Get the Item's data
         const itemData = this.system;
         const data = itemData;
+
         // Activated Items
         if (data.hasOwnProperty("range"))
         {

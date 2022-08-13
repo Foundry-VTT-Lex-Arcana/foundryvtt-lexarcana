@@ -73,6 +73,10 @@
 	"LexArcana.Difficulty": "Dificultad",
 	"LexArcana.Feat": "Talento",
 	"LexArcana.Parry": "Parada",
+
+	"LexArcana.ItemClass": "Tipo",
+	"LexArcana.ItemClassEmpty": "-",
+
 	"LexArcana.LanguagesSpokenLabel": "Idiomas hablados",
 	"LexArcana.ProvincePeritiaeModifiersLabel": "Bono Peritiae",
 	"LexArcana.InventoryEquipedSectionTitle": "Equipado",

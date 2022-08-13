@@ -14,7 +14,7 @@ export default class LexArcanaFriendlyActorSheet extends LexArcanaActorSheet
         return mergeObject(super.defaultOptions, {
             classes: ['LexArcana', 'sheet', 'actor', LexArcana.ActorType.friendly],
             width: 600,
-            height: 500
+            height: 680
         });
     }
 }

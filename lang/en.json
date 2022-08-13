@@ -73,6 +73,10 @@
 	"LexArcana.Difficulty": "Difficulty",
 	"LexArcana.Feat": "Feat",
 	"LexArcana.Parry": "Parry",
+
+	"LexArcana.ItemClass": "Item Class",
+	"LexArcana.ItemClassEmpty": "None",
+
 	"LexArcana.LanguagesSpokenLabel": "Languages spoken",
 	"LexArcana.ProvincePeritiaeModifiersLabel": "Peritiae bonuses",
 	"LexArcana.InventoryEquipedSectionTitle": "Equiped",

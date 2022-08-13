@@ -11,6 +11,7 @@
 
             <div class="item-subtitle">
                 <h4 class="item-type">{{item.type}}</h4>
+                <span class="item-status">{{itemStatus}}</span>
             </div>
         </div>
     </header>
@@ -25,6 +26,15 @@
     <section class="sheet-body">
 
 		<div class="tab stats flexcol" data-group="primary" data-tab="stats">
+			
+			{{!-- Class --}}
+			<div class="form-group">
+				<label>{{ localize "LexArcana.ItemClass" }}</label>
+				<div class="form-fields">
+					<input type="text" name="system.class" value="{{item.system.class}}"/>
+				</div>
+			</div>
+			
 			{{!-- Encumbrance --}}
 			<div class="form-group">
 				<label>{{ localize "LexArcana.Encumbrance" }}</label>
@@ -64,26 +74,7 @@
 					<input type="text" name="system.feat" value="{{item.system.feat}}"/>
 				</div>
 			</div>
-
-
-			{{!-- Skill --}}
-			<div class="form-group">
-				<label>{{ localize "LexArcana.PeritiaeName" }}</label>
-				<div class="form-fields">
-					<select name="system.peritia" data-dtype="String">
-						{{#select item.system.peritia}}
-						<option value="deBello">{{ localize "LexArcana.Peritia.DeBello" }}</option>
-						<option value="deCorpore">{{ localize "LexArcana.Peritia.DeCorpore" }}</option>
-						<option value="deMagia">{{ localize "LexArcana.Peritia.DeMagia" }}</option>
-						<option value="deNatura">{{ localize "LexArcana.Peritia.DeNatura" }}</option>
-						<option value="deScientia">{{ localize "LexArcana.Peritia.DeScientia" }}</option>
-						<option value="deSocietate">{{ localize "LexArcana.Peritia.DeSocietate" }}</option>
-						{{/select}}
-					  </select>
-				</div>
-			</div>
 		</div>
-
 		
         {{!-- Description --}}
         <div class="description tab flexrow" data-group="primary" data-tab="description">

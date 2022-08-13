@@ -15,7 +15,7 @@ export default class LexArcanaFantasticalCreatureActorSheet extends LexArcanaAct
             {
                 classes: ['LexArcana', 'sheet', 'actor', LexArcana.ActorType.fantasticalCreature],
                 width: 600,
-                height: 500
+                height: 680
             });
     }
 }

@@ -11,6 +11,7 @@
 
             <div class="item-subtitle">
                 <h4 class="item-type">{{item.type}}</h4>
+                <span class="item-status">{{itemStatus}}</span>
             </div>
         </div>
     </header>
@@ -60,7 +61,7 @@
 						</div>
 					</div>
 					<div class="form-fields">
-						<a class="discipline-delete icon" data-item-id="{{../item.id}}" data-discipline-id="{{key}}">&nbsp;</a>
+						<a class="discipline-delete icon" data-item-id="{{../item.id}}" data-discipline-id="{{id}}">&nbsp;</a>
 					</div>
 				</div>
 				{{/each}}

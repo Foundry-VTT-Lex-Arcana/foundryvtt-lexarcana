@@ -104,6 +104,12 @@ LexArcana.Feat                              = 'LexArcana.Feat';
 LexArcana.Parry                             = 'LexArcana.Parry';
 
 /**
+ * Items
+ **/
+LexArcana.ItemClass							= 'LexArcana.ItemClass';
+LexArcana.ItemClassEmpty					= 'LexArcana.ItemClassEmpty';
+
+/**
  * Provinces
  */
 LexArcana.LanguagesSpokenLabel              = 'LexArcana.LanguagesSpokenLabel';
