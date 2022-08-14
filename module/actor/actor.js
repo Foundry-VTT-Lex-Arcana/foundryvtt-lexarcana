@@ -95,21 +95,21 @@ export default class LexArcanaActor extends Actor
     /* -------------------------------------------- */
     async setVirtuteDefaultRoll(virtuteId, newExpression)
     {
-        await super.update({[`data.virtutes.${virtuteId}.defaultRoll`]: newExpression });
+        await super.update({[`system.virtutes.${virtuteId}.defaultRoll`]: newExpression });
     }
     async setPeritiaDefaultRoll(peritiaId, newExpression)
     {
-        await super.update({[`data.peritiae.${peritiaId}.defaultRoll`]: newExpression });
+        await super.update({[`system.peritiae.${peritiaId}.defaultRoll`]: newExpression });
     }
     async addPeritiaSpecialty(peritiaId, name, modifier)
     {
         const currentSpecialties = duplicate(this.getSpecialties(peritiaId));
-        await super.update({[`data.peritiae.${peritiaId}.specialties`]: [...currentSpecialties, { 'name':name, 'defaultRoll': '', 'modifier': modifier }] });
+        await super.update({[`system.peritiae.${peritiaId}.specialties`]: [...currentSpecialties, { 'name':name, 'defaultRoll': '', 'modifier': modifier }] });
     }
     async removePeritiaSpecialty(peritiaId, key)
     {
         const currentSpecialties = duplicate(this.getSpecialties(peritiaId)).filter(item => item.name!==key);
-        await super.update({[`data.peritiae.${peritiaId}.specialties`]: [...currentSpecialties] });
+        await super.update({[`system.peritiae.${peritiaId}.specialties`]: [...currentSpecialties] });
     }
     async setPeritiaSpecialtyDefaultRoll(peritiaId, key, newExpression)
     {
@@ -118,7 +118,7 @@ export default class LexArcanaActor extends Actor
         if(currentSpecialties[idx]!==undefined)
         {
             currentSpecialties[idx].defaultRoll = newExpression;
-            await super.update({[`data.peritiae.${peritiaId}.specialties`]: [...currentSpecialties] });
+            await super.update({[`system.peritiae.${peritiaId}.specialties`]: [...currentSpecialties] });
         }
     }
 

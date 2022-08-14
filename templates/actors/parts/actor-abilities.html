@@ -32,20 +32,20 @@
                                         <input style="display:none;" name="system.peritiae.{{peritiaKey}}.specialties.{{specialtyKey}}.defaultRoll" value="{{specialtyValue.defaultRoll}}" data-dtype="text" type="text"/>
                                         <input class="peritia-name grid-layout4-area1" name="system.peritiae.{{peritiaKey}}.specialties.{{specialtyKey}}.name" value="{{specialtyValue.name}}" data-dtype="text" type="text"/>
                                         <input class="peritia-value grid-layout4-area2" name="system.peritiae.{{peritiaKey}}.specialties.{{specialtyKey}}.modifier" value="{{specialtyValue.modifier}}" data-dtype="text" type="text"/>
-										{{#ife peritiaKey 'deBello'}}
-                                        <select class="peritia-value grid-layout4-area1" name="system.peritiae.{{peritiaKey}}.specialties.{{specialtyKey}}.itemClass">
-											{{#each ../../itemClasses as |itemClass itemKey|}}
-												<!-- {{specialtyValue.itemClass}} -->
-												<option value="" selected>{{ localize "LexArcana.ItemClassEmpty" }}</option>
-												{{#ife itemClass specialtyValue.itemClass }}
-													<option value="{{itemClass}}" selected>{{itemClass}}</option>
-												{{/ife}}
-												{{#ifne itemClass specialtyValue.itemClass }}
-													<option value="{{itemClass}}">{{itemClass}}</option>
-												{{/ifne}}
-											{{/each}}
-										</select>
-										{{/ife}}
+					{{#ife peritiaKey 'deBello'}}
+                                                <select class="peritia-value grid-layout4-area1" name="system.peritiae.{{peritiaKey}}.specialties.{{specialtyKey}}.itemClass">
+						        {{#each ../../itemClasses as |itemClass itemKey|}}
+						        <!-- {{specialtyValue.itemClass}} -->
+						        	<option value="" selected>{{ localize "LexArcana.ItemClassEmpty" }}</option>
+							        {{#ife itemClass specialtyValue.itemClass }}
+							        	<option value="{{itemClass}}" selected>{{itemClass}}</option>
+							        {{/ife}}
+							        {{#ifne itemClass specialtyValue.itemClass }}
+							        	<option value="{{itemClass}}">{{itemClass}}</option>
+							        {{/ifne}}
+						        {{/each}}
+					        </select>
+					{{/ife}}
                                         <i class="dialog-roll roll1d-icon grid-layout4-area3" data-peritiaid="{{peritiaKey}}" data-specialtyid="{{specialtyValue.name}}"></i>
                                 </div>
                                 {{/each}}
