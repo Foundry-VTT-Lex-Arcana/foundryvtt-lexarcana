@@ -87,7 +87,7 @@ export default class LexArcanaActor extends Actor
 	getSpecialtyScore(_peritiaid, _specialtyId)
 	{
         const specialty = this.getSpecialty(_peritiaid, _specialtyId);
-        return this.system.peritiae[_peritiaid].value+parseInt(specialty.modifier);
+        return Number(this.system.peritiae[_peritiaid].value)+Number(specialty.modifier);
 	}
 
     /* -------------------------------------------- */
