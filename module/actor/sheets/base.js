@@ -182,9 +182,16 @@ export default class LexArcanaActorSheet extends ActorSheet
      */
      _onDeleteSpecialty(event)
      {
-         event.preventDefault();
-         const dataSet = event.currentTarget.dataset;
-         return this.actor.removePeritiaSpecialty(dataSet.peritiaid, dataSet.specialtyid)
+        event.preventDefault();
+        const dataSet = event.currentTarget.dataset;
+        Dialog.confirm({
+		    title: game.i18n.localize("LexArcana.Confirm"),
+			content: game.i18n.localize("LexArcana.ConfirmSpecialityDeletion"),
+			yes: () => this.actor.removePeritiaSpecialty(dataSet.peritiaid, dataSet.specialtyid),
+			no: () => {},
+			defaultYes: false
+		});
+        return 
      }
     /* -------------------------------------------- */
   
@@ -244,10 +251,14 @@ export default class LexArcanaActorSheet extends ActorSheet
         {
             const peritiaNameLoc = game.i18n.format(game.i18n.localize(CONFIG.LexArcana.Peritia[dataSet.peritiaid]));
             const specialty = this.actor.getSpecialty(dataSet.peritiaid, dataSet.specialtyid);
+            console.log ("SPECIALITY")
+            console.log (specialty)
             config.defaultRoll = specialty.defaultRoll===undefined?"1d6":specialty.defaultRoll;
             config.defaultRollInputName = 'specialty-default-roll';
             config.title = peritiaNameLoc+" :: "+specialty.name;
 			config.numFaces = this.actor.getSpecialtyScore(dataSet.peritiaid, dataSet.specialtyid);
+            console.log ("NUMFACES")
+            console.log (config.numFaces)
 			config.callbackCustomRoll = function(_actor, _expression) { _actor.setPeritiaSpecialtyDefaultRoll(dataSet.peritiaid, dataSet.specialtyid, _expression); }
         }
         else

@@ -66,7 +66,11 @@
                 <li class="attribute health">
                     <h4 class="attribute-name box-title">{{ localize "LexArcana.HitPoints" }} | {{ localize "LexArcana.Encumbrance" }}</h4>
                     <div class="attribute-value multiple">
-                        <input name="system.attributes.hitPoints.value" type="text" value="{{actor.system.attributes.hitPoints.value}}" placeholder="10" data-dtype="Number"/>
+                        {{#if (lte actor.system.attributes.hitPoints.value actor.system.encumbrance)}}
+                            <input name="system.attributes.hitPoints.value" style="color:darkred" type="text" value="{{actor.system.attributes.hitPoints.value}}" placeholder="10" data-dtype="Number"/>
+                        {{else}}
+                            <input name="system.attributes.hitPoints.value" type="text" value="{{actor.system.attributes.hitPoints.value}}" placeholder="10" data-dtype="Number"/>
+                        {{/if}}
                         <span class="sep"> / </span>
                         <input name="system.attributes.hitPoints.max" type="text" value="{{actor.system.attributes.hitPoints.max}}" placeholder="10" data-dtype="Number"/>
                         <span class="sep">  |  </span>
@@ -114,11 +118,6 @@
         {{!-- Rituals Tab --}}
         <div class="tab rituals flexcol" data-group="primary" data-tab="rituals">
             {{> "systems/LexArcana/templates/actors/parts/actor-rituals.html"}}
-        </div>
-
-        {{!-- Talents Tab --}}
-        <div class="tab talents flexcol" data-group="primary" data-tab="talents">
-            {{> "systems/LexArcana/templates/actors/parts/actor-talents.html"}}
         </div>
 
         {{!-- Biography Tab --}}
