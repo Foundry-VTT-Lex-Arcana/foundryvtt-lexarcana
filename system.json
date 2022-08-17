@@ -4,7 +4,11 @@
     "description": "A game system by players of Lex Arcana - An Empire Without End RPG",
     "version": "0.0.7",
     "templateVersion": 2,
-    "authors": "Draedrus, Lysoun, Milo115b, ForjaSalvaje, ParvusDomus",
+    "authors": [
+        {
+          "name": "Draedrus, Lysoun, Milo115b, ForjaSalvaje, ParvusDomus"
+        }
+    ],
     "compatibility": {
         "minimum": 10,
         "verified": 10,
