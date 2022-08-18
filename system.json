@@ -1,8 +1,9 @@
 {
+    "id": "LexArcana",
     "name": "LexArcana",
     "title": "Lex Arcana",
     "description": "A game system by players of Lex Arcana - An Empire Without End RPG",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "templateVersion": 2,
     "authors": [
         {
@@ -10,9 +11,9 @@
         }
     ],
     "compatibility": {
-        "minimum": 10,
-        "verified": 10,
-        "maximum": 10
+        "minimum": "10",
+        "verified": "10.278",
+        "maximum": "10"
     },
     "scripts": [],
     "esmodules": [
@@ -38,8 +39,6 @@
     "gridUnits": "m",
     "primaryTokenAttribute": "attributes.hitPoints",
     "secondaryTokenAttribute": "attributes.pietas",
-    "minimumCoreVersion": "9",
-    "compatibleCoreVersion": "9",
     "url": "https://github.com/Foundry-VTT-Lex-Arcana/foundryvtt-lexarcana",
     "manifest": "https://raw.githubusercontent.com/Foundry-VTT-Lex-Arcana/foundryvtt-lexarcana/master/system.json",
     "download": "https://github.com/Foundry-VTT-Lex-Arcana/foundryvtt-lexarcana/archive/refs/heads/master.zip",
