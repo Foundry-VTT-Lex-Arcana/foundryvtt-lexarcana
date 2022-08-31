@@ -1,0 +1,31 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+
+    {{!-- Item Sheet Header --}}
+    <header class="sheet-header flexrow">
+        <img class="profile" src="{{item.img}}" title="{{item.name}}" data-edit="img"/>
+
+        <div class="header-details flexrow">
+            <h1 class="charname">
+                <input name="name" type="text" value="{{item.name}}" placeholder="{{ localize 'LexArcana.ItemName' }}"/>
+            </h1>
+
+            <div class="item-subtitle">
+                <h4 class="item-type">{{item.type}}</h4>
+            </div>
+        </div>
+    </header>
+
+    {{!-- Custos Sheet Navigation --}}
+    <nav class="sheet-navigation tabs" data-group="primary">
+        <a class="item" data-tab="description">{{ localize "LexArcana.Description" }}</a>
+    </nav>
+
+    {{!-- Item Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Description --}}
+        <div class="description tab flexrow" data-group="primary" data-tab="description">
+			{{editor item.system.description target="system.description" button=true owner=owner editable=true}}
+        </div>
+    </section>
+</form>

@@ -28,7 +28,8 @@ LexArcana.ItemType =
         armor: 'armor',
         shield: 'shield',
         indigamentum: 'indigamentum',
-        ritual: 'ritual'
+        ritual: 'ritual',
+        talent: 'talent'
     }; 
 /**
  * The set of Virtutes Scores used within the system

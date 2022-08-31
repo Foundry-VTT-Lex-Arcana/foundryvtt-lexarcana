@@ -171,6 +171,7 @@
             "armor",
             "shield",
 			"indigamentum",
+            "talent",
 			"ritual"
         ],
         "templates": {
@@ -253,6 +254,11 @@
 			"disciplines": [],
 			"duration": "Short",
             "peritia": "deMagia"
+        },
+        "talent": {
+            "templates": [
+                "common"
+            ]
         }
     }
 }

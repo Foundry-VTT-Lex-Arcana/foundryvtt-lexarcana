@@ -30,16 +30,17 @@ export class LexArcanaUtils
 		items.forEach(function(_item)
 		{
 			if(
-				_item.data.data.class!==''
+				//_item.data.data.class!==''
+				_item.system.class!==''
 				&& (
-						_item.data.type === 'meleeWeapon'
-					|| _item.data.type === 'rangedWeapon'
-					|| _item.data.type === 'shield'
-					|| _item.data.type === 'armor'
+						_item.type === 'meleeWeapon'
+					|| _item.type === 'rangedWeapon'
+					|| _item.type === 'shield'
+					|| _item.type === 'armor'
 				)
 			)
 			{
-				itemClasses.push(_item.data.data.class);
+				itemClasses.push(_item.system.class);
 			}
 		});
 		return itemClasses.unique();
