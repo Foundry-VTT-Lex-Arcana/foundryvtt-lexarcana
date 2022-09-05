@@ -193,7 +193,7 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		const dataset = event.currentTarget.dataset;
 		const item = this.actor.items.get(dataset.id);
 		LexArcanaDice.Roll(1, item.system.damage, LexArcanaDice.EXPRESSIONTYPE.BALANCED, true, item.name);
-		this.actor.combatTurn();
+		//this.actor.combatTurn();
 		return;
 	}
 
