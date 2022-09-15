@@ -175,6 +175,12 @@ Hooks.once('init', function ()
     }
   });
 
+  Hooks.on("renderPause", () => {
+    $("#pause img").attr("class", "fa-spin pause-image");
+    $("#pause figcaption").attr("class", "pause-lex");
+  });
+
+
 /* -------------------------------------------- */
 
 /**
