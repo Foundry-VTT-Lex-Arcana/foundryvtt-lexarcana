@@ -171,6 +171,7 @@
             "armor",
             "shield",
 			"indigamentum",
+            "talent",
 			"ritual"
         ],
         "templates": {
@@ -181,7 +182,8 @@
             {
                 "encumbrance": 0,
 				"active": false,
-                "actionType": null
+                "actionType": null,
+				"class": ""
             },
             "weapon": {
                 "damage": 3,
@@ -252,6 +254,11 @@
 			"disciplines": [],
 			"duration": "Short",
             "peritia": "deMagia"
+        },
+        "talent": {
+            "templates": [
+                "common"
+            ]
         }
     }
 }

@@ -12,16 +12,16 @@ export default class LexArcanaActor extends Actor
     /** @override */
     prepareBaseData()
     {
-        switch (this.data.type)
+        switch (this.type)
         {
             case LexArcana.ActorType.custos:
-                return this._prepareCustosData(this.data);
+                return this._prepareCustosData(this.system);
             case LexArcana.ActorType.friendly:
-                return this._prepareFriendlyTypeData(this.data);
+                return this._prepareFriendlyTypeData(this.system);
             case LexArcana.ActorType.antagonist:
-                return this._prepareAntagonistTypeData(this.data);
+                return this._prepareAntagonistTypeData(this.system);
             case LexArcana.ActorType.fantasticalCreature:
-                return this._preparefantasticalCreatureTypeData(this.data);
+                return this._preparefantasticalCreatureTypeData(this.system);
         }
     }
 
@@ -34,7 +34,7 @@ export default class LexArcanaActor extends Actor
      */
     _prepareCustosData(actorData)
     {
-        const data = actorData.data;
+        const data = actorData;
     }
 
     /* -------------------------------------------- */
@@ -44,7 +44,7 @@ export default class LexArcanaActor extends Actor
      */
     _prepareFriendlyTypeData(actorData)
     {
-        const data = actorData.data;
+        const data = actorData;
     }
 
     /* -------------------------------------------- */
@@ -76,18 +76,18 @@ export default class LexArcanaActor extends Actor
     /* -------------------------------------------- */
     getSpecialty(peritiaId, speName)
     {
-        const peritia = this.data.data.peritiae[peritiaId];
+        const peritia = this.system.peritiae[peritiaId];
         return LexArcanaUtils.ObjectToArray(peritia.specialties).find(item => item.name===speName);
     }
     getSpecialties(peritiaId)
     {
-        let specialties = this.data.data.peritiae?.[peritiaId]?.specialties ?? [];
+        let specialties = this.system.peritiae?.[peritiaId]?.specialties ?? [];
         return LexArcanaUtils.ObjectToArray(specialties);
     }
 	getSpecialtyScore(_peritiaid, _specialtyId)
 	{
         const specialty = this.getSpecialty(_peritiaid, _specialtyId);
-        return this.data.data.peritiae[_peritiaid].value+parseInt(specialty.modifier);
+        return Number(this.system.peritiae[_peritiaid].value)+Number(specialty.modifier);
 	}
 
     /* -------------------------------------------- */
@@ -95,21 +95,21 @@ export default class LexArcanaActor extends Actor
     /* -------------------------------------------- */
     async setVirtuteDefaultRoll(virtuteId, newExpression)
     {
-        await super.update({[`data.virtutes.${virtuteId}.defaultRoll`]: newExpression });
+        await super.update({[`system.virtutes.${virtuteId}.defaultRoll`]: newExpression });
     }
     async setPeritiaDefaultRoll(peritiaId, newExpression)
     {
-        await super.update({[`data.peritiae.${peritiaId}.defaultRoll`]: newExpression });
+        await super.update({[`system.peritiae.${peritiaId}.defaultRoll`]: newExpression });
     }
     async addPeritiaSpecialty(peritiaId, name, modifier)
     {
         const currentSpecialties = duplicate(this.getSpecialties(peritiaId));
-        await super.update({[`data.peritiae.${peritiaId}.specialties`]: [...currentSpecialties, { 'name':name, 'defaultRoll': '', 'modifier': modifier }] });
+        await super.update({[`system.peritiae.${peritiaId}.specialties`]: [...currentSpecialties, { 'name':name, 'defaultRoll': '', 'modifier': modifier }] });
     }
     async removePeritiaSpecialty(peritiaId, key)
     {
         const currentSpecialties = duplicate(this.getSpecialties(peritiaId)).filter(item => item.name!==key);
-        await super.update({[`data.peritiae.${peritiaId}.specialties`]: [...currentSpecialties] });
+        await super.update({[`system.peritiae.${peritiaId}.specialties`]: [...currentSpecialties] });
     }
     async setPeritiaSpecialtyDefaultRoll(peritiaId, key, newExpression)
     {
@@ -118,7 +118,7 @@ export default class LexArcanaActor extends Actor
         if(currentSpecialties[idx]!==undefined)
         {
             currentSpecialties[idx].defaultRoll = newExpression;
-            await super.update({[`data.peritiae.${peritiaId}.specialties`]: [...currentSpecialties] });
+            await super.update({[`system.peritiae.${peritiaId}.specialties`]: [...currentSpecialties] });
         }
     }
 
@@ -135,4 +135,26 @@ export default class LexArcanaActor extends Actor
     {
         LexArcanaDice.Roll(_numDice, _numFaces, _expressionType, _difficultyThreshold, _hasFateRoll, _info);
     }
+
+	rollDeBello(_specialtyName = '')
+	{
+		let score = this.getSpecialtyScore('deBello', _specialtyName);
+        return LexArcanaDice.RollFlat(min(3, parseInt(score/6)+1), score, LexArcanaDice.EXPRESSIONTYPE.BALANCED, _hasFateRoll, _info);
+	}
+
+	combatTurn()
+	{
+		let targetObject = Array.from(game.user.targets)[0];
+		let selfRoll = this.actor.rollDeBello('');
+		let otherRoll = targetObject.rollDeBello('');
+		const message =
+		{
+			speaker: {actor: this.id },
+			content: '<div class="CombatAction"><h1>Combat</h1>',
+			blind: false
+		};
+		message.content += '<p>Combat diff : ('+selfRoll.result+'-'+otherRoll.result+') = '+(selfRoll.result-otherRoll.result)+'</p>';
+		message.content += '</div>';
+		ChatMessage.Create(message);
+	}
 }

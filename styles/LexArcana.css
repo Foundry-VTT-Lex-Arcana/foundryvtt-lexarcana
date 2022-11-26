@@ -44,7 +44,7 @@ table td
     padding: 5px;
 }
 
-.system-LexArcana i.fas
+.system-LexArcana i.fas,  i.fa-solid, i.fa-regular
 {
     color: #d4af37;
 }
@@ -254,7 +254,7 @@ body.system-LexArcana
     grid-template-columns: 32px 50% 32px  32px;
 }
 
-.system-LexArcana .grid-layout4-specialty
+.system-LexArcana .grid-layout4-specialty, .system-LexArcana .grid-layout5-specialty
 {
     grid-template-columns: 32px 50% 32px 32px;
 }
@@ -275,6 +275,12 @@ body.system-LexArcana
     align-items: center;
     grid-template-areas: "Area0 Area1 Area2 Area3 Area4";
 }
+
+.system-LexArcana .grid-layout5 .grid-layout5-area0 { grid-area: Area0; }
+.system-LexArcana .grid-layout5 .grid-layout5-area1 { grid-area: Area1; }
+.system-LexArcana .grid-layout5 .grid-layout5-area2 { grid-area: Area2; }
+.system-LexArcana .grid-layout5 .grid-layout5-area3 { grid-area: Area3; }
+.system-LexArcana .grid-layout5 .grid-layout5-area4 { grid-area: Area4; }
 
 .system-LexArcana .disabled
 {
@@ -462,8 +468,24 @@ body.system-LexArcana
     font-family: Signika, sans-serif;
     height: 100%;
 }
-
-
+/** PAUSE IMAGE **/
+#pause .pause-image {
+    background: url("images/pause.svg");
+    background-size: 128px;
+    width: 128px;
+    height: 128px;
+    padding-left: 128px;
+}
+  
+#pause .pause-lex {
+    margin: 0 auto;
+    text-align: center;
+    transform: scale3d(1, 1, 1);
+    text-transform: uppercase;
+    font-family: "Trajan";
+    font-weight: 900;
+    color: #f4eded;
+}
 /**
  * Rolls
  **/

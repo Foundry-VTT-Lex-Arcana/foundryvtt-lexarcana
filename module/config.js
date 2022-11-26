@@ -28,7 +28,8 @@ LexArcana.ItemType =
         armor: 'armor',
         shield: 'shield',
         indigamentum: 'indigamentum',
-        ritual: 'ritual'
+        ritual: 'ritual',
+        talent: 'talent'
     }; 
 /**
  * The set of Virtutes Scores used within the system
@@ -101,6 +102,12 @@ LexArcana.Range                             = 'LexArcana.Range';
 LexArcana.Difficulty                        = 'LexArcana.Difficulty';
 LexArcana.Feat                              = 'LexArcana.Feat';
 LexArcana.Parry                             = 'LexArcana.Parry';
+
+/**
+ * Items
+ **/
+LexArcana.ItemClass							= 'LexArcana.ItemClass';
+LexArcana.ItemClassEmpty					= 'LexArcana.ItemClassEmpty';
 
 /**
  * Provinces

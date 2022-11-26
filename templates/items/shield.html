@@ -10,8 +10,7 @@
             </h1>
 
             <div class="item-subtitle">
-                <h4 class="item-type">{{data.type}}</h4>
-                <span class="item-status">{{itemStatus}}</span>
+                <h4 class="item-type">{{item.type}}</h4>
             </div>
         </div>
     </header>
@@ -26,11 +25,20 @@
     <section class="sheet-body">
 
 		<div class="tab stats flexcol" data-group="primary" data-tab="stats">
+			
+			{{!-- Class --}}
+			<div class="form-group">
+				<label>{{ localize "LexArcana.ItemClass" }}</label>
+				<div class="form-fields">
+					<input type="text" name="system.class" value="{{item.system.class}}"/>
+				</div>
+			</div>
+			
 			{{!-- Encumbrance --}}
 			<div class="form-group">
 				<label>{{ localize "LexArcana.Encumbrance" }}</label>
 				<div class="form-fields">
-					<input type="text" name="data.encumbrance" value="{{data.data.encumbrance}}" data-dtype="Number"/>
+					<input type="text" name="system.encumbrance" value="{{item.system.encumbrance}}" data-dtype="Number"/>
 				</div>
 			</div>
 
@@ -38,14 +46,14 @@
 			<div class="form-group">
 				<label>{{ localize "LexArcana.Parry" }}</label>
 				<div class="form-fields">
-					<input type="text" name="data.parry" value="{{data.data.parry}}" data-dtype="Number"/>
+					<input type="text" name="system.parry" value="{{item.system.parry}}" data-dtype="Number"/>
 				</div>
 			</div>
 		</div>
 
         {{!-- Description --}}
         <div class="description tab flexrow" data-group="primary" data-tab="description">
-            {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable}}
+            {{editor item.system.description target="system.description" button=true owner=owner editable=true}}
         </div>
     </section>
 </form>

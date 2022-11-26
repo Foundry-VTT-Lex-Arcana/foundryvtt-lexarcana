@@ -131,7 +131,7 @@ Hooks.once('init', function ()
 	Items.registerSheet(System.Code,
 		LexArcanaRitualSheet,
 		{
-			types: [LexArcana.ItemType.indigamentum, LexArcana.ItemType.ritual],
+			types: [LexArcana.ItemType.indigamentum, LexArcana.ItemType.ritual, LexArcana.ItemType.talent],
 			makeDefault: true,
 			label: 'LexArcana.SheetClassRitual'
 		});
@@ -150,6 +150,10 @@ Hooks.once('init', function ()
 
     // Preload Handlebars Templates
     preloadHandlebarsTemplates();
+    // Slowing down pings
+    CONFIG.Canvas.pings.styles.pulse.duration = 2000
+    CONFIG.Canvas.pings.styles.alert.duration = 2000
+    CONFIG.Canvas.pings.styles.arrow.duration = 2000
 });
 
 
@@ -174,6 +178,12 @@ Hooks.once('init', function ()
       }, {});
     }
   });
+
+  Hooks.on("renderPause", () => {
+    $("#pause img").attr("class", "fa-spin pause-image");
+    $("#pause figcaption").attr("class", "pause-lex");
+  });
+
 
 /* -------------------------------------------- */
 

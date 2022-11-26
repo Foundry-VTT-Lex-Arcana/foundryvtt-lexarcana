@@ -1,6 +1,7 @@
 import LexArcanaActorSheet from "./base.js";
 import LexArcanaActor from "../actor.js";
 import { LexArcana } from '../../config.js';
+import { LexArcanaUtils } from '../../utils.js';
 import {LexArcanaDice} from '../../dice.js';
 
 /**
@@ -75,6 +76,8 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		data.items = [];
 		data.indigamenta = [];
 		data.rituals = [];
+		data.talents = [];
+		let encumbrance=0;
 		for (let i of data.actor.items)
 		{
 			switch (i.type)
@@ -102,12 +105,24 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 					data.rituals.push(i);
 					break;
 				}
+				case 'talent':
+				{
+					data.talents.push(i);
+					break;
+				}
 				default:
 				{
 					break;
 				}
 			}
+			//Now that it is iterating, let's use this to calculate encumbrance
+			encumbrance += i.system.encumbrance | 0
 		}
+		data.itemClasses = LexArcanaUtils.getItemClasses();
+		this.actor.update ({ 'system.encumbrance': encumbrance });
+
+
+
 		return data;
 	}
 
@@ -159,7 +174,7 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		event.preventDefault();
 		const dataset = event.currentTarget.dataset;
 		const item = this.actor.items.get(dataset.id);
-		item.update({ 'data.active': !item.data.data.active });
+		item.update({ 'system.active': !item.system.active });
 		return;
 	}
 
@@ -177,7 +192,8 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		event.preventDefault();
 		const dataset = event.currentTarget.dataset;
 		const item = this.actor.items.get(dataset.id);
-		LexArcanaDice.Roll(1, item.data.data.damage, LexArcanaDice.EXPRESSIONTYPE.BALANCED, true, item.name);
+		LexArcanaDice.Roll(1, item.system.damage, LexArcanaDice.EXPRESSIONTYPE.BALANCED, true, item.name);
+		//this.actor.combatTurn();
 		return;
 	}
 
@@ -186,9 +202,7 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		event.preventDefault();
 		const dataset = event.currentTarget.dataset;
 		const item = this.actor.items.get(dataset.id);
-		console.log ("ITEM")
-		console.log (item)
-		LexArcanaDice.Roll(1, item.data.data.protection, LexArcanaDice.EXPRESSIONTYPE.BALANCED, true, item.name);
+		LexArcanaDice.Roll(1, item.system.protection, LexArcanaDice.EXPRESSIONTYPE.BALANCED, true, item.name);
 		return;
 	}
 

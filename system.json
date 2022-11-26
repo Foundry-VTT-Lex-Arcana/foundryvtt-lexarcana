@@ -1,10 +1,19 @@
 {
+    "id": "LexArcana",
     "name": "LexArcana",
     "title": "Lex Arcana",
     "description": "A game system by players of Lex Arcana - An Empire Without End RPG",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "templateVersion": 2,
-    "author": "Draedrus, Lysoun, Milo115b, ForjaSalvaje, ParvusDomus",
+    "authors": [
+        {
+          "name": "Draedrus, Lysoun, Milo115b, ForjaSalvaje, ParvusDomus"
+        }
+    ],
+    "compatibility": {
+        "minimum": "10",
+        "verified": "10"
+    },
     "scripts": [],
     "esmodules": [
         "LexArcana.js"
@@ -29,8 +38,6 @@
     "gridUnits": "m",
     "primaryTokenAttribute": "attributes.hitPoints",
     "secondaryTokenAttribute": "attributes.pietas",
-    "minimumCoreVersion": "9",
-    "compatibleCoreVersion": "9",
     "url": "https://github.com/Foundry-VTT-Lex-Arcana/foundryvtt-lexarcana",
     "manifest": "https://raw.githubusercontent.com/Foundry-VTT-Lex-Arcana/foundryvtt-lexarcana/master/system.json",
     "download": "https://github.com/Foundry-VTT-Lex-Arcana/foundryvtt-lexarcana/archive/refs/heads/master.zip",
