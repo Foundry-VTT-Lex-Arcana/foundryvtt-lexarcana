@@ -105,7 +105,7 @@
                     }
                     
                 },
-                "FateDice": true
+                "fateRoll": true
             },
 			"human":
 			{

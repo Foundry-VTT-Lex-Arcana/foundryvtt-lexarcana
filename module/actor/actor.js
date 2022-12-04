@@ -136,7 +136,7 @@ export default class LexArcanaActor extends Actor
         LexArcanaDice.Roll(_numDice, _numFaces, _expressionType, _difficultyThreshold, _hasFateRoll, _info);
     }
 
-	rollDeBello(_specialtyName = '')
+	rollDeBello(_hasFateRoll, _specialtyName = '')
 	{
 		let score = this.getSpecialtyScore('deBello', _specialtyName);
         return LexArcanaDice.RollFlat(min(3, parseInt(score/6)+1), score, LexArcanaDice.EXPRESSIONTYPE.BALANCED, _hasFateRoll, _info);
@@ -145,8 +145,8 @@ export default class LexArcanaActor extends Actor
 	combatTurn()
 	{
 		let targetObject = Array.from(game.user.targets)[0];
-		let selfRoll = this.actor.rollDeBello('');
-		let otherRoll = targetObject.rollDeBello('');
+		let selfRoll = this.actor.rollDeBello(this.system.fateRoll, '');
+		let otherRoll = targetObject.rollDeBello(this.system.fateRoll, '');
 		const message =
 		{
 			speaker: {actor: this.id },
