@@ -192,7 +192,7 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		event.preventDefault();
 		const dataset = event.currentTarget.dataset;
 		const item = this.actor.items.get(dataset.id);
-		LexArcanaDice.Roll(1, item.system.damage, LexArcanaDice.EXPRESSIONTYPE.BALANCED, 6, this.system.fateRoll, item.name);
+		LexArcanaDice.Roll(1, item.system.damage, LexArcanaDice.EXPRESSIONTYPE.BALANCED, 6, this.hasFateRoll(), item.name);
 		//this.actor.combatTurn();
 		return;
 	}
@@ -202,7 +202,7 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		event.preventDefault();
 		const dataset = event.currentTarget.dataset;
 		const item = this.actor.items.get(dataset.id);
-		LexArcanaDice.Roll(1, item.system.protection, LexArcanaDice.EXPRESSIONTYPE.BALANCED, this.system.fateRoll, item.name);
+		LexArcanaDice.Roll(1, item.system.protection, LexArcanaDice.EXPRESSIONTYPE.BALANCED, this.hasFateRoll(), item.name);
 		return;
 	}
 

@@ -76,6 +76,21 @@ export default class LexArcanaActorSheet extends ActorSheet
         return System.Path + `/templates/actors/${this.actor.type}-sheet.html`;
     }
 
+	/* -------------------------------------------- */
+	/*                 Accessors                    */
+	/* -------------------------------------------- */
+
+	hasFateRoll()
+	{
+		if(this.actor.system.fateRoll === undefined || this.actor.system.fateRoll === null)
+		{
+			this.actor.system.fateRoll = this.actor.system.FateDice;
+			delete this.actor.system.FateDice;
+			this.actor.update ({ 'system': this.actor.system });
+		}
+		return this.actor.system.fateRoll;
+	}
+
     /* -------------------------------------------- */
     /*                  Dialogs                     */
     /* -------------------------------------------- */
@@ -205,14 +220,7 @@ export default class LexArcanaActorSheet extends ActorSheet
         event.preventDefault();
         const dataSet = event.currentTarget.dataset;
         let config = {};
-		// maj FateDice to fateRoll
-		if(this.actor.system.fateRoll === undefined || this.actor.system.fateRoll === null)
-		{
-			this.actor.system.fateRoll = this.actor.system.FateDice;
-			delete this.actor.system.FateDice;
-			this.actor.update ({ 'system': this.actor.system });
-		}
-		let hasFateRoll = this.actor.system.fateRoll;
+		let hasFateRoll = this.hasFateRoll();
 		function retrieveRollInputFromHTML(_html, _defaultRollInputName)
 		{
 			return {
