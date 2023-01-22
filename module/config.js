@@ -15,9 +15,8 @@ LexArcana.SheetClassRitual = 'LexArcana.SheetClassRitual';
 LexArcana.ActorType =
     {
         custos: 'custos',
-        friendly: 'friendly',
-        antagonist: 'antagonist',
-        fantasticalCreature: 'fantasticalCreature'
+        npc: 'npc',
+        creature: 'creature'
     };
 
 LexArcana.ItemType =

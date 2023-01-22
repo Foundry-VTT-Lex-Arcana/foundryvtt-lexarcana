@@ -15,7 +15,11 @@ export const preloadHandlebarsTemplates = async function ()
         System.Path + '/templates/actors/parts/actor-abilities.html',
         System.Path + '/templates/actors/parts/actor-inventory.html',
         System.Path + '/templates/actors/parts/actor-talents.html',
-        System.Path + '/templates/actors/parts/actor-rituals.html'
+        System.Path + '/templates/actors/parts/actor-rituals.html',
+
+        // NPC Sheet Partials
+        System.Path + '/templates/actors/npcparts/npc-header.html',
+        System.Path + '/templates/actors/npcparts/npc-abilities.html'
 
         // Item Sheet Partials
     ]);

@@ -4,9 +4,8 @@
         "types":
         [
             "custos",
-            "friendly",
-            "antagonist",
-            "fantasticalCreature"
+            "npc",
+            "creature"
         ],
         "templates":
         {
@@ -32,6 +31,10 @@
                     },
                     "npc": true
                 },
+                "fateRoll": true
+            },
+			"commonCustos":
+			{
                 "virtutes":
                 {
                     "coordinatio":
@@ -104,8 +107,15 @@
                         "defaultRoll": "d6"
                     }
                     
-                },
-                "fateRoll": true
+                }
+			},
+            "commonNPC":
+            {
+				"diceValue": 4,
+				"size": 1,
+                "oneDice": ["Damage", "Sensibilitas"],
+                "twoDice": ["DeBello", "DeCorpore"],
+                "threeDice": ["HitPoints"]
             },
 			"human":
 			{
@@ -116,9 +126,6 @@
 			},
             "NPC":
             {
-                "size": 1,
-                "averageValue": 6,
-                "defaultHitPoints": 18,
                 "specialAbilities": []
             }
         },
@@ -127,36 +134,30 @@
             [
                 "background",
                 "common",
+                "commonCustos",
 				"human"
             ],
             "provinceId": 0,
 			"office": "explorer",
 			"rank": "gregarius"
         },
-        "friendly":
+        "npc":
         {
             "templates":
             [
                 "background",
                 "common",
+                "commonNPC",
                 "NPC"
             ]
         },
-        "antagonist":
+        "creature":
         {
             "templates":
             [
                 "background",
                 "common",
-                "NPC"
-            ]
-        },
-        "fantasticalCreature":
-        {
-            "templates":
-            [
-                "background",
-                "common",
+                "commonNPC",
                 "NPC"
             ],
             "degreeOfDanger": 1,

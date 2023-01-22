@@ -16,12 +16,10 @@ export default class LexArcanaActor extends Actor
         {
             case LexArcana.ActorType.custos:
                 return this._prepareCustosData(this.system);
-            case LexArcana.ActorType.friendly:
-                return this._prepareFriendlyTypeData(this.system);
-            case LexArcana.ActorType.antagonist:
-                return this._prepareAntagonistTypeData(this.system);
-            case LexArcana.ActorType.fantasticalCreature:
-                return this._preparefantasticalCreatureTypeData(this.system);
+            case LexArcana.ActorType.npc:
+                return this._prepareNPCData(this.system);
+            case LexArcana.ActorType.creature:
+                return this._prepareCreatureData(this.system);
         }
     }
 
@@ -40,9 +38,9 @@ export default class LexArcanaActor extends Actor
     /* -------------------------------------------- */
 
     /**
-     * Prepare Friendly type specific data
+     * Prepare NPC type specific data
      */
-    _prepareFriendlyTypeData(actorData)
+    _prepareNPCData(actorData)
     {
         const data = actorData;
     }
@@ -50,23 +48,11 @@ export default class LexArcanaActor extends Actor
     /* -------------------------------------------- */
 
     /**
-     * Prepare Antagonist type-specific data
+     * Prepare Creature type-specific data
      * @param actorData
      * @private
      */
-    _prepareAntagonistTypeData(actorData)
-    {
-
-    }
-
-    /* -------------------------------------------- */
-
-    /**
-     * Prepare fantasticalCreature type-specific data
-     * @param actorData
-     * @private
-     */
-    _preparefantasticalCreatureTypeData(actorData)
+    _prepareCreatureData(actorData)
     {
 
     }
@@ -89,6 +75,12 @@ export default class LexArcanaActor extends Actor
         const specialty = this.getSpecialty(_peritiaid, _specialtyId);
         return Number(this.system.peritiae[_peritiaid].value)+Number(specialty.modifier);
 	}
+	// --------------------------------------------
+    getAbilities(diceClass)
+    {
+        let abilities = this.system[diceClass] ?? [];
+        return LexArcanaUtils.ObjectToArray(abilities);
+    }
 
     /* -------------------------------------------- */
     /*                  Manipulators                */
@@ -120,6 +112,19 @@ export default class LexArcanaActor extends Actor
             currentSpecialties[idx].defaultRoll = newExpression;
             await super.update({[`system.peritiae.${peritiaId}.specialties`]: [...currentSpecialties] });
         }
+    }
+
+	// -----------------------------------------------------------------
+
+    async addNPCAbility(_diceClass, _name)
+    {
+        const currentAbilities = duplicate(this.getAbilities(_diceClass));
+        await super.update({[`system.${_diceClass}`]: [...currentAbilities, _name] });
+    }
+    async removeNPCAbility(_diceClass, _abilityid)
+    {
+        const currentSpecialties = duplicate(this.getAbilities(_diceClass)).filter(item => item.name!==_abilityid);
+        await super.update({[`system.${_diceClass}`]: [...currentSpecialties] });
     }
 
     /* -------------------------------------------- */

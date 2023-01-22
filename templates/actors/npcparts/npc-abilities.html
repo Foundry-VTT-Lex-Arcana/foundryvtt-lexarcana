@@ -1,0 +1,43 @@
+
+        <div class="tab abilities flexcol" data-group="primary" data-tab="abilities"><div class="abilities no-circle">
+			{{!-- Core Abilities --}}
+			<div>
+				<h3>{{ localize "LexArcana.OneDice" }}</h3>
+				<i class="dialog-roll roll1d-icon" data-diceclass="oneDice"></i>
+				<ul>
+					{{#each actor.system.oneDice as |value key|}}
+						<li>
+							<span>{{value}}</span>
+							<i class="delete-ability fas fa-trash" data-diceclass="oneDice" data-abilityid="{{value}}"></i>
+						</li>
+					{{/each}}
+				</ul>
+				<a class="add-ability add-icon" data-diceclass="oneDice"></a>
+			</div>
+			<div>
+				<h3>{{ localize "LexArcana.TwoDice" }}</h3>
+				<i class="dialog-roll roll2d-icon" data-diceclass="twoDice"></i>
+				<ul>
+					{{#each actor.system.twoDice as |value key|}}
+						<li>
+							<span>{{value}}</span>
+							<i class="delete-ability fas fa-trash" data-diceclass="twoDice" data-abilityid="{{value}}"></i>
+						</li>
+					{{/each}}
+				</ul>
+				<a class="add-ability add-icon" data-diceclass="twoDice"></a>
+			</div>
+			<div>
+				<h3>{{ localize "LexArcana.ThreeDice" }}</h3>
+				<i class="dialog-roll roll3d-icon" data-diceclass="threeDice"></i>
+				<ul>
+					{{#each actor.system.threeDice as |value key|}}
+						<li>
+							<span>{{value}}</span>
+							<i class="delete-ability fas fa-trash" data-diceclass="threeDice" data-abilityid="{{value}}"></i>
+						</li>
+					{{/each}}
+				</ul>
+				<a class="add-ability add-icon" data-diceclass="{hreeDice"></a>
+			</div>
+		</div>

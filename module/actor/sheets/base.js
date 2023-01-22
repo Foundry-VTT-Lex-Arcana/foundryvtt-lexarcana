@@ -53,16 +53,6 @@ export default class LexArcanaActorSheet extends ActorSheet
         };
         // The Actor and its Items
         data.actor = duplicate(this.object);
-
-        // Ability Scores
-        for ( let [k, v] of Object.entries(data.actor.system.virtutes))
-        {
-            v.label = CONFIG.LexArcana.Virtutes[k];
-        }
-        for ( let [k, v] of Object.entries(data.actor.system.peritiae))
-        {
-            v.label = CONFIG.LexArcana.Peritia[k];
-        }
         // Return data to the sheet
         return data;
     }

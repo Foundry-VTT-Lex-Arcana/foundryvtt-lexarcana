@@ -1,5 +1,4 @@
 import LexArcanaActorSheet from "./base.js";
-import LexArcanaActor from "../actor.js";
 import { LexArcana } from '../../config.js';
 import { LexArcanaUtils } from '../../utils.js';
 import {LexArcanaDice} from '../../dice.js';
@@ -71,6 +70,17 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 	{
 		// Basic data
 		const data = super.getData();
+
+        // Ability Scores
+        for ( let [k, v] of Object.entries(data.actor.system.virtutes))
+        {
+            v.label = CONFIG.LexArcana.Virtutes[k];
+        }
+        for ( let [k, v] of Object.entries(data.actor.system.peritiae))
+        {
+            v.label = CONFIG.LexArcana.Peritia[k];
+        }
+
 		// Iterate through items, allocating to containers
 		this.setDefaultRolls(data.data);
 		data.items = [];

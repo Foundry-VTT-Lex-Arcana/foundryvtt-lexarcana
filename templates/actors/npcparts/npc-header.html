@@ -1,0 +1,26 @@
+
+            {{!-- Header sub Attributes --}}
+            <ul class="attributes flexrow">
+				<li>
+					<h4 class="attribute-name box-title">{{ localize "LexArcana.DiceValue" }}</h4>
+					<div class="attribute-value">
+					   <input name="system.DiceValue" type="text" value="{{actor.system.DiceValue}}" placeholder="4" data-dtype="Number"/>
+					</div>
+			   </li>
+                <li>
+                    <h4 class="attribute-name box-title">{{ localize "LexArcana.Size" }}</h4>
+                    <div class="attribute-wide-value">
+                        <input name="system.size" type="text" value="{{actor.system.size}}" placeholder="1" data-dtype="Number"/>
+                    </div>
+                </li>
+            </ul>
+
+            {{!-- Header Attributes --}}
+            <ul class="attributes flexrow">
+                <li class="attribute health">
+					<h4 class="attribute-name box-title">{{ localize "LexArcana.HitPoints" }}</h4>
+					<div class="attribute-value">
+						<input name="system.hitPoints" type="text" value="{{actor.system.hitPoints}}" placeholder="4" data-dtype="Number"/>
+					</div>
+                </li>
+            </ul>
