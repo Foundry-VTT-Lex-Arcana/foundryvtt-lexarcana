@@ -28,6 +28,22 @@ export default class LexArcanaNPCActorSheet extends LexArcanaActorSheet
 	{
 		// Basic data
 		const data = super.getData();
+		data.specialAbilities = [];
+		for (let i of data.actor.items)
+		{
+			switch (i.type)
+			{
+				case 'specialAbility':
+				{
+					data.specialAbilities.push(i);
+					break;
+				}
+				default:
+				{
+					break;
+				}
+			}
+		}
 		return data;
 	}
 
@@ -50,7 +66,44 @@ export default class LexArcanaNPCActorSheet extends LexArcanaActorSheet
         html.find('.delete-ability').click(this._onDeleteAbility.bind(this));
 		// override
         html.find('.dialog-roll').click(this._onRollDialog.bind(this));
+		
+		html.find('a.edit-special-ability').click(this._onEditClick.bind(this));
+		html.find('a.delete-special-ability').click(this._onDeleteClick.bind(this));
 	}
+
+    /**
+     * Handle click on edit items buttons
+     * @param {Event} event   The triggering click event
+     * @private
+     */
+	async _onEditClick(event, data)
+	{
+		event.preventDefault();
+		const dataset = event.currentTarget.dataset;
+		const item = this.actor.items.get(dataset.id);
+		item.sheet.render(true);
+		return;
+	}
+
+    /**
+     * Handle click on delete items buttons
+     * @param {Event} event   The triggering click event
+     * @private
+     */
+	async _onDeleteClick(event, data)
+	{
+		event.preventDefault();
+		const dataset = event.currentTarget.dataset;
+		Dialog.confirm({
+			title: game.i18n.localize("LexArcana.Confirm"),
+			content: game.i18n.localize("LexArcana.ConfirmItemDeletion"),
+			yes: () => this.actor.deleteEmbeddedDocuments("Item", [dataset.id]),
+			no: () => {},
+			defaultYes: false
+		   });
+		return;
+	}
+
     /**
      * Handle click on add ability buttons
      * @param {Event} event   The triggering click event

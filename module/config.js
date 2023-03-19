@@ -115,6 +115,8 @@ LexArcana.Parry                             = 'LexArcana.Parry';
 LexArcana.DiceValue							= 'LexArcana.DiceValue';
 LexArcana.Size								= 'LexArcana.Size';
 LexArcana.AddAbilityPromptTitle				= 'LexArcana.AddAbilityPromptTitle';
+LexArcana.SpecialAbilitiesTitle				= 'LexArcana.SpecialAbilitiesTitle';
+LexArcana.MagicalPowersTitle				= 'LexArcana.MagicalPowersTitle';
 
 /**
  * Items

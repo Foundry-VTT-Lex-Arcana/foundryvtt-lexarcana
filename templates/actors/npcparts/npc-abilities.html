@@ -1,6 +1,6 @@
 
         <div class="tab abilities flexcol" data-group="primary" data-tab="abilities"><div class="abilities no-circle">
-			<ul class="floxcol grid-layout-3c">
+			<ul class="flexcol grid-layout-3c">
 				{{!-- Core Abilities --}}
 				<li>
 					<div>
@@ -45,12 +45,16 @@
 					</div>
 				</li>
 			</ul>
-			<ul class="floxcol">
+			<h1>{{ localize "LexArcana.SpecialAbilitiesTitle" }}</h1>
+			<ul class="flexcol">
 				{{!-- Core Special Abilities --}}
 				<li>
-					{{#each actor.system.specialAbilities as |value key|}}
-						<i data-abilityid="{{key}}">{{value}}</i>&nbsp;
-						<i class="delete-special-ability fas fa-trash" data-abilityid="{{key}}"></i>
+					{{#each specialAbilities as |item key|}}
+					<div>
+						<i data-id="{{item._id}}">{{item.name}}</i>&nbsp;
+						<a class="edit-special-ability fas fa-edit" data-id="{{item._id}}">&nbsp;</a>&nbsp;
+						<a class="delete-special-ability fas fa-trash" data-id="{{item._id}}">&nbsp;</a>
+					</div>
 					{{/each}}
 				</li>
 			</ul>

@@ -79,6 +79,8 @@
 	"LexArcana.DiceValue": "Valor de dado",
 	"LexArcana.Size": "Tamaño",
 	"LexArcana.AddAbilityPromptTitle": "Añadir abilidad",
+	"LexArcana.SpecialAbilitiesTitle": "Abilidades especiales",
+	"LexArcana.MagicalPowersTitle": "Poderes Magicos",
 
 	"LexArcana.ItemClass": "Tipo",
 	"LexArcana.ItemClassEmpty": "-",
