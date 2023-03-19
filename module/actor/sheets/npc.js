@@ -28,11 +28,20 @@ export default class LexArcanaNPCActorSheet extends LexArcanaActorSheet
 	{
 		// Basic data
 		const data = super.getData();
+		data.items = [];
 		data.specialAbilities = [];
 		for (let i of data.actor.items)
 		{
 			switch (i.type)
 			{
+				case 'meleeWeapon':
+				case 'rangedWeapon':
+				case 'armor':
+				case 'shield':
+				{
+					data.items.push(i);
+					break;
+				}
 				case 'specialAbility':
 				{
 					data.specialAbilities.push(i);
@@ -69,6 +78,24 @@ export default class LexArcanaNPCActorSheet extends LexArcanaActorSheet
 		
 		html.find('a.edit-special-ability').click(this._onEditClick.bind(this));
 		html.find('a.delete-special-ability').click(this._onDeleteClick.bind(this));
+
+		// inventory
+		html.find('a.item-equip').click(this._onEquipClick.bind(this));
+		html.find('a.item-edit').click(this._onEditClick.bind(this));
+		html.find('a.item-delete').click(this._onDeleteClick.bind(this));
+	}
+
+	/* -------------------------------------------- */
+	/*                  Events                     */
+	/* -------------------------------------------- */
+
+	async _onEquipClick(event, data)
+	{
+		event.preventDefault();
+		const dataset = event.currentTarget.dataset;
+		const item = this.actor.items.get(dataset.id);
+		item.update({ 'system.active': !item.system.active });
+		return;
 	}
 
     /**
