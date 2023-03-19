@@ -4,6 +4,8 @@
 	"ITEM.TypeMeleeWeapon": "Arma Melé",
 	"LexArcana.SheetClassProvince": "Hoja Provincia",
 	"LexArcana.SheetClassRitual": "Hoja Ritual",
+	"LexArcana.SheetClassSpecialAbility": "Hoja abilidad especial",
+	"LexArcana.SheetClassMagicalPower": "Hoja poder magico",
 	"LexArcana.VirtutesName": "Virtutes",
 	"LexArcana.Virtutes": {
 		"None": "Ninguna",
@@ -73,6 +75,10 @@
 	"LexArcana.Difficulty": "Dificultad",
 	"LexArcana.Feat": "Talento",
 	"LexArcana.Parry": "Parada",
+
+	"LexArcana.DiceValue": "Valor de dado",
+	"LexArcana.Size": "Tamaño",
+	"LexArcana.AddAbilityPromptTitle": "Añadir abilidad",
 
 	"LexArcana.ItemClass": "Tipo",
 	"LexArcana.ItemClassEmpty": "-",

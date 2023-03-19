@@ -8,7 +8,7 @@
 						<ul>
 							{{#each actor.system.oneDice as |value key|}}
 								<li>
-									<span>{{value}}</span>
+									<span>{{value}}</span>&nbsp;
 									<i class="delete-ability fas fa-trash" data-diceclass="oneDice" data-abilityid="{{value}}"></i>
 								</li>
 							{{/each}}
@@ -22,7 +22,7 @@
 						<ul>
 							{{#each actor.system.twoDice as |value key|}}
 								<li>
-									<span>{{value}}</span>
+									<span>{{value}}</span>&nbsp;
 									<i class="delete-ability fas fa-trash" data-diceclass="twoDice" data-abilityid="{{value}}"></i>
 								</li>
 							{{/each}}
@@ -36,13 +36,22 @@
 						<ul>
 							{{#each actor.system.threeDice as |value key|}}
 								<li>
-									<span>{{value}}</span>
+									<span>{{value}}</span>&nbsp;
 									<i class="delete-ability fas fa-trash" data-diceclass="threeDice" data-abilityid="{{value}}"></i>
 								</li>
 							{{/each}}
 						</ul>
-						<a class="add-ability add-icon" data-diceclass="{hreeDice"></a>
+						<a class="add-ability add-icon" data-diceclass="threeDice"></a>
 					</div>
+				</li>
+			</ul>
+			<ul class="floxcol">
+				{{!-- Core Special Abilities --}}
+				<li>
+					{{#each actor.system.specialAbilities as |value key|}}
+						<i data-abilityid="{{key}}">{{value}}</i>&nbsp;
+						<i class="delete-special-ability fas fa-trash" data-abilityid="{{key}}"></i>
+					{{/each}}
 				</li>
 			</ul>
 		</div>

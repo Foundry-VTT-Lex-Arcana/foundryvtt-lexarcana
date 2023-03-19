@@ -26,6 +26,8 @@ import LexArcanaCreatureActorSheet from './module/actor/sheets/creature.js';
 import LexArcanaItemSheet from './module/item/sheets/base.js';
 import LexArcanaProvinceSheet from './module/item/sheets/provinceSheet.js';
 import LexArcanaRitualSheet from './module/item/sheets/ritualSheet.js';
+import LexArcanaSpecialAbilitySheet from './module/item/sheets/specialAbilitySheet.js';
+import LexArcanaMagicalPowerSheet from './module/item/sheets/magicalPowerSheet.js';
 
 // Import Helpers
 import * as chat from './module/chat.js';
@@ -125,6 +127,20 @@ Hooks.once('init', function ()
 			types: [LexArcana.ItemType.indigamentum, LexArcana.ItemType.ritual, LexArcana.ItemType.talent],
 			makeDefault: true,
 			label: 'LexArcana.SheetClassRitual'
+		});
+	Items.registerSheet(System.Code,
+		LexArcanaSpecialAbilitySheet,
+		{
+			types: [LexArcana.ItemType.specialAbility],
+			makeDefault: true,
+			label: 'LexArcana.SheetClassSpecialAbility'
+		});
+	Items.registerSheet(System.Code,
+		LexArcanaMagicalPowerSheet,
+		{
+			types: [LexArcana.ItemType.magicalPower],
+			makeDefault: true,
+			label: 'LexArcana.SheetClassMagicalPower'
 		});
 
 	// handle bars helpers

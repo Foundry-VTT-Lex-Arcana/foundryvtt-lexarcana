@@ -115,7 +115,8 @@
 				"size": 1,
                 "oneDice": ["Damage", "Sensibilitas"],
                 "twoDice": ["DeBello", "DeCorpore"],
-                "threeDice": ["HitPoints"]
+                "threeDice": ["HitPoints"],
+                "specialAbilities": []
             },
 			"human":
 			{
@@ -123,11 +124,7 @@
 				"gender": "n/a",
 				"languages": "",
                 "encumbrance": 0
-			},
-            "NPC":
-            {
-                "specialAbilities": []
-            }
+			}
         },
         "custos": {
             "templates":
@@ -147,8 +144,7 @@
             [
                 "background",
                 "common",
-                "commonNPC",
-                "NPC"
+                "commonNPC"
             ]
         },
         "creature":
@@ -157,8 +153,7 @@
             [
                 "background",
                 "common",
-                "commonNPC",
-                "NPC"
+                "commonNPC"
             ],
             "degreeOfDanger": 1,
             "magicPowers": []
@@ -173,7 +168,9 @@
             "shield",
 			"indigamentum",
             "talent",
-			"ritual"
+			"ritual",
+			"specialAbility",
+			"magicalPower"
         ],
         "templates": {
             "common": {
@@ -257,6 +254,16 @@
             "peritia": "deMagia"
         },
         "talent": {
+            "templates": [
+                "common"
+            ]
+        },
+        "specialAbility": {
+            "templates": [
+                "common"
+            ]
+        },
+        "magicalPower": {
             "templates": [
                 "common"
             ]

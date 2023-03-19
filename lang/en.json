@@ -4,6 +4,8 @@
 	"ITEM.TypeMeleeWeapon": "Melee Weapon",
 	"LexArcana.SheetClassProvince": "Sheet Class Province",
 	"LexArcana.SheetClassRitual": "Sheet Class Ritual",
+	"LexArcana.SheetClassSpecialAbility": "Sheet Class Special Ability",
+	"LexArcana.SheetClassMagicalPower": "Sheet Class Magical Power",
 	"LexArcana.VirtutesName": "Virtutes",
 	"LexArcana.Virtutes": {
 		"None": "None",
@@ -73,6 +75,10 @@
 	"LexArcana.Difficulty": "Difficulty",
 	"LexArcana.Feat": "Feat",
 	"LexArcana.Parry": "Parry",
+
+	"LexArcana.DiceValue": "Dice Value",
+	"LexArcana.Size": "Size",
+	"LexArcana.AddAbilityPromptTitle": "Add an ability",
 
 	"LexArcana.ItemClass": "Item Class",
 	"LexArcana.ItemClassEmpty": "None",
