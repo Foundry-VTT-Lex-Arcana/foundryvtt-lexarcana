@@ -73,8 +73,6 @@ export default class LexArcanaNPCActorSheet extends LexArcanaActorSheet
 
         html.find('.add-ability').click(this._onAddAbility.bind(this));
         html.find('.delete-ability').click(this._onDeleteAbility.bind(this));
-		// override
-        html.find('.dialog-roll').click(this._onRollDialog.bind(this));
 		
 		html.find('a.edit-special-ability').click(this._onEditClick.bind(this));
 		html.find('a.delete-special-ability').click(this._onDeleteClick.bind(this));

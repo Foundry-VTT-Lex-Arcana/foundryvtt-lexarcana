@@ -40,6 +40,7 @@
     {{!-- Custos Sheet Navigation --}}
     <nav class="sheet-navigation tabs" data-group="primary">
         <a class="item active" data-tab="abilities">{{ localize "LexArcana.Abilities" }}</a>
+        <a class="item" data-tab="inventory">{{ localize "LexArcana.Inventory" }}</a>
         <a class="item" data-tab="biography">{{ localize "LexArcana.Biography" }}</a>
     </nav>
 
@@ -62,6 +63,11 @@
 				</li>
 				{{/each}}
 			</ul>
+        </div>
+
+        {{!-- Inventory Tab --}}
+        <div class="tab inventory flexcol" data-group="primary" data-tab="inventory">
+            {{> "systems/LexArcana/templates/actors/parts/actor-inventory.html"}}
         </div>
 
         {{!-- Biography Tab --}}
