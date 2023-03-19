@@ -262,4 +262,14 @@ export default class LexArcanaNPCActorSheet extends LexArcanaActorSheet
 	/* -------------------------------------------- */
 	/*  Overrides
 	/* -------------------------------------------- */
+	async _onDropItem(event, data)
+	{
+		const item = await Item.implementation.fromDropData(data);
+		let prohibitedItemTypes = [ "province", "indigamentum", "talent", "ritual"];
+		if(prohibitedItemTypes.includes(item.type))
+		{
+			return false;
+		}
+		return super._onDropItem(event, data);
+	}
 }

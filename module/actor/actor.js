@@ -123,7 +123,7 @@ export default class LexArcanaActor extends Actor
     }
     async removeNPCAbility(_diceClass, _abilityid)
     {
-        const currentSpecialties = duplicate(this.getAbilities(_diceClass)).filter(item => item.name!==_abilityid);
+        const currentSpecialties = duplicate(this.getAbilities(_diceClass)).filter((element, index) => element!==_abilityid);
         await super.update({[`system.${_diceClass}`]: [...currentSpecialties] });
     }
 

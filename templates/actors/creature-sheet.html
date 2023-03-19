@@ -52,15 +52,15 @@
 			<h1>{{ localize "LexArcana.MagicalPowersTitle" }}</h1>
 			<ul class="flexcol">
 				{{!-- Core Special Abilities --}}
+				{{#each magicalPowers as |item key|}}
 				<li>
-					{{#each magicalPowers as |item key|}}
 					<div>
 						<i data-id="{{item._id}}">{{item.name}}</i>&nbsp;
 						<a class="edit-magical-power fas fa-edit" data-id="{{item._id}}">&nbsp;</a>&nbsp;
 						<a class="delete-magical-power fas fa-trash" data-id="{{item._id}}">&nbsp;</a>
 					</div>
-					{{/each}}
 				</li>
+				{{/each}}
 			</ul>
         </div>
 

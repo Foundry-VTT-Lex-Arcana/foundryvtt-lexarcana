@@ -9,7 +9,7 @@
 							{{#each actor.system.oneDice as |value key|}}
 								<li>
 									<span>{{value}}</span>&nbsp;
-									<i class="delete-ability fas fa-trash" data-diceclass="oneDice" data-abilityid="{{value}}"></i>
+									<a class="delete-ability fas fa-trash" data-diceclass="oneDice" data-abilityid="{{value}}">&nbsp;</a>
 								</li>
 							{{/each}}
 						</ul>
@@ -23,7 +23,7 @@
 							{{#each actor.system.twoDice as |value key|}}
 								<li>
 									<span>{{value}}</span>&nbsp;
-									<i class="delete-ability fas fa-trash" data-diceclass="twoDice" data-abilityid="{{value}}"></i>
+									<a class="delete-ability fas fa-trash" data-diceclass="twoDice" data-abilityid="{{value}}">&nbsp;</a>
 								</li>
 							{{/each}}
 						</ul>
@@ -37,7 +37,7 @@
 							{{#each actor.system.threeDice as |value key|}}
 								<li>
 									<span>{{value}}</span>&nbsp;
-									<i class="delete-ability fas fa-trash" data-diceclass="threeDice" data-abilityid="{{value}}"></i>
+									<a class="delete-ability fas fa-trash" data-diceclass="threeDice" data-abilityid="{{value}}">&nbsp;</a>
 								</li>
 							{{/each}}
 						</ul>
@@ -48,14 +48,14 @@
 			<h1>{{ localize "LexArcana.SpecialAbilitiesTitle" }}</h1>
 			<ul class="flexcol">
 				{{!-- Core Special Abilities --}}
+				{{#each specialAbilities as |item key|}}
 				<li>
-					{{#each specialAbilities as |item key|}}
 					<div>
 						<i data-id="{{item._id}}">{{item.name}}</i>&nbsp;
 						<a class="edit-special-ability fas fa-edit" data-id="{{item._id}}">&nbsp;</a>&nbsp;
 						<a class="delete-special-ability fas fa-trash" data-id="{{item._id}}">&nbsp;</a>
 					</div>
-					{{/each}}
 				</li>
+				{{/each}}
 			</ul>
 		</div>
