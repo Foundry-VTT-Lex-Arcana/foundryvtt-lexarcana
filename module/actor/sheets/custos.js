@@ -70,23 +70,13 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 	{
 		// Basic data
 		const data = super.getData();
-
-        // Ability Scores
-        for ( let [k, v] of Object.entries(data.actor.system.virtutes))
-        {
-            v.label = CONFIG.LexArcana.Virtutes[k];
-        }
-        for ( let [k, v] of Object.entries(data.actor.system.peritiae))
-        {
-            v.label = CONFIG.LexArcana.Peritia[k];
-        }
-
 		// Iterate through items, allocating to containers
 		this.setDefaultRolls(data.data);
 		data.items = [];
 		data.indigamenta = [];
 		data.rituals = [];
 		data.talents = [];
+		data.province = null;
 		let encumbrance=0;
 		for (let i of data.actor.items)
 		{
@@ -128,6 +118,20 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 			//Now that it is iterating, let's use this to calculate encumbrance
 			encumbrance += i.system.encumbrance | 0
 		}
+
+        // Ability Scores
+        for ( let [k, v] of Object.entries(data.actor.system.virtutes))
+        {
+            v.label = CONFIG.LexArcana.Virtutes[k];
+        }
+        for ( let [k, v] of Object.entries(data.actor.system.peritiae))
+        {
+            v.label = CONFIG.LexArcana.Peritia[k];
+            v.baseValue = parseInt(v.value);
+			v.provinceValue =  data.province !== null ? data.province.system.peritiaeModifiers[k].value : 0;
+            v.finalValue = v.baseValue + v.provinceValue;
+        }
+
 		data.itemClasses = LexArcanaUtils.getItemClasses();
 		this.actor.update ({ 'system.encumbrance': encumbrance });
 
@@ -151,8 +155,8 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		super.activateListeners(html);
 		if (!this.options.editable) return;
 
-		html.find('a.dam_roll').click(this._onDamageClick.bind(this));
-		html.find('a.armor_roll').click(this._onArmorClick.bind(this));
+		html.find('a.damage-roll').click(this._onDamageRollClick.bind(this));
+		html.find('a.armor-roll').click(this._onArmorRollClick.bind(this));
 		html.find('a.item-equip').click(this._onEquipClick.bind(this));
 		html.find('a.item-edit').click(this._onEditClick.bind(this));
 		html.find('a.item-delete').click(this._onDeleteClick.bind(this));
@@ -197,7 +201,7 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		return;
 	}
 
-	async _onDamageClick(event, data)
+	async _onDamageRollClick(event, data)
 	{
 		event.preventDefault();
 		const dataset = event.currentTarget.dataset;
@@ -207,7 +211,7 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		return;
 	}
 
-	async _onArmorClick(event, data)
+	async _onArmorRollClick(event, data)
 	{
 		event.preventDefault();
 		const dataset = event.currentTarget.dataset;

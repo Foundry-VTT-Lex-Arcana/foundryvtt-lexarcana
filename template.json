@@ -115,8 +115,7 @@
 				"size": 1,
                 "oneDice": ["Damage", "Sensibilitas"],
                 "twoDice": ["DeBello", "DeCorpore"],
-                "threeDice": ["HitPoints"],
-                "specialAbilities": []
+                "threeDice": ["HitPoints"]
             },
 			"human":
 			{
@@ -155,8 +154,7 @@
                 "common",
                 "commonNPC"
             ],
-            "degreeOfDanger": 1,
-            "magicPowers": []
+            "degreeOfDanger": 1
         }
     },
     "Item": {

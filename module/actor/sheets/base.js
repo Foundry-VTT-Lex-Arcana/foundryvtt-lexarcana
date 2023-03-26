@@ -273,7 +273,7 @@ export default class LexArcanaActorSheet extends ActorSheet
             config.defaultRoll = peritia.defaultRoll;
             config.defaultRollInputName = 'peritia-default-roll';
             config.title = peritiaNameLoc;
-			config.numFaces = peritia.value;
+			config.numFaces = this.actor.getPeritiaScore(dataSet.peritiaid);
 			config.callbackCustomRoll = function(_actor, _expression) { _actor.setPeritiaDefaultRoll(dataSet.peritiaid, _expression); }
         }
 		config.customRoll = function(_caller, _callback, _html)

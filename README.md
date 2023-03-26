@@ -23,8 +23,10 @@ Unbalanced mode with 3 dices: 1d12+1d3+1d3
 * reworked template.json again, going towards the stable version of this, sorry about it
 * fixed the three dice issue with the human NPCs sheet
 * added localization for the missing entries in this very sheet
-* added special ability ground work for NPCs
-* added magical powers ground work for creatures
+* added NPCs sheets
+* added Creatures sheets
+* fixed various bugs
+* now peritiae are computed based on province affected
 
 ## 0.1.0
 * reworked the whole data
