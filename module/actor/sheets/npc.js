@@ -78,6 +78,8 @@ export default class LexArcanaNPCActorSheet extends LexArcanaActorSheet
 		html.find('a.delete-special-ability').click(this._onDeleteClick.bind(this));
 
 		// inventory
+		html.find('a.damage-roll').click(this._onDamageRollClick.bind(this));
+		html.find('a.armor-roll').click(this._onArmorRollClick.bind(this));
 		html.find('a.item-equip').click(this._onEquipClick.bind(this));
 		html.find('a.item-edit').click(this._onEditClick.bind(this));
 		html.find('a.item-delete').click(this._onDeleteClick.bind(this));
@@ -86,6 +88,25 @@ export default class LexArcanaNPCActorSheet extends LexArcanaActorSheet
 	/* -------------------------------------------- */
 	/*                  Events                     */
 	/* -------------------------------------------- */
+
+	async _onDamageRollClick(event, data)
+	{
+		event.preventDefault();
+		const dataset = event.currentTarget.dataset;
+		const item = this.actor.items.get(dataset.id);
+		LexArcanaDice.Roll(1, item.system.damage, LexArcanaDice.EXPRESSIONTYPE.BALANCED, 6, this.hasFateRoll(), item.name);
+		//this.actor.combatTurn();
+		return;
+	}
+
+	async _onArmorRollClick(event, data)
+	{
+		event.preventDefault();
+		const dataset = event.currentTarget.dataset;
+		const item = this.actor.items.get(dataset.id);
+		LexArcanaDice.Roll(1, item.system.protection, LexArcanaDice.EXPRESSIONTYPE.BALANCED, this.hasFateRoll(), item.name);
+		return;
+	}
 
 	async _onEquipClick(event, data)
 	{

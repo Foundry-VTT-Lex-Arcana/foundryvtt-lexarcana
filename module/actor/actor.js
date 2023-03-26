@@ -60,6 +60,25 @@ export default class LexArcanaActor extends Actor
     /* -------------------------------------------- */
     /*                  Accessors                   */
     /* -------------------------------------------- */
+	getPeritiaScore(_peritiaId)
+	{
+		const baseValue = Number(this.system.peritiae[_peritiaId].value);
+		let province = null;
+		for (let i of this.items)
+		{
+			switch (i.type)
+			{
+				case 'province':
+				{
+					province = i;
+					break;
+				}
+			}
+		}
+		const provinceValue = province !== null ? province.system.peritiaeModifiers[_peritiaId].value : 0;
+		return baseValue + provinceValue;
+	}
+
     getSpecialty(peritiaId, speName)
     {
         const peritia = this.system.peritiae[peritiaId];
@@ -70,10 +89,10 @@ export default class LexArcanaActor extends Actor
         let specialties = this.system.peritiae?.[peritiaId]?.specialties ?? [];
         return LexArcanaUtils.ObjectToArray(specialties);
     }
-	getSpecialtyScore(_peritiaid, _specialtyId)
+	getSpecialtyScore(_peritiaId, _specialtyId)
 	{
         const specialty = this.getSpecialty(_peritiaid, _specialtyId);
-        return Number(this.system.peritiae[_peritiaid].value)+Number(specialty.modifier);
+        return getPeritiaScore(_peritiaId)+Number(specialty.modifier);
 	}
 	// --------------------------------------------
     getAbilities(diceClass)

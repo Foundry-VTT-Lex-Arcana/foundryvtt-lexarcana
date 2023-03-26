@@ -14,10 +14,10 @@
 						{{/ife}}
                    		{{#ife item.type 'rangedWeapon'}}
 						   <a class="fas fa-dice dialog-roll" data-peritiaid="{{item.system.peritia}}" data-id="{{item._id}}" data-peritiaid="{{item.system.peritia}}">&nbsp;</a>
-							<a class="fas fa-heartbeat dam_roll" data-id="{{item._id}}">&nbsp;</a>
+							<a class="fas fa-heartbeat damage-roll" data-id="{{item._id}}">&nbsp;</a>
 						{{/ife}}
 						{{#ife item.type 'armor'}}
-						 	<a class="fas fa-tshirt armor_roll" data-id="{{item._id}}">&nbsp;</a>
+						 	<a class="fas fa-tshirt armor-roll" data-id="{{item._id}}">&nbsp;</a>
 					    {{/ife}}
 					</div>
 					<div class="fas fa-anchor inventory"> {{item.system.encumbrance}}</div>
