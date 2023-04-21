@@ -189,6 +189,9 @@ export default class LexArcanaNPCActorSheet extends LexArcanaActorSheet
 	 _onRollDialog(event)
 	 {
 		 event.preventDefault();
+		 console.log ("HOLA ESTOY EN LA TIRADA DE NPC")
+		 console.log ("ACTOR")
+		 console.log (this.actor)
 		 const dataSet = event.currentTarget.dataset;
 		 let diceClass = dataSet.diceclass;
 		 let hasFateRoll = this.hasFateRoll();
@@ -201,6 +204,8 @@ export default class LexArcanaNPCActorSheet extends LexArcanaActorSheet
 			default:
 			break;
 		 }
+		 console.log ("THIS ACTOR")
+		 console.log (this.actor.system.diceValue)
 		 let numFaces = numDice * this.actor.system.diceValue;
 		 function retrieveRollInputFromHTML(_html, _defaultRollInputName)
 		 {
