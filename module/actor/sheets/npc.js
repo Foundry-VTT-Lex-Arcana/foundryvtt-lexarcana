@@ -205,7 +205,7 @@ export default class LexArcanaNPCActorSheet extends LexArcanaActorSheet
 		 function retrieveRollInputFromHTML(_html, _defaultRollInputName)
 		 {
 			 return {
-					 expressionType: _html.find('input[name="expression-type"]')[0].checked?LexArcanaDice.EXPRESSIONTYPE.BALANCED:LexArcanaDice.EXPRESSIONTYPE.UNBALANCED
+					 expressionType: LexArcanaDice.EXPRESSIONTYPE.BALANCED
 					 , customExpression: _defaultRollInputName!==''?_html.find('input[name="'+_defaultRollInputName+'"]')[0].value:''
 					 , difficultyThreshold: parseInt(_html.find('input[name="difficulty-threshold"]')[0].value)
 			 };
@@ -229,7 +229,6 @@ export default class LexArcanaNPCActorSheet extends LexArcanaActorSheet
 			 {
 				 contentButton = `<span class="roll${_numDice}d-icon tooltip"><span class="tooltipText scroller">` +
 					 '<p>'+game.i18n.localize(CONFIG.LexArcana.RollBalanced)+' '+LexArcanaDice.ComputeExpression(_numDice, _numFaces, LexArcanaDice.EXPRESSIONTYPE.BALANCED).expression+'</p>' +
-					 '<p>'+game.i18n.localize(CONFIG.LexArcana.RollUnbalanced)+' '+LexArcanaDice.ComputeExpression(_numDice, _numFaces, LexArcanaDice.EXPRESSIONTYPE.UNBALANCED).expression+'</p>'+
 					 '</span></span>';
 			 }
 			 return {disable: disableButton, content: contentButton};
@@ -251,9 +250,7 @@ export default class LexArcanaNPCActorSheet extends LexArcanaActorSheet
 				 };
 		 }
 		 const expressionTypePrompt = game.i18n.localize('LexArcana.DiceExpressionBalancedPrompt');
-		 const htmlContent = `<div>
-								 ${expressionTypePrompt}: <input type='checkbox' name='expression-type'/>
-							 </div>
+		 const htmlContent = `
 							 <div>
 								 <span>${game.i18n.localize(CONFIG.LexArcana.RollDifficultyThreshold)}</span>&nbsp;<input type='text' name="difficulty-threshold" value="6"/>
 							 </div>`;
