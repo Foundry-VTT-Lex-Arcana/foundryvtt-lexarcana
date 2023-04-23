@@ -91,9 +91,9 @@ export default class LexArcanaActor extends Actor
     }
 	getSpecialtyScore(_peritiaId, _specialtyId)
 	{
-        const specialty = this.getSpecialty(_peritiaid, _specialtyId);
-        return getPeritiaScore(_peritiaId)+Number(specialty.modifier);
-	}
+        const specialty = this.getSpecialty(_peritiaId, _specialtyId);
+        return this.getPeritiaScore(_peritiaId)+Number(specialty.modifier);
+	}          
 	// --------------------------------------------
     getAbilities(diceClass)
     {

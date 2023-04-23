@@ -2,9 +2,21 @@
             {{!-- Header sub Attributes --}}
             <ul class="attributes flexrow">
 				<li>
-					<h4 class="attribute-name box-title">{{ localize "LexArcana.DiceValue" }}</h4>
+					<h4 class="attribute-name box-title">{{ localize "LexArcana.diceValue" }}</h4>
 					<div class="attribute-value">
-					   <input name="system.DiceValue" type="text" value="{{actor.system.DiceValue}}" placeholder="4" data-dtype="Number"/>
+                        <select name="system.diceValue" data-dtype="Number">
+                            {{#select actor.system.diceValue}}
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="8">8</option>
+                            <option value="10">10</option>
+                            <option value="12">12</option>
+                            <option value="20">20</option>
+                            {{/select}}
+                          </select>
+          
 					</div>
 			   </li>
                 <li>
