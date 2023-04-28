@@ -585,13 +585,13 @@ body.system-LexArcana
  * Tooltips - coming mainly from BOL system
  **/
  /* Tooltip container */
-.system-LexArcana .dialog .window-content .dialog-buttons .tooltip
+.system-LexArcana .tooltip
 {
 	position: relative;
 }
 
 /* Tooltip text */
-.system-LexArcana .dialog .window-content .dialog-buttons .tooltip .tooltipText
+.system-LexArcana .tooltipText
 {
 	visibility: hidden;
 	width: 160px;
@@ -619,26 +619,26 @@ body.system-LexArcana
 	transition: opacity 0.3s;
 }
 
-.system-LexArcana .dialog .window-content .dialog-buttons .scroller {
+.system-LexArcana .scroller {
 	width: 300px;
 	overflow-y: scroll;
 	scrollbar-color: rebeccapurple green;
 	scrollbar-width: thin;
 }
 
-.system-LexArcana .dialog .window-content .dialog-buttons .tooltip .tooltipDescription
+.system-LexArcana .tooltip .tooltipDescription
 {
 	width: 250px;
 	left: 205%;
 }
 
-.system-LexArcana .dialog .window-content .dialog-buttons .tooltip .tooltipRight
+.system-LexArcana .tooltip .tooltipRight
 {
 	left: -200%;
 }
 
 /* Show the tooltip text when you mouse over the tooltip container */
-.system-LexArcana .dialog .window-content .dialog-buttons .tooltip:hover .tooltipText
+.system-LexArcana .tooltip:hover .tooltipText
 {
 	visibility: visible;
 	opacity: 1;
@@ -649,4 +649,11 @@ body.system-LexArcana
 	color: #000;
 	text-shadow: 0 0 10px red;
 	cursor: pointer;
+}
+
+.system-LexArcana .computed-value
+{
+	color: rgb(126, 170, 126);
+	font-style: italic;
+	font-weight: bold;
 }

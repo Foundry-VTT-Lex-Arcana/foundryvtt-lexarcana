@@ -9,15 +9,16 @@ System.Path = 'systems/' + System.Code;
 
 LexArcana.SheetClassProvince = 'LexArcana.SheetClassProvince';
 LexArcana.SheetClassRitual = 'LexArcana.SheetClassRitual';
+LexArcana.SheetClassSpecialAbility = 'LexArcana.SheetClassSpecialAbility';
+LexArcana.SheetClassMagicalPower = 'LexArcana.SheetClassMagicalPower';
 
 /* -------------------------------------------- */
 
 LexArcana.ActorType =
     {
         custos: 'custos',
-        friendly: 'friendly',
-        antagonist: 'antagonist',
-        fantasticalCreature: 'fantasticalCreature'
+        npc: 'npc',
+        creature: 'creature'
     };
 
 LexArcana.ItemType =
@@ -29,7 +30,9 @@ LexArcana.ItemType =
         shield: 'shield',
         indigamentum: 'indigamentum',
         ritual: 'ritual',
-        talent: 'talent'
+        talent: 'talent',
+        specialAbility: 'specialAbility',
+        magicalPower: 'magicalPower'
     }; 
 /**
  * The set of Virtutes Scores used within the system
@@ -74,6 +77,9 @@ LexArcana.Disciplines = {
     'favorOfTheGods':    		'LexArcana.Disciplines.FavorOfTheGods',
 };
 
+/**
+ * Players stats
+ */
 LexArcana.Name                              = 'LexArcana.Name';
 LexArcana.NPC                               = 'LexArcana.NPC';
 LexArcana.FateRoll                          = 'LexArcana.FateRoll';
@@ -102,6 +108,15 @@ LexArcana.Range                             = 'LexArcana.Range';
 LexArcana.Difficulty                        = 'LexArcana.Difficulty';
 LexArcana.Feat                              = 'LexArcana.Feat';
 LexArcana.Parry                             = 'LexArcana.Parry';
+
+/**
+ * NPCs 
+ **/
+LexArcana.DiceValue							= 'LexArcana.DiceValue';
+LexArcana.Size								= 'LexArcana.Size';
+LexArcana.AddAbilityPromptTitle				= 'LexArcana.AddAbilityPromptTitle';
+LexArcana.SpecialAbilitiesTitle				= 'LexArcana.SpecialAbilitiesTitle';
+LexArcana.MagicalPowersTitle				= 'LexArcana.MagicalPowersTitle';
 
 /**
  * Items

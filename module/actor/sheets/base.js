@@ -53,16 +53,6 @@ export default class LexArcanaActorSheet extends ActorSheet
         };
         // The Actor and its Items
         data.actor = duplicate(this.object);
-
-        // Ability Scores
-        for ( let [k, v] of Object.entries(data.actor.system.virtutes))
-        {
-            v.label = CONFIG.LexArcana.Virtutes[k];
-        }
-        for ( let [k, v] of Object.entries(data.actor.system.peritiae))
-        {
-            v.label = CONFIG.LexArcana.Peritia[k];
-        }
         // Return data to the sheet
         return data;
     }
@@ -75,6 +65,21 @@ export default class LexArcanaActorSheet extends ActorSheet
         if (!game.user.isGM && this.actor.limited) return System.Path + "/templates/actors/limited-sheet.html";
         return System.Path + `/templates/actors/${this.actor.type}-sheet.html`;
     }
+
+	/* -------------------------------------------- */
+	/*                 Accessors                    */
+	/* -------------------------------------------- */
+
+	hasFateRoll()
+	{
+		if(this.actor.system.fateRoll === undefined || this.actor.system.fateRoll === null)
+		{
+			this.actor.system.fateRoll = this.actor.system.FateDice;
+			delete this.actor.system.FateDice;
+			this.actor.update ({ 'system': this.actor.system });
+		}
+		return this.actor.system.fateRoll;
+	}
 
     /* -------------------------------------------- */
     /*                  Dialogs                     */
@@ -205,7 +210,7 @@ export default class LexArcanaActorSheet extends ActorSheet
         event.preventDefault();
         const dataSet = event.currentTarget.dataset;
         let config = {};
-		let hasFateRoll = true;
+		let hasFateRoll = this.hasFateRoll();
 		function retrieveRollInputFromHTML(_html, _defaultRollInputName)
 		{
 			return {
@@ -268,7 +273,7 @@ export default class LexArcanaActorSheet extends ActorSheet
             config.defaultRoll = peritia.defaultRoll;
             config.defaultRollInputName = 'peritia-default-roll';
             config.title = peritiaNameLoc;
-			config.numFaces = peritia.value;
+			config.numFaces = this.actor.getPeritiaScore(dataSet.peritiaid);
 			config.callbackCustomRoll = function(_actor, _expression) { _actor.setPeritiaDefaultRoll(dataSet.peritiaid, _expression); }
         }
 		config.customRoll = function(_caller, _callback, _html)

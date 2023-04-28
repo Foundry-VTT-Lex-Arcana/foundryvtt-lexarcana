@@ -4,9 +4,8 @@
         "types":
         [
             "custos",
-            "friendly",
-            "antagonist",
-            "fantasticalCreature"
+            "npc",
+            "creature"
         ],
         "templates":
         {
@@ -32,6 +31,10 @@
                     },
                     "npc": true
                 },
+                "fateRoll": true
+            },
+			"commonCustos":
+			{
                 "virtutes":
                 {
                     "coordinatio":
@@ -104,8 +107,15 @@
                         "defaultRoll": "d6"
                     }
                     
-                },
-                "FateDice": true
+                }
+			},
+            "commonNPC":
+            {
+				"diceValue": 4,
+				"size": 1,
+                "oneDice": ["Damage", "Sensibilitas"],
+                "twoDice": ["DeBello", "DeCorpore"],
+                "threeDice": ["HitPoints"]
             },
 			"human":
 			{
@@ -113,54 +123,38 @@
 				"gender": "n/a",
 				"languages": "",
                 "encumbrance": 0
-			},
-            "NPC":
-            {
-                "size": 1,
-                "averageValue": 6,
-                "defaultHitPoints": 18,
-                "specialAbilities": []
-            }
+			}
         },
         "custos": {
             "templates":
             [
                 "background",
                 "common",
+                "commonCustos",
 				"human"
             ],
             "provinceId": 0,
 			"office": "explorer",
 			"rank": "gregarius"
         },
-        "friendly":
+        "npc":
         {
             "templates":
             [
                 "background",
                 "common",
-                "NPC"
+                "commonNPC"
             ]
         },
-        "antagonist":
+        "creature":
         {
             "templates":
             [
                 "background",
                 "common",
-                "NPC"
-            ]
-        },
-        "fantasticalCreature":
-        {
-            "templates":
-            [
-                "background",
-                "common",
-                "NPC"
+                "commonNPC"
             ],
-            "degreeOfDanger": 1,
-            "magicPowers": []
+            "degreeOfDanger": 1
         }
     },
     "Item": {
@@ -172,7 +166,9 @@
             "shield",
 			"indigamentum",
             "talent",
-			"ritual"
+			"ritual",
+			"specialAbility",
+			"magicalPower"
         ],
         "templates": {
             "common": {
@@ -256,6 +252,16 @@
             "peritia": "deMagia"
         },
         "talent": {
+            "templates": [
+                "common"
+            ]
+        },
+        "specialAbility": {
+            "templates": [
+                "common"
+            ]
+        },
+        "magicalPower": {
             "templates": [
                 "common"
             ]

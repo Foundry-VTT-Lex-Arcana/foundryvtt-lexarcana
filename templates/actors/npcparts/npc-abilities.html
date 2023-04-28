@@ -1,0 +1,61 @@
+
+        <div class="abilities no-circle">
+			<ul class="flexcol grid-layout-3c">
+				{{!-- Core Abilities --}}
+				<li>
+					<div>
+						<a class="dialog-roll roll1d-icon" data-diceclass="oneDice">&nbsp;</a>
+						<ul>
+							{{#each actor.system.oneDice as |value key|}}
+								<li>
+									<span>{{value}}</span>&nbsp;
+									<a class="delete-ability fas fa-trash" data-diceclass="oneDice" data-abilityid="{{value}}">&nbsp;</a>
+								</li>
+							{{/each}}
+						</ul>
+						<a class="add-ability add-icon" data-diceclass="oneDice">&nbsp;</a>
+					</div>
+				</li>
+				<li>
+					<div>
+						<a class="dialog-roll roll2d-icon" data-diceclass="twoDice">&nbsp;</a>
+						<ul>
+							{{#each actor.system.twoDice as |value key|}}
+								<li>
+									<span>{{value}}</span>&nbsp;
+									<a class="delete-ability fas fa-trash" data-diceclass="twoDice" data-abilityid="{{value}}">&nbsp;</a>
+								</li>
+							{{/each}}
+						</ul>
+						<a class="add-ability add-icon" data-diceclass="twoDice">&nbsp;</a>
+					</div>
+				</li>
+				<li>
+					<div>
+						<a class="dialog-roll roll3d-icon" data-diceclass="threeDice">&nbsp;</a>
+						<ul>
+							{{#each actor.system.threeDice as |value key|}}
+								<li>
+									<span>{{value}}</span>&nbsp;
+									<a class="delete-ability fas fa-trash" data-diceclass="threeDice" data-abilityid="{{value}}">&nbsp;</a>
+								</li>
+							{{/each}}
+						</ul>
+						<a class="add-ability add-icon" data-diceclass="threeDice"></a>
+					</div>
+				</li>
+			</ul>
+			<h1>{{ localize "LexArcana.SpecialAbilitiesTitle" }}</h1>
+			<ul class="flexcol">
+				{{!-- Core Special Abilities --}}
+				{{#each specialAbilities as |item key|}}
+				<li>
+					<div>
+						<i data-id="{{item._id}}">{{item.name}}</i>&nbsp;
+						<a class="edit-special-ability fas fa-edit" data-id="{{item._id}}">&nbsp;</a>&nbsp;
+						<a class="delete-special-ability fas fa-trash" data-id="{{item._id}}">&nbsp;</a>
+					</div>
+				</li>
+				{{/each}}
+			</ul>
+		</div>

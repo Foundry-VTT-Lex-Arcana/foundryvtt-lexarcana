@@ -15,9 +15,25 @@ Example: for a roll of 18 of Ingenium
 Balanced mode with 3 dices: 3d6
 Unbalanced mode with 3 dices: 1d12+1d3+1d3
 
-# Versions
-## 0.0.8 coming
+# to come
 * Adding item classes to items and association for 'de Bello' Peritia specialties
+
+# Versions
+# 0.1.1
+* reworked template.json again, going towards the stable version of this, sorry about it
+* fixed the three dice issue with the human NPCs sheet
+* added localization for the missing entries in this very sheet
+* added NPCs sheets
+* added Creatures sheets
+* fixed various bugs
+* now peritiae are computed based on province affected
+
+## 0.1.0
+* reworked the whole data
+* added a sheet for human NPCs, prepared the ground for the fantastical creatures
+
+## 0.0.8
+* several fixes, v9 migration
 
 ## 0.0.7
 * Various fixes for invetory tab

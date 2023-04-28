@@ -21,12 +21,13 @@ import LexArcanaItem from './module/item/item.js';
 
 // Import Applications
 import LexArcanaCustosActorSheet from './module/actor/sheets/custos.js';
-import LexArcanaFriendlyActorSheet from './module/actor/sheets/friendly.js';
-import LexArcanaAntagonistActorSheet from './module/actor/sheets/antagonist.js';
-import LexArcanaFantasticalCreatureActorSheet from './module/actor/sheets/fantasticalCreature.js';
+import LexArcanaNPCActorSheet from './module/actor/sheets/npc.js';
+import LexArcanaCreatureActorSheet from './module/actor/sheets/creature.js';
 import LexArcanaItemSheet from './module/item/sheets/base.js';
 import LexArcanaProvinceSheet from './module/item/sheets/provinceSheet.js';
 import LexArcanaRitualSheet from './module/item/sheets/ritualSheet.js';
+import LexArcanaSpecialAbilitySheet from './module/item/sheets/specialAbilitySheet.js';
+import LexArcanaMagicalPowerSheet from './module/item/sheets/magicalPowerSheet.js';
 
 // Import Helpers
 import * as chat from './module/chat.js';
@@ -47,9 +48,8 @@ Hooks.once('init', function ()
         applications:
             {
                 LexArcanaCustosActorSheet,
-                LexArcanaFriendlyActorSheet,
-                LexArcanaAntagonistActorSheet,
-                LexArcanaFantasticalCreatureActorSheet,
+                LexArcanaNPCActorSheet,
+                LexArcanaCreatureActorSheet,
                 LexArcanaItemSheet,
                 LexArcanaProvinceSheet
             },
@@ -88,25 +88,18 @@ Hooks.once('init', function ()
             label: 'LexArcana.SheetClassCustos'
         });
     Actors.registerSheet(System.Code,
-        LexArcanaFriendlyActorSheet,
+        LexArcanaNPCActorSheet,
         {
-            types: [LexArcana.ActorType.friendly],
+            types: [LexArcana.ActorType.npc],
             makeDefault: true,
-            label: 'LexArcana.SheetClassFriendly'
+            label: 'LexArcana.SheetClassNPC'
         });
     Actors.registerSheet(System.Code,
-        LexArcanaAntagonistActorSheet,
+        LexArcanaCreatureActorSheet,
         {
-            types: [LexArcana.ActorType.antagonist],
+            types: [LexArcana.ActorType.creature],
             makeDefault: true,
-            label: 'LexArcana.SheetClassAntagonist'
-        });
-    Actors.registerSheet(System.Code,
-        LexArcanaFantasticalCreatureActorSheet,
-        {
-            types: [LexArcana.ActorType.fantasticalCreature],
-            makeDefault: true,
-            label: 'LexArcana.SheetClassFantasticalCreature'
+            label: 'LexArcana.SheetClassCreature'
         });
     Items.unregisterSheet('core', ItemSheet);
     Items.registerSheet(System.Code,
@@ -134,6 +127,20 @@ Hooks.once('init', function ()
 			types: [LexArcana.ItemType.indigamentum, LexArcana.ItemType.ritual, LexArcana.ItemType.talent],
 			makeDefault: true,
 			label: 'LexArcana.SheetClassRitual'
+		});
+	Items.registerSheet(System.Code,
+		LexArcanaSpecialAbilitySheet,
+		{
+			types: [LexArcana.ItemType.specialAbility],
+			makeDefault: true,
+			label: 'LexArcana.SheetClassSpecialAbility'
+		});
+	Items.registerSheet(System.Code,
+		LexArcanaMagicalPowerSheet,
+		{
+			types: [LexArcana.ItemType.magicalPower],
+			makeDefault: true,
+			label: 'LexArcana.SheetClassMagicalPower'
 		});
 
 	// handle bars helpers

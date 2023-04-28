@@ -1,0 +1,67 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+
+    {{!-- Sheet Header --}}
+    <header class="sheet-header">
+
+        <section class="header-details no-circle">
+            {{!-- Custos Summary --}}
+			<ul class="flexrow">
+				<li><div class="portrait">
+                    <img class="laurel" src="./systems/LexArcana/styles/images/laurel1.webp"/>
+                    <img class="profile" src="{{actor.img}}" title="{{actor.name}}" data-edit="img"/>
+                    <img class="laurel" src="./systems/LexArcana/styles/images/laurel2.webp"/>
+                </div></li>
+				<li>
+					<h1 class="charname">
+						<input name="name" type="text" value="{{actor.name}}" placeholder="{{ localize 'LexArcana.Name' }}"/>
+					</h1>
+                    <ul class="flexrow">
+                        {{#if isGM}}
+                        <li>
+                            <h4 class="attribute-name box-title">{{ localize "LexArcana.NPC" }}</h4>
+                            <div class="attribute-value multiple">
+                                <input name="system.attributes.npc" type="checkbox" {{checked actor.system.attributes.npc}} />
+                            </div>
+                        </li>
+                        {{/if}}
+                        <li>
+                            <h4 class="attribute-name box-title">{{ localize "LexArcana.FateRoll" }}</h4>
+                            <div class="attribute-value">
+                                <input name="system.fateRoll" type="checkbox" {{checked actor.system.fateRoll}}/>
+                            </div>
+                        </li>
+                    </ul>
+				</li>                
+			</ul>
+            {{> "systems/LexArcana/templates/actors/npcparts/npc-header.html"}}
+        </section>
+    </header>
+
+    {{!-- Custos Sheet Navigation --}}
+    <nav class="sheet-navigation tabs" data-group="primary">
+        <a class="item active" data-tab="abilities">{{ localize "LexArcana.Abilities" }}</a>
+        <a class="item" data-tab="inventory">{{ localize "LexArcana.Inventory" }}</a>
+        <a class="item" data-tab="biography">{{ localize "LexArcana.Biography" }}</a>
+    </nav>
+
+    {{!-- Custos Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Abilities Tab --}}
+        <div class="tab abilities flexcol" data-group="primary" data-tab="abilities">
+            {{> "systems/LexArcana/templates/actors/npcparts/npc-abilities.html"}}
+        </div>
+
+        {{!-- Inventory Tab --}}
+        <div class="tab inventory flexcol" data-group="primary" data-tab="inventory">
+            {{> "systems/LexArcana/templates/actors/parts/actor-inventory.html"}}
+        </div>
+
+        {{!-- Biography Tab --}}
+        <div class="tab biography flexrow" data-group="primary" data-tab="biography">
+            <div class="biography">
+                {{editor actor.system.biography target="system.biography" button=true owner=owner editable=true}}
+            </div>
+        </div>
+    </section>
+</form>

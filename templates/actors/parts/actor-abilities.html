@@ -22,7 +22,13 @@
                         <li class="peritia">
                                 <div class="grid-layout4 grid-layout4-peritia">
                                         <a class="add-peritiae-specialty add-icon grid-layout4-area0" data-peritiaid="{{peritiaKey}}"></a>
-                                        <a for="system.peritiae.{{peritiaKey}}.value" class="peritia-name grid-layout4-area1 rollable dialog-roll" data-peritiaid="{{peritiaKey}}">{{peritiaValue.label}}</a>
+										<div class="grid-layout4-area1">
+											<a for="system.peritiae.{{peritiaKey}}.value" class="peritia-name rollable dialog-roll" data-peritiaid="{{peritiaKey}}">{{peritiaValue.label}}</a>
+											<span class="computed-value tooltip">
+												<span class="tooltipText scroller"><p>Base: {{peritiaValue.baseValue}} + Province: {{peritiaValue.provinceValue}}</p></span>
+												{{peritiaValue.finalValue}}
+											</span>
+										</div>
                                         <input class="peritia-value grid-layout4-area2" name="system.peritiae.{{peritiaKey}}.value" value="{{peritiaValue.value}}" data-dtype="number" type="number"/>
                                         <i class="dialog-roll roll1d-icon grid-layout4-area3" data-peritiaid="{{peritiaKey}}"></i>
                                 </div>

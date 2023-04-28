@@ -16,12 +16,10 @@ export default class LexArcanaActor extends Actor
         {
             case LexArcana.ActorType.custos:
                 return this._prepareCustosData(this.system);
-            case LexArcana.ActorType.friendly:
-                return this._prepareFriendlyTypeData(this.system);
-            case LexArcana.ActorType.antagonist:
-                return this._prepareAntagonistTypeData(this.system);
-            case LexArcana.ActorType.fantasticalCreature:
-                return this._preparefantasticalCreatureTypeData(this.system);
+            case LexArcana.ActorType.npc:
+                return this._prepareNPCData(this.system);
+            case LexArcana.ActorType.creature:
+                return this._prepareCreatureData(this.system);
         }
     }
 
@@ -40,9 +38,9 @@ export default class LexArcanaActor extends Actor
     /* -------------------------------------------- */
 
     /**
-     * Prepare Friendly type specific data
+     * Prepare NPC type specific data
      */
-    _prepareFriendlyTypeData(actorData)
+    _prepareNPCData(actorData)
     {
         const data = actorData;
     }
@@ -50,23 +48,11 @@ export default class LexArcanaActor extends Actor
     /* -------------------------------------------- */
 
     /**
-     * Prepare Antagonist type-specific data
+     * Prepare Creature type-specific data
      * @param actorData
      * @private
      */
-    _prepareAntagonistTypeData(actorData)
-    {
-
-    }
-
-    /* -------------------------------------------- */
-
-    /**
-     * Prepare fantasticalCreature type-specific data
-     * @param actorData
-     * @private
-     */
-    _preparefantasticalCreatureTypeData(actorData)
+    _prepareCreatureData(actorData)
     {
 
     }
@@ -74,6 +60,25 @@ export default class LexArcanaActor extends Actor
     /* -------------------------------------------- */
     /*                  Accessors                   */
     /* -------------------------------------------- */
+	getPeritiaScore(_peritiaId)
+	{
+		const baseValue = Number(this.system.peritiae[_peritiaId].value);
+		let province = null;
+		for (let i of this.items)
+		{
+			switch (i.type)
+			{
+				case 'province':
+				{
+					province = i;
+					break;
+				}
+			}
+		}
+		const provinceValue = province !== null ? province.system.peritiaeModifiers[_peritiaId].value : 0;
+		return baseValue + provinceValue;
+	}
+
     getSpecialty(peritiaId, speName)
     {
         const peritia = this.system.peritiae[peritiaId];
@@ -84,11 +89,17 @@ export default class LexArcanaActor extends Actor
         let specialties = this.system.peritiae?.[peritiaId]?.specialties ?? [];
         return LexArcanaUtils.ObjectToArray(specialties);
     }
-	getSpecialtyScore(_peritiaid, _specialtyId)
+	getSpecialtyScore(_peritiaId, _specialtyId)
 	{
-        const specialty = this.getSpecialty(_peritiaid, _specialtyId);
-        return Number(this.system.peritiae[_peritiaid].value)+Number(specialty.modifier);
-	}
+        const specialty = this.getSpecialty(_peritiaId, _specialtyId);
+        return this.getPeritiaScore(_peritiaId)+Number(specialty.modifier);
+	}          
+	// --------------------------------------------
+    getAbilities(diceClass)
+    {
+        let abilities = this.system[diceClass] ?? [];
+        return LexArcanaUtils.ObjectToArray(abilities);
+    }
 
     /* -------------------------------------------- */
     /*                  Manipulators                */
@@ -122,6 +133,19 @@ export default class LexArcanaActor extends Actor
         }
     }
 
+	// -----------------------------------------------------------------
+
+    async addNPCAbility(_diceClass, _name)
+    {
+        const currentAbilities = duplicate(this.getAbilities(_diceClass));
+        await super.update({[`system.${_diceClass}`]: [...currentAbilities, _name] });
+    }
+    async removeNPCAbility(_diceClass, _abilityid)
+    {
+        const currentSpecialties = duplicate(this.getAbilities(_diceClass)).filter((element, index) => element!==_abilityid);
+        await super.update({[`system.${_diceClass}`]: [...currentSpecialties] });
+    }
+
     /* -------------------------------------------- */
     /*                  Roll Dices                  */
     /* -------------------------------------------- */
@@ -136,7 +160,7 @@ export default class LexArcanaActor extends Actor
         LexArcanaDice.Roll(_numDice, _numFaces, _expressionType, _difficultyThreshold, _hasFateRoll, _info);
     }
 
-	rollDeBello(_specialtyName = '')
+	rollDeBello(_hasFateRoll, _specialtyName = '')
 	{
 		let score = this.getSpecialtyScore('deBello', _specialtyName);
         return LexArcanaDice.RollFlat(min(3, parseInt(score/6)+1), score, LexArcanaDice.EXPRESSIONTYPE.BALANCED, _hasFateRoll, _info);
@@ -145,8 +169,8 @@ export default class LexArcanaActor extends Actor
 	combatTurn()
 	{
 		let targetObject = Array.from(game.user.targets)[0];
-		let selfRoll = this.actor.rollDeBello('');
-		let otherRoll = targetObject.rollDeBello('');
+		let selfRoll = this.actor.rollDeBello(this.system.fateRoll, '');
+		let otherRoll = targetObject.rollDeBello(this.system.fateRoll, '');
 		const message =
 		{
 			speaker: {actor: this.id },
