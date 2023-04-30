@@ -1,45 +1,45 @@
 {
-    "id": "LexArcana",
-    "name": "LexArcana",
-    "title": "Lex Arcana",
-    "description": "A game system by players of Lex Arcana - An Empire Without End RPG",
-    "version": "0.1.1",
-    "templateVersion": 2,
-    "authors": [
-        {
-          "name": "Draedrus, Lysoun, Milo115b, ForjaSalvaje, ParvusDomus"
-        }
-    ],
-    "compatibility": {
-        "minimum": "10",
-        "verified": "10"
+  "id": "LexArcana",
+  "title": "Lex Arcana",
+  "description": "A game system by players of Lex Arcana - An Empire Without End RPG",
+  "version": "0.1.1",
+  "authors": [
+    {
+      "name": "Draedrus, Lysoun, Milo115b, ForjaSalvaje, ParvusDomus",
+      "flags": {}
+    }
+  ],
+  "compatibility": {
+    "minimum": "10",
+    "verified": "10"
+  },
+  "esmodules": [
+    "LexArcana.js"
+  ],
+  "styles": [
+    "styles/LexArcana.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json",
+      "flags": {}
     },
-    "scripts": [],
-    "esmodules": [
-        "LexArcana.js"
-    ],
-    "styles": ["styles/LexArcana.css"],
-    "packs": [],
-    "languages": [
-        {
-            "lang": "en",
-            "name": "English",
-            "path": "lang/en.json"
-        },
-        {
-            "lang": "es",
-            "name": "Spanish",
-            "path": "lang/es.json"
-        }
-    ],
-    "socket": false,
-    "initiative": "1d20",
-    "gridDistance": 2,
-    "gridUnits": "m",
-    "primaryTokenAttribute": "attributes.hitPoints",
-    "secondaryTokenAttribute": "attributes.pietas",
-    "url": "https://github.com/Foundry-VTT-Lex-Arcana/foundryvtt-lexarcana",
-    "manifest": "https://raw.githubusercontent.com/Foundry-VTT-Lex-Arcana/foundryvtt-lexarcana/master/system.json",
-    "download": "https://github.com/Foundry-VTT-Lex-Arcana/foundryvtt-lexarcana/archive/refs/heads/master.zip",
-    "license": "LICENSE.txt"
+    {
+      "lang": "es",
+      "name": "Spanish",
+      "path": "lang/es.json",
+      "flags": {}
+    }
+  ],
+  "initiative": "1d20",
+  "gridDistance": 2,
+  "gridUnits": "m",
+  "primaryTokenAttribute": "attributes.hitPoints",
+  "secondaryTokenAttribute": "attributes.pietas",
+  "url": "https://github.com/Foundry-VTT-Lex-Arcana/foundryvtt-lexarcana",
+  "manifest": "https://raw.githubusercontent.com/Foundry-VTT-Lex-Arcana/foundryvtt-lexarcana/master/system.json",
+  "download": "https://github.com/Foundry-VTT-Lex-Arcana/foundryvtt-lexarcana/archive/refs/heads/master.zip",
+  "license": "LICENSE.txt"
 }
