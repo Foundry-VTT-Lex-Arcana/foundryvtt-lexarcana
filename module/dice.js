@@ -118,7 +118,6 @@ export class LexArcanaDice {
 			}
 			rollEval.dice.forEach((die) => totalFaces+=die.faces);
 		}
-
 		let previousHasFated = false;
 		let previousTotal = 0;
 		do
@@ -134,15 +133,15 @@ export class LexArcanaDice {
 			computedTotal = evaluatedRoll.total + previousTotal;
 			if(previousHasFated && !diceHasFated)
 			{
-				message.content+='<span>Result: '+computedTotal+' ('+previousTotal+'+'+evaluatedRoll.total+')</span>&nbsp;';
+				message.content+='<span>Result: '+computedTotal+' ('+previousTotal+'+'+evaluatedRoll.total+')</span>';
 			}
 			else if(!previousHasFated)
 			{
-				message.content+='<span>Result: '+computedTotal+' <i class="fas fa-dice-d6">&nbsp;</i></span>&nbsp;';
+				message.content+='<span>Result: '+computedTotal+' <i class="fas fa-dice-d6"></i></span>';
 			}
 			let expressionResult = '';
 			evaluatedRoll.dice.forEach((die) => expressionResult+=die.total+' ');
-			message.content+='<span class="details"> -> '+_expression+' ( '+expressionResult+')</span>';
+			message.content+='<span class="details"> -- '+_expression+' ( '+expressionResult+')</span>';
 
 			message.content+='<hr/>';
 			previousTotal = computedTotal;
@@ -154,7 +153,6 @@ export class LexArcanaDice {
 				previousHasFated = true;
 			}
 		}while(diceHasFated);
-
 		message.content += '<div>';
 		if(_difficultyThreshold>0)
 		{
@@ -174,7 +172,7 @@ export class LexArcanaDice {
 				message.content += '<span class="failure">FAILURE!</span>';
 			}
 		}
-		message.content+='&nbsp;<span class="details">'+game.i18n.localize(CONFIG.LexArcana.RollDetailsThreshold)+' "'+_difficultyThreshold+'"</span>';
+		message.content+='<span class="details">'+game.i18n.localize(CONFIG.LexArcana.RollDetailsThreshold)+' "'+_difficultyThreshold+'"</span>';
 		message.content += '</div>';
 
 		message.content += '</div>';
