@@ -73,6 +73,22 @@
 					<input type="text" name="system.feat" value="{{item.system.feat}}"/>
 				</div>
 			</div>
+			{{!-- Skill --}}
+			<div class="form-group">
+				<label>{{ localize "LexArcana.PeritiaeName" }}</label>
+				<div class="form-fields">
+					<select name="system.peritia" data-dtype="String">
+						{{#select item.system.peritia}}
+						<option value="deBello">{{ localize "LexArcana.Peritia.DeBello" }}</option>
+						<option value="deCorpore">{{ localize "LexArcana.Peritia.DeCorpore" }}</option>
+						<option value="deMagia">{{ localize "LexArcana.Peritia.DeMagia" }}</option>
+						<option value="deNatura">{{ localize "LexArcana.Peritia.DeNatura" }}</option>
+						<option value="deScientia">{{ localize "LexArcana.Peritia.DeScientia" }}</option>
+						<option value="deSocietate">{{ localize "LexArcana.Peritia.DeSocietate" }}</option>
+						{{/select}}
+					  </select>
+				</div>
+			</div>
 		</div>
 		
         {{!-- Description --}}

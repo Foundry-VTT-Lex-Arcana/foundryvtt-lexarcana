@@ -141,7 +141,7 @@ export class LexArcanaDice {
 			}
 			let expressionResult = '';
 			evaluatedRoll.dice.forEach((die) => expressionResult+=die.total+' ');
-			message.content+='<span class="details"> -- '+_expression+' ( '+expressionResult+')</span>';
+			message.content+='<span class="details"> -&gt; '+_expression+' ( '+expressionResult+')</span>';
 
 			message.content+='<hr/>';
 			previousTotal = computedTotal;
