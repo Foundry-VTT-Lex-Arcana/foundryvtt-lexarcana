@@ -98,6 +98,8 @@
 	"LexArcana.Short": "Corto",
 	"LexArcana.Average": "Medio",
 	"LexArcana.Long": "Largo",
+	"LexArcana.ResultName": "Resultado",
+	"LexArcana.Failure": "FALLO! ",
 	"LexArcana.DoSMarginalSuccess": "GdE I marginal",
 	"LexArcana.DoSCompleteSuccess": "GdE II completo",
 	"LexArcana.DoSExceptionalSuccess": "GdE III excepcional",

@@ -98,6 +98,8 @@
 	"LexArcana.Short": "Short",
 	"LexArcana.Average": "Average",
 	"LexArcana.Long": "Long",
+	"LexArcana.ResultName": "Result",
+	"LexArcana.Failure": "FAILURE! ",
 	"LexArcana.DoSMarginalSuccess": "Marginal success",
 	"LexArcana.DoSCompleteSuccess": "Complete success",
 	"LexArcana.DoSExceptionalSuccess": "Exceptional success",

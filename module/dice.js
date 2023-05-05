@@ -133,11 +133,17 @@ export class LexArcanaDice {
 			computedTotal = evaluatedRoll.total + previousTotal;
 			if(previousHasFated && !diceHasFated)
 			{
-				message.content+='<span>Result: '+computedTotal+' ('+previousTotal+'+'+evaluatedRoll.total+')</span>';
+				console.log ("NOMBRE RESULTADO")
+				console.log (game.i18n.localize(CONFIG.LexArcana.ResultName))
+				console.log (game.i18n.localize(CONFIG.LexArcana.DoSMarginalSuccess))
+				message.content+='<span>'+game.i18n.localize(CONFIG.LexArcana.ResultName)+': '+computedTotal+' ('+previousTotal+'+'+evaluatedRoll.total+')</span>';
 			}
 			else if(!previousHasFated)
 			{
-				message.content+='<span>Result: '+computedTotal+' <i class="fas fa-dice-d6"></i></span>';
+				console.log ("NOMBRE RESULTADO")
+				console.log (game.i18n.localize(CONFIG.LexArcana.DoSMarginalSuccess))
+				console.log (game.i18n.localize(CONFIG.LexArcana.DoSMarginalSuccess))
+				message.content+='<span>'+game.i18n.localize(CONFIG.LexArcana.ResultName)+': '+computedTotal+' <i class="fas fa-dice-d6"></i></span>';
 			}
 			let expressionResult = '';
 			evaluatedRoll.dice.forEach((die) => expressionResult+=die.total+' ');
@@ -169,7 +175,7 @@ export class LexArcanaDice {
 			}
 			else
 			{
-				message.content += '<span class="failure">FAILURE!</span>';
+				message.content += '<span class="failure">'+game.i18n.localize(CONFIG.LexArcana.Failure)+'</span>';
 			}
 		}
 		message.content+='<span class="details">'+game.i18n.localize(CONFIG.LexArcana.RollDetailsThreshold)+' "'+_difficultyThreshold+'"</span>';

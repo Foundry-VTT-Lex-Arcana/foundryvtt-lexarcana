@@ -153,3 +153,5 @@ LexArcana.Long								= 'LexArcana.Long';
  LexArcana.RollDetailsThreshold				= 'LexArcana.RollDetailsThreshold';
  LexArcana.RollCustomInput					= 'LexArcana.RollCustomInput';
  LexArcana.RollDifficultyThreshold			= 'LexArcana.RollDifficultyThreshold';
+ LexArcana.ResultName                       = 'LexArcana.ResultName';
+ LexArcana.Failure                          = 'LexArcana.Failure';
