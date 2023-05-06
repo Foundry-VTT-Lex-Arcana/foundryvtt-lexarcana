@@ -31,7 +31,8 @@
                     },
                     "npc": true
                 },
-                "fateRoll": true
+                "fateRoll": true,
+                "treated": false
             },
 			"commonCustos":
 			{

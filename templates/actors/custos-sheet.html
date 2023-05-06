@@ -65,6 +65,12 @@
                         <input name="system.rank" type="text" value="{{actor.system.rank}}" placeholder="Gregarius" data-dtype="String"/>
                     </div>
                 </li>
+                <li>
+                    <h4 class="attribute-name box-title">{{ localize "LexArcana.Treated" }}</h4>
+                    <div class="attribute-value multiple">
+                        <input name="system.treated" type="checkbox" {{checked actor.system.treated}} />
+                    </div>
+                </li>
             </ul>
 
             {{!-- Header Attributes --}}

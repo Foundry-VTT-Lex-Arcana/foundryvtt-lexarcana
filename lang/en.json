@@ -69,6 +69,7 @@
 	"LexArcana.Cost": "Cost",
 	"LexArcana.ItemName": "ItemName",
 	"LexArcana.Encumbrance": "Encumbrance",
+	"LexArcana.Treated": "Treated",
 	"LexArcana.Protection": "Protection",
 	"LexArcana.Damage": "Damage",
 	"LexArcana.Range": "Range",
