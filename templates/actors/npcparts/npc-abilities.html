@@ -4,11 +4,11 @@
 				{{!-- Core Abilities --}}
 				<li>
 					<div>
-						<a class="dialog-roll roll1d-icon" data-diceclass="oneDice">&nbsp;</a>
+						<a class="dialog-roll roll1d-icon" data-diceclass="oneDice" data-rollName="{{ localize "LexArcana.OneDice" }}">&nbsp;</a>
 						<ul>
 							{{#each actor.system.oneDice as |value key|}}
 								<li>
-									<span>{{value}}</span>&nbsp;
+									<span><a class="dialog-roll" data-diceclass="oneDice" data-rollname={{value}}>{{value}}</a></span>&nbsp;
 									<a class="delete-ability fas fa-trash" data-diceclass="oneDice" data-abilityid="{{value}}">&nbsp;</a>
 								</li>
 							{{/each}}
@@ -18,11 +18,11 @@
 				</li>
 				<li>
 					<div>
-						<a class="dialog-roll roll2d-icon" data-diceclass="twoDice">&nbsp;</a>
+						<a class="dialog-roll roll2d-icon" data-diceclass="twoDice" data-rollName="{{ localize "LexArcana.TwoDice" }}">&nbsp;</a>
 						<ul>
 							{{#each actor.system.twoDice as |value key|}}
 								<li>
-									<span>{{value}}</span>&nbsp;
+									<span><a class="dialog-roll" data-diceclass="twoDice" data-rollname={{value}}>{{value}}</a></span>&nbsp;
 									<a class="delete-ability fas fa-trash" data-diceclass="twoDice" data-abilityid="{{value}}">&nbsp;</a>
 								</li>
 							{{/each}}
@@ -32,11 +32,11 @@
 				</li>
 				<li>
 					<div>
-						<a class="dialog-roll roll3d-icon" data-diceclass="threeDice">&nbsp;</a>
+						<a class="dialog-roll roll3d-icon" data-diceclass="threeDice" data-rollName="{{ localize "LexArcana.ThreeDice" }}">&nbsp;</a>
 						<ul>
 							{{#each actor.system.threeDice as |value key|}}
 								<li>
-									<span>{{value}}</span>&nbsp;
+									<span><a class="dialog-roll" data-diceclass="threeDice" data-rollname={{value}}>{{value}}</a></span>&nbsp;
 									<a class="delete-ability fas fa-trash" data-diceclass="threeDice" data-abilityid="{{value}}">&nbsp;</a>
 								</li>
 							{{/each}}

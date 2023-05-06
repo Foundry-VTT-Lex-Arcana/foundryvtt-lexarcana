@@ -107,5 +107,8 @@
 	"LexArcana.RollUnbalanced": "Unbalanced",
 	"LexArcana.RollDetailsThreshold": "Against a DT of",
 	"LexArcana.RollCustomInput": "Custom roll",
-	"LexArcana.RollDifficultyThreshold": "Difficulty Threshold"
+	"LexArcana.RollDifficultyThreshold": "Difficulty Threshold",
+	"LexArcana.OneDice": "One Dice",
+	"LexArcana.TwoDice": "Two Dice",
+	"LexArcana.ThreeDice": "Three Dice"
 }

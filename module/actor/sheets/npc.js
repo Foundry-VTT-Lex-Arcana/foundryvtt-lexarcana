@@ -191,6 +191,7 @@ export default class LexArcanaNPCActorSheet extends LexArcanaActorSheet
 		 event.preventDefault();
 		 const dataSet = event.currentTarget.dataset;
 		 let diceClass = dataSet.diceclass;
+		 let rollname = dataSet.rollname;
 		 let hasFateRoll = this.hasFateRoll();
 		 let numDice = 1;
 		 switch(diceClass)
@@ -245,7 +246,7 @@ export default class LexArcanaNPCActorSheet extends LexArcanaActorSheet
 					 icon: button.content,
 					 callback: html => {
 						let inputs = retrieveRollInputFromHTML(html, '');
-						 _caller.actor.rollND(numDice, numFaces, hasFateRoll, inputs.difficultyThreshold, inputs.expressionType, diceClass);
+						 _caller.actor.rollND(numDice, numFaces, hasFateRoll, inputs.difficultyThreshold, inputs.expressionType, rollname);
 					 }
 				 };
 		 }
@@ -256,7 +257,7 @@ export default class LexArcanaNPCActorSheet extends LexArcanaActorSheet
 							 </div>`;
 		 
 		 let mainDialog = new Dialog({
-		   title: diceClass,
+		   title: rollname,
 		   content: htmlContent,
 		   buttons: { roll: buttonBuilder(this)}
 		 });

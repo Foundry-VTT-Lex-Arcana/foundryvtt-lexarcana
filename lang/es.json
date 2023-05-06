@@ -107,5 +107,8 @@
 	"LexArcana.RollUnbalanced": "Sin Compensar",
 	"LexArcana.RollDetailsThreshold": "Contra",
 	"LexArcana.RollCustomInput": "Personalizada",
-	"LexArcana.RollDifficultyThreshold": "Dificultad"
+	"LexArcana.RollDifficultyThreshold": "Dificultad",
+	"LexArcana.OneDice": "Un Dado",
+	"LexArcana.TwoDice": "Dos Dados",
+	"LexArcana.ThreeDice": "Tres Dados"
 }
