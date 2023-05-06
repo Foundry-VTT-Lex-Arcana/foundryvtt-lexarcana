@@ -178,6 +178,7 @@
             {
                 "encumbrance": 0,
 				"active": false,
+                "dropped": false,
                 "actionType": null,
 				"class": ""
             },

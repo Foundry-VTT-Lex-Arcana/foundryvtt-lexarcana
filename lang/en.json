@@ -89,6 +89,7 @@
 	"LexArcana.ProvincePeritiaeModifiersLabel": "Peritiae bonuses",
 	"LexArcana.InventoryEquipedSectionTitle": "Equiped",
 	"LexArcana.InventoryBagSectionTitle": "Bag",
+	"LexArcana.InventoryDroppedSectionTitle": "Dropped",
 	"LexArcana.Attributes": "Attributes",
 	"LexArcana.Confirm": "Are you sure ?",
 	"LexArcana.ConfirmItemDeletion": "You are about to remove an item from your inventory, it will be lost",

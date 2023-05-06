@@ -81,6 +81,7 @@ export default class LexArcanaNPCActorSheet extends LexArcanaActorSheet
 		html.find('a.damage-roll').click(this._onDamageRollClick.bind(this));
 		html.find('a.armor-roll').click(this._onArmorRollClick.bind(this));
 		html.find('a.item-equip').click(this._onEquipClick.bind(this));
+		html.find('a.item-drop').click(this._onDropClick.bind(this));
 		html.find('a.item-edit').click(this._onEditClick.bind(this));
 		html.find('a.item-delete').click(this._onDeleteClick.bind(this));
 	}
@@ -113,7 +114,17 @@ export default class LexArcanaNPCActorSheet extends LexArcanaActorSheet
 		event.preventDefault();
 		const dataset = event.currentTarget.dataset;
 		const item = this.actor.items.get(dataset.id);
+		item.update({ 'system.dropped': false });
 		item.update({ 'system.active': !item.system.active });
+		return;
+	}
+	async _onDropClick(event, data)
+	{
+		event.preventDefault();
+		const dataset = event.currentTarget.dataset;
+		const item = this.actor.items.get(dataset.id);
+		item.update({ 'system.dropped': !item.system.dropped });
+		item.update({ 'system.active': false });
 		return;
 	}
 
