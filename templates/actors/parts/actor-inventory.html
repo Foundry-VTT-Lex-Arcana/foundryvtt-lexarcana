@@ -17,7 +17,7 @@
 						   <a class="fas fa-heartbeat damage-roll" data-id="{{item._id}}">&nbsp;</a>
 						{{/ife}}
 						{{#ife item.type 'armor'}}
-						 	<a class="fas fa-tshirt armor-roll" data-id="{{item._id}}">&nbsp;</a>
+						 	<a class="fas fa-tshirt armor-roll" data-id="{{item._id}}" data-actorname="{{../actor.name}}">&nbsp;</a>
 					    {{/ife}}
 					</div>
 					<div class="fas fa-anchor inventory"> {{item.system.encumbrance}}</div>
