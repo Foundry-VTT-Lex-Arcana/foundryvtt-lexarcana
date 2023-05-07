@@ -9,11 +9,11 @@
 					<a class="item-name inventory" title="{{item.name}}">{{item.name}}</a>
 					<div class="item-roll_area inventory">
 						{{#ife item.type 'meleeWeapon'}}
-							<a class="fas fa-dice dialog-roll" data-peritiaid="{{item.system.peritia}}" data-id="{{item._id}}" data-peritiaid="{{item.system.peritia}}">&nbsp;</a>
+							<a class="fas fa-dice dialog-roll" data-peritiaid="{{item.system.peritia}}" data-id="{{item._id}}" data-peritiaid="{{item.system.peritia}}" data-actorname="{{../actor.name}} ({{item.name}})">&nbsp;</a>
 							<a class="fas fa-heartbeat damage-roll" data-id="{{item._id}}">&nbsp;</a>
 						{{/ife}}
                    		{{#ife item.type 'rangedWeapon'}}
-						   <a class="fas fa-dice dialog-roll" data-peritiaid="{{item.system.peritia}}" data-id="{{item._id}}" data-peritiaid="{{item.system.peritia}}">&nbsp;</a>
+						   <a class="fas fa-dice dialog-roll" data-peritiaid="{{item.system.peritia}}" data-id="{{item._id}}" data-peritiaid="{{item.system.peritia}}" data-actorname="{{../actor.name}} ({{item.name}})">&nbsp;</a>
 						   <a class="fas fa-heartbeat damage-roll" data-id="{{item._id}}">&nbsp;</a>
 						{{/ife}}
 						{{#ife item.type 'armor'}}
@@ -23,7 +23,7 @@
 					<div class="fas fa-anchor inventory"> {{item.system.encumbrance}}</div>
                     <div class="item-modify inventory">
 						<a class="item-equip fas fa-thumbs-up" data-id="{{item._id}}">&nbsp;</a>
-						<a class="item-drop fas fa-thumbs-down" data-id="{{item._id}}">&nbsp;</a>
+						<a class="item-drop fas fa-download" data-id="{{item._id}}">&nbsp;</a>
 						<a class="item-edit fas fa-edit" data-id="{{item._id}}">&nbsp;</a>
 						<a class="item-delete fas fa-trash" data-id="{{item._id}}">&nbsp;</a>
 					</div>
@@ -46,7 +46,7 @@
 					<div class="fas fa-anchor inventory"> {{item.system.encumbrance}}</div>
 					<div class="item-modify">
 						<a class="item-equip fas fa-hand-rock" style="color:grey" data-id="{{item._id}}">&nbsp;</a>
-						<a class="item-drop fas fa-thumbs-down" data-id="{{item._id}}">&nbsp;</a>
+						<a class="item-drop fas fa-download" data-id="{{item._id}}">&nbsp;</a>
 						<a class="item-edit fas fa-edit" data-id="{{item._id}}">&nbsp;</a>
 						<a class="item-delete fas fa-trash" data-id="{{item._id}}">&nbsp;</a>
 					</div>
@@ -66,7 +66,7 @@
 					<div class="item-roll_area inventory"></div>
 					<div class="fas fa-anchor inventory"> {{item.system.encumbrance}}</div>
 					<div class="item-modify">
-						<a class="item-equip fas fa-thumbs-up" data-id="{{item._id}}">&nbsp;</a>
+						<a class="item-equip fas fa-upload" data-id="{{item._id}}">&nbsp;</a>
 						<a class="item-edit fas fa-edit" data-id="{{item._id}}">&nbsp;</a>
 						<a class="item-delete fas fa-trash" data-id="{{item._id}}">&nbsp;</a>
 					</div>

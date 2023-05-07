@@ -6,9 +6,9 @@
                         {{#each actor.system.virtutes as |virtuteValue virtuteKey|}}
                         <li class="virtute">
                                 <div class="grid-layout3 grid-layout3-virtute">
-                                        <a for="system.virtutes.{{virtuteKey}}.value" class="virtute-name grid-layout3-area1 rollable dialog-roll" data-virtuteid="{{virtuteKey}}">{{virtuteValue.label}}</a>
+                                        <a for="system.virtutes.{{virtuteKey}}.value" class="virtute-name grid-layout3-area1 rollable dialog-roll" data-virtuteid="{{virtuteKey}}" data-actorname="{{../actor.name}}">{{virtuteValue.label}}</a>
                                         <input class="virtute-value grid-layout3-area2" name="system.virtutes.{{virtuteKey}}.value" value="{{virtuteValue.value}}" data-dtype="number" type="number"/>
-                                        <i class="dialog-roll roll1d-icon grid-layout3-area3" data-virtuteid="{{virtuteKey}}"></i>
+                                        <i class="dialog-roll roll1d-icon grid-layout3-area3" data-virtuteid="{{virtuteKey}}" data-actorname="{{../actor.name}}"></i>
                                 </div>
                         </li>
                         {{/each}}
@@ -23,14 +23,14 @@
                                 <div class="grid-layout4 grid-layout4-peritia">
                                         <a class="add-peritiae-specialty add-icon grid-layout4-area0" data-peritiaid="{{peritiaKey}}"></a>
 										<div class="grid-layout4-area1">
-											<a for="system.peritiae.{{peritiaKey}}.value" class="peritia-name rollable dialog-roll" data-peritiaid="{{peritiaKey}}">{{peritiaValue.label}}</a>
+											<a for="system.peritiae.{{peritiaKey}}.value" class="peritia-name rollable dialog-roll" data-peritiaid="{{peritiaKey}}" data-actorname="{{../actor.name}}">{{peritiaValue.label}}</a>
 											<span class="computed-value tooltip">
 												<span class="tooltipText scroller"><p>Base: {{peritiaValue.baseValue}} + Province: {{peritiaValue.provinceValue}}</p></span>
 												{{peritiaValue.finalValue}}
 											</span>
 										</div>
                                         <input class="peritia-value grid-layout4-area2" name="system.peritiae.{{peritiaKey}}.value" value="{{peritiaValue.value}}" data-dtype="number" type="number"/>
-                                        <i class="dialog-roll roll1d-icon grid-layout4-area3" data-peritiaid="{{peritiaKey}}"></i>
+                                        <i class="dialog-roll roll1d-icon grid-layout4-area3" data-peritiaid="{{peritiaKey}}" data-actorname="{{../actor.name}}"></i>
                                 </div>
                                 {{#each peritiaValue.specialties as |specialtyValue specialtyKey|}}
                                 <div class="grid-layout4 grid-layout4-specialty">
@@ -52,7 +52,7 @@
 						        {{/each}}
 					        </select>
 					{{/ife}}
-                                        <i class="dialog-roll roll1d-icon grid-layout4-area3" data-peritiaid="{{peritiaKey}}" data-specialtyid="{{specialtyValue.name}}"></i>
+                                        <i class="dialog-roll roll1d-icon grid-layout4-area3" data-peritiaid="{{peritiaKey}}" data-specialtyid="{{specialtyValue.name}}" data-actorname="{{../../actor.name}}"></i>
                                 </div>
                                 {{/each}}
                         </li>
