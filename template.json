@@ -155,7 +155,12 @@
                 "common",
                 "commonNPC"
             ],
-            "degreeOfDanger": 1
+            "degreeOfDanger": 1,
+            "information": {
+                "degree1": "",
+                "degree2": "",
+                "degree3": ""
+            }
         }
     },
     "Item": {
