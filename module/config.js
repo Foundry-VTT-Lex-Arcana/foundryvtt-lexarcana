@@ -95,6 +95,7 @@ LexArcana.ActionAdd                         = 'LexArcana.ActionAdd';
 LexArcana.ActionCancel                      = 'LexArcana.ActionCancel';
 LexArcana.Biography                         = 'LexArcana.Biography';
 LexArcana.HitPoints                         = 'LexArcana.HitPoints';
+LexArcana.degreeOfDanger                    = 'LexArcana.degreeOfDanger';
 LexArcana.Pietas                            = 'LexArcana.Pietas';
 LexArcana.Inventory                         = 'LexArcana.Inventory';
 LexArcana.Description                       = 'LexArcana.Description';

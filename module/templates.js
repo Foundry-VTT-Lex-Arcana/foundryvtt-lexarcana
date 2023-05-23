@@ -19,6 +19,7 @@ export const preloadHandlebarsTemplates = async function ()
 
         // NPC Sheet Partials
         System.Path + '/templates/actors/npcparts/npc-header.html',
+        System.Path + '/templates/actors/npcparts/creature-header.html',
         System.Path + '/templates/actors/npcparts/npc-abilities.html'
 
         // Item Sheet Partials

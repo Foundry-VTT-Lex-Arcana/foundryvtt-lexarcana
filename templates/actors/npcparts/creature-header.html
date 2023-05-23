@@ -1,0 +1,44 @@
+
+            {{!-- Header sub Attributes --}}
+            <ul class="attributes flexrow">
+				<li>
+					<h4 class="attribute-name box-title">{{ localize "LexArcana.DiceValue" }}</h4>
+					<div class="attribute-value">
+                        <select name="system.diceValue" data-dtype="Number">
+                            {{#select actor.system.diceValue}}
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="8">8</option>
+                            <option value="10">10</option>
+                            <option value="12">12</option>
+                            <option value="20">20</option>
+                            {{/select}}
+                          </select>
+          
+					</div>
+			   </li>
+                <li>
+                    <h4 class="attribute-name box-title">{{ localize "LexArcana.Size" }}</h4>
+                    <div class="attribute-wide-value">
+                        <input name="system.size" type="text" value="{{actor.system.size}}" placeholder="1" data-dtype="Number"/>
+                    </div>
+                </li>
+            </ul>
+
+            {{!-- Header Attributes --}}
+            <ul class="attributes flexrow">
+                <li class="attribute health">
+					<h4 class="attribute-name box-title">{{ localize "LexArcana.HitPoints" }}</h4>
+					<div class="attribute-value">
+						<input name="system.hitPoints" type="text" value="{{actor.system.hitPoints}}" placeholder="4" data-dtype="Number"/>
+					</div>
+                </li>
+                <li>
+                    <h4 class="attribute-name box-title">{{ localize "LexArcana.degreeOfDanger" }}</h4>
+                    <div class="attribute-wide-value">
+                        <input name="system.degreeOfDanger" type="text" value="{{actor.system.degreeOfDanger}}" placeholder="1" data-dtype="Number"/>
+                    </div>
+                </li>
+            </ul>
