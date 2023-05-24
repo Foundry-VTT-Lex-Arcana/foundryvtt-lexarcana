@@ -6,8 +6,8 @@
 		<li class="item">
 				<a class="item-image inventory" data-id="{{indigamentum._id}}"><img src="{{indigamentum.img}}" title="{{indigamentum.name}}" width="32" height="32" /></a>
 				<a class="item-name inventory" title="{{indigamentum.name}}">{{indigamentum.name}}</a>
-				{{#if indigamentum.system.used}}<div class="fas fa-solid fa-ban inventory" style="color:red;"></div>{{/if}}
-				<div class="fas fa-bolt inventory"> {{indigamentum.system.cost}}</div>
+				{{#if indigamentum.system.used}}<div class="fas fa-solid fa-ban inventory" style="color:red;"> </div>{{else}}
+				<div class="fas fa-bolt inventory"> {{indigamentum.system.cost}}</div>{{/if}}
 				<div class="item-modify inventory">
 					<a class="item-edit fas fa-edit" data-id="{{indigamentum._id}}">&nbsp;</a>
 					<a class="item-delete fas fa-trash" data-id="{{indigamentum._id}}">&nbsp;</a>
