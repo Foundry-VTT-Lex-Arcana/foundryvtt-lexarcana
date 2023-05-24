@@ -246,8 +246,8 @@
                 "common"
             ],
             "cost": 6,
-			"peritia": "deMagia",
-			"virtute": "none"
+			"requirement": "",
+            "used": false
         },
         "ritual": {
             "templates": [

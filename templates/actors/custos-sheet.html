@@ -112,6 +112,7 @@
         <a class="item" data-tab="inventory">{{ localize "LexArcana.Inventory" }}</a>
         <a class="item" data-tab="rituals">{{ localize "LexArcana.Rituals" }}</a>
         <a class="item" data-tab="biography">{{ localize "LexArcana.Biography" }}</a>
+        <a class="item" data-tab="curriculum">{{ localize "LexArcana.Curriculum" }}</a>
     </nav>
 
     {{!-- Custos Sheet Body --}}
@@ -137,6 +138,10 @@
             <div class="biography">
                 {{editor actor.system.biography target="system.biography" button=true owner=owner editable=true}}
             </div>
+        </div>
+        {{!-- Curriculum Tab --}}
+        <div class="tab curriculum flexcol" data-group="primary" data-tab="curriculum">
+            {{> "systems/LexArcana/templates/actors/parts/actor-curriculum.html"}}
         </div>
     </section>
 </form>

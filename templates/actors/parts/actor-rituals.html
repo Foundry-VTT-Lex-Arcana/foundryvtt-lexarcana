@@ -6,9 +6,7 @@
 		<li class="item">
 				<a class="item-image inventory" data-id="{{indigamentum._id}}"><img src="{{indigamentum.img}}" title="{{indigamentum.name}}" width="32" height="32" /></a>
 				<a class="item-name inventory" title="{{indigamentum.name}}">{{indigamentum.name}}</a>
-				<div class="item-roll_area inventory">
-					<a class="fas fa-dice dialog-roll" data-id="{{indigamentum._id}}" data-peritiaid="{{indigamentum.system.peritia}}" data-actorname="{{../actor.name}} ({{indigamentum.name}})">&nbsp;</a>
-				</div>
+				{{#if indigamentum.system.used}}<div class="fas fa-solid fa-ban inventory" style="color:red;"></div>{{/if}}
 				<div class="fas fa-bolt inventory"> {{indigamentum.system.cost}}</div>
 				<div class="item-modify inventory">
 					<a class="item-edit fas fa-edit" data-id="{{indigamentum._id}}">&nbsp;</a>

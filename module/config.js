@@ -95,11 +95,11 @@ LexArcana.ActionAdd                         = 'LexArcana.ActionAdd';
 LexArcana.ActionCancel                      = 'LexArcana.ActionCancel';
 LexArcana.Biography                         = 'LexArcana.Biography';
 LexArcana.HitPoints                         = 'LexArcana.HitPoints';
-LexArcana.degreeOfDanger                    = 'LexArcana.degreeOfDanger';
 LexArcana.Pietas                            = 'LexArcana.Pietas';
 LexArcana.Inventory                         = 'LexArcana.Inventory';
 LexArcana.Description                       = 'LexArcana.Description';
-LexArcana.Information                       = 'LexArcana.Information';
+LexArcana.Requirement                       = 'LexArcana.Requirement';
+LexArcana.Curriculum                        = 'LexArcana.Curriculum';
 LexArcana.Features                          = 'LexArcana.Features';
 LexArcana.ItemName                          = 'LexArcana.ItemName';
 LexArcana.Encumbrance                       = 'LexArcana.Encumbrance';
@@ -118,6 +118,11 @@ LexArcana.Size								= 'LexArcana.Size';
 LexArcana.AddAbilityPromptTitle				= 'LexArcana.AddAbilityPromptTitle';
 LexArcana.SpecialAbilitiesTitle				= 'LexArcana.SpecialAbilitiesTitle';
 LexArcana.MagicalPowersTitle				= 'LexArcana.MagicalPowersTitle';
+LexArcana.DoS1			                    = 'LexArcana.DoS1';
+LexArcana.DoS2			                    = 'LexArcana.DoS2';
+LexArcana.DoS3			                    = 'LexArcana.DoS3';
+LexArcana.Information                       = 'LexArcana.Information';
+LexArcana.degreeOfDanger                    = 'LexArcana.degreeOfDanger';
 
 /**
  * Items
@@ -142,6 +147,7 @@ LexArcana.Duration							= 'LexArcana.Duration';
 LexArcana.Short								= 'LexArcana.Short';
 LexArcana.Average							= 'LexArcana.Average';
 LexArcana.Long								= 'LexArcana.Long';
+LexArcana.Used                              = 'LexArcana.Used';
 
 /**
  * Rolls
@@ -149,9 +155,6 @@ LexArcana.Long								= 'LexArcana.Long';
  LexArcana.DoSMarginalSuccess				= 'LexArcana.DoSMarginalSuccess';
  LexArcana.DoSCompleteSuccess				= 'LexArcana.DoSCompleteSuccess';
  LexArcana.DoSExceptionalSuccess			= 'LexArcana.DoSExceptionalSuccess';
- LexArcana.DoS1			                    = 'LexArcana.DoS1';
- LexArcana.DoS2			                    = 'LexArcana.DoS2';
- LexArcana.DoS3			                    = 'LexArcana.DoS3';
  LexArcana.RollBalanced						= 'LexArcana.RollBalanced';
  LexArcana.RollUnbalanced					= 'LexArcana.RollUnbalanced';
  LexArcana.RollDetailsThreshold				= 'LexArcana.RollDetailsThreshold';
