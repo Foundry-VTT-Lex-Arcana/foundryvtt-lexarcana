@@ -242,12 +242,12 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		const dataset = event.currentTarget.dataset;
 		const item = this.actor.items.get(dataset.id);
 		if (item.system.used){
-			ui.notifications.error("This indigatamenta has already been used.", {permanent: true});
+			ui.notifications.error(game.i18n.localize('LexArcana.AlreadyUsedMessage'), {permanent: true});
 			return 1;
 		}
 		let final_pietas=this.actor.system.attributes.pietas.value-item.system.cost
 		if (final_pietas < 0){
-			ui.notifications.error("You have not enough pietas.", {permanent: true});
+			ui.notifications.error(game.i18n.localize('LexArcana.NotEnougPietas'), {permanent: true});
 			return 1;
 		}
 		this.actor.update ({ 'system.attributes.pietas.value': final_pietas });

@@ -65,6 +65,7 @@
 	"LexArcana.RitualsSectionTitle": "Rituals",
 	"LexArcana.TalentsSectionTitle": "Talents",
 	"LexArcana.Description": "Description",
+	"LexArcana.Effect": "Effect",
 	"LexArcana.Requirement": "Requirements",
 	"LexArcana.Curriculum": "Curriculum",
 	"LexArcana.Information": "Information",
@@ -123,5 +124,7 @@
 	"LexArcana.RollDifficultyThreshold": "Difficulty Threshold",
 	"LexArcana.OneDice": "One Dice",
 	"LexArcana.TwoDice": "Two Dice",
-	"LexArcana.ThreeDice": "Three Dice"
+	"LexArcana.ThreeDice": "Three Dice",
+	"LexArcana.AlreadyUsedMessage": "You have already used it.",
+	"LexArcana.NotEnougPietas": "You don't have enough Pietas left for this."
 }

@@ -65,6 +65,7 @@
 	"LexArcana.IndigamentaSectionTitle": "Indigitamenta",
 	"LexArcana.RitualsSectionTitle": "Rituales",
 	"LexArcana.Description": "Descripción",
+	"LexArcana.Effect": "Efecto",
 	"LexArcana.Requirement": "Requisitos",
 	"LexArcana.Curriculum": "Curriculum",
 	"LexArcana.Information": "Información",
@@ -123,5 +124,7 @@
 	"LexArcana.RollDifficultyThreshold": "Dificultad",
 	"LexArcana.OneDice": "Un Dado",
 	"LexArcana.TwoDice": "Dos Dados",
-	"LexArcana.ThreeDice": "Tres Dados"
+	"LexArcana.ThreeDice": "Tres Dados",
+	"LexArcana.AlreadyUsedMessage": "Ya lo has usado antes.",
+	"LexArcana.NotEnougPietas": "No tienes suficiente Pietas para esto."
 }

@@ -133,6 +133,7 @@ LexArcana.degreeOfDanger                    = 'LexArcana.degreeOfDanger';
  **/
 LexArcana.ItemClass							= 'LexArcana.ItemClass';
 LexArcana.ItemClassEmpty					= 'LexArcana.ItemClassEmpty';
+LexArcana.Effect                            = 'LexArcana.Effect';
 
 /**
  * Provinces
@@ -152,6 +153,8 @@ LexArcana.Short								= 'LexArcana.Short';
 LexArcana.Average							= 'LexArcana.Average';
 LexArcana.Long								= 'LexArcana.Long';
 LexArcana.Used                              = 'LexArcana.Used';
+LexArcana.AlreadyUsedMessage                = 'LexArcana.AlreadyUsedMessage';
+LexArcana.NotEnougPietas                    = 'LexArcana.NotEnougPietas';
 
 /**
  * Rolls
