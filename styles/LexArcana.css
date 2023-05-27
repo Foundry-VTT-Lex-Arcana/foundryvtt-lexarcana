@@ -614,7 +614,7 @@ body.system-LexArcana
 	/* Position the tooltip text */
 	position: absolute;
 	z-index: 1;
-	bottom: 105%;
+	bottom: 300%;
 	left: -100%;
 	margin-left: -80px;
 
