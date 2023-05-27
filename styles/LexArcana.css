@@ -542,7 +542,7 @@ body.system-LexArcana
 
 .system-LexArcana .LexArcanaRoll .details
 {
-    display: none;
+    display: inline-block;
 }
 
 .system-LexArcana .LexArcanaRoll:hover .details
