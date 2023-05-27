@@ -126,5 +126,6 @@
 	"LexArcana.TwoDice": "Two Dice",
 	"LexArcana.ThreeDice": "Three Dice",
 	"LexArcana.AlreadyUsedMessage": "You have already used it.",
-	"LexArcana.NotEnougPietas": "You don't have enough Pietas left for this."
+	"LexArcana.NotEnougPietas": "You don't have enough Pietas left for this.",
+	"LexArcana.SpendPietas": "You have spent"
 }

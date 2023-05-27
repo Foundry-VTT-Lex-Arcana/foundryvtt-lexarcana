@@ -155,6 +155,7 @@ LexArcana.Long								= 'LexArcana.Long';
 LexArcana.Used                              = 'LexArcana.Used';
 LexArcana.AlreadyUsedMessage                = 'LexArcana.AlreadyUsedMessage';
 LexArcana.NotEnougPietas                    = 'LexArcana.NotEnougPietas';
+LexArcana.SpendPietas                       = 'LexArcana.SpendPietas';
 
 /**
  * Rolls

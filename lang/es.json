@@ -126,5 +126,6 @@
 	"LexArcana.TwoDice": "Dos Dados",
 	"LexArcana.ThreeDice": "Tres Dados",
 	"LexArcana.AlreadyUsedMessage": "Ya lo has usado antes.",
-	"LexArcana.NotEnougPietas": "No tienes suficiente Pietas para esto."
+	"LexArcana.NotEnougPietas": "No tienes suficiente Pietas para esto.",
+	"LexArcana.SpendPietas": "Has gastado"
 }

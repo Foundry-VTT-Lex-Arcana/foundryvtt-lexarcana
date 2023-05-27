@@ -250,6 +250,7 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 			ui.notifications.error(game.i18n.localize('LexArcana.NotEnougPietas'), {permanent: true});
 			return 1;
 		}
+		ui.notifications.info(game.i18n.localize('LexArcana.SpendPietas')+" "+item.system.cost+" Pietas.", {permanent: true});
 		this.actor.update ({ 'system.attributes.pietas.value': final_pietas });
 		item.update ({ 'system.used': true });
 		let info=item.name+" ("+item.system.cost+" Pietas)"
