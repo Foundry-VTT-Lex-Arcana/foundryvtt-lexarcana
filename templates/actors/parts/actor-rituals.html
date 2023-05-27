@@ -5,7 +5,7 @@
 		{{#each indigamenta as |indigamentum key|}}
 		<li class="item">
 				<a class="item-image inventory" data-id="{{indigamentum._id}}"><img src="{{indigamentum.img}}" title="{{indigamentum.name}}" width="32" height="32" /></a>
-				<a class="item-name inventory" title="{{indigamentum.name}}">{{indigamentum.name}}</a>
+				<a class="item-name inventory indigatamenta-use" data-id="{{indigamentum._id}}" data-actorname="{{../actor.name}}" title="{{indigamentum.name}}">{{indigamentum.name}}</a>
 				{{#if indigamentum.system.used}}<div class="fas fa-solid fa-ban inventory" style="color:red;"> </div>{{else}}
 				<div class="fas fa-bolt inventory"> {{indigamentum.system.cost}}</div>{{/if}}
 				<div class="item-modify inventory">

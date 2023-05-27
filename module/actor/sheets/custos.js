@@ -174,6 +174,7 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		html.find('a.item-drop').click(this._onDropClick.bind(this));
 		html.find('a.item-edit').click(this._onEditClick.bind(this));
 		html.find('a.item-delete').click(this._onDeleteClick.bind(this));
+		html.find('a.indigatamenta-use').click(this._onIndigatamentaClick.bind(this));
 
 
 		// Drag events for macros.
@@ -233,6 +234,31 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		LexArcanaDice.Roll(1, item.system.damage, LexArcanaDice.EXPRESSIONTYPE.BALANCED, 0, this.hasFateRoll(), item.name);
 		//this.actor.combatTurn();
 		return;
+	}
+
+	async _onIndigatamentaClick(event, data)
+	{
+		event.preventDefault();
+		const dataset = event.currentTarget.dataset;
+		const item = this.actor.items.get(dataset.id);
+		if (item.system.used){
+			ui.notifications.error("This indigatamenta has already been used.", {permanent: true});
+			return 1;
+		}
+		let final_pietas=this.actor.system.attributes.pietas.value-item.system.cost
+		if (final_pietas < 0){
+			ui.notifications.error("You have not enough pietas.", {permanent: true});
+			return 1;
+		}
+		this.actor.update ({ 'system.attributes.pietas.value': final_pietas });
+		item.update ({ 'system.used': true });
+		let info=item.name+" ("+item.system.cost+" Pietas)"
+		const message =
+		{
+			speaker: {actor: this.actor.id },
+			content: '<div class="LexArcanaRoll"><h1>'+info+'</h1>'+item.system.description+'<hr>'+item.system.requirement+'</div>'
+		};
+		return ChatMessage.create(message);
 	}
 
 	async _onArmorRollClick(event, data)
