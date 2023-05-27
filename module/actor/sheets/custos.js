@@ -78,6 +78,7 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		data.talents = [];
 		data.province = null;
 		let encumbrance=0;
+		let experience=this.actor.system.experience;
 		for (let i of data.actor.items)
 		{
 			switch (i.type)
@@ -135,12 +136,19 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
             v.baseValue = parseInt(v.value);
 			v.provinceValue =  data.province !== null ? data.province.system.peritiaeModifiers[k].value : 0;
             v.finalValue = v.baseValue + v.provinceValue;
+			v.total_exp = experience * v.exp_multiplier;
+			v.remaining_exp = v.total_exp - v.spent_exp;
+
         }
+		data.actor.system.mosArcanorum.total_exp = experience * data.actor.system.mosArcanorum.exp_multiplier;
+		data.actor.system.mosArcanorum.remaining_exp = data.actor.system.mosArcanorum.total_exp - data.actor.system.mosArcanorum.spent_exp;
+		data.actor.system.paxDeorum.total_exp = experience * data.actor.system.paxDeorum.exp_multiplier;
+		data.actor.system.paxDeorum.remaining_exp = data.actor.system.paxDeorum.total_exp - data.actor.system.paxDeorum.spent_exp;
 
 		data.itemClasses = LexArcanaUtils.getItemClasses();
 		this.actor.update ({ 'system.encumbrance': encumbrance });
 
-
+		//item.update({ 'system.dropped': false });
 
 		return data;
 	}

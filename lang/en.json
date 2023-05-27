@@ -79,6 +79,10 @@
 	"LexArcana.Difficulty": "Difficulty",
 	"LexArcana.Feat": "Feat",
 	"LexArcana.Parry": "Parry",
+	"LexArcana.Experience": "Experience",
+	"LexArcana.Total": "Total",
+	"LexArcana.Spent": "Spent",
+	"LexArcana.Remaining": "Remaining",
 
 	"LexArcana.DiceValue": "Dice Value",
 	"LexArcana.Size": "Size",

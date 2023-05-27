@@ -325,6 +325,10 @@ body.system-LexArcana
 {
     width: 32px;
 }
+.system-LexArcana input.curriculum-value
+{
+    width: 64px;
+}
 .system-LexArcana .icon
 {
     min-width: 32px;

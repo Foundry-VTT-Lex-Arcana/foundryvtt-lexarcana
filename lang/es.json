@@ -79,6 +79,10 @@
 	"LexArcana.Difficulty": "Dificultad",
 	"LexArcana.Feat": "Talento",
 	"LexArcana.Parry": "Parada",
+	"LexArcana.Experience": "Experiencia",
+	"LexArcana.Total": "Total",
+	"LexArcana.Spent": "Usados",
+	"LexArcana.Remaining": "Restantes",
 
 	"LexArcana.DiceValue": "Valor de dado",
 	"LexArcana.Size": "Tamaño",

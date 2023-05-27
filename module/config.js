@@ -109,6 +109,10 @@ LexArcana.Range                             = 'LexArcana.Range';
 LexArcana.Difficulty                        = 'LexArcana.Difficulty';
 LexArcana.Feat                              = 'LexArcana.Feat';
 LexArcana.Parry                             = 'LexArcana.Parry';
+LexArcana.Experience                        = 'LexArcana.Experience';
+LexArcana.Total                             = 'LexArcana.Total';
+LexArcana.Spent                             = 'LexArcana.Spent';
+LexArcana.Remaining                         = 'LexArcana.Remaining';
 
 /**
  * NPCs 

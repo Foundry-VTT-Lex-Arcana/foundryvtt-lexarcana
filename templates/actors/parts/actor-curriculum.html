@@ -1,14 +1,34 @@
 <div class="inventory-filters inventory no-circle">
 	<div>
-		<h3>{{ localize "LexArcana.IndigamentaSectionTitle" }}</h3>
-		
-	</div>
-	<div>
-		<h3>{{ localize "LexArcana.TalentsSectionTitle" }}</h3>
-		
-	</div>
-	<div>
-		<h3>{{ localize "LexArcana.RitualsSectionTitle" }}</h3>
-		
-	</div>
+		<div><h3><label>{{ localize "LexArcana.Experience" }}: </label><input class="curriculum-value" name="system.experience" value="{{actor.system.experience}}" data-dtype="number" type="number"/></h3></div>
+		<table>
+				{{#each actor.system.peritiae as |peritiaValue peritiaKey|}}
+				<tr>
+					<td><label class="curriculum-value">{{peritiaValue.label}}</label></td>
+					<td><label class="curriculum-value">X  </label><input class="curriculum-value" name="system.peritiae.{{peritiaKey}}.exp_multiplier" value="{{peritiaValue.exp_multiplier}}" data-dtype="number" type="number"/></td>
+					<td><label class="curriculum-value">{{ localize "LexArcana.Total" }}: {{peritiaValue.total_exp}}</label></td>
+					<td><label class="curriculum-value"></label>{{ localize "LexArcana.Spent" }}: </label></td>
+					<td><input class="curriculum-value" name="system.peritiae.{{peritiaKey}}.spent_exp" value="{{peritiaValue.spent_exp}}" data-dtype="number" type="number"/></td>
+					<td><label>{{ localize "LexArcana.Remaining" }}: {{peritiaValue.remaining_exp}}</label></td>			
+				</tr>
+				
+				{{/each}}
+				<tr>
+					<td><label class="curriculum-value">Mos Arcanorum</label></td>
+					<td><label class="curriculum-value">X  </label><input class="curriculum-value" name="system.mosArcanorum.exp_multiplier" value="{{actor.system.mosArcanorum.exp_multiplier}}" data-dtype="number" type="number"/></td>
+					<td><label class="curriculum-value">{{ localize "LexArcana.Total" }}: {{actor.system.mosArcanorum.total_exp}}</label></td> 
+					<td><label class="curriculum-value"></label>{{ localize "LexArcana.Spent" }}: </label></td>
+					<td><input class="curriculum-value" name="system.mosArcanorum.spent_exp" value="{{actor.system.mosArcanorum.spent_exp}}" data-dtype="number" type="number"/></td>
+					<td><label>{{ localize "LexArcana.Remaining" }}: {{actor.system.mosArcanorum.remaining_exp}}</label></td>	
+				</tr>
+				<tr>
+					<td><label class="curriculum-value">Pax Deorum</label></td>
+					<td><label class="curriculum-value">X  </label><input class="curriculum-value" name="system.paxDeorum.exp_multiplier" value="{{actor.system.paxDeorum.exp_multiplier}}" data-dtype="number" type="number"/></td>
+					<td><label class="curriculum-value">{{ localize "LexArcana.Total" }}: {{actor.system.paxDeorum.total_exp}}</label></td>
+					<td><label class="curriculum-value"></label>{{ localize "LexArcana.Spent" }}: </label></td>
+					<td><input class="curriculum-value" name="system.paxDeorum.spent_exp" value="{{actor.system.paxDeorum.spent_exp}}" data-dtype="number" type="number"/></td>
+					<td><label>{{ localize "LexArcana.Remaining" }}: {{actor.system.paxDeorum.remaining_exp}}</label></td>			
+				</tr>
+		</table>
+</div>
 </div>
