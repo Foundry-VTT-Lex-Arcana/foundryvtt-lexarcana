@@ -31,7 +31,8 @@
                     },
                     "npc": true
                 },
-                "fateRoll": true
+                "fateRoll": true,
+                "treated": false
             },
 			"commonCustos":
 			{
@@ -74,38 +75,51 @@
                     {
                         "value": 6,
                         "specialties": {},
-                        "defaultRoll": "d6"
+                        "defaultRoll": "d6",
+                        "exp_multiplier": 1,
+                        "spent_exp": 0
                     },
                     "deCorpore":
                     {
                         "value": 6,
                         "specialties": {},
-                        "defaultRoll": "d6"
+                        "defaultRoll": "d6",
+                        "exp_multiplier": 1,
+                        "spent_exp": 0
                     },
                     "deMagia":
                     {
                         "value": 6,
                         "specialties": {},
-                        "defaultRoll": "d6"
+                        "defaultRoll": "d6",
+                        "exp_multiplier": 1,
+                        "spent_exp": 0
                     },
                     "deNatura":
                     {
                         "value": 6,
                         "specialties": {},
-                        "defaultRoll": "d6"
+                        "defaultRoll": "d6",
+                        "exp_multiplier": 1,
+                        "spent_exp": 0
                     },
                     "deScientia":
                     {
                         "value": 6,
                         "specialties": {},
-                        "defaultRoll": "d6"
+                        "defaultRoll": "d6",
+                        "exp_multiplier": 1,
+                        "spent_exp": 0
                     },
                     "deSocietate":
                     {
                         "value": 6,
                         "specialties": {},
-                        "defaultRoll": "d6"
+                        "defaultRoll": "d6",
+                        "exp_multiplier": 1,
+                        "spent_exp": 0
                     }
+
                     
                 }
 			},
@@ -135,7 +149,18 @@
             ],
             "provinceId": 0,
 			"office": "explorer",
-			"rank": "gregarius"
+			"rank": "gregarius",
+            "experience": 0,
+            "mosArcanorum":
+            {
+                "exp_multiplier": 1,
+                "spent_exp": 0
+            },
+            "paxDeorum":
+            {
+                "exp_multiplier": 1,
+                "spent_exp": 0
+            }
         },
         "npc":
         {
@@ -154,7 +179,12 @@
                 "common",
                 "commonNPC"
             ],
-            "degreeOfDanger": 1
+            "degreeOfDanger": 1,
+            "information": {
+                "degree1": "",
+                "degree2": "",
+                "degree3": ""
+            }
         }
     },
     "Item": {
@@ -178,6 +208,7 @@
             {
                 "encumbrance": 0,
 				"active": false,
+                "dropped": false,
                 "actionType": null,
 				"class": ""
             },
@@ -239,8 +270,8 @@
                 "common"
             ],
             "cost": 6,
-			"peritia": "deMagia",
-			"virtute": "none"
+			"requirement": "",
+            "used": false
         },
         "ritual": {
             "templates": [

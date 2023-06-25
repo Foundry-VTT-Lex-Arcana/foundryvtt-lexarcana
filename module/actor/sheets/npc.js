@@ -81,6 +81,7 @@ export default class LexArcanaNPCActorSheet extends LexArcanaActorSheet
 		html.find('a.damage-roll').click(this._onDamageRollClick.bind(this));
 		html.find('a.armor-roll').click(this._onArmorRollClick.bind(this));
 		html.find('a.item-equip').click(this._onEquipClick.bind(this));
+		html.find('a.item-drop').click(this._onDropClick.bind(this));
 		html.find('a.item-edit').click(this._onEditClick.bind(this));
 		html.find('a.item-delete').click(this._onDeleteClick.bind(this));
 	}
@@ -94,7 +95,7 @@ export default class LexArcanaNPCActorSheet extends LexArcanaActorSheet
 		event.preventDefault();
 		const dataset = event.currentTarget.dataset;
 		const item = this.actor.items.get(dataset.id);
-		LexArcanaDice.Roll(1, item.system.damage, LexArcanaDice.EXPRESSIONTYPE.BALANCED, 6, this.hasFateRoll(), item.name);
+		LexArcanaDice.Roll(1, item.system.damage, LexArcanaDice.EXPRESSIONTYPE.BALANCED, 0, this.hasFateRoll(), item.name);
 		//this.actor.combatTurn();
 		return;
 	}
@@ -104,7 +105,7 @@ export default class LexArcanaNPCActorSheet extends LexArcanaActorSheet
 		event.preventDefault();
 		const dataset = event.currentTarget.dataset;
 		const item = this.actor.items.get(dataset.id);
-		LexArcanaDice.Roll(1, item.system.protection, LexArcanaDice.EXPRESSIONTYPE.BALANCED, this.hasFateRoll(), item.name);
+		LexArcanaDice.Roll(1, item.system.protection, LexArcanaDice.EXPRESSIONTYPE.BALANCED, 0, this.hasFateRoll(), item.name);
 		return;
 	}
 
@@ -113,7 +114,17 @@ export default class LexArcanaNPCActorSheet extends LexArcanaActorSheet
 		event.preventDefault();
 		const dataset = event.currentTarget.dataset;
 		const item = this.actor.items.get(dataset.id);
+		item.update({ 'system.dropped': false });
 		item.update({ 'system.active': !item.system.active });
+		return;
+	}
+	async _onDropClick(event, data)
+	{
+		event.preventDefault();
+		const dataset = event.currentTarget.dataset;
+		const item = this.actor.items.get(dataset.id);
+		item.update({ 'system.dropped': !item.system.dropped });
+		item.update({ 'system.active': false });
 		return;
 	}
 
@@ -191,6 +202,8 @@ export default class LexArcanaNPCActorSheet extends LexArcanaActorSheet
 		 event.preventDefault();
 		 const dataSet = event.currentTarget.dataset;
 		 let diceClass = dataSet.diceclass;
+		 let rollname = dataSet.rollname;
+		 let actorName = dataSet.actorname;
 		 let hasFateRoll = this.hasFateRoll();
 		 let numDice = 1;
 		 switch(diceClass)
@@ -245,7 +258,7 @@ export default class LexArcanaNPCActorSheet extends LexArcanaActorSheet
 					 icon: button.content,
 					 callback: html => {
 						let inputs = retrieveRollInputFromHTML(html, '');
-						 _caller.actor.rollND(numDice, numFaces, hasFateRoll, inputs.difficultyThreshold, inputs.expressionType, diceClass);
+						 _caller.actor.rollND(numDice, numFaces, hasFateRoll, inputs.difficultyThreshold, inputs.expressionType, actorName+": "+rollname);
 					 }
 				 };
 		 }
@@ -256,7 +269,7 @@ export default class LexArcanaNPCActorSheet extends LexArcanaActorSheet
 							 </div>`;
 		 
 		 let mainDialog = new Dialog({
-		   title: diceClass,
+		   title: rollname,
 		   content: htmlContent,
 		   buttons: { roll: buttonBuilder(this)}
 		 });

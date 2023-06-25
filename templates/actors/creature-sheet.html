@@ -33,7 +33,7 @@
                     </ul>
 				</li>                
 			</ul>
-            {{> "systems/LexArcana/templates/actors/npcparts/npc-header.html"}}
+            {{> "systems/LexArcana/templates/actors/npcparts/creature-header.html"}}
         </section>
     </header>
 
@@ -42,6 +42,7 @@
         <a class="item active" data-tab="abilities">{{ localize "LexArcana.Abilities" }}</a>
         <a class="item" data-tab="inventory">{{ localize "LexArcana.Inventory" }}</a>
         <a class="item" data-tab="biography">{{ localize "LexArcana.Biography" }}</a>
+        <a class="item" data-tab="information">{{ localize "LexArcana.Information" }}</a>
     </nav>
 
     {{!-- Custos Sheet Body --}}
@@ -74,6 +75,17 @@
         <div class="tab biography flexrow" data-group="primary" data-tab="biography">
             <div class="biography">
                 {{editor actor.system.biography target="system.biography" button=true owner=owner editable=true}}
+            </div>
+        </div>
+        {{!-- Information Tab --}}
+        <div class="tab biography flexrow" data-group="primary" data-tab="information">
+            <div class="biography">
+                <h4 class="attribute-name box-title">{{ localize "LexArcana.DoS1" }}</h4>
+                {{editor actor.system.information.degree1 target="system.information.degree1" button=true owner=owner editable=true}}
+                <h4 class="attribute-name box-title">{{ localize "LexArcana.DoS2" }}</h4>
+                {{editor actor.system.information.degree2 target="system.information.degree2" button=true owner=owner editable=true}}
+                <h4 class="attribute-name box-title">{{ localize "LexArcana.DoS3" }}</h4>
+                {{editor actor.system.information.degree3 target="system.information.degree3" button=true owner=owner editable=true}}
             </div>
         </div>
     </section>

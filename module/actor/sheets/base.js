@@ -211,6 +211,9 @@ export default class LexArcanaActorSheet extends ActorSheet
         const dataSet = event.currentTarget.dataset;
         let config = {};
 		let hasFateRoll = this.hasFateRoll();
+        let actorName = dataSet.actorname;
+        console.log ("DATASET")
+        console.log (dataSet)
 		function retrieveRollInputFromHTML(_html, _defaultRollInputName)
 		{
 			return {
@@ -256,14 +259,10 @@ export default class LexArcanaActorSheet extends ActorSheet
         {
             const peritiaNameLoc = game.i18n.format(game.i18n.localize(CONFIG.LexArcana.Peritia[dataSet.peritiaid]));
             const specialty = this.actor.getSpecialty(dataSet.peritiaid, dataSet.specialtyid);
-            console.log ("SPECIALITY")
-            console.log (specialty)
             config.defaultRoll = specialty.defaultRoll===undefined?"1d6":specialty.defaultRoll;
             config.defaultRollInputName = 'specialty-default-roll';
             config.title = peritiaNameLoc+" :: "+specialty.name;
 			config.numFaces = this.actor.getSpecialtyScore(dataSet.peritiaid, dataSet.specialtyid);
-            console.log ("NUMFACES")
-            console.log (config.numFaces)
 			config.callbackCustomRoll = function(_actor, _expression) { _actor.setPeritiaSpecialtyDefaultRoll(dataSet.peritiaid, dataSet.specialtyid, _expression); }
         }
         else
@@ -298,7 +297,7 @@ export default class LexArcanaActorSheet extends ActorSheet
 							return;
 						}
 						let inputs = retrieveRollInputFromHTML(html, '');
-						_caller.actor.rollND(_numDice, config.numFaces, hasFateRoll, inputs.difficultyThreshold, inputs.expressionType, config.title);
+						_caller.actor.rollND(_numDice, config.numFaces, hasFateRoll, inputs.difficultyThreshold, inputs.expressionType, actorName+": "+config.title);
 					}
 				};
 		};
