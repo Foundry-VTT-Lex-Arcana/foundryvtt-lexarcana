@@ -211,6 +211,9 @@ export default class LexArcanaActorSheet extends ActorSheet
         const dataSet = event.currentTarget.dataset;
         let config = {};
 		let hasFateRoll = this.hasFateRoll();
+        let actorName = dataSet.actorname;
+        console.log ("DATASET")
+        console.log (dataSet)
 		function retrieveRollInputFromHTML(_html, _defaultRollInputName)
 		{
 			return {
@@ -294,7 +297,7 @@ export default class LexArcanaActorSheet extends ActorSheet
 							return;
 						}
 						let inputs = retrieveRollInputFromHTML(html, '');
-						_caller.actor.rollND(_numDice, config.numFaces, hasFateRoll, inputs.difficultyThreshold, inputs.expressionType, config.title);
+						_caller.actor.rollND(_numDice, config.numFaces, hasFateRoll, inputs.difficultyThreshold, inputs.expressionType, actorName+": "+config.title);
 					}
 				};
 		};

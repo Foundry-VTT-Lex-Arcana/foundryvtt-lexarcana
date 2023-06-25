@@ -78,6 +78,7 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		data.talents = [];
 		data.province = null;
 		let encumbrance=0;
+		let experience=this.actor.system.experience;
 		for (let i of data.actor.items)
 		{
 			switch (i.type)
@@ -116,7 +117,12 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 				}
 			}
 			//Now that it is iterating, let's use this to calculate encumbrance
-			encumbrance += i.system.encumbrance | 0
+			if (!i.system.dropped)
+			{
+				encumbrance += i.system.encumbrance | 0
+			}
+			
+			
 		}
 
         // Ability Scores
@@ -130,12 +136,19 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
             v.baseValue = parseInt(v.value);
 			v.provinceValue =  data.province !== null ? data.province.system.peritiaeModifiers[k].value : 0;
             v.finalValue = v.baseValue + v.provinceValue;
+			v.total_exp = experience * v.exp_multiplier;
+			v.remaining_exp = v.total_exp - v.spent_exp;
+
         }
+		data.actor.system.mosArcanorum.total_exp = experience * data.actor.system.mosArcanorum.exp_multiplier;
+		data.actor.system.mosArcanorum.remaining_exp = data.actor.system.mosArcanorum.total_exp - data.actor.system.mosArcanorum.spent_exp;
+		data.actor.system.paxDeorum.total_exp = experience * data.actor.system.paxDeorum.exp_multiplier;
+		data.actor.system.paxDeorum.remaining_exp = data.actor.system.paxDeorum.total_exp - data.actor.system.paxDeorum.spent_exp;
 
 		data.itemClasses = LexArcanaUtils.getItemClasses();
 		this.actor.update ({ 'system.encumbrance': encumbrance });
 
-
+		//item.update({ 'system.dropped': false });
 
 		return data;
 	}
@@ -158,8 +171,10 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		html.find('a.damage-roll').click(this._onDamageRollClick.bind(this));
 		html.find('a.armor-roll').click(this._onArmorRollClick.bind(this));
 		html.find('a.item-equip').click(this._onEquipClick.bind(this));
+		html.find('a.item-drop').click(this._onDropClick.bind(this));
 		html.find('a.item-edit').click(this._onEditClick.bind(this));
 		html.find('a.item-delete').click(this._onDeleteClick.bind(this));
+		html.find('a.indigatamenta-use').click(this._onIndigatamentaClick.bind(this));
 
 
 		// Drag events for macros.
@@ -189,6 +204,16 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		const dataset = event.currentTarget.dataset;
 		const item = this.actor.items.get(dataset.id);
 		item.update({ 'system.active': !item.system.active });
+		item.update({ 'system.dropped': false });
+		return;
+	}
+	async _onDropClick(event, data)
+	{
+		event.preventDefault();
+		const dataset = event.currentTarget.dataset;
+		const item = this.actor.items.get(dataset.id);
+		item.update({ 'system.dropped': !item.system.dropped });
+		item.update({ 'system.active': false });
 		return;
 	}
 
@@ -211,12 +236,39 @@ export default class LexArcanaCustosActorSheet extends LexArcanaActorSheet
 		return;
 	}
 
+	async _onIndigatamentaClick(event, data)
+	{
+		event.preventDefault();
+		const dataset = event.currentTarget.dataset;
+		const item = this.actor.items.get(dataset.id);
+		if (item.system.used){
+			ui.notifications.error(game.i18n.localize('LexArcana.AlreadyUsedMessage'), {permanent: true});
+			return 1;
+		}
+		let final_pietas=this.actor.system.attributes.pietas.value-item.system.cost
+		if (final_pietas < 0){
+			ui.notifications.error(game.i18n.localize('LexArcana.NotEnougPietas'), {permanent: true});
+			return 1;
+		}
+		ui.notifications.info(game.i18n.localize('LexArcana.SpendPietas')+" "+item.system.cost+" Pietas.", {permanent: true});
+		this.actor.update ({ 'system.attributes.pietas.value': final_pietas });
+		item.update ({ 'system.used': true });
+		let info=item.name+" ("+item.system.cost+" Pietas)"
+		const message =
+		{
+			speaker: {actor: this.actor.id },
+			content: '<div class="LexArcanaRoll"><h1>'+info+'</h1>'+item.system.description+'<hr>'+item.system.requirement+'</div>'
+		};
+		return ChatMessage.create(message);
+	}
+
 	async _onArmorRollClick(event, data)
 	{
 		event.preventDefault();
 		const dataset = event.currentTarget.dataset;
 		const item = this.actor.items.get(dataset.id);
-		LexArcanaDice.Roll(1, item.system.protection, LexArcanaDice.EXPRESSIONTYPE.BALANCED, 0,this.hasFateRoll(), item.name);
+		let actorName = dataset.actorname;
+		LexArcanaDice.Roll(1, item.system.protection, LexArcanaDice.EXPRESSIONTYPE.BALANCED, 0,this.hasFateRoll(), actorName+": "+item.name);
 		return;
 	}
 

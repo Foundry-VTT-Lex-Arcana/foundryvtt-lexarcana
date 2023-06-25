@@ -98,7 +98,8 @@ LexArcana.HitPoints                         = 'LexArcana.HitPoints';
 LexArcana.Pietas                            = 'LexArcana.Pietas';
 LexArcana.Inventory                         = 'LexArcana.Inventory';
 LexArcana.Description                       = 'LexArcana.Description';
-LexArcana.Information                       = 'LexArcana.Information';
+LexArcana.Requirement                       = 'LexArcana.Requirement';
+LexArcana.Curriculum                        = 'LexArcana.Curriculum';
 LexArcana.Features                          = 'LexArcana.Features';
 LexArcana.ItemName                          = 'LexArcana.ItemName';
 LexArcana.Encumbrance                       = 'LexArcana.Encumbrance';
@@ -108,6 +109,10 @@ LexArcana.Range                             = 'LexArcana.Range';
 LexArcana.Difficulty                        = 'LexArcana.Difficulty';
 LexArcana.Feat                              = 'LexArcana.Feat';
 LexArcana.Parry                             = 'LexArcana.Parry';
+LexArcana.Experience                        = 'LexArcana.Experience';
+LexArcana.Total                             = 'LexArcana.Total';
+LexArcana.Spent                             = 'LexArcana.Spent';
+LexArcana.Remaining                         = 'LexArcana.Remaining';
 
 /**
  * NPCs 
@@ -117,12 +122,18 @@ LexArcana.Size								= 'LexArcana.Size';
 LexArcana.AddAbilityPromptTitle				= 'LexArcana.AddAbilityPromptTitle';
 LexArcana.SpecialAbilitiesTitle				= 'LexArcana.SpecialAbilitiesTitle';
 LexArcana.MagicalPowersTitle				= 'LexArcana.MagicalPowersTitle';
+LexArcana.DoS1			                    = 'LexArcana.DoS1';
+LexArcana.DoS2			                    = 'LexArcana.DoS2';
+LexArcana.DoS3			                    = 'LexArcana.DoS3';
+LexArcana.Information                       = 'LexArcana.Information';
+LexArcana.degreeOfDanger                    = 'LexArcana.degreeOfDanger';
 
 /**
  * Items
  **/
 LexArcana.ItemClass							= 'LexArcana.ItemClass';
 LexArcana.ItemClassEmpty					= 'LexArcana.ItemClassEmpty';
+LexArcana.Effect                            = 'LexArcana.Effect';
 
 /**
  * Provinces
@@ -141,6 +152,10 @@ LexArcana.Duration							= 'LexArcana.Duration';
 LexArcana.Short								= 'LexArcana.Short';
 LexArcana.Average							= 'LexArcana.Average';
 LexArcana.Long								= 'LexArcana.Long';
+LexArcana.Used                              = 'LexArcana.Used';
+LexArcana.AlreadyUsedMessage                = 'LexArcana.AlreadyUsedMessage';
+LexArcana.NotEnougPietas                    = 'LexArcana.NotEnougPietas';
+LexArcana.SpendPietas                       = 'LexArcana.SpendPietas';
 
 /**
  * Rolls
@@ -153,3 +168,5 @@ LexArcana.Long								= 'LexArcana.Long';
  LexArcana.RollDetailsThreshold				= 'LexArcana.RollDetailsThreshold';
  LexArcana.RollCustomInput					= 'LexArcana.RollCustomInput';
  LexArcana.RollDifficultyThreshold			= 'LexArcana.RollDifficultyThreshold';
+ LexArcana.ResultName                       = 'LexArcana.ResultName';
+ LexArcana.Failure                          = 'LexArcana.Failure';
